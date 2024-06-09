@@ -1,0 +1,92 @@
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: black;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+.nav-link:hover {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fd800c;
+  transition: ease-in-out 0.3s;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  will-change: transform;
+  top: 100%;
+  margin-top: 0.125rem;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-item {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+.dropdown-item:hover {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fd800c;
+  background-color: transparent;
+  text-transform: uppercase;
+  transition: ease-in-out 0.3s;
+  font-family: "Roboto", sans-serif;
+}
+
+.dropdown-divider {
+  border-color: #d3d3d3;
+  border-width: 1px;
+}
+
+.activated {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fd800c;
+}
+
+@media screen and (min-width: 360px) and (max-width: 428px) {
+  .navbar-brand img {
+    width: 260px;
+  }
+  .navbar-toggler {
+    background-color: #fd800c;
+  }
+
+  .btn-close {
+    background-color: #fd800c;
+  }
+
+  .offcanvas-header img {
+    width: 260px;
+  }
+
+  .nav-link.dropdown-toggle {
+    color: black;
+  }
+}

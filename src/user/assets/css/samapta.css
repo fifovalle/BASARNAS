@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fd800c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b05500;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+.table-samapta {
+  margin: 50px 0 50px 0;
+  padding: 30px 50px 30px 50px;
+}
+
+.samapta-title {
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 60px;
+  font-weight: bold;
+  letter-spacing: 10px;
+  color: black;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  background-color: #fd800c;
+}
+
+.table-responsive-sm {
+  margin: 50px 0 30px 0;
+}
+
+.table-title {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: black;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+@media screen and (min-width: 360px) and (max-width: 428px) {
+  .table-samapta table {
+    width: 100%;
+  }
+  .table-samapta .table-responsive-sm {
+    overflow-x: auto;
+  }
+  .table-samapta table {
+    width: 100%;
+  }
+
+  .table-samapta {
+    margin: 20px 0 10px 0;
+    padding: 30px 10px 10px 10px;
+  }
+
+  .samapta-title {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    color: black;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .table-responsive-sm {
+    margin: 50px 0 30px 0;
+  }
+
+  .table-title {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: black;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .table-responsive-sm th,
+  .table-responsive-sm td {
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,15 @@
+.section-footer {
+  display: block;
+}
+
+@media screen and (min-width: 360px) and (max-width: 428px) {
+  .section-footer {
+    display: flex;
+  }
+
+  .section-footer p {
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 800;
+  }
+}

@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fd800c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b05500;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+.carousel-inner {
+  height: 650px;
+  margin: 10px 0 0 0;
+}
+
+.section-welcome {
+  margin: 50px 0 50px 0;
+  padding: 50px 0 50px 0;
+  background-color: #fd800c;
+}
+
+.section-welcome h3 {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: black;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+.section-welcome h1 {
+  font-size: 100px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+.section-welcome lead {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  color: black;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+.section-fitur {
+  margin: 50px 0 50px 0;
+  padding: 50px 0 50px 0;
+}
+
+.section-fitur img {
+  width: 200px;
+}
+
+.section-fitur h1 {
+  font-size: 50px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  color: black;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 50px;
+}
+
+.card-body a {
+  outline: 1px solid #fd800c;
+  color: black;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card-body a:hover {
+  background-color: #fd800c;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 360px) and (max-width: 428px) {
+  .carousel-inner {
+    height: 250px;
+    margin: 10px 0 0 0;
+  }
+
+  .section-welcome {
+    margin: 2px 0 50px 0;
+    padding: 20px 0 20px 0;
+    background-color: #fd800c;
+  }
+  .section-welcome h3 {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: black;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+  }
+  .section-welcome h1 {
+    font-size: 45px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: white;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .section-welcome lead {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: black;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    align-items: center;
+  }
+
+  .section-fitur {
+    margin: 50px 0 50px 0;
+    padding: 10px 0 10px 0;
+  }
+
+  .section-fitur h1 {
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: black;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 50px;
+    font-size: 35px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .section-fitur .col-sm-12 {
+    margin-bottom: 30px;
+  }
+}
