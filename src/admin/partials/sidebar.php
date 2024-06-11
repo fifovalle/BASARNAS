@@ -198,6 +198,32 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#kompetensi">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Kompetensi</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="kompetensi">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="components/buttons.html">
+                                    <span class="sub-item">Pemula</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="components/buttons.html">
+                                    <span class="sub-item">Terampil</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="components/buttons.html">
+                                    <span class="sub-item">Mahir</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
