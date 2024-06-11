@@ -5,7 +5,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Data Admin Basarnas</title>
+    <title>Data Pengguna Basarnas</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="../assets/js/wenfontpages.js"></script>
@@ -52,8 +52,8 @@
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Data Admin</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Admin Basarnas</h6>
+                            <h3 class="fw-bold mb-3">Data Pengguna</h3>
+                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Pengguna Basarnas</h6>
                         </div>
                     </div>
                     <div class="row">
@@ -62,10 +62,10 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Admin</h4>
-                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahAdmin">
+                                        <h4 class="card-title">Tambah Pengguna</h4>
+                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahPengguna">
                                             <i class="fa fa-plus"></i>
-                                            Tambah Admin
+                                            Tambah Pengguna
                                         </button>
                                     </div>
                                 </div>
@@ -83,33 +83,33 @@
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
-                                            <?php
-                                            $adminModel = new Admin($koneksi);
-                                            $adminInfo = $adminModel->tampilkanDataAdmin();
-                                            ?>
                                             <tbody>
-                                                <?php if (!empty($adminInfo)) : ?>
-                                                    <?php foreach ($adminInfo as $admin) : ?>
+                                                <?php
+                                                $penggunaModel = new Pengguna($koneksi);
+                                                $penggunaInfo = $penggunaModel->tampilkanDataPengguna();
+                                                ?>
+                                                <?php if (!empty($penggunaInfo)) : ?>
+                                                    <?php foreach ($penggunaInfo as $pengguna) : ?>
                                                         <tr>
-                                                            <td><?php echo $admin['NIP_Admin']; ?></td>
+                                                            <td><?php echo $pengguna['NIP_Pengguna']; ?></td>
                                                             <td>
                                                                 <div class="d-flex justify-content-center">
-                                                                    <img class="avatar-img rounded-circle" src="../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="Nama Admin" style="width: 75px; height: 75px;">
+                                                                    <img class="avatar-img rounded-circle" src="../uploads/<?php echo $pengguna['Foto_Pengguna']; ?>" alt="Nama Pengguna" style="width: 75px;  height: 75px;">
                                                                 </div>
                                                             </td>
-                                                            <td><?php echo $admin['Nama_Lengkap_Admin']; ?></td>
-                                                            <td><?php echo $admin['Alamat_Admin']; ?></td>
-                                                            <td><?php echo $admin['Jabatan_Admin']; ?></td>
-                                                            <td><?php echo $admin['Umur_Admin']; ?></td>
+                                                            <td><?php echo $pengguna['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $pengguna['Alamat_Pengguna']; ?></td>
+                                                            <td><?php echo $pengguna['Jabatan_Pengguna']; ?></td>
+                                                            <td><?php echo $pengguna['Umur_Pengguna']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingAdmin">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingPengguna">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusAdmin(<?php echo $admin['NIP_Admin']; ?>)">
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusPengguna(<?php echo $pengguna['NIP_Pengguna']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatAdmin">
+                                                                    <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatPengguna">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -118,7 +118,7 @@
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6" class="text-center text-danger fw-bold ">Tidak Ada Data Admin!</td>
+                                                        <td colspan="6" class="text-center text-danger fw-bold ">Tidak Ada Data Pengguna!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
@@ -140,9 +140,9 @@
     <!-- CUSTOM END -->
 
     <!-- MODALS START -->
-    <?php include('../partials/modal-add-admin.php'); ?>
-    <?php include('../partials/modal-edit-admin.php'); ?>
-    <?php include('../partials/modal-see-admin.php'); ?>
+    <?php include('../partials/modal-add-user.php'); ?>
+    <?php include('../partials/modal-edit-user.php'); ?>
+    <?php include('../partials/modal-see-user.php'); ?>
     <!-- MODALS END -->
     </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
@@ -159,8 +159,8 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
-    <script src="../assets/js/delete-admin.js"></script>
-
+    <script src="../assets/js/delete-user.js"></script>
+    <script src="../assets/js/value-user.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -216,15 +216,14 @@
             }
         }
 
-        document.getElementById('toggleKataSandiAdmin').addEventListener('click', function() {
-            togglePasswordVisibility('tambahKataSandiAdmin', 'toggleKataSandiAdmin');
+        document.getElementById('toggleKataSandiPengguna').addEventListener('click', function() {
+            togglePasswordVisibility('tambahKataSandiPengguna', 'toggleKataSandiPengguna');
         });
 
-        document.getElementById('toggleKonfirmasiKataSandiAdmin').addEventListener('click', function() {
-            togglePasswordVisibility('tambahKonfirmasiKataSandiAdmin', 'toggleKonfirmasiKataSandiAdmin');
+        document.getElementById('toggleKonfirmasiKataSandiPengguna').addEventListener('click', function() {
+            togglePasswordVisibility('tambahKonfirmasiKataSandiPengguna', 'toggleKonfirmasiKataSandiPengguna');
         });
     </script>
-    <!-- ALERT -->
     <?php
     include('../partials/alert.php');
     ?>

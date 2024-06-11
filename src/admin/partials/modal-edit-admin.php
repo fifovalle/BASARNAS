@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form>
                     <div class="mb-3">
                         <label for="suntingNIPAdmin" class="form-label">NIP</label>
                         <input type="number" class="form-control" id="suntingNIPAdmin">
@@ -32,6 +32,14 @@
                         <select id="suntingJabatanAdmin" class="form-select">
                             <option selected>Pilih Jabatan</option>
                             <option value="Satu">Satu</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="suntingJenisKelaminAdmin" class="form-label">Jenis Kelamin</label>
+                        <select id="suntingJenisKelaminAdmin" class="form-select">
+                            <option selected>Pilih Jenis Kelamin</option>
+                            <option value="Pria">Pria</option>
+                            <option value="Wanita">Wanita</option>
                         </select>
                     </div>
                     <div class="mb-3">

@@ -6,47 +6,59 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="../config/add-admin.php" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="tambahNIPAdmin" class="form-label">NIP</label>
-                        <input type="number" class="form-control" id="tambahNIPAdmin">
+                        <input type="number" class="form-control" placeholder="Masukan NIP" id="tambahNIPAdmin" name="NIP_Admin">
                     </div>
                     <div class="mb-3">
                         <label for="tambahFotoAdmin" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="tambahFotoAdmin">
+                        <input type="file" class="form-control" id="tambahFotoAdmin" name="Foto_Admin">
                     </div>
                     <div class="mb-3">
                         <label for="tambahNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="tambahNamaAdmin">
+                        <input type="text" class="form-control" placeholder="Masukan Nama Lengkap" id="tambahNamaAdmin" name="Nama_Lengkap_Admin">
                     </div>
                     <div class="mb-3">
                         <label for="tambahTanggalLahirAdmin" class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control" id="tambahTanggalLahirAdmin">
+                        <input type="date" class="form-control" id="tambahTanggalLahirAdmin" name="Tanggal_Lahir_Admin">
                     </div>
                     <div class="mb-3">
                         <label for="tambahAlamatAdmin" class="form-label">Alamat</label>
-                        <textarea id="tambahAlamatAdmin" class="form-control"></textarea>
+                        <textarea id="tambahAlamatAdmin" class="form-control" name="Alamat_Admin"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="tambahJabatanAdmin" class="form-label">Jabatan</label>
-                        <select id="tambahJabatanAdmin" class="form-select">
-                            <option selected>Pilih Jabatan</option>
+                        <select name="Jabatan_Admin" id="tambahJabatanAdmin" class="form-select">
+                            <option selected disabled>Pilih Jabatan</option>
                             <option value="Satu">Satu</option>
+                            <option value="Dua">Dua</option>
+                            <option value="Tiga">Tiga</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tambahJenisKelaminAdmin" class="form-label">Jenis Kelamin</label>
+                        <select name="Jenis_Kelamin_Admin" id="tambahJenisKelaminAdmin" class="form-select">
+                            <option selected disabled>Pilih Jenis Kelamin</option>
+                            <option value="Pria">Pria</option>
+                            <option value="Wanita">Wanita</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="tambahNomorTelpAdmin" class="form-label">Nomor Telepon</label>
-                        <input type="number" class="form-control" id="tambahNomorTelpAdmin">
+                        <input type="number" class="form-control" placeholder="Masukan Nomor Telepon" id="tambahNomorTelpAdmin" name="Nomor_Telepon_Admin">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" style="position:relative;">
                         <label for="tambahKataSandiAdmin" class="form-label">Kata Sandi</label>
-                        <input type="password" class="form-control" id="tambahKataSandiAdmin">
+                        <input type="password" class="form-control" placeholder="***********" id="tambahKataSandiAdmin" name="Kata_Sandi_Admin">
+                        <i class="bi bi-eye" id="toggleKataSandiAdmin" style="position:absolute; top: 70%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" style="position:relative;">
                         <label for="tambahKonfirmasiKataSandiAdmin" class="form-label">Konfirmasi Kata Sandi</label>
-                        <input type="password" class="form-control" id="tambahKonfirmasiKataSandiAdmin">
+                        <input type="password" class="form-control" placeholder="***********" id="tambahKonfirmasiKataSandiAdmin" name="Konfirmasi_Kata_Sandi_Admin">
+                        <i class="bi bi-eye" id="toggleKonfirmasiKataSandiAdmin" style="position:absolute; top: 70%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
                     </div>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary" name="tambah_admin">Simpan</button>
                 </form>
             </div>
         </div>

@@ -7,8 +7,8 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-6 text-center">
-                        <img src="../assets/img/arashmil.jpg" alt="Admin Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
+                    <div class="col-6 text-center ">
+                        <img src="../assets/img/arashmil.jpg" alt="Admin Photo" class="img-fluid rounded mb-3">
                         <h3>Nama Admin</h3>
                         <p class="text-muted">NIP Admin</p>
                     </div>
@@ -30,6 +30,10 @@
                             <tr>
                                 <th>Jabatan:</th>
                                 <td>Jabatan Admin</td>
+                            </tr>
+                            <tr>
+                                <th>Jenis Kelamin:</th>
+                                <td>Jenis Kelamin Admin</td>
                             </tr>
                             <tr>
                                 <th>Nomor Telepon:</th>
