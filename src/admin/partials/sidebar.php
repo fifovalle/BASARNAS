@@ -20,17 +20,17 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-item active">
+                <li class="nav-item <?php echo apakahAktif('src/admin/') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Beranda</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="dashboard">
+                    <div class="collapse <?php echo apakahAktif('src/admin/') ? 'show' : ''; ?>" id="dashboard">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="../demo1/index.html">
-                                    <span class="sub-item">Dashboard 1</span>
+                                <a href="<?php echo $akarUrl ?>src/admin/">
+                                    <span class="sub-item">Halaman Utama</span>
                                 </a>
                             </li>
                         </ul>
@@ -42,16 +42,16 @@
                     </span>
                     <h4 class="text-section">Kumpulan Data</h4>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-admin.php') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#anggotaAdmin">
                         <i class="fas fa-layer-group"></i>
                         <p>Anggota & Admin</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="anggotaAdmin">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-admin.php') ? 'show' : ''; ?>" id="anggotaAdmin">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-admin.php">
                                     <span class="sub-item">Admin</span>
                                 </a>
                             </li>
