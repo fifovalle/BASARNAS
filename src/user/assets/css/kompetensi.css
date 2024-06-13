@@ -32,12 +32,12 @@
 ::-webkit-scrollbar-corner {
   background: #f1f1f1;
 }
-.table-bmi {
+.table-kompetensi {
   margin: 50px 0 50px 0;
   padding: 30px 50px 30px 50px;
 }
 
-.bmi-title {
+.kompetensi-title {
   padding: 20px;
   border-radius: 5px;
   font-size: 60px;
@@ -56,22 +56,22 @@
 }
 
 @media screen and (min-width: 360px) and (max-width: 428px) {
-  .table-bmi table {
+  .table-kompetensi table {
     width: 100%;
   }
-  .table-bmi .table-responsive-sm {
+  .table-kompetensi .table-responsive-sm {
     overflow-x: auto;
   }
-  .table-bmi table {
+  .table-kompetensi table {
     width: 100%;
   }
 
-  .table-bmi {
+  .table-kompetensi {
     margin: 20px 0 10px 0;
     padding: 30px 10px 10px 10px;
   }
 
-  .bmi-title {
+  .kompetensi-title {
     font-size: 28px;
     font-weight: bold;
     letter-spacing: 5px;

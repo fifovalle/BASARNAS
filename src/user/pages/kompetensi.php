@@ -5,15 +5,15 @@
 	<?php
 	include('../partials/header.php');
 	?>
-	<link rel="stylesheet" href="../assets/css/bmi.css">
+	<link rel="stylesheet" href="../assets/css/kompetensi.css">
 </head>
 
 <body>
 	<?php
 	include('../partials/navbar.php');
 	?>
-	<section class="table-bmi">
-		<h1 class="bmi-title text-center">BODY MASS INDEX (BMI)</h1>
+	<section class="table-kompetensi">
+		<h1 class="kompetensi-title text-center">Kompetensi</h1>
 		<div class="dropdown">
 			<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 				Sort By Month
@@ -38,21 +38,35 @@
 				<thead class="table-header text-center">
 					<tr>
 						<th>Nomor</th>
-						<th>Tanggal Pemeriksaan</th>
-						<th>Umur</th>
-						<th>Tinggi (cm)</th>
-						<th>Berat (kg)</th>
-						<th>Score</th>
+						<th>Tanggal Penerbitan Sertifikat</th>
+						<th>Masa Berlaku</th>
+						<th>Keterangan Sertifikat</th>
+						<th>Kategori Kompetensi</th>
+						<th>Status</th>
+						<th>Aksi</th>
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
 					<tr>
 						<td>1</td>
 						<td>2024-06-08</td>
-						<td>25</td>
-						<td>165</td>
-						<td>65</td>
-						<td>23</td>
+						<td>6 bulan</td>
+						<td>Sertifikat Diving</td>
+						<td>Rescuer Pemula</td>
+						<td>
+							<i class="bi bi-check-circle-fill" style="color: green; font-size: 20px;"></i>
+							<i class=" d-none bi bi-x-circle-fill" style="color: red; font-size: 20px;"></i>
+						</td>
+						<td>
+							<div class="btn-group ">
+								<div class="btn btn-secondary bg-transparent border border-0 p-0 pe-2">
+									<i class="bi bi-eye" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
+								</div>
+								<div class="btn btn-secondary bg-transparent border border-0 p-0 ps-2">
+									<i class="bi bi-cloud-download" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
+								</div>
+							</div>
+						</td>
 					</tr>
 				</tbody>
 			</table>

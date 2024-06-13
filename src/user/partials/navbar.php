@@ -28,16 +28,18 @@
             <a class="nav-link" href="../pages/bmi.php" id="bmi">Body Mass Index</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="kompetensi">Kompetensi</a>
+            <a class="nav-link" href="../pages/kompetensi.php" id="kompetensi">Kompetensi</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="profil">
-              Profil 
+              Profil
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#" id="pengaturan">Pengaturan</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#" id="keluar">Keluar</a></li>
+              <li><a class="dropdown-item" href="../pages/profile.php" id="pengaturan">Pengaturan</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="../pages/login.php" id="keluar">Keluar</a></li>
             </ul>
           </li>
         </ul>

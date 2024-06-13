@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  overflow-x: hidden;
 }
 
 .body {
@@ -50,10 +49,69 @@
   color: white;
 }
 
+.module h3 {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: black;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid #fd800c;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0 20px 0;
+}
+
+.module-content {
+  display: none;
+  padding: 10px 0 0 0;
+}
+
+.module-content p {
+  margin: 0;
+}
+
+.show {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.hadir {
+  text-align: end;
+  padding-right: 5px;
+}
+
+.selesai {
+  text-align: start;
+  padding-left: 5px;
+}
+
 .activated1 {
   background-color: #fd800c;
   color: white;
 }
 
 @media screen and (min-width: 360px) and (max-width: 428px) {
+  .col-lg-4 {
+    margin: 0 10px 0 10px;
+  }
+
+  .module h3 {
+    margin: 20px 0 10px 0;
+  }
+
+  #page-modul1,
+  #page-modul2,
+  #page-modul3 {
+    margin: 0 10px 0 10px;
+  }
+  .hadir {
+    margin: 20px 0 10px 0;
+    padding-right: 20px;
+    text-align: center;
+  }
+
+  .selesai {
+    text-align: center;
+  }
 }

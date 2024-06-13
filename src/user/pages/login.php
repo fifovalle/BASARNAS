@@ -3,19 +3,21 @@ $page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama berkas yang sedang d
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php
     include('../partials/header.php');
     ?>
     <link rel="stylesheet" href="../assets/css/login.css">
-    <?php if ($page == 'login.php'): ?>
-    <style>
-        .section-footer {
-            display: none;
-        }
-    </style>
+    <?php if ($page == 'login.php') : ?>
+        <style>
+            .section-footer {
+                display: none;
+            }
+        </style>
     <?php endif; ?>
 </head>
+
 <body>
     <section class="login-page position-relative">
         <div class="row z-index-1">
@@ -42,17 +44,17 @@ $page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama berkas yang sedang d
                     </div>
                     <div class="input-group mb-3">
                         <svg width="350" height="120" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="250" height="100" x="40" y="10" rx="20" ry="20" fill="lightgray" opacity="0.6"/>
-                                <text x="165" y="60" font-family="Arial" font-size="20" fill="black" text-anchor="middle" alignment-baseline="middle">
-                                    12a34AZ
-                                </text>
+                            <rect width="250" height="100" x="40" y="10" rx="20" ry="20" fill="lightgray" opacity="0.6" />
+                            <text x="165" y="60" font-family="Arial" font-size="20" fill="black" text-anchor="middle" alignment-baseline="middle">
+                                12a34AZ
+                            </text>
                         </svg>
                         <input type="text" class="form-control" placeholder="Masukkan Captcha Code" aria-label="Password" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3 justify-content-center">
                         <button type="submit" class="btn btn-outline-primary text-center">MASUK</button>
                     </div>
-                </form>                
+                </form>
             </div>
             <div class="shape-divider">
                 <div class="custom-shape-divider-bottom-1717695486">
@@ -67,4 +69,5 @@ $page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama berkas yang sedang d
     include('../partials/footer.php');
     ?>
 </body>
+
 </html>

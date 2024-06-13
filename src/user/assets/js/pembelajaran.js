@@ -59,3 +59,26 @@ const handleModule3Click = () => {
 };
 modul3Link.addEventListener("click", handleModule3Click);
 modul3Linked.addEventListener("click", handleModule3Click);
+
+function toggleContent(element) {
+  const content = element.nextElementSibling;
+  content.classList.toggle("show");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  var offcanvasElementList = [].slice.call(
+    document.querySelectorAll(".offcanvas")
+  );
+  var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+    return new bootstrap.Offcanvas(offcanvasEl);
+  });
+
+  document.querySelectorAll(".list-group-item").forEach(function (element) {
+    element.addEventListener("click", function () {
+      var offcanvas = bootstrap.Offcanvas.getInstance(
+        document.getElementById("offcanvasSidebar")
+      );
+      offcanvas.hide();
+    });
+  });
+});
