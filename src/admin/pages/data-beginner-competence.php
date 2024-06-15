@@ -5,7 +5,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Data Garjas Wanita (Renang) Basarnas</title>
+    <title>Data Kompetensi Pemula</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="../assets/js/wenfontpages.js"></script>
@@ -49,8 +49,8 @@
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Data Hasil Garjas Wanita (Renang)</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Wanita (Renang) Basarnas</h6>
+                            <h3 class="fw-bold mb-3">Data Hasil Kompetensi Pemula</h3>
+                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Kompetensi Pemula Basarnas</h6>
                         </div>
                     </div>
                     <div class="row">
@@ -59,10 +59,10 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
-                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasWanitaRenang">
+                                        <h4 class="card-title">Tambah Sertifikat</h4>
+                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahKompetensiPemula">
                                             <i class="fa fa-plus"></i>
-                                            Tambah Nilai
+                                            Tambah Sertifikat
                                         </button>
                                     </div>
                                 </div>
@@ -71,30 +71,28 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>Nomor</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
-                                                    <th>Waktu Renang</th>
-                                                    <th>Nilai</th>
+                                                    <th>Kategori Kompetensi</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td>No Urut</td>
                                                     <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Waktu Renang Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
+                                                    <td>Nama Sertifikat</td>
+                                                    <td>Kategori Kompetensi</td>
                                                     <td>
                                                         <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaRenang">
+                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingKompetensiPemula">
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
                                                             <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasWanitaRenang">
+                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatKompetensiPemula">
                                                                 <i class="fa fa-eye"></i>
                                                             </button>
                                                         </div>
@@ -119,9 +117,9 @@
     <!-- CUSTOM END -->
 
     <!-- MODALS START -->
-    <?php include('../partials/modal-add-garjas-wanita-renang.php'); ?>
-    <?php include('../partials/modal-edit-garjas-wanita-renang.php'); ?>
-    <?php include('../partials/modal-see-garjas-wanita-renang.php'); ?>
+    <?php include('../partials/modal-add-beginner-competence.php'); ?>
+    <?php include('../partials/modal-edit-beginner-competence.php'); ?>
+    <?php include('../partials/modal-see-beginner-competence.php'); ?>
     <!-- MODALS END -->
     </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>

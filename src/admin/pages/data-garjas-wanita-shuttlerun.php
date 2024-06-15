@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -50,7 +52,7 @@
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
                             <h3 class="fw-bold mb-3">Data Hasil Garjas Wanita (Shuttle Run)</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Wanita (Shuttle Run) Basarnas</h6>
+                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Wanita (Shuttle Run) Basarnasssssssssssssss</h6>
                         </div>
                     </div>
                     <div class="row">
@@ -79,27 +81,41 @@
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $garjasShuttleRunWanitaModel = new GarjasWanitaShuttleRun($koneksi);
+                                            $garjasShuttleRunWanitaInfo = $garjasShuttleRunWanitaModel->tampilkanDataGarjasWanitaShuttleRun();
+                                            ?>
                                             <tbody>
-                                                <tr>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Waktu Shuttle Run Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaShuttleRun">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasWanitaShuttleRun">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php if (!empty($garjasShuttleRunWanitaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($garjasShuttleRunWanitaInfo as $garjasShuttleRunWanita) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $garjasShuttleRunWanita['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasShuttleRunWanita['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasShuttleRunWanita['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasShuttleRunWanita['Jumlah_Shuttle_Run_Wanita']; ?></td>
+                                                            <td><?php echo $garjasShuttleRunWanita['Nilai_Shuttle_Run_Wanita']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaPushUp">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaPushUp(<?php echo $garjasPushUpWanita['ID_Wanita_Push_Up']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasWanitaPushUp" data-bs-toggle="modal" data-bs-target="#lihatGarjasWanitaPushUp">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="6">Tidak ada data yang ditemukan.</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -109,10 +125,10 @@
                     </div>
                 </div>
             </div>
+            <!-- FOOTER START -->
+            <?php include('../partials/footer.php'); ?>
+            <!-- FOOTER END -->
         </div>
-        <!-- FOOTER START -->
-        <?php include('../partials/footer.php'); ?>
-        <!-- FOOTER END -->
     </div>
     <!-- CUSTOM START -->
     <?php include('../partials/custom.php'); ?>
@@ -177,6 +193,10 @@
             });
         });
     </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

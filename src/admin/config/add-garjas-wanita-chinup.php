@@ -33,11 +33,11 @@ if (isset($_POST['tambah_nilai'])) {
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
 
-    $obyekPenggunaWanita = new GarjasWanitaPushUp($koneksi);
+    $obyekPenggunaWanita = new GarjasWanitaShuttleRun($koneksi);
 
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
-    $jumlahPushUpWanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Push_Up_Wanita']);
-    $umurPengguna = $obyekPenggunaWanita->ambilUmurGarjasWanitaPushUpOlehNIP($nipPengguna);
+    $jumlahShuttleRunWanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Shuttle_Run_Wanita']);
+    $umurPengguna = $obyekPenggunaWanita->ambilUmurGarjasWanitaShuttlerunOlehNIP($nipPengguna);
 
     $nilaiPushUp = [
         38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,
@@ -49,16 +49,15 @@ if (isset($_POST['tambah_nilai'])) {
         7 => 27, 6 => 23, 5 => 19, 4 => 14, 3 => 10, 2 => 5, 1 => 1
     ];
 
-    $nilaiAkhir = ($umurPengguna < 25 && isset($nilaiPushUp[$jumlahPushUpWanita])) ? $nilaiPushUp[$jumlahPushUpWanita] : 0;
-
+    $nilaiAkhir = ($umurPengguna < 25 && isset($nilaiPushUp[$jumlahShuttleRunWanita])) ? $nilaiPushUp[$jumlahShuttleRunWanita] : 0;
 
     $dataPenggunaWanita = array(
         'NIP_Pengguna' => $nipPengguna,
-        'Jumlah_Push_Up_Wanita' => $jumlahPushUpWanita,
-        'Nilai_Push_Up_Wanita' => $nilaiAkhir,
+        'Waktu_Shuttle_Run_Wanita' => $jumlahShuttleRunWanita,
+        'Nilai_Shuttle_Run_Wanita' => $nilaiAkhir,
     );
 
-    $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaPushUp($dataPenggunaWanita);
+    $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaShuttleRun($dataPenggunaWanita);
 
     if ($simpanDataPenggunaWanita) {
         setPesanKeberhasilan("Berhasil, data pengguna wanita baru telah ditambahkan.");
@@ -66,6 +65,6 @@ if (isset($_POST['tambah_nilai'])) {
         setPesanKesalahan("Gagal menyimpan data pengguna wanita.");
     }
 
-    header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-pushup.php");
+    header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-shuttlerun.php");
     exit;
 }

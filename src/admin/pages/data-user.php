@@ -130,10 +130,10 @@
                     </div>
                 </div>
             </div>
+            <!-- FOOTER START -->
+            <?php include('../partials/footer.php'); ?>
+            <!-- FOOTER END -->
         </div>
-        <!-- FOOTER START -->
-        <?php include('../partials/footer.php'); ?>
-        <!-- FOOTER END -->
     </div>
     <!-- CUSTOM START -->
     <?php include('../partials/custom.php'); ?>
@@ -162,6 +162,7 @@
     <script src="../assets/js/delete-user.js"></script>
     <script src="../assets/js/value-user.js"></script>
     <script src="../assets/js/value-see-user.js"></script>
+    <script src="../assets/js/toogle-user.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -199,30 +200,6 @@
             $("#add-row").DataTable({
                 pageLength: 5,
             });
-        });
-    </script>
-    <script>
-        function togglePasswordVisibility(inputId, eyeIconId) {
-            let passwordInput = document.getElementById(inputId);
-            let eyeIcon = document.getElementById(eyeIconId);
-
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                eyeIcon.classList.remove("bi-eye");
-                eyeIcon.classList.add("bi-eye-slash");
-            } else {
-                passwordInput.type = "password";
-                eyeIcon.classList.remove("bi-eye-slash");
-                eyeIcon.classList.add("bi-eye");
-            }
-        }
-
-        document.getElementById('toggleKataSandiPengguna').addEventListener('click', function() {
-            togglePasswordVisibility('tambahKataSandiPengguna', 'toggleKataSandiPengguna');
-        });
-
-        document.getElementById('toggleKonfirmasiKataSandiPengguna').addEventListener('click', function() {
-            togglePasswordVisibility('tambahKonfirmasiKataSandiPengguna', 'toggleKonfirmasiKataSandiPengguna');
         });
     </script>
     <?php

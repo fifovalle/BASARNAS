@@ -109,10 +109,10 @@
                     </div>
                 </div>
             </div>
+            <!-- FOOTER START -->
+            <?php include('../partials/footer.php'); ?>
+            <!-- FOOTER END -->
         </div>
-        <!-- FOOTER START -->
-        <?php include('../partials/footer.php'); ?>
-        <!-- FOOTER END -->
     </div>
     <!-- CUSTOM START -->
     <?php include('../partials/custom.php'); ?>

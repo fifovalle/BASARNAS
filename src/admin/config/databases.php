@@ -631,7 +631,7 @@ class GarjasWanitaSitUp1
 // ===================================GARJAS WANITA SIT UP===================================
 
 // ===================================GARJAS WANITA SHUTTLE RUN===================================
-class tambahGarjasWanitaShuttleRun
+class GarjasWanitaShuttleRun
 {
     private $koneksi;
 
@@ -647,7 +647,7 @@ class tambahGarjasWanitaShuttleRun
 
     public function tambahGarjasWanitaShuttleRun($data)
     {
-        $query = "INSERT INTO garjas_wanita_shuttlerun (NIP_Pengguna, Jumlah_Shuttle_Run_Wanita, Nilai_Shuttle_Run_Wanita) VALUES (?, ?, ?)";
+        $query = "INSERT INTO garjas_wanita_shuttle_run (NIP_Pengguna, Jumlah_Shuttle_Run_Wanita, Nilai_Shuttle_Run_Wanita) VALUES (?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
@@ -716,3 +716,90 @@ class tambahGarjasWanitaShuttleRun
     }
 }
 // ===================================GARJAS WANITA SHUTTLE RUN===================================
+
+// ===================================GARJAS WANITA CHIN UP===================================
+class GarjasWanitaChinUp
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function escapeString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tambahGarjasWanitaChinUp($data)
+    {
+        $query = "INSERT INTO garjas_wanita_shuttle_run (NIP_Pengguna, Jumlah_Chin_Up_Wanita, Nilai_Chin_Up_Wanita) VALUES (?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "iii",
+            $this->escapeString($data['NIP_Pengguna']),
+            $this->escapeString($data['Jumlah_Chin_Up_Wanita']),
+            $this->escapeString($data['Nilai_Chin_Up_Wanita'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ambilUmurGarjasWanitaShuttleRunOlehNIP($NIP)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['Umur_Pengguna'];
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataGarjasWanitaShuttleRun()
+    {
+        $query = "SELECT garjas_wanita_chin_up.ID_Wanita_Shuttle_Run, garjas_wanita_chin_up.NIP_Pengguna,
+                         pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
+                         pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
+                         pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
+                         pengguna.Jenis_Kelamin_Pengguna, pengguna.Foto_Pengguna,
+                         garjas_wanita_chin_up.Jumlah_Chin_Up_Wanita, garjas_wanita_chin_up.Nilai_Chin_Up_Wanita
+                  FROM garjas_wanita_chin_up
+                  LEFT JOIN pengguna ON garjas_wanita_chin_up.NIP_Pengguna = pengguna.NIP_Pengguna";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function hapusDataGarjasWanitaChinUp($id)
+    {
+        $queryDelete = "DELETE FROM garjas_wanita_chin_up WHERE ID_Wanita_Chin_Up=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================GARJAS WANITA CHIN UP===================================
