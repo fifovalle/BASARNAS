@@ -8,35 +8,34 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="suntingNIPAdmin" class="form-label">NIP</label>
-                        <input type="number" class="form-control" id="suntingNIPAdmin">
+                        <input type="hidden" class="form-control" id="suntingNIPAdmin" name="NIP_Admin">
                     </div>
                     <div class="mb-3">
                         <label for="suntingFotoAdmin" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="suntingFotoAdmin">
+                        <input type="file" class="form-control" id="suntingFotoAdmin" name="Foto_Admin">
                     </div>
                     <div class="mb-3">
                         <label for="suntingNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="suntingNamaAdmin">
+                        <input type="text" class="form-control" id="suntingNamaAdmin" name="Nama_Lengkap_Admin">
                     </div>
                     <div class="mb-3">
                         <label for="suntingTanggalLahirAdmin" class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control" id="suntingTanggalLahirAdmin">
+                        <input type="date" class="form-control" id="suntingTanggalLahirAdmin" name="Tanggal_Lahir_Admin">
                     </div>
                     <div class="mb-3">
                         <label for="suntingAlamatAdmin" class="form-label">Alamat</label>
-                        <textarea id="suntingAlamatAdmin" class="form-control"></textarea>
+                        <textarea id="suntingAlamatAdmin" class="form-control" name="Alamat_Admin"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="suntingJabatanAdmin" class="form-label">Jabatan</label>
-                        <select id="suntingJabatanAdmin" class="form-select">
+                        <select id="suntingJabatanAdmin" name="Jabatan_Admin" class="form-select">
                             <option selected>Pilih Jabatan</option>
                             <option value="Satu">Satu</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="suntingJenisKelaminAdmin" class="form-label">Jenis Kelamin</label>
-                        <select id="suntingJenisKelaminAdmin" class="form-select">
+                        <select id="suntingJenisKelaminAdmin" name="Jenis_Kelamin_Admin" class="form-select">
                             <option selected>Pilih Jenis Kelamin</option>
                             <option value="Pria">Pria</option>
                             <option value="Wanita">Wanita</option>
@@ -44,9 +43,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingNomorTelpAdmin" class="form-label">Nomor Telepon</label>
-                        <input type="number" class="form-control" id="suntingNomorTelpAdmin">
+                        <input type="tel" class="form-control" id="suntingNomorTelpAdmin" name="No_Telepon_Admin">
                     </div>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" id="tombolSimpanAdmin" name="Simpan" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>

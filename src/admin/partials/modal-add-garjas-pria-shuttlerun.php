@@ -28,7 +28,7 @@
                         <label for="tambahWaktuShuttleRunAdmin" class="form-label">Waktu Shuttle Run</label>
                         <input type="number" class="form-control" id="tambahWaktuShuttleRunAdmin" name="Nomor_Telepon_Admin">
                     </div>
-                    <button type="button" class="btn btn-primary" name="tambah_admin">Simpan</button>
+                    <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>
             </div>
         </div>

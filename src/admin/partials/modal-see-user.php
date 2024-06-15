@@ -7,56 +7,53 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <?php
-                    $penggunaModel = new Pengguna($koneksi);
-                    $penggunaInfo = $penggunaModel->tampilkanDataPengguna();
-                    ?>
-                    <?php if (!empty($penggunaInfo)) : ?>
-                        <?php foreach ($penggunaInfo as $pengguna) : ?>
-                            <div class="col-6 text-center">
-                                <img src="../uploads/<?php echo $pengguna['Foto_Pengguna']; ?>" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
-                                <h3><?php echo $pengguna['Nama_Lengkap_Pengguna']; ?></h3>
-                                <p class="text-muted"><?php echo $pengguna['NIP_Pengguna']; ?></p>
-                            </div>
-                            <div class="col-6">
-                                <h4>Info Selengkapnya</h4>
-                                <table class="table table-borderless">
-                                    <tr>
-                                        <th>Nama Lengkap:</th>
-                                        <td><?php echo $pengguna['Nama_Lengkap_Pengguna']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tanggal Lahir:</th>
-                                        <td><?php echo $pengguna['Tanggal_Lahir_Pengguna']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Alamat:</th>
-                                        <td><?php echo $pengguna['Alamat_Pengguna']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Jabatan:</th>
-                                        <td><?php echo $pengguna['Jabatan_Pengguna']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Jenis Kelamin:</th>
-                                        <td><?php echo $pengguna['Jenis_Kelamin_Pengguna']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nomor Telepon:</th>
-                                        <td><?php echo $pengguna['No_Telepon_Pengguna']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Umur:</th>
-                                        <td><?php echo $pengguna['Umur_Pengguna']; ?></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <tr>
-                            <td colspan="6" class="text-center text-danger fw-bold ">Tidak Ada Data Pengguna!</td>
-                        </tr>
-                    <?php endif; ?>
+                    <div class="col-6 text-center">
+                        <img id="lihatPotoPengguna" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
+                        <h3 id="lihatNamaPengguna">
+                        </h3>
+                        <p class="text-muted" id="lihatNIPPengguna">
+                        </p>
+                    </div>
+                    <div class="col-6">
+                        <h4>Info Selengkapnya</h4>
+                        <table class="table table-borderless">
+                            <tr>
+                                <th>Nama Lengkap:</th>
+                                <td id="lihatNamaPenggunaTd">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Lahir:</th>
+                                <td id="lihatTglLahirPenggunaTd">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Alamat:</th>
+                                <td id="lihatAlamatPenggunaTd">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Jabatan:</th>
+                                <td id="lihatJabatanPenggunaTd">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Jenis Kelamin:</th>
+                                <td id="lihatJenisKelaminPenggunaTd">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Nomor Telepon:</th>
+                                <td id="lihatNoTelpPenggunaTd">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Umur:</th>
+                                <td id="lihatUmurPenggunaTd">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

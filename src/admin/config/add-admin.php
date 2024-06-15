@@ -33,10 +33,8 @@ if (isset($_POST['tambah_admin'])) {
     $nipAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'NIP_Admin', FILTER_SANITIZE_STRING));
     $namaLengkapAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nama_Lengkap_Admin', FILTER_SANITIZE_STRING));
 
-    // Setelah mengambil tanggal lahir dari formulir HTML
     $tanggalLahirAdmin = $_POST['Tanggal_Lahir_Admin'];
 
-    // Ubah format tanggal lahir
     $tanggal_lahir_format = DateTime::createFromFormat('Y-m-d', $tanggalLahirAdmin);
     if ($tanggal_lahir_format === false) {
         $pesanKesalahan .= "Format tanggal lahir tidak valid.";
@@ -44,7 +42,6 @@ if (isset($_POST['tambah_admin'])) {
         $tanggal_lahir_database = $tanggal_lahir_format->format('Y-m-d');
     }
 
-    // Hitung umur dari tanggal lahir
     $tgl_lahir = new DateTime($tanggal_lahir_database);
     $tgl_today = new DateTime('now');
     $umur_admin = $tgl_today->diff($tgl_lahir)->y;
@@ -149,3 +146,4 @@ if (isset($_POST['tambah_admin'])) {
     header("Location: " . $akarUrl . "src/admin/pages/data-admin.php");
     exit;
 }
+

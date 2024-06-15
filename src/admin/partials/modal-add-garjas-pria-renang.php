@@ -28,7 +28,7 @@
                         <label for="tambahWaktuRenangAdmin" class="form-label">Waktu Renang</label>
                         <input type="number" class="form-control" id="tambahWaktuRenangAdmin" name="Nomor_Telepon_Admin">
                     </div>
-                    <button type="button" class="btn btn-primary" name="tambah_admin">Simpan</button>
+                    <button type="button" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>
             </div>
         </div>

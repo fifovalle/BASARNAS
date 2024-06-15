@@ -1,7 +1,7 @@
 function konfirmasiHapusPengguna(id) {
   swal({
-    title: "Yakin Menghapus Pengguna?",
-    text: "Pengguna yang dihapus tidak dapat dipulihkan!",
+    title: "Yakin Menghapus Anggota?",
+    text: "Anggota yang dihapus tidak dapat dipulihkan!",
     icon: "warning",
     buttons: {
       cancel: {

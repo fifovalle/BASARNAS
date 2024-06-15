@@ -103,13 +103,13 @@
                                                             <td><?php echo $admin['Umur_Admin']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingAdmin">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusAdmin(<?php echo $admin['NIP_Admin']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatAdmin">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -160,6 +160,8 @@
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/delete-admin.js"></script>
+    <script src="../assets/js/value-admin.js"></script>
+    <script src="../assets/js/value-see-admin.js"></script>
 
     <script>
         $(document).ready(function() {

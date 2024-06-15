@@ -43,6 +43,7 @@
 						<th>Tinggi (cm)</th>
 						<th>Berat (kg)</th>
 						<th>Score</th>
+						<th>Keterangan</th>
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
@@ -53,6 +54,7 @@
 						<td>165</td>
 						<td>65</td>
 						<td>23</td>
+						<td>Ideal</td>
 					</tr>
 				</tbody>
 			</table>

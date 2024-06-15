@@ -17,14 +17,6 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="suntingJabatanAdmin" class="form-label">Jabatan</label>
-
-                    </div>
-                    <div class="mb-3">
-                        <label for="suntingNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="suntingNamaAdmin" name="Nama_Lengkap_Admin" disabled>
-                    </div>
-                    <div class="mb-3">
                         <label for="suntingJumlahPushUpAdmin" class="form-label">Jumlah Push Up</label>
                         <input type="number" class="form-control" id="suntingJumlahPushUpAdmin" name="Nomor_Telepon_Admin">
                     </div>

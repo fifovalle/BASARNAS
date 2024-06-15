@@ -8,46 +8,48 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4 text-center">
-                        <img src="../assets/img/arashmil.jpg" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
-                        <h3>Nama Pengguna</h3>
-                        <p class="text-muted">NIP Pengguna</p>
+                        <img id="lihatPotoPenggunaGP" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
+                        <h3 id="lihatNamaPengguna">
+                        </h3>
+                        <p class="text-muted" id="lihatNIPPenggunaGP">
                     </div>
                     <div class="col-8">
                         <h4>Info Hasil Selengkapnya</h4>
                         <table class="table table-borderless">
                             <tr>
                                 <th>Nama Lengkap:</th>
-                                <td>Nama Lengkap Pengguna</td>
+                                <td id="lihatNamaPenggunaGP"></td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lahir:</th>
-                                <td>Tanggal Lahir Pengguna</td>
+                                <td id="lihatTglLahirPenggunaGP"></td>
                             </tr>
                             <tr>
                                 <th>Jabatan:</th>
-                                <td>Jabatan Pengguna</td>
+                                <td id="lihatJabatanPenggunaGP"></td>
                             </tr>
                             <tr>
                                 <th>Jenis Kelamin:</th>
-                                <td>Jenis Kelamin Pengguna</td>
+                                <td id="lihatJenisKelaminPenggunaGP"></td>
                             </tr>
                             <tr>
                                 <th>Nomor Telepon:</th>
-                                <td>Nomor Telepon Pengguna</td>
+                                <td id="lihatNoTelpPenggunaGP"></td>
                             </tr>
                             <tr>
                                 <th>Umur:</th>
-                                <td>Umur Pengguna</td>
+                                <td id="lihatUmurPenggunaGP"></td>
                             </tr>
                             <tr>
                                 <th>Jumlah Push Up:</th>
-                                <td>Jumlah Push Up Pengguna</td>
+                                <td id="lihatJumalahPushUpPriaGP"></td>
                             </tr>
                             <tr>
                                 <th>Nilai Push Up:</th>
-                                <td>Nilai Push Up Pengguna</td>
+                                <td id="lihatNilaiPushUpPriaGP"></td>
                             </tr>
                         </table>
+
                     </div>
                 </div>
             </div>

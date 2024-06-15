@@ -13,18 +13,19 @@ $(document).ready(function () {
         console.log(data);
         let penggunaData = JSON.parse(data);
         console.log(penggunaData);
-        $("#suntingNIPPengguna").val(penggunaData.NIP_Pengguna);
-        $("#suntingNamaPengguna").val(penggunaData.Nama_Lengkap_Pengguna);
-        $("#suntingTanggalLahirPengguna").val(
-          penggunaData.Tanggal_Lahir_Pengguna
-        );
-        $("#suntingAlamatPengguna").val(penggunaData.Alamat_Pengguna);
-        $("#suntingJabatanPengguna").val(penggunaData.Jabatan_Pengguna);
-        $("#suntingJenisKelaminPengguna").val(
-          penggunaData.Jenis_Kelamin_Pengguna
-        );
-        $("#suntingNomorTelpPengguna").val(penggunaData.No_Telepon_Pengguna);
-        $("#suntingPengguna").modal("show");
+
+        if (penggunaData.success === false) {
+          alert(penggunaData.message);
+        } else {
+          $("#suntingNIPPengguna").val(penggunaData.NIP_Pengguna);
+          $("#suntingNamaPengguna").val(penggunaData.Nama_Lengkap_Pengguna);
+          $("#suntingTanggalLahirPengguna").val(penggunaData.Tanggal_Lahir_Pengguna);
+          $("#suntingAlamatPengguna").val(penggunaData.Alamat_Pengguna);
+          $("#suntingJabatanPengguna").val(penggunaData.Jabatan_Pengguna);
+          $("#suntingJenisKelaminPengguna").val(penggunaData.Jenis_Kelamin_Pengguna);
+          $("#suntingNomorTelpPengguna").val(penggunaData.No_Telepon_Pengguna);
+          $("#suntingPengguna").modal("show");
+        }
       },
       error: function (xhr) {
         console.error(xhr.responseText);
@@ -60,9 +61,9 @@ $(document).ready(function () {
             timer: 3000,
             timerProgressBar: true,
           }).then((result) => {
-            result.dismiss === Swal.DismissReason.timer
-              ? (window.location.href = "../pages/data-user.php")
-              : null;
+            if (result.dismiss === Swal.DismissReason.timer) {
+              window.location.href = "../pages/data-user.php";
+            }
           });
         } else {
           Swal.fire({

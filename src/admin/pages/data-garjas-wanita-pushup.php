@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -71,6 +73,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>No</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
@@ -79,27 +82,41 @@
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $garjasPushUpWanitaModel = new GarjasWanitaPushUp($koneksi);
+                                            $garjasPushUpWanitaInfo = $garjasPushUpWanitaModel->tampilkanDataGarjasWanitaPushUp();
+                                            ?>
                                             <tbody>
-                                                <tr>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Jumlah Push Up Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaPushUp">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasWanitaPushUp">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php if (!empty($garjasPushUpWanitaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($garjasPushUpWanitaInfo as $garjasPushUpWanita) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $garjasPushUpWanita['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPushUpWanita['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPushUpWanita['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPushUpWanita['Jumlah_Push_Up_Wanita']; ?></td>
+                                                            <td><?php echo $garjasPushUpWanita['Nilai_Push_Up_Wanita']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaPushUp">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaPushUp(<?php echo $garjasPushUpWanita['ID_Wanita_Push_Up']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasWanitaPushUp" data-bs-toggle="modal" data-bs-target="#lihatGarjasWanitaPushUp">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="6">Tidak ada data yang ditemukan.</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -138,6 +155,8 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-garjas-wanita-push-up.js"></script>
+    <script src="../assets/js/value-garjas-wanita-push-up.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -177,6 +196,11 @@
             });
         });
     </script>
+    </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

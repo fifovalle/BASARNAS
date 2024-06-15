@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $penggunaModel = new Pengguna($koneksi);
     $hapusData = $penggunaModel->hapusPengguna($id);
 
-    $successMessage = htmlspecialchars("Data pengguna berhasil dihapus.");
-    $failureMessage = htmlspecialchars("Gagal menghapus data pengguna.");
+    $successMessage = htmlspecialchars("Data Anggota berhasil dihapus.");
+    $failureMessage = htmlspecialchars("Gagal menghapus data Anggota.");
     $errorMessage = htmlspecialchars("Halaman tidak dapat diakses.");
 
     $responseMessage = $hapusData ? $successMessage : $failureMessage;

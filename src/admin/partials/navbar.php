@@ -26,9 +26,9 @@
                         </li>
                         <li>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Profil Saya</a>
+                            <a class="dropdown-item" href="<?php echo $akarUrl ?>src/admin/pages/profile.php">Profil Saya</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Keluar</a>
+                            <a class="dropdown-item" href="<?php echo $akarUrl ?>src/admin/config/logout.php">Keluar</a>
                         </li>
                     </div>
                 </ul>

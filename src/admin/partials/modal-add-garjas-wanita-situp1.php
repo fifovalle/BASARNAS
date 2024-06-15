@@ -6,29 +6,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/" method="post" enctype="multipart/form-data">
+                <form action="../config/add-garjas-wanita-situp1.php" method="post">
+                    <?php
+                    $penggunaWanitaModel = new Pengguna($koneksi);
+                    $penggunaWanitaInfo = $penggunaWanitaModel->tampilkanDataPenggunaWanita();
+                    ?>
                     <div class="mb-3">
-                        <label for="tambahNIPAdmin" class="form-label">NIP</label>
-                        <select name="NIP_Admin" id="tambahNIPAdmin" class="form-select">
+                        <label for="tambahNIPPenggunaWanita" class="form-label">NIP</label>
+                        <select name="NIP_Pengguna" id="tambahNIPPenggunaWanita" class="form-select">
                             <option selected>Pilih NIP Pengguna</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
+                            <?php foreach ($penggunaWanitaInfo as $penggunaWanita) : ?>
+                                <option value="<?php echo $penggunaWanita['NIP_Pengguna']; ?>"><?php echo $penggunaWanita['NIP_Pengguna'] . ' - ' . $penggunaWanita['Nama_Lengkap_Pengguna']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tambahJabatanAdmin" class="form-label">Jabatan</label>
-
+                        <label for="tambahJumlahSitUp1PenggunaWanita" class="form-label">Jumlah Sit Up</label>
+                        <input type="number" class="form-control" id="tambahJumlahSitUp1PenggunaWanita" name="Jumlah_Sit_Up_1_Wanita">
                     </div>
-                    <div class="mb-3">
-                        <label for="tambahNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="tambahNamaAdmin" name="Nama_Lengkap_Admin" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tambahJumlahSitUp1Admin" class="form-label">Jumlah Sit Up</label>
-                        <input type="number" class="form-control" id="tambahJumlahSitUp1Admin" name="Nomor_Telepon_Admin">
-                    </div>
-                    <button type="button" class="btn btn-primary" name="tambah_admin">Simpan</button>
+                    <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>
             </div>
         </div>

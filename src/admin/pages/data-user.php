@@ -103,13 +103,13 @@
                                                             <td><?php echo $pengguna['Umur_Pengguna']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingPengguna">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonPengguna" data-bs-toggle="modal" data-id="<?php echo $pengguna['NIP_Pengguna']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusPengguna(<?php echo $pengguna['NIP_Pengguna']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatPengguna">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatPengguna" data-bs-toggle="modal" data-id="<?php echo $pengguna['NIP_Pengguna']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -161,6 +161,7 @@
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/delete-user.js"></script>
     <script src="../assets/js/value-user.js"></script>
+    <script src="../assets/js/value-see-user.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

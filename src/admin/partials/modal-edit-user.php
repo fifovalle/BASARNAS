@@ -8,8 +8,7 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="suntingNIPPengguna" class="form-label">NIP</label>
-                        <input type="number" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna">
+                        <input type="hidden" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna">
                     </div>
                     <div class="mb-3">
                         <label for="suntingFotoPengguna" class="form-label">Foto</label>
@@ -44,9 +43,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingNomorTelpPengguna" class="form-label">Nomor Telepon</label>
-                        <input type="number" class="form-control" id="suntingNomorTelpPengguna" name="No_Telepon_Pengguna">
+                        <input type="tel" class="form-control" id="suntingNomorTelpPengguna" name="No_Telepon_Pengguna">
                     </div>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" id="tombolSimpanPengguna" name="Simpan" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>
