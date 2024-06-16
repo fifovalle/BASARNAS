@@ -7,7 +7,7 @@ $(document).ready(function () {
       url: "../config/get-data-skilled-competence.php",
       method: "GET",
       data: {
-        kompetensi_pemula_id: kompetensiPemulaID,
+        kompetensi_terampil_id: kompetensiTerampilID,
       },
       success: function (data) {
         console.log(data);
@@ -19,57 +19,61 @@ $(document).ready(function () {
         if (terampilData.success === false) {
           alert(terampilData.message);
         } else {
-          $("#lihatNamaLengkapPemula").text(terampilData.Nama_Lengkap_Pengguna);
-          $("#lihatFotoPemula").attr(
+          $("#lihatNamaLengkapTerampil").text(
+            terampilData.Nama_Lengkap_Pengguna
+          );
+          $("#lihatFotoTerampil").attr(
             "src",
             "../uploads/" + terampilData.Foto_Pengguna
           );
-          $("#lihatNIPPemula").text(terampilData.NIP_Pengguna);
-          $("#lihatNamaPenggunaPemulaTd").text(
+          $("#lihatNIPTerampil").text(terampilData.NIP_Pengguna);
+          $("#lihatNamaPenggunaTerampilTd").text(
             terampilData.Nama_Lengkap_Pengguna
           );
-          $("#lihatTglLahirPenggunaPemulaTd").text(
+          $("#lihatTglLahirPenggunaTerampilTd").text(
             terampilData.Tanggal_Lahir_Pengguna
           );
-          $("#lihatJabatanPenggunaPemulaTd").text(
+          $("#lihatJabatanPenggunaTerampilTd").text(
             terampilData.Jabatan_Pengguna
           );
-          $("#lihatJenisKelaminPenggunaPemulaTd").text(
+          $("#lihatJenisKelaminPenggunaTerampilTd").text(
             terampilData.Jenis_Kelamin_Pengguna
           );
-          $("#lihatNoTelpPenggunaPemulaTd").text(
+          $("#lihatNoTelpPenggunaTerampilTd").text(
             terampilData.No_Telepon_Pengguna
           );
-          $("#lihatUmurPenggunaPemulaTd").text(terampilData.Umur_Pengguna);
-          $("#lihatNamaSertifikatPemulaTd").text(terampilData.Nama_Sertifikat);
-          $("#lihatTglPenerbitanSertifikatPemulaTd").text(
+          $("#lihatUmurPenggunaTerampilTd").text(terampilData.Umur_Pengguna);
+          $("#lihatNamaSertifikatTerampilTd").text(
+            terampilData.Nama_Sertifikat
+          );
+          $("#lihatTglPenerbitanSertifikatTerampilTd").text(
             terampilData.Tanggal_Penerbitan_Sertifikat
           );
-          $("#lihatTglBerakhirSertifikatPemulaTd").text(
+          $("#lihatTglBerakhirSertifikatTerampilTd").text(
             terampilData.Tanggal_Berakhir_Sertifikat
           );
-          $("#lihatMasaBerlakuPemulaTd").text(terampilData.Masa_Berlaku);
-          $("#lihatKategoriKompetensiPemulaTd").text(
+          $("#lihatMasaBerlakuTerampilTd").text(terampilData.Masa_Berlaku);
+          $("#lihatKategoriKompetensiTerampilTd").text(
             terampilData.Kategori_Kompetensi
           );
-          $("#lihatFileSertifikatPemulaTd").html(
+          $("#lihatFileSertifikatTerampilTd").html(
             '<a href="../uploads/' +
               fileSertifikat +
               '" target="_blank">' +
               kompetensi +
               "</a>"
           );
-          $("#lihatStatusPemulaTd").text(terampilData.Status);
+          $("#lihatStatusTerampilTd").text(terampilData.Status);
           if (terampilData.Status === "Aktif") {
-            $("#lihatStatusPemulaTd")
+            $("#lihatStatusTerampilTd")
               .removeClass("text-bg-danger")
               .addClass("text-bg-success");
           } else {
-            $("#lihatStatusPemulaTd")
+            $("#lihatStatusTerampilTd")
               .removeClass("text-bg-success")
               .addClass("text-bg-danger");
           }
-          $("#lihatKompetensiPemula").modal("show");
+          $("#lihatKompetensiTerampil").modal("show");
         }
       },
       error: function (xhr) {

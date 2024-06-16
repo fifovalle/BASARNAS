@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2024 at 03:31 PM
+-- Generation Time: Jun 16, 2024 at 03:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,6 +52,19 @@ CREATE TABLE `garjas_pria_push_up` (
   `NIP_Pengguna` int(20) NOT NULL,
   `Jumlah_Push_Up_Pria` int(4) NOT NULL,
   `Nilai_Push_Up_Pria` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `garjas_pria_sit_up_kaki_lurus`
+--
+
+CREATE TABLE `garjas_pria_sit_up_kaki_lurus` (
+  `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL,
+  `NIP_Pengguna` int(20) NOT NULL,
+  `Jumlah_Sit_Up_Kaki_lurus_Pria` int(4) NOT NULL,
+  `Nilai_Sit_Up_Kaki_Lurus_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -137,6 +150,13 @@ CREATE TABLE `kompetensi` (
   `Status` enum('Aktif','Tidak Aktif') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `kompetensi`
+--
+
+INSERT INTO `kompetensi` (`ID_Kompetensi`, `NIP_Pengguna`, `File_Sertifikat`, `Nama_Sertifikat`, `Tanggal_Penerbitan_Sertifikat`, `Masa_Berlaku`, `Tanggal_Berakhir_Sertifikat`, `Kategori_Kompetensi`, `Status`) VALUES
+(17, 225001010, 0x363636656565313730616434652e706466, 'Jago', '2024-05-17', 1, '2024-07-12', 'Terampil', 'Aktif');
+
 -- --------------------------------------------------------
 
 --
@@ -162,8 +182,8 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`NIP_Pengguna`, `Foto_Pengguna`, `Nama_Lengkap_Pengguna`, `Tanggal_Lahir_Pengguna`, `Umur_Pengguna`, `Alamat_Pengguna`, `No_Telepon_Pengguna`, `Jabatan_Pengguna`, `Jenis_Kelamin_Pengguna`, `Kata_Sandi_Pengguna`, `Konfirmasi_Kata_Sandi_Pengguna`) VALUES
-(2250019, 0x363636653664366537633466652e6a7067, 'Naufal', '2006-01-12', 18, 'Bandung', '+62 812-3652-2490', 'Satu', 'Pria', '$2y$10$/HuAIntiaURwv1/LKim51u6prNqQ1b0WhCghor6pUGlb.sQB5J9MG', '$2y$10$/HuAIntiaURwv1/LKim51u6prNqQ1b0WhCghor6pUGlb.sQB5J9MG'),
-(2147483647, 0x363636653637346565323636302e6a7067, 'Naufal FIFA', '1995-02-01', 29, 'Batujajar', '+62 812-3652-2490', 'Satu', 'Pria', '$2y$10$wqYYQ/3AfJM5nxcPChsrfOsAqVeZkiAgwUBemn.XeHidqiRfoGOrm', '$2y$10$wqYYQ/3AfJM5nxcPChsrfOsAqVeZkiAgwUBemn.XeHidqiRfoGOrm');
+(225001010, 0x363636656562393532666539622e6a7067, 'Udin Ganteng', '1999-12-26', 24, 'Jakarta', '81223652490', 'Satu', 'Pria', '', ''),
+(2147483647, 0x363636656561396131616433362e6a7067, 'Naufal', '2002-02-10', 22, 'Batujajar', '81223652490', 'Satu', 'Pria', '', '');
 
 --
 -- Indexes for dumped tables
@@ -180,6 +200,13 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `garjas_pria_push_up`
   ADD PRIMARY KEY (`ID_Push_Up_Pria`),
+  ADD KEY `NIP_Pengguna` (`NIP_Pengguna`);
+
+--
+-- Indexes for table `garjas_pria_sit_up_kaki_lurus`
+--
+ALTER TABLE `garjas_pria_sit_up_kaki_lurus`
+  ADD PRIMARY KEY (`ID_Sit_Up_Kaki_Lurus_Pria`),
   ADD KEY `NIP_Pengguna` (`NIP_Pengguna`);
 
 --
@@ -238,7 +265,13 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `garjas_pria_push_up`
 --
 ALTER TABLE `garjas_pria_push_up`
-  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `garjas_pria_sit_up_kaki_lurus`
+--
+ALTER TABLE `garjas_pria_sit_up_kaki_lurus`
+  MODIFY `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_chin_up`
@@ -274,7 +307,7 @@ ALTER TABLE `garjas_wanita_sit_up_kaki_lurus`
 -- AUTO_INCREMENT for table `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                    <table id="add-row" class="display table table-hover">
+                                        <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Nomor</th>
@@ -150,6 +150,8 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-skilled-competence.js"></script>
+    <script src="../assets/js/value-skilled-competence.js"></script>
     <script src="../assets/js/value-see-skilled-competence.js"></script>
     <script>
         $(document).ready(function() {
