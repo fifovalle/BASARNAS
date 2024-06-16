@@ -2,14 +2,17 @@
 include 'databases.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $idGarjasPriaPushUp = $_POST['ID_Push_Up_Pria'] ?? '';
     $jumlahPushUpPria = $_POST['Jumlah_Push_Up_Pria'] ?? '';
     $nilaiPushUpPria = $_POST['Nilai_Push_Up_Pria'] ?? '';
 
     $pesanKesalahan = '';
 
-    $umurPengguna = $obyekPengguna->ambilUmurGarjasPushUpPriaOlehNIP($nipPengguna);
+    $garjasPushUpPriaModel = new GarjasPushUpPria($koneksi);
 
+    $umurPengguna = $obyekPengguna->ambilUmurGarjasPushUpPriaOlehNIP($nipPengguna);
+    
     $nilaiPushUp = [
         'under_25' => [
             44 => 100, 43 => 96, 42 => 91, 41 => 87, 40 => 83,
@@ -73,16 +76,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
         $nilaiAkhir = isset($nilaiPushUp['55-59'][$jumlahPushUpPria]) ? $nilaiPushUp['55-59'][$jumlahPushUpPria] : 0;
     }
-    $garjasPushUpPriaModel = new GarjasPushUpPria($koneksi);
-    $dataLamaGarjasPria = $garjasPushUpPriaModel->tampilkangGarjasPriaPushUp($idGarjasPriaPushUp);
 
     if ($dataLamaGarjasPria) {
         $dataGarjasPria = array(
-            'ID_Push_Up_Pria' => $idGarjasPriaPushUp,
             'Jumlah_Push_Up_Pria' => $jumlahPushUpPria,
             'Nilai_Push_Up_Pria' => $nilaiPushUpPria
         );
 
+        // N
         $updateDataGarjasPria = $garjasPushUpPriaModel->perbaruiGarjasPriaPushUp($idGarjasPriaPushUp, $dataGarjasPria);
 
         if ($updateDataGarjasPria) {

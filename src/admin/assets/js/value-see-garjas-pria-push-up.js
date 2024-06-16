@@ -12,25 +12,46 @@ $(document).ready(function () {
       },
       success: function (data) {
         console.log(data);
-        let garjasWanitaPushUpData = JSON.parse(data);
-        console.log(garjasWanitaPushUpData);
+        let garjasPriaPushUpData = JSON.parse(data);
+        console.log(garjasPriaPushUpData);
 
-        if (garjasWanitaPushUpData.success === false) {
-          alert(garjasWanitaPushUpData.message);
+        if (garjasPriaPushUpData.success === false) {
+          alert(garjasPriaPushUpData.message);
         } else {
-          $("#lihatNamaPengguna").text(garjasWanitaPushUpData.Nama_Lengkap_Pengguna);
-          $("#lihatNIPPenggunaGP").text(garjasWanitaPushUpData.NIP_Pengguna);
-          $("#lihatPotoPenggunaGP").attr("src", "../uploads/" + garjasWanitaPushUpData.Foto_Pengguna);
-          $("#lihatNamaPenggunaGP").text(garjasWanitaPushUpData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaGP").text(garjasWanitaPushUpData.Tanggal_Lahir_Pengguna);
-          $("#lihatAlamatPenggunaGP").text(garjasWanitaPushUpData.Alamat_Pengguna);
-          $("#lihatJabatanPenggunaGP").text(garjasWanitaPushUpData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaGP").text(garjasWanitaPushUpData.Jenis_Kelamin_Pengguna);
-          $("#lihatNoTelpPenggunaGP").text(garjasWanitaPushUpData.No_Telepon_Pengguna);
-          $("#lihatUmurPenggunaGP").text(garjasWanitaPushUpData.Umur_Pengguna);
-          $("#lihatJumlahPushUpWanitaGP").text(garjasWanitaPushUpData.Jumlah_Push_Up_Wanita);
-          $("#lihatNilaiPushUpWanitaGP").text(garjasWanitaPushUpData.Nilai_Push_Up_Wanita);
-          $("#lihatGarjasWanitaPushUp").modal("show");
+          $("#lihatNamaPengguna").text(
+            garjasPriaPushUpData.Nama_Lengkap_Pengguna
+          );
+          $("#lihatNIPPenggunaTd").text(garjasPriaPushUpData.NIP_Pengguna);
+          $("#lihatPotoPenggunaTd").attr(
+            "src",
+            "../uploads/" + garjasPriaPushUpData.Foto_Pengguna
+          );
+          $("#lihatNamaPenggunaTd").text(
+            garjasPriaPushUpData.Nama_Lengkap_Pengguna
+          );
+          $("#lihatTglLahirPenggunaTd").text(
+            garjasPriaPushUpData.Tanggal_Lahir_Pengguna
+          );
+          $("#lihatAlamatPenggunaTd").text(
+            garjasPriaPushUpData.Alamat_Pengguna
+          );
+          $("#lihatJabatanPenggunaTd").text(
+            garjasPriaPushUpData.Jabatan_Pengguna
+          );
+          $("#lihatJenisKelaminPenggunaTd").text(
+            garjasPriaPushUpData.Jenis_Kelamin_Pengguna
+          );
+          $("#lihatNoTelpPenggunaTd").text(
+            garjasPriaPushUpData.No_Telepon_Pengguna
+          );
+          $("#lihatUmurPenggunaTd").text(garjasPriaPushUpData.Umur_Pengguna);
+          $("#lihatJumlahPushUpPriaTd").text(
+            garjasPriaPushUpData.Jumlah_Push_Up_Pria
+          );
+          $("#lihatNilaiPushUpPriaTd").text(
+            garjasPriaPushUpData.Nilai_Push_Up_Pria
+          );
+          $("#lihatGarjasPriaPushUp").modal("show");
         }
       },
       error: function (xhr) {

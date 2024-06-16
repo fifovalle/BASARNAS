@@ -1,13 +1,13 @@
 $(document).ready(function () {
   $(".buttonGarjasPriaPushUp").click(function (e) {
     e.preventDefault();
-    let garjasPriaPushUpID = $(this).data("id");
-    console.log(garjasPriaPushUpID);
+    let garjasPushUpPria = $(this).data("id");
+    console.log(garjasPushUpPria);
     $.ajax({
       url: "../config/get-garjas-pria-push-up-data.php",
       method: "GET",
       data: {
-        garjas_pria_pushup_id: garjasPriaPushUpID,
+        garjas_pria_pushup_id: garjasPushUpPria,
       },
       success: function (data) {
         console.log(data);
@@ -37,16 +37,18 @@ $(document).ready(function () {
     });
   });
 
-  $("#tombolSimpanGarjasPriaPushUp").submit(function (e) {
+  $("#tombolSuntingPemula").click(function (e) {
     e.preventDefault();
+
     let formData = new FormData($(this).closest("form")[0]);
+
     $.ajax({
-      url: "../config/edit-garjas-pria-push-up.php",
+      url: "../config/edit-beginner-competence.php",
       method: "POST",
       data: formData,
       processData: false,
       contentType: false,
-      beforeSend: function () {
+      beforeSend: function (xhr) {
         console.log("Mengirim data ke server:", formData);
       },
       success: function (response) {

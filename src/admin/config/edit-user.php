@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $alamatPengguna = $_POST['Alamat_Pengguna'] ?? '';
     $jabatanPengguna = $_POST['Jabatan_Pengguna'] ?? '';
     $jenisKelaminPengguna = $_POST['Jenis_Kelamin_Pengguna'] ?? '';
-    $nomorTeleponPengguna = $_POST['No_Telepon_Pengguna'] ?? '';
+    $noTeleponPengguna = $_POST['No_Telepon_Pengguna'] ?? '';
 
     $pesanKesalahan = '';
 
@@ -22,6 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tgl_today = new DateTime('now');
         $umurPengguna = $tgl_today->diff($tgl_lahir)->y;
     }
+
+    $nomorTeleponFormatted = preg_replace('/\D/', '', $noTeleponPengguna);
+
+    if (strpos($nomorTeleponFormatted, '62') === 0) {
+        $nomorTeleponFormatted = '+' . $nomorTeleponFormatted;
+    } elseif (strpos($nomorTeleponFormatted, '0') === 0) {
+        $nomorTeleponFormatted = '+62' . substr($nomorTeleponFormatted, 1);
+    }
+
+    $nomorTeleponFormatted = '' . substr($nomorTeleponFormatted, 0, 3) . ' ' . substr($nomorTeleponFormatted, 3, 3) . '-' . substr($nomorTeleponFormatted, 6, 4) . '-' . substr($nomorTeleponFormatted, 10);
 
     $fotoPengguna = $_FILES['Foto_Pengguna'] ?? null;
     $namaFotoPengguna = $fotoPengguna ? mysqli_real_escape_string($koneksi, htmlspecialchars($fotoPengguna['name'])) : '';
@@ -41,28 +51,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $penggunaModel = new Pengguna($koneksi);
-    $dataLamaPengguna = $penggunaModel->tampilkanPengguna($nipPengguna);
 
-    if ($fotoPengguna && $errorFotoPengguna === UPLOAD_ERR_OK) {
-        $namaFotoPenggunaBaru = time() . '_' . $namaFotoPengguna;
-        $tujuanFotoPengguna = '../uploads/' . $namaFotoPenggunaBaru;
-        $apakahBerhasilDipindahkan = move_uploaded_file($fotoPenggunaTemp, $tujuanFotoPengguna);
+    $dataLamaPengguna = $penggunaModel->tampilkanDataPengguna($nipPengguna);
 
-        if ($apakahBerhasilDipindahkan) {
-            if (isset($dataLamaPengguna['Foto_Pengguna']) && !empty($dataLamaPengguna['Foto_Pengguna'])) {
-                $pathFotoLama = '../uploads/' . $dataLamaPengguna['Foto_Pengguna'];
-                if (file_exists($pathFotoLama)) {
-                    unlink($pathFotoLama);
-                }
-            }
-        } else {
-            $pesanKesalahan .= "Gagal mengupload foto pengguna. ";
+    if (!empty($_FILES['Foto_Pengguna']['name'])) {
+        $fotoPengguna = $_FILES['Foto_Pengguna'];
+        $namaFotoAsli = $fotoPengguna['name'];
+        $ekstensi = pathinfo($namaFotoAsli, PATHINFO_EXTENSION);
+        $namaFotoBaru = uniqid() . '.' . $ekstensi;
+        $tujuanFoto = "../uploads/" . $namaFotoBaru;
+
+        if (!move_uploaded_file($fotoPengguna['tmp_name'], $tujuanFoto)) {
+            echo json_encode(array("success" => false, "message" => "Gagal mengunggah foto baru."));
+            exit;
         }
-    }
 
-    if (!empty($pesanKesalahan)) {
-        echo json_encode(array("success" => false, "message" => $pesanKesalahan));
-        exit;
+        $namaFotoLama = $penggunaModel->getFotoPenggunaById($nipPengguna);
+        if (!empty($namaFotoLama)) {
+            $pathFotoLama = "../uploads/" . $namaFotoLama;
+            if (file_exists($pathFotoLama)) {
+                unlink($pathFotoLama);
+            }
+        }
+    } else {
+        $namaFotoBaru = $penggunaModel->getFotoPenggunaById($nipPengguna);
     }
 
     $dataPengguna = array(
@@ -72,15 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'Alamat_Pengguna' => $alamatPengguna,
         'Jabatan_Pengguna' => $jabatanPengguna,
         'Jenis_Kelamin_Pengguna' => $jenisKelaminPengguna,
-        'No_Telepon_Pengguna' => $nomorTeleponPengguna,
-        'Umur_Pengguna' => $umurPengguna
+        'No_Telepon_Pengguna' => $nomorTeleponFormatted, 
+        'Umur_Pengguna' => $umurPengguna,
+        'Foto_Pengguna' => $namaFotoBaru  
     );
-
-    if ($fotoPengguna && $errorFotoPengguna === UPLOAD_ERR_OK && $apakahBerhasilDipindahkan) {
-        $dataPengguna['Foto_Pengguna'] = $namaFotoPenggunaBaru;
-    } else {
-        $dataPengguna['Foto_Pengguna'] = $dataLamaPengguna['Foto_Pengguna'];
-    }
 
     $updateDataPengguna = $penggunaModel->perbaruiPengguna($nipPengguna, $dataPengguna);
 
@@ -92,3 +99,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo json_encode(array("success" => false, "message" => "Metode request tidak valid."));
 }
+?>

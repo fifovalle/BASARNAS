@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2024 at 08:43 AM
+-- Generation Time: Jun 16, 2024 at 03:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -136,13 +136,6 @@ CREATE TABLE `kompetensi` (
   `Kategori_Kompetensi` enum('Pemula','Terampil','Mahir') NOT NULL,
   `Status` enum('Aktif','Tidak Aktif') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `kompetensi`
---
-
-INSERT INTO `kompetensi` (`ID_Kompetensi`, `NIP_Pengguna`, `File_Sertifikat`, `Nama_Sertifikat`, `Tanggal_Penerbitan_Sertifikat`, `Masa_Berlaku`, `Tanggal_Berakhir_Sertifikat`, `Kategori_Kompetensi`, `Status`) VALUES
-(12, 2147483647, 0x363636653839383631626566322e706466, 'Kang Ngoding', '2024-04-24', 3, '2024-07-30', 'Pemula', 'Aktif');
 
 -- --------------------------------------------------------
 

@@ -26,7 +26,7 @@ function containsXSS($input)
     return false;
 }
 
-if (isset($_POST['tambah_admin'])) {
+if (isset($_POST['Simpan'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
@@ -46,14 +46,24 @@ if (isset($_POST['tambah_admin'])) {
     $umur_admin = $tgl_today->diff($tgl_lahir)->y;
 
     $alamatAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Alamat_Admin', FILTER_SANITIZE_STRING));
+    $noTeleponAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'No_Telepon_Admin', FILTER_SANITIZE_STRING));
+    $jabatanAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Admin', FILTER_SANITIZE_STRING));
+    $jenisKelaminAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Admin', FILTER_SANITIZE_STRING));
     $kataSandiAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Kata_Sandi_Admin', FILTER_SANITIZE_STRING));
     $konfirmasiKataSandiAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Konfirmasi_Kata_Sandi_Admin', FILTER_SANITIZE_STRING));
-    $noTeleponAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nomor_Telepon_Admin', FILTER_SANITIZE_STRING));
-    $jenisKelaminAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Admin', FILTER_SANITIZE_STRING));
-    $jabatanAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Admin', FILTER_SANITIZE_STRING));
     $pesanKesalahan = '';
 
-    $noTeleponAdminFormatted = '+62 ' . substr($noTeleponAdmin, 0, 3) . '-' . substr($noTeleponAdmin, 3, 4) . '-' . substr($noTeleponAdmin, 7);
+    $nomorTeleponFormatted = $noTeleponAdmin;
+
+    $nomorTeleponFormatted = preg_replace('/\D/', '', $nomorTeleponFormatted);
+
+    if (strpos($nomorTeleponFormatted, '0') === 0) {
+        $nomorTeleponFormatted = '+62' . substr($nomorTeleponFormatted, 1);
+    }
+
+    if (strpos($nomorTeleponFormatted, '+62') === 0) {
+        $nomorTeleponFormatted = substr($nomorTeleponFormatted, 0, 3) . ' ' . substr($nomorTeleponFormatted, 3, 3) . '-' . substr($nomorTeleponFormatted, 6, 4) . '-' . substr($nomorTeleponFormatted, 10);
+    }
 
     if (
         empty($nipAdmin) || empty($namaLengkapAdmin) || empty($tanggalLahirAdmin) ||
@@ -130,7 +140,7 @@ if (isset($_POST['tambah_admin'])) {
         'Tanggal_Lahir_Admin' => $tanggalLahirAdmin,
         'Umur_Admin' => $umur_admin,
         'Alamat_Admin' => $alamatAdmin,
-        'Nomor_Telepon_Admin' => $noTeleponAdminFormatted,
+        'No_Telepon_Admin' => $nomorTeleponFormatted,
         'Jabatan_Admin' => $jabatanAdmin,
         'Jenis_Kelamin_Admin' => $jenisKelaminAdmin,
         'Kata_Sandi_Admin' => $hashKataSandi,

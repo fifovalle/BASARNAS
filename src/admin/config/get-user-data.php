@@ -2,17 +2,17 @@
 include 'databases.php';
 
 $penggunaModel = new Pengguna($koneksi);
+
 $penggunaNIP = isset($_GET['pengguna_nip']) ? $_GET['pengguna_nip'] : null;
+$dataPengguna = $penggunaModel->tampilkanDataPengguna($penggunaNIP);
 
-if ($penggunaNIP) {
-    $dataPengguna = $penggunaModel->tampilkanPengguna($penggunaNIP);
+$penggunaDitemukan = null;
 
-    if ($dataPengguna) {
-        echo json_encode($dataPengguna);
-    } else {
-        echo json_encode(array("success" => false, "message" => "Pengguna tidak ditemukan."));
+foreach ($dataPengguna as $pengguna) {
+    $penggunaDitemukan = $pengguna['NIP_Pengguna'] == $penggunaNIP ? $pengguna : null;
+    if ($penggunaDitemukan) {
+        break;
     }
-} else {
-    echo json_encode(array("success" => false, "message" => "NIP Pengguna tidak diberikan."));
 }
-?>
+
+echo json_encode($penggunaDitemukan);

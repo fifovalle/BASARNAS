@@ -74,7 +74,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>NOMOR</th>
+                                                    <th>NO</th>
                                                     <th>NIP</th>
                                                     <th>Foto</th>
                                                     <th>Nama</th>
@@ -97,7 +97,7 @@
                                                             <td><?php echo $admin['NIP_Admin']; ?></td>
                                                             <td>
                                                                 <div class="d-flex justify-content-center">
-                                                                    <img class="avatar-img rounded-circle" src="../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="Nama Admin" style="width: 75px; height: 75px;">
+                                                                    <img class="avatar-img rounded-circle" src="../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="Foto Admin" style="width: 75px; height: 75px;">
                                                                 </div>
                                                             </td>
                                                             <td><?php echo $admin['Nama_Lengkap_Admin']; ?></td>

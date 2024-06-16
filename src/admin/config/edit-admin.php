@@ -9,56 +9,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jenisKelaminAdmin = $_POST['Jenis_Kelamin_Admin'] ?? '';
     $nomorTeleponAdmin = $_POST['No_Telepon_Admin'] ?? '';
     $tanggalLahirAdmin = $_POST['Tanggal_Lahir_Admin'] ?? '';
-    list($tahunLahir, $bulanLahir, $hariLahir) = explode('-', $tanggalLahirAdmin);
-    $tahunSekarang = date('Y');
-    $umurAdmin = $tahunSekarang - $tahunLahir;
-    // Periksa apakah sudah ulang tahun pada tahun ini
-    if (date('m') < $bulanLahir || (date('m') == $bulanLahir && date('d') < $hariLahir)) {
-        $umurAdmin--;
-    }
-
-    $fotoAdmin = $_FILES['Foto_Admin'] ?? null;
-    $namaFotoAdmin = $fotoAdmin ? mysqli_real_escape_string($koneksi, htmlspecialchars($fotoAdmin['name'])) : '';
-    $fotoAdminTemp = $fotoAdmin ? $fotoAdmin['tmp_name'] : '';
-    $ukuranFotoAdmin = $fotoAdmin ? $fotoAdmin['size'] : 0;
-    $errorFotoAdmin = $fotoAdmin ? $fotoAdmin['error'] : 0;
-    $tujuanFotoAdmin = '';
-    $ukuranMaksimal = 2 * 1024 * 1024;
 
     $pesanKesalahan = '';
 
-    if ($fotoAdmin && $ukuranFotoAdmin > $ukuranMaksimal) {
-        $pesanKesalahan .= "Ukuran file foto Admin melebihi batas maksimal (2MB). ";
+    $tanggal_lahir_format = DateTime::createFromFormat('Y-m-d', $tanggalLahirAdmin);
+    if ($tanggal_lahir_format === false) {
+        $pesanKesalahan .= "Format tanggal lahir tidak valid. ";
+    } else {
+        $tanggalLahirAdmin = $tanggal_lahir_format->format('Y-m-d');
+
+        $tgl_lahir = new DateTime($tanggalLahirAdmin);
+        $tgl_today = new DateTime('now');
+        $umurAdmin = $tgl_today->diff($tgl_lahir)->y;
     }
 
-    if (!empty($pesanKesalahan)) {
-        echo json_encode(array("success" => false, "message" => $pesanKesalahan));
-        exit;
+    $nomorTeleponFormatted = $nomorTeleponAdmin;
+
+    $nomorTeleponFormatted = preg_replace('/\D/', '', $nomorTeleponFormatted);
+    
+    if (strpos($nomorTeleponFormatted, '0') === 0) {
+        $nomorTeleponFormatted = '+62' . substr($nomorTeleponFormatted, 1);
     }
+    
+    if (strpos($nomorTeleponFormatted, '+62') === 0) {
+        $nomorTeleponFormatted = substr($nomorTeleponFormatted, 0, 3) . ' ' . substr($nomorTeleponFormatted, 3, 3) . '-' . substr($nomorTeleponFormatted, 6, 4) . '-' . substr($nomorTeleponFormatted, 10);
+    }
+    
+    
 
     $adminModel = new Admin($koneksi);
-    $dataLamaAdmin = $adminModel->tampilkanAdmin($nipAdmin);
 
-    if ($fotoAdmin && $errorFotoAdmin === UPLOAD_ERR_OK) {
-        $namaFotoAdminBaru = time() . '_' . $namaFotoAdmin;
-        $tujuanFotoAdmin = '../uploads/' . $namaFotoAdminBaru;
-        $apakahBerhasilDipindahkan = move_uploaded_file($fotoAdminTemp, $tujuanFotoAdmin);
+    if (!empty($_FILES['Foto_Admin']['name'])) {
+        $fotoAdmin = $_FILES['Foto_Admin'];
+        $namaFotoAsli = $fotoAdmin['name'];
+        $ekstensi = pathinfo($namaFotoAsli, PATHINFO_EXTENSION);
+        $namaFotoBaru = uniqid() . '.' . $ekstensi;
+        $tujuanFoto = "../uploads/" . $namaFotoBaru;
 
-        if ($apakahBerhasilDipindahkan) {
-            if (isset($dataLamaAdmin['Foto_Admin']) && !empty($dataLamaAdmin['Foto_Admin'])) {
-                $pathFotoLama = '../uploads/' . $dataLamaAdmin['Foto_Admin'];
-                if (file_exists($pathFotoLama)) {
-                    unlink($pathFotoLama);
-                }
-            }
-        } else {
-            $pesanKesalahan .= "Gagal mengupload foto Admin. ";
+        if (!move_uploaded_file($fotoAdmin['tmp_name'], $tujuanFoto)) {
+            echo json_encode(array("success" => false, "message" => "Gagal mengunggah foto baru."));
+            exit;
         }
-    }
 
-    if (!empty($pesanKesalahan)) {
-        echo json_encode(array("success" => false, "message" => $pesanKesalahan));
-        exit;
+        $namaFotoLama = $adminModel->getFotoAdminById($nipAdmin);
+        if (!empty($namaFotoLama)) {
+            $pathFotoLama = "../uploads/" . $namaFotoLama;
+            if (file_exists($pathFotoLama)) {
+                unlink($pathFotoLama);
+            }
+        }
+    } else {
+        $namaFotoBaru = $adminModel->getFotoAdminById($nipAdmin);
     }
 
     $dataAdmin = array(
@@ -68,15 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'Alamat_Admin' => $alamatAdmin,
         'Jabatan_Admin' => $jabatanAdmin,
         'Jenis_Kelamin_Admin' => $jenisKelaminAdmin,
-        'No_Telepon_Admin' => $nomorTeleponAdmin,
-        'Umur_Admin' => $umurAdmin
-        );
-
-    if ($fotoAdmin && $errorFotoAdmin === UPLOAD_ERR_OK && $apakahBerhasilDipindahkan) {
-        $dataAdmin['Foto_Admin'] = $namaFotoAdminBaru;
-    } else {
-        $dataAdmin['Foto_Admin'] = $dataLamaAdmin['Foto_Admin'];
-    }
+        'No_Telepon_Admin' => $nomorTeleponFormatted,
+        'Umur_Admin' => $umurAdmin,
+        'Foto_Admin' => $namaFotoBaru
+    );
 
     $updateDataAdmin = $adminModel->perbaruiAdmin($nipAdmin, $dataAdmin);
 

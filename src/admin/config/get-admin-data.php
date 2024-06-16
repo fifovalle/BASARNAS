@@ -2,16 +2,17 @@
 include 'databases.php';
 
 $adminModel = new Admin($koneksi);
-$nipAdmin = isset($_GET['admin_nip']) ? $_GET['admin_nip'] : null;
 
-if ($nipAdmin) {
-    $dataAdmin = $adminModel->tampilkanAdmin($nipAdmin);
+$adminNIP = isset($_GET['admin_nip']) ? $_GET['admin_nip'] : null;
+$dataAdmin = $adminModel->tampilkanDataAdmin($adminNIP);
 
-    if ($dataAdmin) {
-        echo json_encode($dataAdmin);
-    } else {
-        echo json_encode(array("success" => false, "message" => "Admin tidak ditemukan."));
+$adminDitemukan = null;
+
+foreach ($dataAdmin as $admin) {
+    $adminDitemukan = $admin['NIP_Admin'] == $adminNIP ? $admin : null;
+    if ($adminDitemukan) {
+        break;
     }
-} else {
-    echo json_encode(array("success" => false, "message" => "NIP Admin tidak diberikan."));
 }
+
+echo json_encode($adminDitemukan);

@@ -1,18 +1,19 @@
 <?php
-include '../config/databases.php';
+include 'databases.php';
 
 $garjasSitUp1PriaModel = new GarjasPriaSitUpKakiLurus($koneksi);
-$garjasPriaSitUp1ID = isset($_GET['garjas_pria_situp_id']) ? $_GET['garjas_pria_situp_id'] : null;
 
-if ($garjasPriaSitUp1ID) {
-    $dataGarjasPriaSitUp1 = $garjasSitUp1PriaModel->tampilkanGarjasPriaSitUp1($garjasPriaSitUp1ID);
+$garjasPriaSitUp1ID = isset($_GET['garjas_pria_situp1_id']) ? $_GET['garjas_pria_situp1_id'] : null;
+$dataGarjasPriaSitUp1 = $garjasSitUp1PriaModel->tampilkanDataGarjasPriaPushUp($garjasPriaSitUp1ID);
 
-    if ($dataGarjasPriaSitUp1) {
-        echo json_encode($dataGarjasPriaSitUp1);
-    } else {
-        echo json_encode(array("success" => false, "message" => "Garjas Pria Sit up kaki lurus dengan ID tersebut tidak ditemukan."));
+$garjasPriaSitUpKakiLurusDitemukan = null;
+
+foreach ($dataGarjasPriaSitUp1 as $garjasPriaSitUpKakiLurus) {
+    $garjasPriaSitUpKakiLurusDitemukan = $garjasPriaSitUpKakiLurus['ID_Push_Up_Pria'] == $garjasPriaSitUp1ID ? $garjasPriaSitUpKakiLurus : null;
+    if ($garjasPriaSitUpKakiLurusDitemukan) {
+        break;
     }
-} else {
-    echo json_encode(array("success" => false, "message" => "ID Garjas Pria Sit up kaki lurus tidak diberikan."));
 }
-?>
+
+echo json_encode($garjasPriaSitUpKakiLurusDitemukan);
+

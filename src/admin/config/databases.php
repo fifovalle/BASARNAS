@@ -18,7 +18,7 @@ class Admin
 
     public function tambahAdmin($data)
     {
-        $query = "INSERT INTO admin (NIP_Admin, Foto_Admin, Nama_Lengkap_Admin, Tanggal_Lahir_Admin, Umur_Admin, Alamat_Admin, No_Telepon_Admin, Jabatan_Admin, Jenis_Kelamin_Admin, Kata_Sandi_Admin, Konfirmasi_Kata_Sandi_Admin) VALUES (?, ?, ? , ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO admin (NIP_Admin, Foto_Admin, Nama_Lengkap_Admin, Tanggal_Lahir_Admin, Umur_Admin, Alamat_Admin, No_Telepon_Admin, Jabatan_Admin, Jenis_Kelamin_Admin, Kata_Sandi_Admin, Konfirmasi_Kata_Sandi_Admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
@@ -29,7 +29,7 @@ class Admin
             $this->escapeString($data['Tanggal_Lahir_Admin']),
             $this->escapeString($data['Umur_Admin']),
             $this->escapeString($data['Alamat_Admin']),
-            $this->escapeString($data['Nomor_Telepon_Admin']),
+            $this->escapeString($data['No_Telepon_Admin']),
             $this->escapeString($data['Jabatan_Admin']),
             $this->escapeString($data['Jenis_Kelamin_Admin']),
             $this->escapeString($data['Kata_Sandi_Admin']),
@@ -96,16 +96,6 @@ class Admin
         }
     }
 
-    public function tampilkanAdmin($nipAdmin)
-    {
-        $query = "SELECT * FROM admin WHERE NIP_Admin = ?";
-        $stmt = $this->koneksi->prepare($query);
-        $stmt->bind_param("i", $nipAdmin);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_assoc();
-    }
-
 
     public function perbaruiAdmin($nipAdmin, $dataAdmin)
     {
@@ -137,6 +127,22 @@ class Admin
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getFotoAdminById($idAdmin)
+    {
+        $query = "SELECT Foto_Admin FROM admin WHERE NIP_Admin = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $idAdmin);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            return $data['Foto_Admin'];
+        } else {
+            return null;
         }
     }
 
@@ -245,15 +251,6 @@ class Pengguna
         }
     }
 
-    public function tampilkanPengguna($nipPengguna)
-    {
-        $query = "SELECT * FROM pengguna WHERE NIP_Pengguna = ?";
-        $stmt = $this->koneksi->prepare($query);
-        $stmt->bind_param("i", $nipPengguna);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_assoc();
-    }
 
     public function hapusPengguna($id)
     {
@@ -322,6 +319,22 @@ class Pengguna
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getFotoPenggunaById($idPengguna)
+    {
+        $query = "SELECT Foto_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $idPengguna);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            return $data['Foto_Pengguna'];
+        } else {
+            return null;
         }
     }
 
@@ -445,30 +458,6 @@ class GarjasPushUpPria
             return false;
         }
     }
-
-    public function tampilkanGarjasPriaPushUp($id)
-    {
-        $query = "SELECT garjas_pria_push_up.ID_Push_Up_Pria, garjas_pria_push_up.NIP_Pengguna,
-                        pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
-                        pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
-                        pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
-                        pengguna.Jenis_Kelamin_Pengguna, pengguna.Foto_Pengguna,
-                        garjas_pria_push_up.Jumlah_Push_Up_Pria, garjas_pria_push_up.Nilai_Push_Up_Pria
-                FROM garjas_pria_push_up
-                LEFT JOIN pengguna ON garjas_pria_push_up.NIP_Pengguna = pengguna.NIP_Pengguna
-                WHERE garjas_pria_push_up.ID_Push_Up_Pria = ?";
-
-        $stmt = $this->koneksi->prepare($query);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            return $result->fetch_assoc();
-        } else {
-            return null;
-        }
-    }
 }
 // ===================================GARJAS PRIA PUSH UP===================================
 
@@ -557,30 +546,6 @@ class GarjasPriaSitUpKakiLurus
             return true;
         } else {
             return false;
-        }
-    }
-
-    public function tampilkanGarjasPriaSitUp1($id)
-    {
-        $query = "SELECT garjas_pria_sit_up_kaki_lurus.ID_Sit_Up_Kaki_Lurus_Pria, garjas_pria_sit_up_kaki_lurus.NIP_Pengguna,
-                        pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
-                        pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
-                        pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
-                        pengguna.Jenis_Kelamin_Pengguna, pengguna.Foto_Pengguna,
-                        garjas_pria_sit_up_kaki_lurus.Jumlah_Sit_up_Kaki_lurus_Pria, garjas_pria_sit_up_kaki_lurus.Nilai_Sit_Up_Kaki_Lurus_Pria
-                FROM garjas_pria_sit_up_kaki_lurus
-                LEFT JOIN pengguna ON garjas_pria_sit_up_kaki_lurus.NIP_Pengguna = pengguna.NIP_Pengguna
-                WHERE garjas_pria_sit_up_kaki_lurus.ID_Sit_Up_Kaki_Lurus_Pria = ?";
-
-        $stmt = $this->koneksi->prepare($query);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            return $result->fetch_assoc();
-        } else {
-            return null;
         }
     }
 }
@@ -1088,6 +1053,22 @@ class Kompetensi
     public function tampilkanKompetensiPemula()
     {
         $query = "SELECT kompetensi.*, pengguna.* FROM kompetensi LEFT JOIN pengguna ON kompetensi.NIP_Pengguna = pengguna.NIP_Pengguna WHERE kompetensi.Kategori_Kompetensi = 'Pemula'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanKompetensiTerampil()
+    {
+        $query = "SELECT kompetensi.*, pengguna.* FROM kompetensi LEFT JOIN pengguna ON kompetensi.NIP_Pengguna = pengguna.NIP_Pengguna WHERE kompetensi.Kategori_Kompetensi = 'Terampil'";
         $result = $this->koneksi->query($query);
 
         if ($result->num_rows > 0) {

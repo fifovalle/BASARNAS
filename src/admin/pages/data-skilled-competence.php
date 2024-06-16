@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -54,7 +56,6 @@
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -68,36 +69,49 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table id="add-row" class="display table table-hover">
+                                    <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Nomor</th>
-                                                    <th>NIP</th>
-                                                    <th>Nama</th>
+                                                    <th>Nama Pengguna</th>
+                                                    <th>Nama Sertifikat</th>
                                                     <th>Kategori Kompetensi</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $kompetensiTerampilModel = new Kompetensi($koneksi);
+                                            $kompetensiTerampilInfo = $kompetensiTerampilModel->tampilkanKompetensiTerampil();
+                                            ?>
                                             <tbody>
-                                                <tr>
-                                                    <td>No Urut</td>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Sertifikat</td>
-                                                    <td>Kategori Kompetensi</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingKompetensiTerampil">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatKompetensiTerampil">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php if (!empty($kompetensiTerampilInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($kompetensiTerampilInfo as $Terampil) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $Terampil['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $Terampil['Nama_Sertifikat']; ?></td>
+                                                            <td><?php echo $Terampil['Kategori_Kompetensi']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonKompetensiTerampil" data-bs-toggle="modal" data-id="<?php echo $Terampil['ID_Kompetensi']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusKompetensiTerampil(<?php echo $Terampil['ID_Kompetensi']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatKompetensiTerampil" data-bs-toggle="modal" data-id="<?php echo $Terampil['ID_Kompetensi']; ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="6" class="text-center text-danger fw-bold">Tidak Ada Data Kompetensi Terampil!</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -136,6 +150,7 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/value-see-skilled-competence.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -175,6 +190,10 @@
             });
         });
     </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

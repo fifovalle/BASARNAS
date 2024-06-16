@@ -46,7 +46,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tambahNomorTelpAdmin" class="form-label">Nomor Telepon</label>
-                        <input type="number" class="form-control" placeholder="Masukan Nomor Telepon" id="tambahNomorTelpAdmin" name="Nomor_Telepon_Admin">
+                        <input type="number" class="form-control" placeholder="Masukan Nomor Telepon" id="tambahNomorTelpAdmin" name="No_Telepon_Admin">
                     </div>
                     <div class="mb-3" style="position:relative;">
                         <label for="tambahKataSandiAdmin" class="form-label">Kata Sandi</label>
@@ -58,7 +58,7 @@
                         <input type="password" class="form-control" placeholder="***********" id="tambahKonfirmasiKataSandiAdmin" name="Konfirmasi_Kata_Sandi_Admin">
                         <i class="bi bi-eye" id="toggleKonfirmasiKataSandiAdmin" style="position:absolute; top: 70%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="tambah_admin">Simpan</button>
+                    <button type="submit" class="btn btn-primary" name="Simpan">Simpan</button>
                 </form>
             </div>
         </div>

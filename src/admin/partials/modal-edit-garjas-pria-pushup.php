@@ -6,17 +6,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" enctype="multipart/form-data">
+                <form>
                     <input type="hidden" id="editGarjasPriaPushUpID" name="ID_Push_Up_Pria" autocomplete="off">
                     <div class="mb-3">
                         <label for="suntingNIPPengguna" class="form-label">NIP dan Nama Anggota</label>
-                        <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" readonly>
+                        <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" disabled>
                     </div>
-                    <div class="mb-3">
+                     <div class="mb-3">
                         <label for="suntingJumlahPushUpGarjasPria" class="form-label">Jumlah Push Up</label>
                         <input type="number" class="form-control" id="suntingJumlahPushUpGarjasPria" name="Jumlah_Push_Up_Pria">
                     </div>
-                    <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaPushUp" name="Simpan">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaPushUp">Simpan</button>
                 </form>
             </div>
         </div>

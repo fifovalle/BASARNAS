@@ -2,17 +2,18 @@
 include 'databases.php';
 
 $garjasPushUpPriaModel = new GarjasPushUpPria($koneksi);
+
 $garjasPriaPushUpID = isset($_GET['garjas_pria_pushup_id']) ? $_GET['garjas_pria_pushup_id'] : null;
+$dataGarjasPriaPushUp = $garjasPushUpPriaModel->tampilkanDataGarjasPriaPushUp($garjasPriaPushUpID);
 
-if ($garjasPriaPushUpID) {
-    $dataGarjasPriaPushUp = $garjasPushUpPriaModel->tampilkanGarjasPriaPushUp($garjasPriaPushUpID);
+$garjasPushUpPriaDitemukan = null;
 
-    if ($dataGarjasPriaPushUp) {
-        echo json_encode($dataGarjasPriaPushUp);
-    } else {
-        echo json_encode(array("success" => false, "message" => "Garjas Pria Push Up dengan ID tersebut tidak ditemukan."));
+foreach ($dataGarjasPriaPushUp as $garjasPushUpPria) {
+    $garjasPushUpPriaDitemukan = $garjasPushUpPria['ID_Push_Up_Pria'] == $garjasPriaPushUpID ? $garjasPushUpPria : null;
+    if ($garjasPushUpPriaDitemukan) {
+        break;
     }
-} else {
-    echo json_encode(array("success" => false, "message" => "ID Garjas Pria Push Up tidak diberikan."));
 }
-?>
+
+echo json_encode($garjasPushUpPriaDitemukan);
+
