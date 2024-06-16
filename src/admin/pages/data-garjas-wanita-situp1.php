@@ -73,6 +73,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>No</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
@@ -90,6 +91,7 @@
                                                     <?php $nomor = 1; ?>
                                                     <?php foreach ($garjasSitUp1WanitaInfo as $garjasSitUp1Wanita) : ?>
                                                         <tr>
+                                                            <td><?php echo $nomor++; ?></td>    
                                                             <td><?php echo $garjasSitUp1Wanita['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp1Wanita['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp1Wanita['Umur_Pengguna']; ?></td>

@@ -74,6 +74,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>NO</th>
                                                     <th>NIP</th>
                                                     <th>Foto</th>
                                                     <th>Nama</th>
@@ -89,8 +90,10 @@
                                             ?>
                                             <tbody>
                                                 <?php if (!empty($adminInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
                                                     <?php foreach ($adminInfo as $admin) : ?>
                                                         <tr>
+                                                            <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $admin['NIP_Admin']; ?></td>
                                                             <td>
                                                                 <div class="d-flex justify-content-center">

@@ -198,13 +198,13 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-beginner-competence.php') ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-beginner-competence.php') || apakahAktif('src/admin/pages/data-skilled-competence.php') || apakahAktif('src/admin/pages/data-advanced-competence.php') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#kompetensi">
                         <i class="fas fa-layer-group"></i>
                         <p>Kompetensi</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-beginner-competence.php') ? 'show' : ''; ?>" id="kompetensi">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-beginner-competence.php') || apakahAktif('src/admin/pages/data-skilled-competence.php') || apakahAktif('src/admin/pages/data-advanced-competence.php') ? 'show' : ''; ?>" id="kompetensi">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-beginner-competence.php">
@@ -212,12 +212,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-skilled-competence.php">
                                     <span class="sub-item">Terampil</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-advanced-competence.php">
                                     <span class="sub-item">Mahir</span>
                                 </a>
                             </li>

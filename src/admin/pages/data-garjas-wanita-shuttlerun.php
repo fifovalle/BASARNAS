@@ -52,7 +52,7 @@
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
                             <h3 class="fw-bold mb-3">Data Hasil Garjas Wanita (Shuttle Run)</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Wanita (Shuttle Run) Basarnasssssssssssssss</h6>
+                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Wanita (Shuttle Run) Basarnas</h6>
                         </div>
                     </div>
                     <div class="row">
@@ -73,6 +73,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>No</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
@@ -101,10 +102,10 @@
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaPushUp">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaPushUp(<?php echo $garjasPushUpWanita['ID_Wanita_Push_Up']; ?>)">
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaShuttleRun(<?php echo $garjasShuttleRunWanita['ID_Wanita_Shuttle_Run']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasWanitaPushUp" data-bs-toggle="modal" data-bs-target="#lihatGarjasWanitaPushUp">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasWanitaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasShuttleRunWanita['ID_Wanita_Shuttle_Run']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -154,6 +155,9 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-garjas-wanita-shuttlerun.js"></script>
+    <script src="../assets/js/value-garjas-wanita-shuttle-run.js"></script>
+    <script src="../assets/js/value-see-garjas-wanita-shuttle-run.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

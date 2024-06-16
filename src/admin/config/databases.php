@@ -429,12 +429,11 @@ class GarjasPushUpPria
 
     public function perbaruiGarjasPriaPushUp($id, $data)
     {
-        $query = "UPDATE garjas_pria_push_up SET NIP_Pengguna=?, Jumlah_Push_Up_Pria=?, Nilai_Push_Up_Pria=? WHERE ID_Push_Up_Pria=?";
+        $query = "UPDATE garjas_pria_push_up SET Jumlah_Push_Up_Pria=?, Nilai_Push_Up_Pria=? WHERE ID_Push_Up_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "iiii",
-            $this->escapeString($data['NIP_Pengguna']),
+            "iii",
             $this->escapeString($data['Jumlah_Push_Up_Pria']),
             $this->escapeString($data['Nilai_Push_Up_Pria']),
             $id
@@ -447,17 +446,146 @@ class GarjasPushUpPria
         }
     }
 
-    public function tampilkangGarjasPriaPushUp($idGarjasPriaPushup)
+    public function tampilkanGarjasPriaPushUp($id)
     {
-        $query = "SELECT * FROM garjas_pria_push_up WHERE ID_Push_Up_Pria = ?";
+        $query = "SELECT garjas_pria_push_up.ID_Push_Up_Pria, garjas_pria_push_up.NIP_Pengguna,
+                        pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
+                        pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
+                        pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
+                        pengguna.Jenis_Kelamin_Pengguna, pengguna.Foto_Pengguna,
+                        garjas_pria_push_up.Jumlah_Push_Up_Pria, garjas_pria_push_up.Nilai_Push_Up_Pria
+                FROM garjas_pria_push_up
+                LEFT JOIN pengguna ON garjas_pria_push_up.NIP_Pengguna = pengguna.NIP_Pengguna
+                WHERE garjas_pria_push_up.ID_Push_Up_Pria = ?";
+
         $stmt = $this->koneksi->prepare($query);
-        $stmt->bind_param("i", $idGarjasPriaPushup);
+        $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_assoc();
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
     }
 }
 // ===================================GARJAS PRIA PUSH UP===================================
+
+
+// ===================================GARJAS PRIA SIT UP KAKI LURUS===================================
+class GarjasPriaSitUpKakiLurus{
+
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function escapeString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tambahGarjasPriaSitUp1($data)
+    {
+        $query = "INSERT INTO garjas_pria_sit_up_kaki_lurus (NIP_Pengguna, Jumlah_Sit_Up_Kaki_Lurus_Pria, Nilai_Sit_Up_Kaki_Lurus_Pria) VALUES (?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "iii",
+            $this->escapeString($data['NIP_Pengguna']),
+            $this->escapeString($data['Jumlah_Sit_Up_Kaki_Lurus_Pria']),
+            $this->escapeString($data['Nilai_Sit_Up_Kaki_Lurus_Pria'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ambilUmurGarjasSitUpKakiLurusPriaOlehNIP($NIP)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['Umur_Pengguna'];
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataGarjasPriaSitUp1()
+    {
+        $query = "SELECT garjas_pria_sit_up_kaki_lurus.ID_Sit_Up_Kaki_Lurus_Pria, garjas_pria_sit_up_kaki_lurus.NIP_Pengguna,
+                        pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
+                        pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
+                        pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
+                        pengguna.Jenis_Kelamin_Pengguna, pengguna.Foto_Pengguna,
+                        garjas_pria_sit_up_kaki_lurus.Jumlah_Sit_up_Kaki_lurus_Pria, garjas_pria_sit_up_kaki_lurus.Nilai_Sit_Up_Kaki_Lurus_Pria
+                FROM garjas_pria_sit_up_kaki_lurus
+                LEFT JOIN pengguna ON garjas_pria_sit_up_kaki_lurus.NIP_Pengguna = pengguna.NIP_Pengguna";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function hapusDataGarjasPriaSitUp1($id)
+    {
+        $queryDelete = "DELETE FROM garjas_pria_sit_up_kaki_lurus WHERE ID_Sit_Up_Kaki_Lurus_Pria=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function tampilkanGarjasPriaSitUp1($id)
+    {
+        $query = "SELECT garjas_pria_sit_up_kaki_lurus.ID_Sit_Up_Kaki_Lurus_Pria, garjas_pria_sit_up_kaki_lurus.NIP_Pengguna,
+                        pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
+                        pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
+                        pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
+                        pengguna.Jenis_Kelamin_Pengguna, pengguna.Foto_Pengguna,
+                        garjas_pria_sit_up_kaki_lurus.Jumlah_Sit_up_Kaki_lurus_Pria, garjas_pria_sit_up_kaki_lurus.Nilai_Sit_Up_Kaki_Lurus_Pria
+                FROM garjas_pria_sit_up_kaki_lurus
+                LEFT JOIN pengguna ON garjas_pria_sit_up_kaki_lurus.NIP_Pengguna = pengguna.NIP_Pengguna
+                WHERE garjas_pria_sit_up_kaki_lurus.ID_Sit_Up_Kaki_Lurus_Pria = ?";
+
+        $stmt = $this->koneksi->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
+
+
+}
+// ===================================GARJAS PRIA SIT UP KAKI LURUS===================================
 
 // ===================================GARJAS WANITA PUSH UP===================================
 class GarjasWanitaPushUp
@@ -533,6 +661,24 @@ class GarjasWanitaPushUp
         $isDeleted = $statementDelete->execute();
 
         if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function perbaruiGarjasWanitaPushUp($id, $data)
+    {
+        $query = "UPDATE garjas_wanita_push_up SET Jumlah_Push_Up_Wanita=?, Nilai_Push_Up_Wanita=? WHERE ID_Wanita_Push_Up=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "iii",
+            $this->escapeString($data['Jumlah_Push_Up_Wanita']),
+            $this->escapeString($data['Nilai_Push_Up_Wanita']),
+            $id
+        );
+
+        if ($statement->execute()) {
             return true;
         } else {
             return false;
@@ -734,7 +880,7 @@ class GarjasWanitaChinUp
 
     public function tambahGarjasWanitaChinUp($data)
     {
-        $query = "INSERT INTO garjas_wanita_shuttle_run (NIP_Pengguna, Jumlah_Chin_Up_Wanita, Nilai_Chin_Up_Wanita) VALUES (?, ?, ?)";
+        $query = "INSERT INTO garjas_wanita_chin_up (NIP_Pengguna, Jumlah_Chin_Up_Wanita, Nilai_Chin_Up_Wanita) VALUES (?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
@@ -751,7 +897,7 @@ class GarjasWanitaChinUp
         }
     }
 
-    public function ambilUmurGarjasWanitaShuttleRunOlehNIP($NIP)
+    public function ambilUmurGarjasWanitaChinUpOlehNIP($NIP)
     {
         $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
 
@@ -765,9 +911,9 @@ class GarjasWanitaChinUp
         }
     }
 
-    public function tampilkanDataGarjasWanitaShuttleRun()
+    public function tampilkanDataGarjasWanitaChinUp()
     {
-        $query = "SELECT garjas_wanita_chin_up.ID_Wanita_Shuttle_Run, garjas_wanita_chin_up.NIP_Pengguna,
+        $query = "SELECT garjas_wanita_chin_up.ID_Wanita_Chin_Up, garjas_wanita_chin_up.NIP_Pengguna,
                          pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
                          pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
                          pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
@@ -803,3 +949,93 @@ class GarjasWanitaChinUp
     }
 }
 // ===================================GARJAS WANITA CHIN UP===================================
+
+// ===================================GARJAS WANITA SIT UP DI TEKUK===================================
+class GarjasWanitaSitUp2
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function escapeString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tambahGarjasWanitaSitUp2($data)
+    {
+        $query = "INSERT INTO garjas_wanita_sit_up_kaki_di_tekuk (NIP_Pengguna, Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita, Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita) VALUES (?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "iii",
+            $this->escapeString($data['NIP_Pengguna']),
+            $this->escapeString($data['Jumlah_Sit_Up_2_Wanita']),
+            $this->escapeString($data['Nilai_Sit_Up_2_Wanita'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ambilUmurGarjasWanitaSitUp2OlehNIP($NIP)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['Umur_Pengguna'];
+        } else {
+            return null;
+        }
+    }
+
+
+    public function tampilkanDataGarjasPriaSitUpKakiLurus()
+{
+    $query = "SELECT garjas_pria_sit_up_kaki_lurus.ID_Sit_Up_Kaki_Lurus_Pria, garjas_pria_sit_up_kaki_lurus.NIP_Pengguna,
+                     pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
+                     pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
+                     pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
+                     pengguna.Jenis_Kelamin_Pengguna, pengguna.Foto_Pengguna,
+                     garjas_pria_sit_up_kaki_lurus.Jumlah_Sit_up_Kaki_lurus_Pria, garjas_pria_sit_up_kaki_lurus.Nilai_Sit_Up_Kaki_Lurus_Pria
+              FROM garjas_pria_sit_up_kaki_lurus
+              LEFT JOIN pengguna ON garjas_pria_sit_up_kaki_lurus.NIP_Pengguna = pengguna.NIP_Pengguna";
+
+    $result = $this->koneksi->query($query);
+
+    if ($result->num_rows > 0) {
+        $data = [];
+        while ($baris = $result->fetch_assoc()) {
+            $data[] = $baris;
+        }
+        return $data;
+    } else {
+        return null;
+    }
+}
+
+
+
+    public function hapusDataGarjasWanitaSitUp2($id)
+    {
+        $queryDelete = "DELETE FROM garjas_wanita_sit_up_kaki_di_tekuk WHERE ID_Wanita_Sit_Up_Kaki_Di_Tekuk=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================GARJAS WANITA SIT UP DI TEKUK===================================

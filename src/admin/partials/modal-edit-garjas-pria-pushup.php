@@ -9,19 +9,14 @@
                 <form method="post" enctype="multipart/form-data">
                     <input type="hidden" id="editGarjasPriaPushUpID" name="ID_Push_Up_Pria" autocomplete="off">
                     <div class="mb-3">
-                        <label for="suntingNIPPengguna" class="form-label">NIP</label>
-                        <select name="NIP_Pengguna" id="suntingNIPPengguna" class="form-select">
-                            <option selected>Pilih NIP Pengguna</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                        </select>
+                        <label for="suntingNIPPengguna" class="form-label">NIP dan Nama Anggota</label>
+                        <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="suntingJumlahPushUpGarjasPria" class="form-label">Jumlah Push Up</label>
                         <input type="number" class="form-control" id="suntingJumlahPushUpGarjasPria" name="Jumlah_Push_Up_Pria">
                     </div>
-                    <button type="button" class="btn btn-primary" id="tombolSimpanGarjasPriaPushUp" name="Simpan">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaPushUp" name="Simpan">Simpan</button>
                 </form>
             </div>
         </div>

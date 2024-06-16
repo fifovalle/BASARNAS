@@ -17,6 +17,10 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="tambahFileSertifikat" class="form-label">File Sertifikat</label>
+                        <input type="file" class="form-control" id="tambahFileSertifikat" name="File_Sertifikat">
+                    </div>
+                    <div class="mb-3">
                         <label for="tambahNamaSertifikat" class="form-label">Nama Sertifikat</label>
                         <input type="text" class="form-control" id="tambahNamaSertifikat" name="Nama_Sertifikat" placeholder="Masukkan Nama Sertifikat">
                     </div>

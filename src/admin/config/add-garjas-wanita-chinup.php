@@ -32,39 +32,42 @@ if (isset($_POST['tambah_nilai'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
-
-    $obyekPenggunaWanita = new GarjasWanitaShuttleRun($koneksi);
+    $obyekPengguna = new GarjasWanitaChinUp($koneksi);
 
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
-    $jumlahShuttleRunWanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Shuttle_Run_Wanita']);
-    $umurPengguna = $obyekPenggunaWanita->ambilUmurGarjasWanitaShuttlerunOlehNIP($nipPengguna);
+    $jumlahChinUpWanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Chin_Up_Wanita']);
+    $umurPengguna = $obyekPengguna->ambilUmurGarjasWanitaChinUpOlehNIP($nipPengguna);
 
-    $nilaiPushUp = [
-        38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,
-        33 => 89, 32 => 87, 31 => 85, 30 => 83, 29 => 81,
-        28 => 79, 27 => 77, 26 => 75, 25 => 73, 24 => 70,
-        23 => 68, 22 => 66, 21 => 64, 20 => 62, 19 => 60,
-        18 => 58, 17 => 56, 16 => 54, 14 => 49, 13 => 47,
-        12 => 45, 11 => 43, 10 => 41, 9 => 37, 8 => 32,
-        7 => 27, 6 => 23, 5 => 19, 4 => 14, 3 => 10, 2 => 5, 1 => 1
+    $nilaiChinUp = [
+        44 => 100, 43 => 96, 42 => 91, 41 => 87, 40 => 83,
+        39 => 78, 38 => 74, 37 => 70, 36 => 65, 35 => 61,
+        34 => 59, 33 => 57, 32 => 56, 31 => 54, 30 => 52,
+        29 => 50, 28 => 49, 27 => 47, 26 => 45, 25 => 43,
+        24 => 42, 23 => 40, 22 => 38, 21 => 36, 20 => 35,
+        19 => 33, 18 => 31, 17 => 29, 16 => 27, 15 => 26,
+        14 => 24, 13 => 22, 12 => 20, 11 => 19, 10 => 17,
+        9 => 15, 8 => 13, 7 => 12, 6 => 10, 5 => 8,
+        4 => 6, 3 => 5, 2 => 3, 1 => 1
     ];
 
-    $nilaiAkhir = ($umurPengguna < 25 && isset($nilaiPushUp[$jumlahShuttleRunWanita])) ? $nilaiPushUp[$jumlahShuttleRunWanita] : 0;
+    $nilaiAkhir = ($umurPengguna < 25 && isset($nilaiChinUp[$jumlahChinUpWanita])) ? $nilaiChinUp[$jumlahChinUpWanita] : 0;
+
+
 
     $dataPenggunaWanita = array(
         'NIP_Pengguna' => $nipPengguna,
-        'Waktu_Shuttle_Run_Wanita' => $jumlahShuttleRunWanita,
-        'Nilai_Shuttle_Run_Wanita' => $nilaiAkhir,
+        'Jumlah_Chin_Up_Wanita' => $jumlahChinUpWanita,
+        'Nilai_Chin_Up_Wanita' => $nilaiAkhir,
     );
 
-    $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaShuttleRun($dataPenggunaWanita);
+    $simpanDataPenggunaWanita = $obyekPengguna->tambahGarjasWanitaChinUp($dataPenggunaWanita);
 
     if ($simpanDataPenggunaWanita) {
-        setPesanKeberhasilan("Berhasil, data pengguna wanita baru telah ditambahkan.");
+        setPesanKeberhasilan("Berhasil, data pengguna baru telah ditambahkan.");
     } else {
-        setPesanKesalahan("Gagal menyimpan data pengguna wanita.");
+        setPesanKesalahan("Gagal menyimpan data pengguna.");
     }
 
-    header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-shuttlerun.php");
+    header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-chinup.php");
     exit;
 }

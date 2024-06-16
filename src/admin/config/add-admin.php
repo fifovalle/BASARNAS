@@ -34,7 +34,6 @@ if (isset($_POST['tambah_admin'])) {
     $namaLengkapAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nama_Lengkap_Admin', FILTER_SANITIZE_STRING));
 
     $tanggalLahirAdmin = $_POST['Tanggal_Lahir_Admin'];
-
     $tanggal_lahir_format = DateTime::createFromFormat('Y-m-d', $tanggalLahirAdmin);
     if ($tanggal_lahir_format === false) {
         $pesanKesalahan .= "Format tanggal lahir tidak valid.";
@@ -118,6 +117,12 @@ if (isset($_POST['tambah_admin'])) {
         exit;
     }
 
+    if ($umur_admin < 17) {
+        setPesanKesalahan("Umur admin harus 17 tahun atau lebih.");
+        header("Location: " . $akarUrl . "src/admin/pages/data-admin.php");
+        exit;
+    }
+
     $dataAdmin = array(
         'NIP_Admin' => $nipAdmin,
         'Foto_Admin' => $namaFotoAdminBaru,
@@ -129,7 +134,7 @@ if (isset($_POST['tambah_admin'])) {
         'Jabatan_Admin' => $jabatanAdmin,
         'Jenis_Kelamin_Admin' => $jenisKelaminAdmin,
         'Kata_Sandi_Admin' => $hashKataSandi,
-        'Konfirmasi_Kata_Sandi_Admin' => $konfirmasiKataSandiAdmin,
+        'Konfirmasi_Kata_Sandi_Admin' => $hashKataSandi,
     );
 
     $obyekAdmin = new Admin($koneksi);
@@ -146,4 +151,4 @@ if (isset($_POST['tambah_admin'])) {
     header("Location: " . $akarUrl . "src/admin/pages/data-admin.php");
     exit;
 }
-
+?>

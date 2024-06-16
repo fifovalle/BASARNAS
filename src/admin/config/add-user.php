@@ -94,6 +94,12 @@ if (isset($_POST['Simpan'])) {
     $tgl_today = new DateTime('now');
     $umur_pengguna = $tgl_today->diff($tgl_lahir)->y;
 
+    if ($umur_pengguna < 17) {
+        setPesanKesalahan("Umur pengguna harus 17 tahun atau lebih.");
+        header("Location: $akarUrl" . "src/admin/pages/data-user.php");
+        exit;
+    }
+
     $dataPengguna = array(
         'NIP_Pengguna' => $nipPengguna,
         'Foto_Pengguna' => $namaFotoPenggunaBaru,
@@ -117,3 +123,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akarUrl" . "src/admin/pages/data-user.php");
     exit;
 }
+?>

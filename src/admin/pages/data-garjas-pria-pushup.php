@@ -73,6 +73,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>NO</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
@@ -85,11 +86,12 @@
                                             $garjasPushUpPriaModel = new GarjasPushUpPria($koneksi);
                                             $garjasPushUpPriaInfo = $garjasPushUpPriaModel->tampilkanDataGarjasPriaPushUp();
                                             ?>
-
                                             <tbody>
                                                 <?php if (!empty($garjasPushUpPriaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
                                                     <?php foreach ($garjasPushUpPriaInfo as $garjasPushUpPria) : ?>
                                                         <tr>
+                                                            <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $garjasPushUpPria['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPushUpPria['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPushUpPria['Umur_Pengguna']; ?></td>
@@ -97,7 +99,7 @@
                                                             <td><?php echo $garjasPushUpPria['Nilai_Push_Up_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaPushUp">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaPushUp" data-bs-toggle="modal" data-id="<?php echo $garjasPushUpPria['ID_Push_Up_Pria']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaPushUp(<?php echo $garjasPushUpPria['ID_Push_Up_Pria']; ?>)">
@@ -112,7 +114,7 @@
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6">Tidak ada data yang ditemukan.</td>
+                                                        <td colspan="6" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Garjas Pria Push Up!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

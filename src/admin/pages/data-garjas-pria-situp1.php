@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -54,7 +56,6 @@
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -71,6 +72,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>NO</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
@@ -79,27 +81,41 @@
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $garjasSitUpKakiLurusPriaModel = new GarjasPriaSitUpKakiLurus($koneksi);
+                                            $garjasSitUpKakiLurusPriaInfo = $garjasSitUpKakiLurusPriaModel->tampilkanDataGarjasPriaSitUp1();
+                                            ?>
                                             <tbody>
+                                            <?php if (!empty($garjasSitUpKakiLurusPriaInfo)) : ?>
+                                                <?php $nomor = 1; ?>
+                                                <?php foreach ($garjasSitUpKakiLurusPriaInfo as $garjasSitUpKakiLurusPria) : ?>
+                                                    <tr>
+                                                        <td><?php echo $nomor++; ?></td>
+                                                        <td><?php echo $garjasSitUpKakiLurusPria['NIP_Pengguna']; ?></td>
+                                                        <td><?php echo $garjasSitUpKakiLurusPria['Nama_Lengkap_Pengguna']; ?></td>
+                                                        <td><?php echo $garjasSitUpKakiLurusPria['Umur_Pengguna']; ?></td>
+                                                        <td><?php echo $garjasSitUpKakiLurusPria['Jumlah_Sit_up_Kaki_lurus_Pria']; ?></td>
+                                                        <td><?php echo $garjasSitUpKakiLurusPria['Nilai_Sit_Up_Kaki_Lurus_Pria']; ?></td>
+                                                        <td>
+                                                            <div class="form-button-action">
+                                                                <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaSitUp1">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaSitUp1(<?php echo $garjasSitUpKakiLurusPria['ID_Sit_Up_Kaki_Lurus_Pria']; ?>)">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-link btn-info buttonLihatGarjasPriaSitup1" data-bs-toggle="modal" data-id="<?php echo $garjasSitUpKakiLurusPria['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php else : ?>
                                                 <tr>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Jumlah Sit Up Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaSitUp1">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasPriaSitUp1">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
+                                                    <td colspan="7" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Garjas Pria Sit Up Kaki Lurus!</td>
                                                 </tr>
+                                            <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -138,6 +154,8 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-garjas-pria-situp1.js"></script>
+    <script src="../assets/js/value-see-garjas-pria-situp1.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -177,6 +195,10 @@
             });
         });
     </script>
+     <!-- ALERT -->
+     <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

@@ -5,8 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $id = mysqli_real_escape_string($koneksi, $_GET['id']);
     $id = intval($id);
 
-    $garjasPriaPushupModel = new GarjasWanitaSitUp1($koneksi);
-    $hapusData = $garjasPriaPushupModel->hapusDataGarjasWanitaSitUp1($id);
+    $garjasWanitaSitUp1Model = new GarjasWanitaSitUp1($koneksi);
+    $hapusData = $garjasWanitaSitUp1Model->hapusDataGarjasWanitaSitUp1($id);
 
     $successMessage = htmlspecialchars("Data Garjas Sit Up Kaki Lurus Wanita berhasil dihapus.");
     $failureMessage = htmlspecialchars("Gagal menghapus Sit Up Kaki Lurus Wanita.");

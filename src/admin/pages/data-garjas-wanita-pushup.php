@@ -99,13 +99,13 @@
                                                             <td><?php echo $garjasPushUpWanita['Nilai_Push_Up_Wanita']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaPushUp">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaPushUp" data-bs-toggle="modal" data-id="<?php echo $garjasPushUpWanita['ID_Wanita_Push_Up']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaPushUp(<?php echo $garjasPushUpWanita['ID_Wanita_Push_Up']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasWanitaPushUp" data-bs-toggle="modal" data-bs-target="#lihatGarjasWanitaPushUp">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasWanitaPushUp" data-bs-toggle="modal" data-id="<?php echo $garjasPushUpWanita['ID_Wanita_Push_Up']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -157,6 +157,7 @@
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/delete-garjas-wanita-push-up.js"></script>
     <script src="../assets/js/value-garjas-wanita-push-up.js"></script>
+    <script src="../assets/js/value-see-garjas-wanita-push-up.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

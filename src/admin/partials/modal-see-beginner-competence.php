@@ -60,6 +60,10 @@
                                 <td>Kategori Kompetensi</td>
                             </tr>
                             <tr>
+                                <th>File Sertifikat:</th>
+                                <td>FIle Sertifikat</td>
+                            </tr>
+                            <tr>
                                 <th>Status:</th>
                                 <td class="badge rounded-pill text-bg-success">Aktif</td>
                             </tr>

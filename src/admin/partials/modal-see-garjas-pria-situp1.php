@@ -8,44 +8,45 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4 text-center">
-                        <img src="../assets/img/arashmil.jpg" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
-                        <h3>Nama Pengguna</h3>
-                        <p class="text-muted">NIP Pengguna</p>
+                        <img id="lihatFotoPenggunaSitUp1" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
+                        <h3 id="lihatNamaPenggunaSitUp1">
+                        </h3>
+                        <p class="text-muted" id="lihatNIPPenggunaSitUp1">
                     </div>
                     <div class="col-8">
                         <h4>Info Hasil Selengkapnya</h4>
                         <table class="table table-borderless">
                             <tr>
                                 <th>Nama Lengkap:</th>
-                                <td>Nama Lengkap Pengguna</td>
+                                <td id="lihatNamaLengkapSitUp1"></td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lahir:</th>
-                                <td>Tanggal Lahir Pengguna</td>
+                                <td id="lihatTanggalLahirSitUp1"></td>
                             </tr>
                             <tr>
                                 <th>Jabatan:</th>
-                                <td>Jabatan Pengguna</td>
+                                <td id="lihatJabatanSitUp1"></td>
                             </tr>
                             <tr>
                                 <th>Jenis Kelamin:</th>
-                                <td>Jenis Kelamin Pengguna</td>
+                                <td id="lihatJenisKelaminSitUp1"></td>
                             </tr>
                             <tr>
                                 <th>Nomor Telepon:</th>
-                                <td>Nomor Telepon Pengguna</td>
+                                <td id="lihatNoTeleponSitUp1"></td>
                             </tr>
                             <tr>
                                 <th>Umur:</th>
-                                <td>Umur Pengguna</td>
+                                <td id="lihatUmurSitUp1"></td>
                             </tr>
                             <tr>
                                 <th>Jumlah Sit Up:</th>
-                                <td>Jumlah Sit Up Pengguna</td>
+                                <td id="lihatJumlahSitUp1"></td>
                             </tr>
                             <tr>
                                 <th>Nilai Sit Up:</th>
-                                <td>Nilai Sit Up Pengguna</td>
+                                <td id="lihatNilaiSitUp1"></td>
                             </tr>
                         </table>
                     </div>

@@ -17,6 +17,10 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="suntingFileSertifikat" class="form-label">File Sertifikat</label>
+                        <input type="file" class="form-control" id="suntingFileSertifikat" name="File_Sertifikat">
+                    </div>
+                    <div class="mb-3">
                         <label for="suntingNamaSertifikat" class="form-label">Nama Sertifikat</label>
                         <input type="text" class="form-control" id="suntingNamaSertifikat" name="Nama_Sertifikat" placeholder="Masukkan Nama Sertifikat">
                     </div>

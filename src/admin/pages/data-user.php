@@ -74,6 +74,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>NO</th>
                                                     <th>NIP</th>
                                                     <th>Foto</th>
                                                     <th>Nama</th>
@@ -89,8 +90,10 @@
                                                 $penggunaInfo = $penggunaModel->tampilkanDataPengguna();
                                                 ?>
                                                 <?php if (!empty($penggunaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
                                                     <?php foreach ($penggunaInfo as $pengguna) : ?>
                                                         <tr>
+                                                            <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $pengguna['NIP_Pengguna']; ?></td>
                                                             <td>
                                                                 <div class="d-flex justify-content-center">
@@ -118,7 +121,7 @@
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6" class="text-center text-danger fw-bold ">Tidak Ada Data Pengguna!</td>
+                                                    <td colspan="6" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Pengguna!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
