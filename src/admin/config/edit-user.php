@@ -12,14 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pesanKesalahan = '';
 
-    // Validasi dan format tanggal lahir
     $tanggal_lahir_format = DateTime::createFromFormat('Y-m-d', $tanggalLahirPengguna);
     if ($tanggal_lahir_format === false) {
         $pesanKesalahan .= "Format tanggal lahir tidak valid. ";
     } else {
         $tanggalLahirPengguna = $tanggal_lahir_format->format('Y-m-d');
 
-        // Hitung umur berdasarkan tanggal lahir
         $tgl_lahir = new DateTime($tanggalLahirPengguna);
         $tgl_today = new DateTime('now');
         $umurPengguna = $tgl_today->diff($tgl_lahir)->y;

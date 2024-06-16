@@ -474,7 +474,8 @@ class GarjasPushUpPria
 
 
 // ===================================GARJAS PRIA SIT UP KAKI LURUS===================================
-class GarjasPriaSitUpKakiLurus{
+class GarjasPriaSitUpKakiLurus
+{
 
     private $koneksi;
 
@@ -582,8 +583,6 @@ class GarjasPriaSitUpKakiLurus{
             return null;
         }
     }
-
-
 }
 // ===================================GARJAS PRIA SIT UP KAKI LURUS===================================
 
@@ -997,10 +996,9 @@ class GarjasWanitaSitUp2
         }
     }
 
-
     public function tampilkanDataGarjasPriaSitUpKakiLurus()
-{
-    $query = "SELECT garjas_pria_sit_up_kaki_lurus.ID_Sit_Up_Kaki_Lurus_Pria, garjas_pria_sit_up_kaki_lurus.NIP_Pengguna,
+    {
+        $query = "SELECT garjas_pria_sit_up_kaki_lurus.ID_Sit_Up_Kaki_Lurus_Pria, garjas_pria_sit_up_kaki_lurus.NIP_Pengguna,
                      pengguna.Nama_Lengkap_Pengguna, pengguna.Tanggal_Lahir_Pengguna, 
                      pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
                      pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
@@ -1009,20 +1007,18 @@ class GarjasWanitaSitUp2
               FROM garjas_pria_sit_up_kaki_lurus
               LEFT JOIN pengguna ON garjas_pria_sit_up_kaki_lurus.NIP_Pengguna = pengguna.NIP_Pengguna";
 
-    $result = $this->koneksi->query($query);
+        $result = $this->koneksi->query($query);
 
-    if ($result->num_rows > 0) {
-        $data = [];
-        while ($baris = $result->fetch_assoc()) {
-            $data[] = $baris;
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
         }
-        return $data;
-    } else {
-        return null;
     }
-}
-
-
 
     public function hapusDataGarjasWanitaSitUp2($id)
     {
@@ -1039,3 +1035,151 @@ class GarjasWanitaSitUp2
     }
 }
 // ===================================GARJAS WANITA SIT UP DI TEKUK===================================
+
+
+// ===================================KOMPETENSI===================================
+class Kompetensi
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function escapeString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tambahKompetensi($data)
+    {
+        $query = "INSERT INTO kompetensi (
+            NIP_Pengguna, 
+            Nama_Sertifikat, 
+            Tanggal_Penerbitan_Sertifikat, 
+            Masa_Berlaku,
+            Tanggal_Berakhir_Sertifikat, 
+            Kategori_Kompetensi, 
+            Status, 
+            File_Sertifikat
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "sssissss",
+            $this->escapeString($data['NIP_Pengguna']),
+            $this->escapeString($data['Nama_Sertifikat']),
+            $this->escapeString($data['Tanggal_Penerbitan_Sertifikat']),
+            $this->escapeString($data['Masa Berlaku']),
+            $this->escapeString($data['Tanggal_Berakhir_Sertifikat']),
+            $this->escapeString($data['Kategori_Kompetensi']),
+            $this->escapeString($data['Status']),
+            $this->escapeString($data['File_Sertifikat'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function tampilkanKompetensiPemula()
+    {
+        $query = "SELECT kompetensi.*, pengguna.* FROM kompetensi LEFT JOIN pengguna ON kompetensi.NIP_Pengguna = pengguna.NIP_Pengguna WHERE kompetensi.Kategori_Kompetensi = 'Pemula'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanKompetensiPemulaOlehID($id)
+    {
+        $query = "SELECT * FROM kompetensi WHERE ID_Kompetensi = ?";
+        $stmt = $this->koneksi->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function hapusKompetensi($id)
+    {
+        $query = "SELECT ID_Kompetensi, File_Sertifikat FROM kompetensi WHERE ID_Kompetensi=?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        $idPemilikFoto = $row['ID_Kompetensi'];
+        $namaFoto = $row['File_Sertifikat'];
+
+        if ($idPemilikFoto != $id) {
+            return false;
+        }
+
+        $queryDelete = "DELETE FROM kompetensi WHERE ID_Kompetensi=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            $direktoriFoto = "../uploads/";
+
+            if (file_exists($direktoriFoto . $namaFoto)) {
+                if (unlink($direktoriFoto . $namaFoto)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiKompetensi($id, $dataKompetensi)
+    {
+        $sql = "UPDATE kompetensi SET
+                Nama_Sertifikat = ?,
+                Tanggal_Penerbitan_Sertifikat = ?,
+                Tanggal_Berakhir_Sertifikat = ?,
+                Kategori_Kompetensi = ?,
+                Status = ?,
+                File_Sertifikat = ?
+                WHERE ID_Kompetensi = ?";
+        $stmt = $this->koneksi->prepare($sql);
+
+        if ($stmt === false) {
+            return false;
+        }
+
+        $stmt->bind_param(
+            "ssssssi",
+            $dataKompetensi['Nama_Sertifikat'],
+            $dataKompetensi['Tanggal_Penerbitan_Sertifikat'],
+            $dataKompetensi['Tanggal_Berakhir_Sertifikat'],
+            $dataKompetensi['Kategori_Kompetensi'],
+            $dataKompetensi['Status'],
+            $dataKompetensi['File_Sertifikat'],
+            $id
+        );
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================KOMPETENSI===================================

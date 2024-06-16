@@ -121,7 +121,7 @@
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                    <td colspan="6" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Pengguna!</td>
+                                                        <td colspan="8" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Pengguna!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

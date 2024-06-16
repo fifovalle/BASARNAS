@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -72,32 +74,45 @@
                                             <thead>
                                                 <tr>
                                                     <th>Nomor</th>
-                                                    <th>NIP</th>
-                                                    <th>Nama</th>
+                                                    <th>Nama Pengguna</th>
+                                                    <th>Nama Sertifikat</th>
                                                     <th>Kategori Kompetensi</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $kompetensiPemulaModel = new Kompetensi($koneksi);
+                                            $kompetensiPemulaInfo = $kompetensiPemulaModel->tampilkanKompetensiPemula();
+                                            ?>
                                             <tbody>
-                                                <tr>
-                                                    <td>No Urut</td>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Sertifikat</td>
-                                                    <td>Kategori Kompetensi</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingKompetensiPemula">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatKompetensiPemula">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php if (!empty($kompetensiPemulaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($kompetensiPemulaInfo as $pemula) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $pemula['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $pemula['Nama_Sertifikat']; ?></td>
+                                                            <td><?php echo $pemula['Kategori_Kompetensi']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonKompetensiPemula" data-bs-toggle="modal" data-id="<?php echo $pemula['ID_Kompetensi']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusKompetensiPemula(<?php echo $pemula['ID_Kompetensi']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatKompetensiPemula" data-bs-toggle="modal" data-id="<?php echo $pemula['ID_Kompetensi']; ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="6" class="text-center text-danger fw-bold ">Tidak Ada Data Kompetensi Pemula!</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -121,7 +136,6 @@
     <?php include('../partials/modal-edit-beginner-competence.php'); ?>
     <?php include('../partials/modal-see-beginner-competence.php'); ?>
     <!-- MODALS END -->
-    </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -136,6 +150,9 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-beginner-competence.js"></script>
+    <script src="../assets/js/value-see-beginner-competence.js"></script>
+    <script src="../assets/js/value-beginner-competence.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -175,6 +192,10 @@
             });
         });
     </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

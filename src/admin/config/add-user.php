@@ -75,18 +75,25 @@ if (isset($_POST['Simpan'])) {
     $fotoPenggunaTemp = $fotoPengguna['tmp_name'];
     $ukuranFotoPengguna = $fotoPengguna['size'];
     $errorFotoPengguna = $fotoPengguna['error'];
-    $tujuanFotoPengguna = '';
-    $ukuranMaksimal = 2 * 1024 * 1024; // 2MB
+    $pesanKesalahan = '';
+    $ukuranMaksimal = 2 * 1024 * 1024;
+
     if ($ukuranFotoPengguna > $ukuranMaksimal) {
         $pesanKesalahan .= "Ukuran file foto pengguna melebihi batas maksimal (2MB). ";
     }
-    $namaFotoPenggunaBaru = time() . '_' . $namaFotoPengguna;
+
+    $ext = pathinfo($namaFotoPengguna, PATHINFO_EXTENSION);
+
+    $namaFotoPenggunaBaru = uniqid() . '.' . $ext;
+
     $tujuanFotoPengguna = '../uploads/' . $namaFotoPenggunaBaru;
+
     $apakahBerhasilDipindahkan = move_uploaded_file($fotoPenggunaTemp, $tujuanFotoPengguna);
     $pesanKesalahan .= (!$apakahBerhasilDipindahkan && empty($pesanKesalahan)) ? "Gagal mengupload foto pengguna." : '';
+
     if (!empty($pesanKesalahan)) {
         setPesanKesalahan($pesanKesalahan);
-        header("Location: $akarUrl" . "src/admin/pages/data-user.php");
+        header("Location: " . $akarUrl . "src/admin/pages/data-user.php");
         exit;
     }
 
@@ -123,4 +130,3 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akarUrl" . "src/admin/pages/data-user.php");
     exit;
 }
-?>

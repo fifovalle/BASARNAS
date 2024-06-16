@@ -74,7 +74,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>NO</th>
+                                                    <th>NOMOR</th>
                                                     <th>NIP</th>
                                                     <th>Foto</th>
                                                     <th>Nama</th>
@@ -121,7 +121,7 @@
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6" class="text-center text-danger fw-bold ">Tidak Ada Data Admin!</td>
+                                                        <td colspan="8" class="text-center text-danger fw-bold">Tidak Ada Data Admin!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

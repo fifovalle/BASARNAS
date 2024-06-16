@@ -6,14 +6,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/" method="post" enctype="multipart/form-data">
+                <form action="../config/add-beginner-competence.php" method="post" enctype="multipart/form-data">
+                    <?php
+                    $penggunaModel = new Pengguna($koneksi);
+                    $penggunaInfo = $penggunaModel->tampilkanDataPengguna();
+                    ?>
                     <div class="mb-3">
-                        <label for="tambahNIPAdmin" class="form-label">NIP</label>
-                        <select name="NIP_Admin" id="tambahNIPAdmin" class="form-select">
-                            <option selected>Pilih NIP Pengguna</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
+                        <label for="tambahNIPPengguna" class="form-label">NIP</label>
+                        <select name="NIP_Pengguna" id="tambahNIPPengguna" class="form-select">
+                            <?php if (empty($penggunaInfo)) : ?>
+                                <option selected>Tidak ada NIP Pengguna tersedia</option>
+                            <?php else : ?>
+                                <option selected>Pilih NIP Pengguna</option>
+                                <?php foreach ($penggunaInfo as $pengguna) : ?>
+                                    <option value="<?php echo htmlspecialchars($pengguna['NIP_Pengguna']); ?>">
+                                        <?php echo htmlspecialchars($pengguna['NIP_Pengguna']) . ' - ' . htmlspecialchars($pengguna['Nama_Lengkap_Pengguna']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -47,7 +57,6 @@
                             <option value="Tidak Aktif">Tidak Aktif</option>
                         </select>
                     </div>
-
                     <button type="submit" class="btn btn-primary" name="tambah_sertifikat">Simpan</button>
                 </form>
             </div>
