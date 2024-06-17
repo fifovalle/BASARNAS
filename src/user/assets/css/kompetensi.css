@@ -38,6 +38,7 @@
 }
 
 .kompetensi-title {
+  margin-top: 50px;
   padding: 20px;
   border-radius: 5px;
   font-size: 60px;
@@ -67,6 +68,9 @@
   box-shadow: 2px 5px black;
 }
 
+#inputSertifikatKompetensiLabel {
+  font-size: 30px;
+}
 .modal-dialog {
   min-width: 800px;
 }
@@ -166,6 +170,7 @@ label {
   }
 
   .kompetensi-title {
+    margin-top: 50px;
     font-size: 28px;
     font-weight: bold;
     letter-spacing: 5px;
@@ -182,5 +187,92 @@ label {
   .table-responsive-sm th,
   .table-responsive-sm td {
     white-space: nowrap;
+  }
+
+  #inputSertifikatKompetensiLabel {
+    width: 250px;
+    font-size: 15px;
+  }
+
+  .modal-dialog {
+    min-width: 360px;
+  }
+
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+  }
+  .upload-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .file-upload-form {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .file-upload-label input {
+    display: none;
+  }
+
+  .file-upload-label svg {
+    height: 50px;
+    fill: rgb(253, 128, 12);
+    margin-bottom: 20px;
+  }
+  .file-upload-label {
+    cursor: pointer;
+    background-color: white;
+    padding: 30px 70px;
+    border-radius: 40px;
+    border: 2px dashed rgb(253, 128, 12);
+    box-shadow: 0px 0px 50px -50px rgba(0, 0, 0, 0.7);
+  }
+  .file-upload-design {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .browse-button {
+    background-color: rgb(253, 128, 12);
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: white;
+    transition: all 0.3s;
+    box-shadow: 2px 5px black;
+  }
+  .browse-button:hover {
+    border: 1px solid rgb(253, 128, 12);
+    background-color: transparent;
+    color: black;
+  }
+
+  .box-file-upload {
+    display: none;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    border: #fd800c 2px dashed;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .box-file-upload p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+  }
+  .delete-icon {
+    cursor: pointer;
+    margin-left: 10px;
   }
 }

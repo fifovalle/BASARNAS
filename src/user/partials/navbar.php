@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-white">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="../pages/index.php">
 			<img src="../assets/img/LogoSimore.png" class="img-fluid" alt="...">

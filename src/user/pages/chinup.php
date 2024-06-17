@@ -5,7 +5,7 @@
 	<?php
 	include('../partials/header.php');
 	?>
-	<link rel="stylesheet" href="../assets/css/situp1.css">
+	<link rel="stylesheet" href="../assets/css/chinup.css">
 </head>
 
 <body>
