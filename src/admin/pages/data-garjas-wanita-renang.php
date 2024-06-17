@@ -123,7 +123,6 @@
     <?php include('../partials/modal-edit-garjas-wanita-renang.php'); ?>
     <?php include('../partials/modal-see-garjas-wanita-renang.php'); ?>
     <!-- MODALS END -->
-    </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

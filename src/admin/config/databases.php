@@ -1082,6 +1082,22 @@ class Kompetensi
         }
     }
 
+    public function tampilkanKompetensiMahir()
+    {
+        $query = "SELECT kompetensi.*, pengguna.* FROM kompetensi LEFT JOIN pengguna ON kompetensi.NIP_Pengguna = pengguna.NIP_Pengguna WHERE kompetensi.Kategori_Kompetensi = 'Mahir'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
     public function tampilkanKompetensiPemulaOlehID($id)
     {
         $query = "SELECT * FROM kompetensi WHERE ID_Kompetensi = ?";

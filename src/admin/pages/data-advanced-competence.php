@@ -54,7 +54,6 @@
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -72,32 +71,45 @@
                                             <thead>
                                                 <tr>
                                                     <th>Nomor</th>
-                                                    <th>NIP</th>
-                                                    <th>Nama</th>
+                                                    <th>Nama Pengguna</th>
+                                                    <th>Nama Sertifikat</th>
                                                     <th>Kategori Kompetensi</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $kompetensiMahirModel = new Kompetensi($koneksi);
+                                            $kompetensiMahirInfo = $kompetensiMahirModel->tampilkanKompetensiMahir();
+                                            ?>
                                             <tbody>
-                                                <tr>
-                                                    <td>No Urut</td>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Sertifikat</td>
-                                                    <td>Kategori Kompetensi</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingKompetensiMahir">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatKompetensiMahir">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php if (!empty($kompetensiMahirInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($kompetensiMahirInfo as $Mahir) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $Mahir['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $Mahir['Nama_Sertifikat']; ?></td>
+                                                            <td><?php echo $Mahir['Kategori_Kompetensi']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonKompetensiMahir" data-bs-toggle="modal" data-id="<?php echo $Mahir['ID_Kompetensi']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusKompetensiMahir(<?php echo $Mahir['ID_Kompetensi']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatKompetensiMahir" data-bs-toggle="modal" data-id="<?php echo $Mahir['ID_Kompetensi']; ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="6" class="text-center text-danger fw-bold">Tidak Ada Data Kompetensi Mahir!</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -121,7 +133,6 @@
     <?php include('../partials/modal-edit-advanced-competence.php'); ?>
     <?php include('../partials/modal-see-advanced-competence.php'); ?>
     <!-- MODALS END -->
-    </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

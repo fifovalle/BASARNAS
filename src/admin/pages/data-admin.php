@@ -147,7 +147,6 @@
     <?php include('../partials/modal-edit-admin.php'); ?>
     <?php include('../partials/modal-see-admin.php'); ?>
     <!-- MODALS END -->
-    </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

@@ -93,7 +93,7 @@
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $garjasChinUpWanita['NIP_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasChinUpWanita['Nama_Lengkap_Pengguna'];?></td>
+                                                            <td><?php echo $garjasChinUpWanita['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasChinUpWanita['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasChinUpWanita['Jumlah_Chin_Up_Wanita']; ?></td>
                                                             <td><?php echo $garjasChinUpWanita['Nilai_Chin_Up_Wanita']; ?></td>
@@ -140,7 +140,6 @@
     <?php include('../partials/modal-edit-garjas-wanita-chinup.php'); ?>
     <?php include('../partials/modal-see-garjas-wanita-chinup.php'); ?>
     <!-- MODALS END -->
-    </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

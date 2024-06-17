@@ -92,7 +92,7 @@
                                                     <?php foreach ($garjasSitUp2WanitaInfo as $garjasSitUp2Wanita) : ?>
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
-                                                            <td><?php echo $garjasSitUp2Wanita['NIP_Pengguna'];?></td>
+                                                            <td><?php echo $garjasSitUp2Wanita['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp2Wanita['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp2Wanita['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp2Wanita['Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita']; ?></td>
@@ -140,7 +140,6 @@
     <?php include('../partials/modal-edit-garjas-wanita-situp2.php'); ?>
     <?php include('../partials/modal-see-garjas-wanita-situp2.php'); ?>
     <!-- MODALS END -->
-    </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -197,7 +196,7 @@
             });
         });
     </script>
-     <?php
+    <?php
     include('../partials/alert.php');
     ?>
 </body>

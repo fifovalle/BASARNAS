@@ -91,7 +91,7 @@
                                                     <?php $nomor = 1; ?>
                                                     <?php foreach ($garjasSitUp1WanitaInfo as $garjasSitUp1Wanita) : ?>
                                                         <tr>
-                                                            <td><?php echo $nomor++; ?></td>    
+                                                            <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $garjasSitUp1Wanita['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp1Wanita['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp1Wanita['Umur_Pengguna']; ?></td>
@@ -140,7 +140,6 @@
     <?php include('../partials/modal-edit-garjas-wanita-situp1.php'); ?>
     <?php include('../partials/modal-see-garjas-wanita-situp1.php'); ?>
     <!-- MODALS END -->
-    </div>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
