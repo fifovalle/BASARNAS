@@ -21,6 +21,9 @@ Jelajahi karya terbaru dan keterampilan saya dalam dunia pengembangan perangkat 
 
 Berikut adalah beberapa tampilan halaman website :
 
+![Screenshot 2024-06-17 073817](https://github.com/fifovalle/BASARNAS/assets/90078068/ac515148-d2ef-4d65-ac51-7547109d0f59)
+![Screenshot 2024-06-17 073801](https://github.com/fifovalle/BASARNAS/assets/90078068/4fb8397f-7757-4bd4-888c-ec30bf52b464)
+
 ## 📬 Kontak
 
 Ingin berkolaborasi atau mendiskusikan proyek? Jangan ragu untuk menghubungi saya melalui email di [fifanaufal10@gmail.com](mailto:fifanaufal10@gmail.com) atau terhubung dengan saya di [WhatsApp](https://wa.me/+6282318334287).
