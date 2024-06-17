@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2024 at 03:57 PM
+-- Generation Time: Jun 17, 2024 at 02:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -149,13 +149,6 @@ CREATE TABLE `kompetensi` (
   `Kategori_Kompetensi` enum('Pemula','Terampil','Mahir') NOT NULL,
   `Status` enum('Aktif','Tidak Aktif') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `kompetensi`
---
-
-INSERT INTO `kompetensi` (`ID_Kompetensi`, `NIP_Pengguna`, `File_Sertifikat`, `Nama_Sertifikat`, `Tanggal_Penerbitan_Sertifikat`, `Masa_Berlaku`, `Tanggal_Berakhir_Sertifikat`, `Kategori_Kompetensi`, `Status`) VALUES
-(17, 225001010, 0x363636656565313730616434652e706466, 'Jago', '2024-05-17', 1, '2024-07-12', 'Terampil', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -307,7 +300,7 @@ ALTER TABLE `garjas_wanita_sit_up_kaki_lurus`
 -- AUTO_INCREMENT for table `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables

@@ -95,7 +95,7 @@ if (isset($_POST['tambah_sertifikat'])) {
         $simpanDataKompetensi = $objekKompetensi->tambahKompetensi($dataKompetensi);
 
         if ($simpanDataKompetensi) {
-            setPesanKeberhasilan("Berhasil, data kompetensi baru telah ditambahkan.");
+            setPesanKeberhasilan("Berhasil, data kompetensi terampil telah ditambahkan.");
         } else {
             setPesanKesalahan("Gagal menyimpan data kompetensi.");
         }

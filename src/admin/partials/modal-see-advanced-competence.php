@@ -8,64 +8,95 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4 text-center">
-                        <img src="../assets/img/arashmil.jpg" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
-                        <h3>Nama Pengguna</h3>
-                        <p class="text-muted">NIP Pengguna</p>
+                        <img id="lihatFotoMahir" alt="Foto Pengguna" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
+                        <!-- DOM -->
+                        <h3 id="lihatNamaLengkapMahir">
+                            <!-- DOM -->
+                        </h3>
+                        <p class="text-muted" id="lihatNIPMahir">
+                            <!-- DOM -->
+                        </p>
                     </div>
                     <div class="col-8">
                         <h4>Info Kompetensi Selengkapnya</h4>
                         <table class="table table-borderless">
                             <tr>
                                 <th>Nama Lengkap:</th>
-                                <td>Nama Lengkap Pengguna</td>
+                                <td id="lihatNamaPenggunaMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lahir:</th>
-                                <td>Tanggal Lahir Pengguna</td>
+                                <td id="lihatTglLahirPenggunaMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Jabatan:</th>
-                                <td>Jabatan Pengguna</td>
+                                <td id="lihatJabatanPenggunaMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Jenis Kelamin:</th>
-                                <td>Jenis Kelamin Pengguna</td>
+                                <td id="lihatJenisKelaminPenggunaMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Nomor Telepon:</th>
-                                <td>Nomor Telepon Pengguna</td>
+                                <td id="lihatNoTelpPenggunaMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Umur:</th>
-                                <td>Umur Pengguna</td>
+                                <td id="lihatUmurPenggunaMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Nama Sertifikat:</th>
-                                <td>Nama Sertifikat Kompetensi</td>
+                                <td id="lihatNamaSertifikatMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Tanggal Penerbitan Sertifikat:</th>
-                                <td>Tangal Penerbitan Sertifikat</td>
+                                <td id="lihatTglPenerbitanSertifikatMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Tanggal Berakhir Sertifikat:</th>
-                                <td>Tangal Berakhir Sertifikat</td>
+                                <td id="lihatTglBerakhirSertifikatMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Masa Berlaku:</th>
-                                <td>Masa Berlaku</td>
+                                <td id="lihatMasaBerlakuMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Kategori Kompetensi:</th>
-                                <td>Kategori Kompetensi</td>
+                                <td id="lihatKategoriKompetensiMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>File Sertifikat:</th>
-                                <td>FIle Sertifikat</td>
+                                <td id="lihatFileSertifikatMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                             <tr>
                                 <th>Status:</th>
-                                <td class="badge rounded-pill text-bg-success">Aktif</td>
+                                <td class="badge rounded-pill text-bg-success" id="lihatStatusMahirTd">
+                                    <!-- DOM -->
+                                </td>
                             </tr>
                         </table>
                     </div>

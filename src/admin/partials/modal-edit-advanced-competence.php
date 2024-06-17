@@ -6,15 +6,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/" method="post" enctype="multipart/form-data">
+                <form>
+                    <input type="hidden" id="suntingIDKompetensi" name="ID_Kompetensi">
                     <div class="mb-3">
-                        <label for="suntingNIPAdmin" class="form-label">NIP</label>
-                        <select name="NIP_Admin" id="suntingNIPAdmin" class="form-select">
-                            <option selected>Pilih NIP Pengguna</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                        </select>
+                        <label for="suntingNIPPengguna" class="form-label">NIP</label>
+                        <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="suntingFileSertifikat" class="form-label">File Sertifikat</label>
@@ -47,8 +43,7 @@
                             <option value="Tidak Aktif">Tidak Aktif</option>
                         </select>
                     </div>
-
-                    <button type="submit" class="btn btn-primary" name="sunting_sertifikat">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="tombolSuntingMahir">Simpan</button>
                 </form>
             </div>
         </div>
