@@ -52,6 +52,13 @@ if (isset($_POST['Simpan'])) {
     $kataSandiAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Kata_Sandi_Admin', FILTER_SANITIZE_STRING));
     $konfirmasiKataSandiAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Konfirmasi_Kata_Sandi_Admin', FILTER_SANITIZE_STRING));
     $pesanKesalahan = '';
+    $obyekAdmin = new Admin($koneksi);
+
+    $cekNipSudahAda = $obyekAdmin->cekNIP($nipAdmin);
+
+    if ($cekNipSudahAda) {
+        $pesanKesalahan .= "NIP admin sudah ada. ";
+    }
 
     $nomorTeleponFormatted = $noTeleponAdmin;
 
@@ -147,7 +154,6 @@ if (isset($_POST['Simpan'])) {
         'Konfirmasi_Kata_Sandi_Admin' => $hashKataSandi,
     );
 
-    $obyekAdmin = new Admin($koneksi);
     $simpanDataAdmin = $obyekAdmin->tambahAdmin($dataAdmin);
 
     if ($simpanDataAdmin) {
@@ -161,4 +167,3 @@ if (isset($_POST['Simpan'])) {
     header("Location: " . $akarUrl . "src/admin/pages/data-admin.php");
     exit;
 }
-?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2024 at 02:32 AM
+-- Generation Time: Jun 18, 2024 at 04:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,6 +53,13 @@ CREATE TABLE `garjas_pria_push_up` (
   `Jumlah_Push_Up_Pria` int(4) NOT NULL,
   `Nilai_Push_Up_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `garjas_pria_push_up`
+--
+
+INSERT INTO `garjas_pria_push_up` (`ID_Push_Up_Pria`, `NIP_Pengguna`, `Jumlah_Push_Up_Pria`, `Nilai_Push_Up_Pria`) VALUES
+(40, 225001010, 44, 100);
 
 -- --------------------------------------------------------
 
@@ -258,7 +265,7 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `garjas_pria_push_up`
 --
 ALTER TABLE `garjas_pria_push_up`
-  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_sit_up_kaki_lurus`

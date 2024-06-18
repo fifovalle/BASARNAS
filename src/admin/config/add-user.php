@@ -53,6 +53,12 @@ if (isset($_POST['Simpan'])) {
     $konfirmasiKataSandiPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Konfirmasi_Kata_Sandi_Pengguna', FILTER_SANITIZE_STRING));
     $obyekPengguna = new Pengguna($koneksi);
 
+    $cekNipSudahAda = $obyekPengguna->cekNIP($nipPengguna);
+
+    if ($cekNipSudahAda) {
+        $pesanKesalahan .= "NIP pengguna sudah ada. ";
+    }
+
     $noTeleponPenggunaFormatted = preg_replace('/\D/', '', $noTeleponPengguna);
     if (strpos($noTeleponPenggunaFormatted, '0') === 0) {
         $noTeleponPenggunaFormatted = '+62' . substr($noTeleponPenggunaFormatted, 1);
@@ -127,29 +133,27 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-      $dataPengguna = array(
-          'NIP_Pengguna' => $nipPengguna,
-          'Foto_Pengguna' => $namaFotoPenggunaBaru,
-          'Nama_Lengkap_Pengguna' => $namaLengkapPengguna,
-          'Tanggal_Lahir_Pengguna' => $tanggalLahirPengguna,
-          'Umur_Pengguna' => $umur_pengguna,
-          'Alamat_Pengguna' => $alamatPengguna,
-          'No_Telepon_Pengguna' => $noTeleponPenggunaFormatted,
-          'Jabatan_Pengguna' => $jabatanPengguna,
-          'Jenis_Kelamin_Pengguna' => $jenisKelaminPengguna,
-          'Kata_Sandi_Pengguna' => $hashKataSandi,
-          'Konfirmasi_Kata_Sandi_Pengguna' => $hashKataSandi, 
-      );
-  
-      $simpanDataPengguna = $obyekPengguna->tambahPengguna($dataPengguna);
-      if ($simpanDataPengguna) {
-          setPesanKeberhasilan("Berhasil, data pengguna baru telah ditambahkan.");
-      } else {
-          setPesanKesalahan("Gagal menyimpan data pengguna.");
-      }
-  
-      header("Location: $akarUrl" . "src/admin/pages/data-user.php");
-      exit;
-  }
-  ?>
-  
+    $dataPengguna = array(
+        'NIP_Pengguna' => $nipPengguna,
+        'Foto_Pengguna' => $namaFotoPenggunaBaru,
+        'Nama_Lengkap_Pengguna' => $namaLengkapPengguna,
+        'Tanggal_Lahir_Pengguna' => $tanggalLahirPengguna,
+        'Umur_Pengguna' => $umur_pengguna,
+        'Alamat_Pengguna' => $alamatPengguna,
+        'No_Telepon_Pengguna' => $noTeleponPenggunaFormatted,
+        'Jabatan_Pengguna' => $jabatanPengguna,
+        'Jenis_Kelamin_Pengguna' => $jenisKelaminPengguna,
+        'Kata_Sandi_Pengguna' => $hashKataSandi,
+        'Konfirmasi_Kata_Sandi_Pengguna' => $hashKataSandi,
+    );
+
+    $simpanDataPengguna = $obyekPengguna->tambahPengguna($dataPengguna);
+    if ($simpanDataPengguna) {
+        setPesanKeberhasilan("Berhasil, data pengguna baru telah ditambahkan.");
+    } else {
+        setPesanKesalahan("Gagal menyimpan data pengguna.");
+    }
+
+    header("Location: $akarUrl" . "src/admin/pages/data-user.php");
+    exit;
+}

@@ -157,6 +157,17 @@ class Admin
             return 0;
         }
     }
+
+    public function cekNIP($nip)
+    {
+        $query = "SELECT COUNT(*) as jumlah FROM admin WHERE NIP_Admin = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("s", $nip);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        return $row['jumlah'] > 0;
+    }
 }
 // ===================================ADMIN===================================
 
@@ -348,6 +359,17 @@ class Pengguna
         } else {
             return 0;
         }
+    }
+
+    public function cekNIP($nip)
+    {
+        $query = "SELECT COUNT(*) as jumlah FROM pengguna WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("s", $nip);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        return $row['jumlah'] > 0;
     }
 }
 // ===================================PENGGUNA===================================
