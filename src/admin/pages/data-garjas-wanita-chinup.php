@@ -99,7 +99,7 @@
                                                             <td><?php echo $garjasChinUpWanita['Nilai_Chin_Up_Wanita']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaPushUp">
+                                                                <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpWanita['ID_Wanita_Chin_Up']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaChinUp(<?php echo $garjasChinUpWanita['ID_Wanita_Chin_Up']; ?>)">

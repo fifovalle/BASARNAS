@@ -1,7 +1,7 @@
 <?php
 include 'databases.php';
 
-$garjasChinUpWanitaModel = new tampilkanDataGarjasWanitaChinUp($koneksi);
+$garjasChinUpWanitaModel = new GarjasWanitaChinUp($koneksi);
 
 $garjasWanitaChinUpID = isset($_GET['garjas_wanita_chinup_id']) ? $_GET['garjas_wanita_chinup_id'] : null;
 $dataGarjasWanitaChinUp = $garjasChinUpWanitaModel->tampilkanDataGarjasWanitaChinUp($garjasWanitaChinUpID);

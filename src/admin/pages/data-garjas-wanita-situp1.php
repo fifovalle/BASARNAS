@@ -99,7 +99,7 @@
                                                             <td><?php echo $garjasSitUp1Wanita['Nilai_Sit_Up_Kaki_Lurus_Wanita']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaSitUp1">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaSitUp1" data-bs-toggle="modal" data-id="<?php echo $garjasSitUp1Wanita['ID_Wanita_Sit_Up_Kaki_Lurus']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaSitUp1(<?php echo $garjasSitUp1Wanita['ID_Wanita_Sit_Up_Kaki_Lurus']; ?>)">
@@ -155,8 +155,9 @@
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/delete-garjas-wanita-situp1.js"></script>
-    <script src="../assets/js/value-garjas-wanita-situp1.js"></script>
     <script src="../assets/js/value-see-garjas-wanita-situp1.js"></script>
+    <script src="../assets/js/value-garjas-wanita-situp1.js"></script>
+
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

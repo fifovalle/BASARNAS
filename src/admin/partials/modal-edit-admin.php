@@ -31,6 +31,8 @@
                         <select id="suntingJabatanAdmin" name="Jabatan_Admin" class="form-select">
                             <option selected>Pilih Jabatan</option>
                             <option value="Satu">Satu</option>
+                            <option value="Dua">Dua</option>
+                            <option value="Tiga">Tiga</option>
                         </select>
                     </div>
                     <div class="mb-3">

@@ -3,7 +3,7 @@ include 'databases.php';
 
 $garjasShuttleRunWanitaModel = new GarjasWanitaShuttleRun($koneksi);
 
-$garjasWanitaShuttleRunID = isset($_GET['garjas_wanita_shuttlerun_id']) ? $_GET['garjas_pria_situp1_id'] : null;
+$garjasWanitaShuttleRunID = isset($_GET['garjas_wanita_shuttlerun_id']) ? $_GET['garjas_wanita_shuttlerun_id'] : null;
 $dataGarjasWanitaShuttleRun = $garjasShuttleRunWanitaModel->tampilkanDataGarjasWanitaShuttleRun($garjasWanitaShuttleRunID);
 
 $garjasWanitaShuttleRunDitemukan = null;

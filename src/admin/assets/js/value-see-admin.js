@@ -19,10 +19,7 @@ $(document).ready(function () {
         } else {
           $("#lihatNamaAdmin").text(adminData.Nama_Lengkap_Admin);
           $("#lihatNIPAdmin").text(adminData.NIP_Admin);
-          $("#lihatPotoAdmin").attr(
-            "src",
-            "../uploads/" + adminData.Foto_Admin
-          );
+          $("#lihatPotoAdmin").attr("src", "../uploads/" + adminData.Foto_Admin);
           $("#lihatNamaAdminTd").text(adminData.Nama_Lengkap_Admin);
           $("#lihatTglLahirAdminTd").text(adminData.Tanggal_Lahir_Admin);
           $("#lihatAlamatAdminTd").text(adminData.Alamat_Admin);

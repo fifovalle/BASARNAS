@@ -1,13 +1,13 @@
 $(document).ready(function () {
   $(".buttonGarjasWanitaSitUp1").click(function (e) {
     e.preventDefault();
-    let garjasID = $(this).data("id");
-    console.log(garjasID);
+    let garjasWanitaSitUp1ID = $(this).data("id");
+    console.log(garjasWanitaSitUp1ID);
     $.ajax({
       url: "../config/get-garjas-wanita-situp1-data.php",
       method: "GET",
       data: {
-        garjas_id: garjasID,
+        garjas_wanita_situp1_id: garjasWanitaSitUp1ID,
       },
       success: function (data) {
         console.log(data);
@@ -17,13 +17,10 @@ $(document).ready(function () {
         if (garjasSitUp1WanitaData.success === false) {
           alert(garjasSitUp1WanitaData.message);
         } else {
-          $("#editGarjasSitUp1WanitaID").val(
-            garjasSitUp1WanitaData.ID_Pengguna
-          );
-          $("#suntingNIPPengguna").val(garjasSitUp1WanitaData.NIP_Pengguna);
-          $("#suntingJumlahSitUp1GarjasWanita").val(
-            garjasSitUp1WanitaData.Jumlah_Sit_Up_Kaki_Lurus_Wanita
-          );
+          let nipNama = garjasSitUp1WanitaData.NIP_Pengguna + " - " + garjasSitUp1WanitaData.Nama_Lengkap_Pengguna;
+          $("#suntingNIPPengguna").val(nipNama);
+          $("#editGarjasSitUp1WanitaID").val(garjasSitUp1WanitaData.ID_Wanita_Sit_Up_Kaki_Lurus);
+          $("#suntingJumlahSitUp1GarjasWanita").val(garjasSitUp1WanitaData.Jumlah_Sit_Up_Kaki_Lurus_Wanita);
           $("#suntingGarjasWanitaSitUp1").modal("show");
         }
       },

@@ -18,21 +18,11 @@ $(document).ready(function () {
           alert(terampilData.message);
         } else {
           $("#suntingIDKompetensi").val(terampilData.ID_Kompetensi);
-          $("#suntingNIPPengguna").val(
-            terampilData.NIP_Pengguna +
-              " - " +
-              terampilData.Nama_Lengkap_Pengguna
-          );
-          $("#suntingTanggalLahirPengguna").val(
-            terampilData.Tanggal_Lahir_Pengguna
-          );
+          $("#suntingNIPPengguna").val(terampilData.NIP_Pengguna + " - " + terampilData.Nama_Lengkap_Pengguna);
+          $("#suntingTanggalLahirPengguna").val(terampilData.Tanggal_Lahir_Pengguna);
           $("#suntingNamaSertifikat").val(terampilData.Nama_Sertifikat);
-          $("#suntingTanggalPenerbitan").val(
-            terampilData.Tanggal_Penerbitan_Sertifikat
-          );
-          $("#suntingTanggalBerakhir").val(
-            terampilData.Tanggal_Berakhir_Sertifikat
-          );
+          $("#suntingTanggalPenerbitan").val(terampilData.Tanggal_Penerbitan_Sertifikat);
+          $("#suntingTanggalBerakhir").val(terampilData.Tanggal_Berakhir_Sertifikat);
           $("#suntingKategoriKompetensi").val(terampilData.Kategori_Kompetensi);
           $("#suntingStatus").val(terampilData.Status);
           $("#suntingKompetensiTerampil").modal("show");

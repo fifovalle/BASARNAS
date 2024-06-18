@@ -17,13 +17,10 @@ $(document).ready(function () {
         if (garjasWanitaPushUpData.success === false) {
           alert(garjasWanitaPushUpData.message);
         } else {
-          $("#SuntingGarjasWanitaPushUpID").val(
-            garjasWanitaPushUpData.ID_Wanita_Push_Up
-          );
-          $("#suntingNIPPengguna").val(garjasWanitaPushUpData.NIP_Pengguna);
-          $("#suntingJumlahPushUpGarjasWanita").val(
-            garjasWanitaPushUpData.Jumlah_Push_Up_Wanita
-          );
+          let nipNama = garjasWanitaPushUpData.NIP_Pengguna + " - " + garjasWanitaPushUpData.Nama_Lengkap_Pengguna;
+          $("#suntingNIPPengguna").val(nipNama);
+          $("#SuntingGarjasWanitaPushUpID").val(garjasWanitaPushUpData.ID_Wanita_Push_Up);
+          $("#suntingJumlahPushUpGarjasWanita").val(garjasWanitaPushUpData.Jumlah_Push_Up_Wanita);
           $("#suntingGarjasWanitaPushUp").modal("show");
         }
       },

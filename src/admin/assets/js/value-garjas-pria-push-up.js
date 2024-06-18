@@ -17,17 +17,10 @@ $(document).ready(function () {
         if (garjasPriaPushUpData.success === false) {
           alert(garjasPriaPushUpData.message);
         } else {
-          let nipNama =
-            garjasPriaPushUpData.NIP_Pengguna +
-            " - " +
-            garjasPriaPushUpData.Nama_Lengkap_Pengguna;
+          let nipNama = garjasPriaPushUpData.NIP_Pengguna + " - " + garjasPriaPushUpData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#editGarjasPriaPushUpID").val(
-            garjasPriaPushUpData.ID_Push_Up_Pria
-          );
-          $("#suntingJumlahPushUpGarjasPria").val(
-            garjasPriaPushUpData.Jumlah_Push_Up_Pria
-          );
+          $("#editGarjasPriaPushUpID").val(garjasPriaPushUpData.ID_Push_Up_Pria);
+          $("#suntingJumlahPushUpGarjasPria").val(garjasPriaPushUpData.Jumlah_Push_Up_Pria);
           $("#suntingGarjasPriaPushUp").modal("show");
         }
       },

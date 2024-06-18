@@ -2,27 +2,18 @@
 include 'databases.php';
 
 $garjasPushUpWanitaModel = new GarjasWanitaPushUp($koneksi);
+
 $garjasWanitaPushUpID = isset($_GET['garjas_wanita_push_up_id']) ? $_GET['garjas_wanita_push_up_id'] : null;
+$dataGarjasWanitaPushUp = $garjasPushUpWanitaModel->tampilkanDataGarjasWanitaPushUp($garjasWanitaPushUpID);
 
-if ($garjasWanitaPushUpID) {
-    $dataGarjasWanitaPushUp = $garjasPushUpWanitaModel->tampilkanDataGarjasWanitaPushUp();
+$garjasPushUpWanitaDitemukan = null;
 
-    if ($dataGarjasWanitaPushUp) {
-        $dataFound = false;
-        foreach ($dataGarjasWanitaPushUp as $data) {
-            if ($data['ID_Wanita_Push_Up'] == $garjasWanitaPushUpID) {
-                $dataFound = true;
-                echo json_encode($data);
-                break;
-            }
-        }
-        // Jika data tidak ditemukan
-        if (!$dataFound) {
-            echo json_encode(array("success" => false, "message" => "Garjas Wanita Push Up dengan ID tersebut tidak ditemukan."));
-        }
-    } else {
-        echo json_encode(array("success" => false, "message" => "Data Garjas Wanita Push Up tidak ditemukan."));
+foreach ($dataGarjasWanitaPushUp as $garjasPushUpWanita) {
+    $garjasPushUpWanitaDitemukan = $garjasPushUpWanita['ID_Wanita_Push_Up'] == $garjasWanitaPushUpID ? $garjasPushUpWanita : null;
+    if ($garjasPushUpWanitaDitemukan) {
+        break;
     }
-} else {
-    echo json_encode(array("success" => false, "message" => "ID Garjas Wanita Push Up tidak diberikan."));
 }
+
+echo json_encode($garjasPushUpWanitaDitemukan);
+

@@ -20,52 +20,25 @@ $(document).ready(function () {
           alert(pemulaData.message);
         } else {
           $("#lihatNamaLengkapPemula").text(pemulaData.Nama_Lengkap_Pengguna);
-          $("#lihatFotoPemula").attr(
-            "src",
-            "../uploads/" + pemulaData.Foto_Pengguna
-          );
+          $("#lihatFotoPemula").attr("src", "../uploads/" + pemulaData.Foto_Pengguna);
           $("#lihatNIPPemula").text(pemulaData.NIP_Pengguna);
-          $("#lihatNamaPenggunaPemulaTd").text(
-            pemulaData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatTglLahirPenggunaPemulaTd").text(
-            pemulaData.Tanggal_Lahir_Pengguna
-          );
+          $("#lihatNamaPenggunaPemulaTd").text(pemulaData.Nama_Lengkap_Pengguna);
+          $("#lihatTglLahirPenggunaPemulaTd").text(pemulaData.Tanggal_Lahir_Pengguna);
           $("#lihatJabatanPenggunaPemulaTd").text(pemulaData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaPemulaTd").text(
-            pemulaData.Jenis_Kelamin_Pengguna
-          );
-          $("#lihatNoTelpPenggunaPemulaTd").text(
-            pemulaData.No_Telepon_Pengguna
-          );
+          $("#lihatJenisKelaminPenggunaPemulaTd").text(pemulaData.Jenis_Kelamin_Pengguna);
+          $("#lihatNoTelpPenggunaPemulaTd").text(pemulaData.No_Telepon_Pengguna);
           $("#lihatUmurPenggunaPemulaTd").text(pemulaData.Umur_Pengguna);
           $("#lihatNamaSertifikatPemulaTd").text(pemulaData.Nama_Sertifikat);
-          $("#lihatTglPenerbitanSertifikatPemulaTd").text(
-            pemulaData.Tanggal_Penerbitan_Sertifikat
-          );
-          $("#lihatTglBerakhirSertifikatPemulaTd").text(
-            pemulaData.Tanggal_Berakhir_Sertifikat
-          );
+          $("#lihatTglPenerbitanSertifikatPemulaTd").text(pemulaData.Tanggal_Penerbitan_Sertifikat);
+          $("#lihatTglBerakhirSertifikatPemulaTd").text(pemulaData.Tanggal_Berakhir_Sertifikat);
           $("#lihatMasaBerlakuPemulaTd").text(pemulaData.Masa_Berlaku);
-          $("#lihatKategoriKompetensiPemulaTd").text(
-            pemulaData.Kategori_Kompetensi
-          );
-          $("#lihatFileSertifikatPemulaTd").html(
-            '<a href="../uploads/' +
-              fileSertifikat +
-              '" target="_blank">' +
-              kompetensi +
-              "</a>"
-          );
+          $("#lihatKategoriKompetensiPemulaTd").text(pemulaData.Kategori_Kompetensi);
+          $("#lihatFileSertifikatPemulaTd").html('<a href="../uploads/' + fileSertifikat + '" target="_blank">' + kompetensi + "</a>");
           $("#lihatStatusPemulaTd").text(pemulaData.Status);
           if (pemulaData.Status === "Aktif") {
-            $("#lihatStatusPemulaTd")
-              .removeClass("text-bg-danger")
-              .addClass("text-bg-success");
+            $("#lihatStatusPemulaTd").removeClass("text-bg-danger").addClass("text-bg-success");
           } else {
-            $("#lihatStatusPemulaTd")
-              .removeClass("text-bg-success")
-              .addClass("text-bg-danger");
+            $("#lihatStatusPemulaTd").removeClass("text-bg-success").addClass("text-bg-danger");
           }
           $("#lihatKompetensiPemula").modal("show");
         }

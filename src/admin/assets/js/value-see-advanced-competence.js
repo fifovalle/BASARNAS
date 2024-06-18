@@ -20,48 +20,25 @@ $(document).ready(function () {
           alert(mahirData.message);
         } else {
           $("#lihatNamaLengkapMahir").text(mahirData.Nama_Lengkap_Pengguna);
-          $("#lihatFotoMahir").attr(
-            "src",
-            "../uploads/" + mahirData.Foto_Pengguna
-          );
+          $("#lihatFotoMahir").attr("src", "../uploads/" + mahirData.Foto_Pengguna);
           $("#lihatNIPMahir").text(mahirData.NIP_Pengguna);
           $("#lihatNamaPenggunaMahirTd").text(mahirData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaMahirTd").text(
-            mahirData.Tanggal_Lahir_Pengguna
-          );
+          $("#lihatTglLahirPenggunaMahirTd").text(mahirData.Tanggal_Lahir_Pengguna);
           $("#lihatJabatanPenggunaMahirTd").text(mahirData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaMahirTd").text(
-            mahirData.Jenis_Kelamin_Pengguna
-          );
+          $("#lihatJenisKelaminPenggunaMahirTd").text(mahirData.Jenis_Kelamin_Pengguna);
           $("#lihatNoTelpPenggunaMahirTd").text(mahirData.No_Telepon_Pengguna);
           $("#lihatUmurPenggunaMahirTd").text(mahirData.Umur_Pengguna);
           $("#lihatNamaSertifikatMahirTd").text(mahirData.Nama_Sertifikat);
-          $("#lihatTglPenerbitanSertifikatMahirTd").text(
-            mahirData.Tanggal_Penerbitan_Sertifikat
-          );
-          $("#lihatTglBerakhirSertifikatMahirTd").text(
-            mahirData.Tanggal_Berakhir_Sertifikat
-          );
+          $("#lihatTglPenerbitanSertifikatMahirTd").text(mahirData.Tanggal_Penerbitan_Sertifikat);
+          $("#lihatTglBerakhirSertifikatMahirTd").text(mahirData.Tanggal_Berakhir_Sertifikat);
           $("#lihatMasaBerlakuMahirTd").text(mahirData.Masa_Berlaku);
-          $("#lihatKategoriKompetensiMahirTd").text(
-            mahirData.Kategori_Kompetensi
-          );
-          $("#lihatFileSertifikatMahirTd").html(
-            '<a href="../uploads/' +
-              fileSertifikat +
-              '" target="_blank">' +
-              kompetensi +
-              "</a>"
-          );
+          $("#lihatKategoriKompetensiMahirTd").text(mahirData.Kategori_Kompetensi);
+          $("#lihatFileSertifikatMahirTd").html('<a href="../uploads/' + fileSertifikat + '" target="_blank">' + kompetensi + "</a>");
           $("#lihatStatusMahirTd").text(mahirData.Status);
           if (mahirData.Status === "Aktif") {
-            $("#lihatStatusMahirTd")
-              .removeClass("text-bg-danger")
-              .addClass("text-bg-success");
+            $("#lihatStatusMahirTd").removeClass("text-bg-danger").addClass("text-bg-success");
           } else {
-            $("#lihatStatusMahirTd")
-              .removeClass("text-bg-success")
-              .addClass("text-bg-danger");
+            $("#lihatStatusMahirTd").removeClass("text-bg-success").addClass("text-bg-danger");
           }
           $("#lihatKompetensiMahir").modal("show");
         }

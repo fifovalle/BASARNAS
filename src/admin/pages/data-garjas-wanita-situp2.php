@@ -99,7 +99,7 @@
                                                             <td><?php echo $garjasSitUp2Wanita['Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaSitUp2">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaSitUp2" data-bs-toggle="modal" data-id="<?php echo $garjasSitUp2Wanita['ID_Wanita_Sit_Up_Kaki_Di_Tekuk']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaSitUp2(<?php echo $garjasSitUp2Wanita['ID_Wanita_Sit_Up_Kaki_Di_Tekuk']; ?>)">

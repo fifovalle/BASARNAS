@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="suntingGarjasWanitaSitUp1Label">Sunting Nilai Garjas Wanita Push Up</h1>
+                <h1 class="modal-title fs-5" id="suntingGarjasWanitaSitUp1Label">Sunting Nilai Garjas Wanita Sit Up Kaki Lurus</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingJumlahSitUp1GarjasWanita" class="form-label">Jumlah Sit Up</label>
-                        <input type="number" class="form-control" id="suntingJumlahSitUp1GarjasWanita" name="Jumlah_Sit_Up_1_Wanita">
+                        <input type="number" class="form-control" id="suntingJumlahSitUp1GarjasWanita" name="Jumlah_Sit_Up_Kaki_Lurus_Wanita">
                     </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasWanitaSitUp1" name="Simpan">Simpan</button>
                 </form>

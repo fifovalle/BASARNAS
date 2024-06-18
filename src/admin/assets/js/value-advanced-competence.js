@@ -18,19 +18,11 @@ $(document).ready(function () {
           alert(mahirData.message);
         } else {
           $("#suntingIDKompetensi").val(mahirData.ID_Kompetensi);
-          $("#suntingNIPPengguna").val(
-            mahirData.NIP_Pengguna + " - " + mahirData.Nama_Lengkap_Pengguna
-          );
-          $("#suntingTanggalLahirPengguna").val(
-            mahirData.Tanggal_Lahir_Pengguna
-          );
+          $("#suntingNIPPengguna").val(mahirData.NIP_Pengguna + " - " + mahirData.Nama_Lengkap_Pengguna);
+          $("#suntingTanggalLahirPengguna").val(mahirData.Tanggal_Lahir_Pengguna);
           $("#suntingNamaSertifikat").val(mahirData.Nama_Sertifikat);
-          $("#suntingTanggalPenerbitan").val(
-            mahirData.Tanggal_Penerbitan_Sertifikat
-          );
-          $("#suntingTanggalBerakhir").val(
-            mahirData.Tanggal_Berakhir_Sertifikat
-          );
+          $("#suntingTanggalPenerbitan").val(mahirData.Tanggal_Penerbitan_Sertifikat);
+          $("#suntingTanggalBerakhir").val(mahirData.Tanggal_Berakhir_Sertifikat);
           $("#suntingKategoriKompetensi").val(mahirData.Kategori_Kompetensi);
           $("#suntingStatus").val(mahirData.Status);
           $("#suntingKompetensiMahir").modal("show");

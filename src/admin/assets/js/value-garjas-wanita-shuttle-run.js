@@ -11,19 +11,16 @@ $(document).ready(function () {
       },
       success: function (data) {
         console.log(data);
-        let garjasPriaPushUpData = JSON.parse(data);
-        console.log(garjasPriaPushUpData);
+        let garjasWanitaShuttleRunData = JSON.parse(data);
+        console.log(garjasWanitaShuttleRunData);
 
-        if (garjasPriaPushUpData.success === false) {
-          alert(garjasPriaPushUpData.message);
+        if (garjasWanitaShuttleRunData.success === false) {
+          alert(garjasWanitaShuttleRunData.message);
         } else {
-          $("#editGarjasWanitaShuttleRunID").val(
-            garjasPriaPushUpData.ID_Push_Up_Pria
-          );
-          $("#suntingNIPPengguna").val(garjasPriaPushUpData.NIP_Pengguna);
-          $("#suntingJumlahShuttleRunGarjasWanita").val(
-            garjasPriaPushUpData.Jumlah_Push_Up_Pria
-          );
+          let nipNama = garjasWanitaShuttleRunData.NIP_Pengguna + " - " + garjasWanitaShuttleRunData.Nama_Lengkap_Pengguna;
+          $("#suntingNIPPengguna").val(nipNama);
+          $("#editGarjasWanitaShuttleRunID").val(garjasWanitaShuttleRunData.ID_Wanita_Shuttle_Run);
+          $("#suntingJumlahShuttleRunGarjasWanita").val(garjasWanitaShuttleRunData.Jumlah_Shuttle_Run_Wanita);
           $("#suntingGarjasWanitaShuttleRun").modal("show");
         }
       },
@@ -62,8 +59,7 @@ $(document).ready(function () {
             timerProgressBar: true,
           }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-              window.location.href =
-                "../pages/data-garjas-wanita-shuttlerun.php";
+              window.location.href = "../pages/data-garjas-wanita-shuttlerun.php";
             }
           });
         } else {

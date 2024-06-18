@@ -19,19 +19,12 @@ $(document).ready(function () {
         } else {
           $("#lihatNamaPengguna").text(penggunaData.Nama_Lengkap_Pengguna);
           $("#lihatNIPPengguna").text(penggunaData.NIP_Pengguna);
-          $("#lihatPotoPengguna").attr(
-            "src",
-            "../uploads/" + penggunaData.Foto_Pengguna
-          );
+          $("#lihatPotoPengguna").attr("src", "../uploads/" + penggunaData.Foto_Pengguna);
           $("#lihatNamaPenggunaTd").text(penggunaData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaTd").text(
-            penggunaData.Tanggal_Lahir_Pengguna
-          );
+          $("#lihatTglLahirPenggunaTd").text(penggunaData.Tanggal_Lahir_Pengguna);
           $("#lihatAlamatPenggunaTd").text(penggunaData.Alamat_Pengguna);
           $("#lihatJabatanPenggunaTd").text(penggunaData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaTd").text(
-            penggunaData.Jenis_Kelamin_Pengguna
-          );
+          $("#lihatJenisKelaminPenggunaTd").text(penggunaData.Jenis_Kelamin_Pengguna);
           $("#lihatNoTelpPenggunaTd").text(penggunaData.No_Telepon_Pengguna);
           $("#lihatUmurPenggunaTd").text(penggunaData.Umur_Pengguna);
           $("#lihatPengguna").modal("show");

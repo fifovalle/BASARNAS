@@ -19,17 +19,17 @@ $(document).ready(function () {
           alert(penggunaData.message);
         } else {
           $("#lihatNamaPengguna").text(penggunaData.Nama_Lengkap_Pengguna);
-          $("#lihatNIPPenggunaGP").text(penggunaData.NIP_Pengguna);
-          $("#lihatPotoPenggunaGP").attr("src", "../uploads/" + penggunaData.Foto_Pengguna);
-          $("#lihatNamaPenggunaGP").text(penggunaData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaGP").text(penggunaData.Tanggal_Lahir_Pengguna);
-          $("#lihatAlamatPenggunaGP").text(penggunaData.Alamat_Pengguna);
-          $("#lihatJabatanPenggunaGP").text(penggunaData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaGP").text(penggunaData.Jenis_Kelamin_Pengguna);
-          $("#lihatNoTelpPenggunaGP").text(penggunaData.No_Telepon_Pengguna);
-          $("#lihatUmurPenggunaGP").text(penggunaData.Umur_Pengguna);
-          $("#lihatJumlahSitUp1WanitaGP").text(penggunaData.Jumlah_Sit_Up_Kaki_Lurus_Wanita);
-          $("#lihatNilaiSitUp1WanitaGP").text(penggunaData.Nilai_Sit_Up_Kaki_Lurus_Wanita);
+          $("#lihatNIPPenggunaGW").text(penggunaData.NIP_Pengguna);
+          $("#lihatPotoPenggunaGW").attr("src", "../uploads/" + penggunaData.Foto_Pengguna);
+          $("#lihatNamaPenggunaGW").text(penggunaData.Nama_Lengkap_Pengguna);
+          $("#lihatTglLahirPenggunaGW").text(penggunaData.Tanggal_Lahir_Pengguna);
+          $("#lihatAlamatPenggunaGW").text(penggunaData.Alamat_Pengguna);
+          $("#lihatJabatanPenggunaGW").text(penggunaData.Jabatan_Pengguna);
+          $("#lihatJenisKelaminPenggunaGW").text(penggunaData.Jenis_Kelamin_Pengguna);
+          $("#lihatNoTelpPenggunaGW").text(penggunaData.No_Telepon_Pengguna);
+          $("#lihatUmurPenggunaGW").text(penggunaData.Umur_Pengguna);
+          $("#lihatJumlahSitUp1WanitaGW").text(penggunaData.Jumlah_Sit_Up_Kaki_Lurus_Wanita);
+          $("#lihatNilaiSitUp1WanitaGW").text(penggunaData.Nilai_Sit_Up_Kaki_Lurus_Wanita);
           $("#lihatGarjasWanitaSitUp1").modal("show");
         }
       },
