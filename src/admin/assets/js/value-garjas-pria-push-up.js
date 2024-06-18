@@ -17,10 +17,17 @@ $(document).ready(function () {
         if (garjasPriaPushUpData.success === false) {
           alert(garjasPriaPushUpData.message);
         } else {
-          let nipNama = garjasPriaPushUpData.NIP_Pengguna + " - " + garjasPriaPushUpData.Nama_Lengkap_Pengguna;
+          let nipNama =
+            garjasPriaPushUpData.NIP_Pengguna +
+            " - " +
+            garjasPriaPushUpData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#editGarjasPriaPushUpID").val(garjasPriaPushUpData.ID_Push_Up_Pria);
-          $("#suntingJumlahPushUpGarjasPria").val(garjasPriaPushUpData.Jumlah_Push_Up_Pria);
+          $("#editGarjasPriaPushUpID").val(
+            garjasPriaPushUpData.ID_Push_Up_Pria
+          );
+          $("#suntingJumlahPushUpGarjasPria").val(
+            garjasPriaPushUpData.Jumlah_Push_Up_Pria
+          );
           $("#suntingGarjasPriaPushUp").modal("show");
         }
       },
@@ -30,13 +37,13 @@ $(document).ready(function () {
     });
   });
 
-  $("#tombolSuntingPemula").click(function (e) {
+  $("#tombolSimpanGarjasPriaPushUp").click(function (e) {
     e.preventDefault();
 
     let formData = new FormData($(this).closest("form")[0]);
 
     $.ajax({
-      url: "../config/edit-beginner-competence.php",
+      url: "../config/edit-garjas-pria-push-up.php",
       method: "POST",
       data: formData,
       processData: false,

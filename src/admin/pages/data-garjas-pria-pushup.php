@@ -114,7 +114,7 @@
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Garjas Pria Push Up!</td>
+                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Push Up!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

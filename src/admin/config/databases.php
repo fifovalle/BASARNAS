@@ -401,6 +401,19 @@ class GarjasPushUpPria
         }
     }
 
+    public function ambilDataGarjasPriaPushUpOlehId($id)
+    {
+        $query = "SELECT * FROM garjas_pria_push_up WHERE ID_Push_Up_Pria = '$id'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row;
+        } else {
+            return null;
+        }
+    }
+
     public function tampilkanDataGarjasPriaPushUp()
     {
         $query = "SELECT garjas_pria_push_up.ID_Push_Up_Pria, garjas_pria_push_up.NIP_Pengguna,
@@ -447,8 +460,8 @@ class GarjasPushUpPria
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
             "iii",
-            $this->escapeString($data['Jumlah_Push_Up_Pria']),
-            $this->escapeString($data['Nilai_Push_Up_Pria']),
+            $data['Jumlah_Push_Up_Pria'],
+            $data['Nilai_Push_Up_Pria'],
             $id
         );
 

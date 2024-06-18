@@ -7,12 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jumlahPushUpPria = $_POST['Jumlah_Push_Up_Pria'] ?? '';
     $nilaiPushUpPria = $_POST['Nilai_Push_Up_Pria'] ?? '';
 
-    $pesanKesalahan = '';
-
     $garjasPushUpPriaModel = new GarjasPushUpPria($koneksi);
 
-    $umurPengguna = $obyekPengguna->ambilUmurGarjasPushUpPriaOlehNIP($nipPengguna);
-    
+    $umurPengguna = $garjasPushUpPriaModel->ambilUmurGarjasPushUpPriaOlehNIP($nipPengguna);
+
     $nilaiPushUp = [
         'under_25' => [
             44 => 100, 43 => 96, 42 => 91, 41 => 87, 40 => 83,
@@ -66,34 +64,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nilaiAkhir = 0;
     if ($umurPengguna < 25) {
-        $nilaiAkhir = isset($nilaiPushUp['under_25'][$jumlahPushUpPria]) ? $nilaiPushUp['under_25'][$jumlahPushUpPria] : 0;
+        $nilaiAkhir = $nilaiPushUp['under_25'][$jumlahPushUpPria] ?? 0;
     } elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
-        $nilaiAkhir = isset($nilaiPushUp['25-34'][$jumlahPushUpPria]) ? $nilaiPushUp['25-34'][$jumlahPushUpPria] : 0;
+        $nilaiAkhir = $nilaiPushUp['25-34'][$jumlahPushUpPria] ?? 0;
     } elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
-        $nilaiAkhir = isset($nilaiPushUp['35-44'][$jumlahPushUpPria]) ? $nilaiPushUp['35-44'][$jumlahPushUpPria] : 0;
+        $nilaiAkhir = $nilaiPushUp['35-44'][$jumlahPushUpPria] ?? 0;
     } elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
-        $nilaiAkhir = isset($nilaiPushUp['45-54'][$jumlahPushUpPria]) ? $nilaiPushUp['45-54'][$jumlahPushUpPria] : 0;
+        $nilaiAkhir = $nilaiPushUp['45-54'][$jumlahPushUpPria] ?? 0;
     } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
-        $nilaiAkhir = isset($nilaiPushUp['55-59'][$jumlahPushUpPria]) ? $nilaiPushUp['55-59'][$jumlahPushUpPria] : 0;
+        $nilaiAkhir = $nilaiPushUp['55-59'][$jumlahPushUpPria] ?? 0;
     }
 
-    if ($dataLamaGarjasPria) {
-        $dataGarjasPria = array(
-            'Jumlah_Push_Up_Pria' => $jumlahPushUpPria,
-            'Nilai_Push_Up_Pria' => $nilaiPushUpPria
-        );
+    $dataLamaGarjasPria = $garjasPushUpPriaModel->ambilDataGarjasPriaPushUpOlehId($idGarjasPriaPushUp);
 
-        // N
+    if ($dataLamaGarjasPria) {
+        $dataGarjasPria = [
+            'Jumlah_Push_Up_Pria' => $jumlahPushUpPria,
+            'Nilai_Push_Up_Pria' => $nilaiAkhir
+        ];
+
         $updateDataGarjasPria = $garjasPushUpPriaModel->perbaruiGarjasPriaPushUp($idGarjasPriaPushUp, $dataGarjasPria);
 
         if ($updateDataGarjasPria) {
-            echo json_encode(array("success" => true, "message" => "Data Garjas Pria Push Up berhasil diperbarui."));
+            echo json_encode(["success" => true, "message" => "Data Garjas Pria Push Up berhasil diperbarui."]);
         } else {
-            echo json_encode(array("success" => false, "message" => "Gagal memperbarui data Garjas Pria Push Up."));
+            echo json_encode(["success" => false, "message" => "Gagal memperbarui data Garjas Pria Push Up."]);
         }
     } else {
-        echo json_encode(array("success" => false, "message" => "Data Garjas Pria Push Up tidak ditemukan."));
+        echo json_encode(["success" => false, "message" => "Data Garjas Pria Push Up tidak ditemukan."]);
     }
 } else {
-    echo json_encode(array("success" => false, "message" => "Metode request tidak valid."));
+    echo json_encode(["success" => false, "message" => "Metode request tidak valid."]);
 }
