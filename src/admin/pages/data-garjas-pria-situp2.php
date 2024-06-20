@@ -80,26 +80,40 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Jumlah Sit Up Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaSitUp2">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasPriaSitUp2">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                $garjasSitUp2PriaModel = new GarjasPriaSitUpKakiDitekuk($koneksi);
+                                                $garjasSitUp2PriaInfo = $garjasSitUp2PriaModel->tampilkanDataGarjasKakiDitekuk();
+                                                ?>
+                                                <?php if (!empty($garjasPriaSitUp2Info)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($garjasPriaSitUp2Info as $garjasPriaSitUp2) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp2['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp2['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp2['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp2['Jumlah_Sit_Up_Kaki_Lurus_Pria']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp2['Nilai_Sit_Up_Kaki_Lurus_Pria']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaSitup2" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaSitUp2(<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Lurus_Pria']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasPriaSitup2" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Sit Up Kaki Ditekuk!</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>

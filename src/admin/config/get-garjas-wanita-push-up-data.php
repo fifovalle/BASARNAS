@@ -16,4 +16,3 @@ foreach ($dataGarjasWanitaPushUp as $garjasPushUpWanita) {
 }
 
 echo json_encode($garjasPushUpWanitaDitemukan);
-

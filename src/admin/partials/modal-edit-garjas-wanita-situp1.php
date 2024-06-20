@@ -14,7 +14,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingJumlahSitUp1GarjasWanita" class="form-label">Jumlah Sit Up</label>
-                        <input type="number" class="form-control" id="suntingJumlahSitUp1GarjasWanita" name="Jumlah_Sit_Up_Kaki_Lurus_Wanita">
+                        <input type="number" class="form-control" id="suntingJumlahSitUp1GarjasWanita" name="Jumlah_Sit_Up_1_Wanita" required>
                     </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasWanitaSitUp1" name="Simpan">Simpan</button>
                 </form>

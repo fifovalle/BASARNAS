@@ -133,6 +133,8 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
+    $hashKataSandi = password_hash($kataSandiPengguna, PASSWORD_BCRYPT);
+
     $dataPengguna = array(
         'NIP_Pengguna' => $nipPengguna,
         'Foto_Pengguna' => $namaFotoPenggunaBaru,
@@ -154,6 +156,6 @@ if (isset($_POST['Simpan'])) {
         setPesanKesalahan("Gagal menyimpan data pengguna.");
     }
 
-    header("Location: $akarUrl" . "src/admin/pages/data-user.php");
+    header("Location: " . $akarUrl . "src/admin/pages/data-user.php");
     exit;
 }

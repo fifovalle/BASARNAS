@@ -82,35 +82,35 @@
                                                 </tr>
                                             </thead>
                                             <?php
-                                            $garjasSitUpKakiLurusPriaModel = new GarjasPriaSitUpKakiLurus($koneksi);
-                                            $garjasSitUpKakiLurusPriaInfo = $garjasSitUpKakiLurusPriaModel->tampilkanDataGarjasPriaSitUp1();
+                                            $garjasSitUp1PriaModel = new GarjasPriaSitUpKakiLurus($koneksi);
+                                            $garjasPriaSitUp1Info = $garjasSitUp1PriaModel->tampilkanDataGarjasPriaSitUp1();
                                             ?>
                                             <tbody>
-                                                <?php if (!empty($garjasSitUpKakiLurusPriaInfo)) : ?>
+                                                <?php if (!empty($garjasPriaSitUp1Info)) : ?>
                                                     <?php $nomor = 1; ?>
-                                                    <?php foreach ($garjasSitUpKakiLurusPriaInfo as $garjasSitUpKakiLurusPria) : ?>
+                                                    <?php foreach ($garjasPriaSitUp1Info as $garjasPriaSitUp1) : ?>
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
-                                                            <td><?php echo $garjasSitUpKakiLurusPria['NIP_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasSitUpKakiLurusPria['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasSitUpKakiLurusPria['Umur_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasSitUpKakiLurusPria['Jumlah_Sit_up_Kaki_lurus_Pria']; ?></td>
-                                                            <td><?php echo $garjasSitUpKakiLurusPria['Nilai_Sit_Up_Kaki_Lurus_Pria']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp1['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp1['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp1['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp1['Jumlah_Sit_Up_Kaki_Lurus_Pria']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp1['Nilai_Sit_Up_Kaki_Lurus_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaSitUp1">
+                                                                <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaSitup1" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp1['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaSitUp1(<?php echo $garjasSitUpKakiLurusPria['ID_Sit_Up_Kaki_Lurus_Pria']; ?>)">
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaSitUp1(<?php echo $garjasPriaSitUp1['ID_Sit_Up_Kaki_Lurus_Pria']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasPriaSitup1" data-bs-toggle="modal" data-id="<?php echo $garjasSitUpKakiLurusPria['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasPriaSitup1" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp1['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                    <?php endforeach; ?>
+                                                    <?php endforeach; ?>    
                                                 <?php else : ?>
                                                     <tr>
                                                         <td colspan="7" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Garjas Pria Sit Up Kaki Lurus!</td>
@@ -155,6 +155,7 @@
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/delete-garjas-pria-situp1.js"></script>
     <script src="../assets/js/value-see-garjas-pria-situp1.js"></script>
+    <script src="../assets/js/value-garjas-pria-situp1.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

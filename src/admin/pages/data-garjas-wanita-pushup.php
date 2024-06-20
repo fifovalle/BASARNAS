@@ -114,7 +114,7 @@
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6">Tidak ada data yang ditemukan.</td>
+                                                        <td colspan="6" class="text-center text-danger fw-bolder">Tidak ada data Push Up yang ditemukan.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

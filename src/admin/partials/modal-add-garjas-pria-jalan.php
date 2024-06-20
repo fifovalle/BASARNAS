@@ -6,29 +6,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/" method="post" enctype="multipart/form-data">
+                <form action="../config/add-pria-jalan.php" method="post">
+                    <?php
+                    $penggunaPriaModel = new Pengguna($koneksi);
+                    $penggunaPriaInfo = $penggunaPriaModel->tampilkanDataPenggunaPria();
+                    ?>
                     <div class="mb-3">
-                        <label for="tambahNIPAdmin" class="form-label">NIP</label>
-                        <select name="NIP_Admin" id="tambahNIPAdmin" class="form-select">
-                            <option selected>Pilih NIP Pengguna</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
+                        <label for="tambahNIPPenggunaPria" class="form-label">NIP</label>
+                        <select name="NIP_Pengguna" id="tambahNIPPenggunaPria" class="form-select">
+                            <option value="" selected>Pilih NIP Pengguna</option>
+                            <?php foreach ($penggunaPriaInfo as $penggunaPria) : ?>
+                                <option value="<?php echo $penggunaPria['NIP_Pengguna']; ?>"><?php echo $penggunaPria['NIP_Pengguna'] . ' - ' . $penggunaPria['Nama_Lengkap_Pengguna']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tambahJabatanAdmin" class="form-label">Jabatan</label>
-
+                        <label for="tambahWaktuJalan" class="form-label">Waktu Jalan</label>
+                        <input type="number" class="form-control" id="tambahWaktuJalan" name="Waktu_Jalan">
                     </div>
-                    <div class="mb-3">
-                        <label for="tambahNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="tambahNamaAdmin" name="Nama_Lengkap_Admin" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tambahWaktuJalanAdmin" class="form-label">Waktu Jalan</label>
-                        <input type="number" class="form-control" id="tambahWaktuJalanAdmin" name="Nomor_Telepon_Admin">
-                    </div>
-                    <button type="button" class="btn btn-primary" name="tambah_nilai">Simpan</button>
+                    <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>
             </div>
         </div>

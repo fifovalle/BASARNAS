@@ -1,4 +1,19 @@
-<?php include('../config/databases.php'); ?>
+<?php include('../config/databases.php'); 
+
+if (!isset($_SESSION['NIP_Admin'])) {
+    setPesanKesalahan("Silahkan login terlebih dahulu!");
+    header("Location: login.php");
+    exit();
+}
+
+$idSessionAdmin = $_SESSION['NIP_Admin'];
+$adminModel = new Admin($koneksi);
+$dataAdmin = $adminModel->tampilkanAdminDenganSessionNip($idSessionAdmin);
+if (!empty($dataAdmin)) {
+    $admin = $dataAdmin[0];
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,9 +75,9 @@
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
-                                    <img src="../assets/img/profile.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                                    <h5 class="my-3">Nama Admin (Session)</h5>
-                                    <p class="text-muted mb-1">NIP Admin (Session)</p>
+                                    <img src="../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                    <h5 class="my-3"><?php echo $admin['Nama_Lengkap_Admin']; ?></h5>
+                                    <p class="text-muted mb-1"><?php echo $admin['NIP_Admin']; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +89,7 @@
                                             <p class="mb-0">Nama Lengkap</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">Nama Lengkap Admin (Session)</p>
+                                            <p class="text-muted mb-0"><?php echo $admin['Nama_Lengkap_Admin']; ?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -83,7 +98,7 @@
                                             <p class="mb-0">Nomor Telepon</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">No Telp Admin (Session)</p>
+                                            <p class="text-muted mb-0"><?php echo $admin['No_Telepon_Admin']; ?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -92,7 +107,7 @@
                                             <p class="mb-0">Jenis Kelamin</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">Jenis Kelamin Admin (Session)</p>
+                                            <p class="text-muted mb-0"><?php echo $admin['Jenis_Kelamin_Admin']; ?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -101,7 +116,7 @@
                                             <p class="mb-0">Alamat</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">Alamat Admin (Session)</p>
+                                            <p class="text-muted mb-0"><?php echo $admin['Alamat_Admin']; ?></p>
                                         </div>
                                     </div>
                                 </div>

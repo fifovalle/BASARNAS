@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -71,35 +73,52 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>No</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
                                                     <th>Waktu Renang</th>
+                                                    <th>Gaya Renang</th>
                                                     <th>Nilai</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $tesRenangPriaModel = new TesRenangPria($koneksi);
+                                            $tesRenangPriaInfo = $tesRenangPriaModel->tampilkanDataTesRenangPria();
+                                            ?>
                                             <tbody>
-                                                <tr>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Waktu Renang Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaRenang">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasPriaRenang">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php if (!empty($tesRenangPriaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($tesRenangPriaInfo as $tesRenangPria) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $tesRenangPria['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $tesRenangPria['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $tesRenangPria['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $tesRenangPria['Waktu_Renang_Pria']; ?></td>
+                                                            <td><?php echo $tesRenangPria['Nama_Gaya_Renang_Pria']; ?></td>
+                                                            <td><?php echo $tesRenangPria['Nilai_Renang_Pria']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaRenang">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasPriaRenang">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Tes Renang Pria!</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -176,6 +195,10 @@
             });
         });
     </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

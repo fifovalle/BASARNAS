@@ -19,7 +19,7 @@ $(document).ready(function () {
         } else {
           let nipNama = garjasSitUp2WanitaData.NIP_Pengguna + " - " + garjasSitUp2WanitaData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#editGarjasSitUp2WanitaID").val(garjasSitUp2WanitaData.ID_Wanita_Sit_Up_Kaki_Di_Tekuk);
+          $("#SuntingGarjasWanitaSitUp2ID").val(garjasSitUp2WanitaData.ID_Wanita_Sit_Up_Kaki_Di_Tekuk);
           $("#suntingJumlahSitUp2GarjasWanita").val(garjasSitUp2WanitaData.Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita);
           $("#suntingGarjasWanitaSitUp2").modal("show");
         }
@@ -30,10 +30,10 @@ $(document).ready(function () {
     });
   });
 
-  $("#tombolSimpanGarjasWanitaSitUp2").submit(function (e) {
+  $("#tombolSimpanGarjasWanitaSitUp2").click(function (e) {
     e.preventDefault();
 
-    let formData = new FormData($(this)[0]);
+    let formData = new FormData($(this).closest("form")[0]);
 
     $.ajax({
       url: "../config/edit-garjas-wanita-situp2.php",
@@ -41,7 +41,7 @@ $(document).ready(function () {
       data: formData,
       processData: false,
       contentType: false,
-      beforeSend: function () {
+      beforeSend: function (xhr) {
         console.log("Mengirim data ke server:", formData);
       },
       success: function (response) {

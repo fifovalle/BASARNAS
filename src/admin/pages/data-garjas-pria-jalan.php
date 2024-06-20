@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -54,7 +56,6 @@
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -71,6 +72,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>Nomor</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
@@ -80,26 +82,40 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Waktu Jalan Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaJalan">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasPriaJalan">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                $tesJalanKaki5KMPriaModel = new TesJalanKaki5KMPria($koneksi);
+                                                $tesJalanKaki5KMPriaInfo = $tesJalanKaki5KMPriaModel->tampilkanDataTesJalanKaki5KMPria();
+                                                ?>
+                                                <?php if (!empty($tesJalanKaki5KMPriaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($tesJalanKaki5KMPriaInfo as $tesJalanPria) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $tesJalanPria['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $tesJalanPria['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $tesJalanPria['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $tesJalanPria['Waktu_Jalan_Pria']; ?></td>
+                                                            <td><?php echo $tesJalanPria['Nilai_Jalan_Pria']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Tes_Jalan_Pria']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusPriaJalan(<?php echo $tesJalanPria['ID_Tes_Jalan_Pria']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatPriaJalan" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Tes_Jalan_Pria']; ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data tes jalan kaki 5 km pria!</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -137,6 +153,8 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-pria-jalan.js"></script>
+    <script src="../assets/js/value-see-garjas-pria-jalan.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -176,6 +194,10 @@
             });
         });
     </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

@@ -26,7 +26,7 @@ Berikut adalah beberapa tampilan halaman website :
 
 ## 📬 Kontak
 
-Ingin berkolaborasi atau mendiskusikan proyek? Jangan ragu untuk menghubungi saya melalui email di [fifanaufal10@gmail.com](mailto:fifanaufal10@gmail.com) atau terhubung dengan saya di [WhatsApp](https://wa.me/+6282318334287).
+Ingin berkolaborasi atau mendiskusikan proyek? Jangan ragu untuk menghubungi saya melalui email di [adrianmusaalfauzan@gmail.com](mailto:adrianmusaalfauzan@gmail.com) atau terhubung dengan saya di [WhatsApp](https://wa.me/+6281222518720).
 
 ### 🙏 Kontribusi
 
@@ -37,7 +37,7 @@ Kontribusi dan umpan balik dari komunitas sangat dihargai. Jika Anda ingin berko
 1. Clone repositori ini ke direktori web server Anda.
 
    ```
-   git clone https://github.com/fifovalle/BASARNAS.git
+   git clone https://github.com/AdrianAlfauzan/BASARNAS.git
 
    ```
 
@@ -61,5 +61,5 @@ Kontribusi dan umpan balik dari komunitas sangat dihargai. Jika Anda ingin berko
 Terima kasih atas antusiasme Anda menantikan kehadiran user interface ini! 🙌
 
 <div align="center">
-  &copy; 2024 [Naufal FIFA]
+  &copy; 2024 [ADRIAN MUSA ALFAUZAN]
 </div>

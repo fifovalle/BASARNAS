@@ -39,7 +39,7 @@ if (isset($_POST['tambah_nilai'])) {
     $jumlahShuttleRunWanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Shuttle_Run_Wanita']);
     $umurPengguna = $obyekPenggunaWanita->ambilUmurGarjasWanitaShuttlerunOlehNIP($nipPengguna);
 
-    $nilaiPushUp = [
+    $nilaiShuttleRun = [
         38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,
         33 => 89, 32 => 87, 31 => 85, 30 => 83, 29 => 81,
         28 => 79, 27 => 77, 26 => 75, 25 => 73, 24 => 70,
@@ -49,7 +49,7 @@ if (isset($_POST['tambah_nilai'])) {
         7 => 27, 6 => 23, 5 => 19, 4 => 14, 3 => 10, 2 => 5, 1 => 1
     ];
 
-    $nilaiAkhir = ($umurPengguna < 25 && isset($nilaiPushUp[$jumlahShuttleRunWanita])) ? $nilaiPushUp[$jumlahShuttleRunWanita] : 0;
+    $nilaiAkhir = ($umurPengguna < 25 && isset($nilaiShuttleRun[$jumlahShuttleRunWanita])) ? $nilaiShuttleRun[$jumlahShuttleRunWanita] : 0;
 
     $dataPenggunaWanita = array(
         'NIP_Pengguna' => $nipPengguna,

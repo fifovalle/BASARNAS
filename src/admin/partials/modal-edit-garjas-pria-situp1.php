@@ -6,29 +6,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/" method="post" enctype="multipart/form-data">
+                <form>
+                    <input type="hidden" id="editGarjasPriaSitUp1ID" name="ID_Sit_Up_Kaki_Lurus_Pria" autocomplete="off">
                     <div class="mb-3">
-                        <label for="suntingNIPAdmin" class="form-label">NIP</label>
-                        <select name="NIP_Admin" id="suntingNIPAdmin" class="form-select">
-                            <option selected>Pilih NIP Pengguna</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                        </select>
+                        <label for="suntingNIPPengguna" class="form-label">NIP dan Nama Anggota</label>
+                        <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="suntingJabatanAdmin" class="form-label">Jabatan</label>
-
+                        <label for="suntingJumlahSitUp1GarjasPria" class="form-label">Jumlah Sit Up</label>
+                        <input type="number" class="form-control" id="suntingJumlahSitUp1GarjasPria" name="Jumlah_Sit_Up_Kaki_Lurus_Pria">
                     </div>
-                    <div class="mb-3">
-                        <label for="suntingNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="suntingNamaAdmin" name="Nama_Lengkap_Admin" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="suntingJumlahSitUp1Admin" class="form-label">Jumlah Sit Up</label>
-                        <input type="number" class="form-control" id="suntingJumlahSitUp1Admin" name="Nomor_Telepon_Admin">
-                    </div>
-                    <button type="button" class="btn btn-primary" name="sunting_admin">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaSitUp1" name="Simpan">Simpan</button>
                 </form>
             </div>
         </div>

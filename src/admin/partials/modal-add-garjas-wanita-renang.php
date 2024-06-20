@@ -21,6 +21,15 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="tambahGayaRenang" class="form-label">Gaya Renang</label>
+                        <select name="Gaya_Renang" id="tambahGayaRenang" class="form-select">
+                            <option selected>Pilih Gaya Renang</option>
+                            <option value="Dada">Dada</option>
+                            <option value="Bebas">Bebas</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="tambahWaktuRenangAdmin" class="form-label">Waktu Renang</label>
                         <input type="number" class="form-control" id="tambahWaktuRenangAdmin" name="Nomor_Telepon_Admin">
                     </div>

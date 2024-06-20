@@ -168,6 +168,42 @@ class Admin
         $row = $result->fetch_assoc();
         return $row['jumlah'] > 0;
     }
+
+    public function autentikasiAdmin($nipAdmin, $kataSandi)
+    {
+    $query = "SELECT * FROM admin WHERE NIP_Admin = ?";
+    $statement = $this->koneksi->prepare($query);
+    $statement->bind_param("i", $nipAdmin);
+    $statement->execute();
+    $result = $statement->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $hashedKataSandi = $row['Kata_Sandi_Admin'];
+        if (password_verify($kataSandi, $hashedKataSandi)) {
+            return $row;
+        }
+    }
+    return null;
+    }
+
+    function tampilkanAdminDenganSessionNip($nipSessionAdmin)
+    {
+        $nipSessionAdmin = intval($nipSessionAdmin);
+        $query = "SELECT * FROM admin WHERE NIP_Admin = $nipSessionAdmin";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
 }
 // ===================================ADMIN===================================
 
@@ -371,6 +407,17 @@ class Pengguna
         $row = $result->fetch_assoc();
         return $row['jumlah'] > 0;
     }
+
+    public function ambilUmurPengguna($nip)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("s", $nip);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        return $row['Umur_Pengguna'];
+    }
 }
 // ===================================PENGGUNA===================================
 
@@ -459,7 +506,6 @@ class GarjasPushUpPria
             return null;
         }
     }
-
 
     public function hapusDataGarjasPriaPushUp($id)
     {
@@ -553,7 +599,7 @@ class GarjasPriaSitUpKakiLurus
                         pengguna.Umur_Pengguna, pengguna.Alamat_Pengguna, 
                         pengguna.No_Telepon_Pengguna, pengguna.Jabatan_Pengguna, 
                         pengguna.Jenis_Kelamin_Pengguna, pengguna.Foto_Pengguna,
-                        garjas_pria_sit_up_kaki_lurus.Jumlah_Sit_up_Kaki_lurus_Pria, garjas_pria_sit_up_kaki_lurus.Nilai_Sit_Up_Kaki_Lurus_Pria
+                        garjas_pria_sit_up_kaki_lurus.Jumlah_Sit_Up_Kaki_Lurus_Pria, garjas_pria_sit_up_kaki_lurus.Nilai_Sit_Up_Kaki_Lurus_Pria
                 FROM garjas_pria_sit_up_kaki_lurus
                 LEFT JOIN pengguna ON garjas_pria_sit_up_kaki_lurus.NIP_Pengguna = pengguna.NIP_Pengguna";
 
@@ -585,6 +631,42 @@ class GarjasPriaSitUpKakiLurus
     }
 }
 // ===================================GARJAS PRIA SIT UP KAKI LURUS===================================
+
+// ===================================GARJAS PRIA SIT UP KAKI DITEKUK===================================
+class GarjasPriaSitUpKakiDitekuk
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function escapeString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataGarjasKakiDitekuk()
+    {
+        $query = "SELECT gajars_pria_sit_up_kaki_di_tekuk_pria.*, pengguna.* 
+                  FROM gajars_pria_sit_up_kaki_di_tekuk_pria
+                  LEFT JOIN pengguna ON gajars_pria_sit_up_kaki_di_tekuk_pria.NIP_Pengguna = pengguna.NIP_Pengguna";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+}
+// ===================================GARJAS PRIA SIT UP KAKI DITEKUK===================================
 
 // ===================================GARJAS WANITA PUSH UP===================================
 class GarjasWanitaPushUp
@@ -670,6 +752,7 @@ class GarjasWanitaPushUp
             return false;
         }
     }
+
     public function perbaruiGarjasWanitaPushUp($id, $data)
     {
         $query = "UPDATE garjas_wanita_push_up SET 
@@ -678,12 +761,11 @@ class GarjasWanitaPushUp
                         WHERE ID_Wanita_Push_Up=?";
 
         $statement = $this->koneksi->prepare($query);
-        $statement->bind_param(
-            "iii",
-            $this->escapeString($data['Jumlah_Push_Up_Wanita']),
-            $this->escapeString($data['Nilai_Push_Up_Wanita']),
-            $id
-        );
+        $jumlahPushUpWanita = $this->escapeString($data['Jumlah_Push_Up_Wanita']);
+        $nilaiPushUpWanita = $this->escapeString($data['Nilai_Push_Up_Wanita']);
+        $idWanitaPushUp = $id;
+
+        $statement->bind_param("iii", $jumlahPushUpWanita, $nilaiPushUpWanita, $idWanitaPushUp);
 
         if ($statement->execute()) {
             return true;
@@ -693,7 +775,6 @@ class GarjasWanitaPushUp
     }
 }
 // ===================================GARJAS WANITA PUSH UP===================================
-
 
 
 // ===================================GARJAS WANITA SIT UP===================================
@@ -783,15 +864,17 @@ class GarjasWanitaSitUp1
 
     public function perbaruiGarjasWanitaSitUp1($id, $data)
     {
-        $query = "UPDATE garjas_wanita_sit_up_kaki_lurus SET Jumlah_Sit_Up_Kaki_Lurus_Wanita=?, Nilai_Sit_Up_Kaki_Lurus_Wanita=? WHERE ID_Wanita_Sit_Up_Kaki_Lurus=?";
+        $query = "UPDATE garjas_wanita_sit_up_kaki_lurus SET 
+                    Jumlah_Sit_Up_Kaki_Lurus_Wanita=?, 
+                    Nilai_Sit_Up_Kaki_Lurus_Wanita=? 
+                    WHERE ID_Wanita_Sit_Up_Kaki_Lurus=?";
 
         $statement = $this->koneksi->prepare($query);
-        $statement->bind_param(
-            "iii",
-            $this->escapeString($data['Jumlah_Sit_Up_1_Wanita']),
-            $this->escapeString($data['Nilai_Sit_Up_1_Wanita']),
-            $id
-        );
+        $jumlahSitUp1Wanita = $this->escapeString($data['Jumlah_Sit_Up_1_Wanita']);
+        $nilaiSitUp1Wanita = $this->escapeString($data['Nilai_Sit_Up_1_Wanita']);
+        $idWanitaSitUp1 = $id;
+
+        $statement->bind_param("iii", $jumlahSitUp1Wanita, $nilaiSitUp1Wanita, $idWanitaSitUp1);
 
         if ($statement->execute()) {
             return true;
@@ -881,6 +964,27 @@ class GarjasWanitaShuttleRun
         $isDeleted = $statementDelete->execute();
 
         if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiGarjasWanitaShuttleRun($id, $data)
+    {
+        $query = "UPDATE garjas_wanita_shuttle_run SET 
+                    Jumlah_Shuttle_Run_Wanita=?, 
+                    Nilai_Shuttle_Run_Wanita=? 
+                    WHERE ID_Wanita_Shuttle_Run=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $jumlahShuttleRunWanita = $this->escapeString($data['Jumlah_Shuttle_Run_Wanita']);
+        $nilaiShuttleRunWanita = $this->escapeString($data['Nilai_Shuttle_Run_Wanita']);
+        $idWanitaShuttleRun = $id;
+
+        $statement->bind_param("iii", $jumlahShuttleRunWanita, $nilaiShuttleRunWanita, $idWanitaShuttleRun);
+
+        if ($statement->execute()) {
             return true;
         } else {
             return false;
@@ -976,15 +1080,17 @@ class GarjasWanitaChinUp
 
     public function perbaruiGarjasWanitaChinUp($id, $data)
     {
-        $query = "UPDATE garjas_wanita_chin_up SET Jumlah_Chin_Up_Wanita=?, Nilai_Chin_Up_Wanita=? WHERE ID_Wanita_Chin_Up=?";
+        $query = "UPDATE garjas_wanita_chin_up SET 
+                    Jumlah_Chin_Up_Wanita=?, 
+                    Nilai_Chin_Up_Wanita=? 
+                    WHERE ID_Wanita_Chin_Up=?";
 
         $statement = $this->koneksi->prepare($query);
-        $statement->bind_param(
-            "iii",
-            $this->escapeString($data['Jumlah_Chin_Up_Wanita']),
-            $this->escapeString($data['Nilai_Chin_Up_Wanita']),
-            $id
-        );
+        $jumlahChinUpWanita = $this->escapeString($data['Jumlah_Chin_Up_Wanita']);
+        $nilaiChinUpWanita = $this->escapeString($data['Nilai_Chin_Up_Wanita']);
+        $idWanitaChinUp = $id;
+
+        $statement->bind_param("iii", $jumlahChinUpWanita, $nilaiChinUpWanita, $idWanitaChinUp);
 
         if ($statement->execute()) {
             return true;
@@ -1081,15 +1187,17 @@ class GarjasWanitaSitUp2
 
     public function perbaruiGarjasWanitaSitUp2($id, $data)
     {
-        $query = "UPDATE garjas_wanita_sit_up_kaki_di_tekuk SET Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita=?, Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita=? WHERE ID_Wanita_Sit_Up_Kaki_Di_Tekuk=?";
+        $query = "UPDATE garjas_wanita_sit_up_kaki_di_tekuk SET 
+                    Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita=?, 
+                    Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita=? 
+                    WHERE ID_Wanita_Sit_Up_Kaki_Di_Tekuk=?";
 
         $statement = $this->koneksi->prepare($query);
-        $statement->bind_param(
-            "iii",
-            $this->escapeString($data['Jumlah_Sit_Up_2_Wanita']),
-            $this->escapeString($data['Nilai_Sit_Up_2_Wanita']),
-            $id
-        );
+        $jumlahSitUp2Wanita = $this->escapeString($data['Jumlah_Sit_Up_2_Wanita']);
+        $nilaiSitUp2Wanita = $this->escapeString($data['Nilai_Sit_Up_2_Wanita']);
+        $idWanitaSitUp2 = $id;
+
+        $statement->bind_param("iii", $jumlahSitUp2Wanita, $nilaiSitUp2Wanita, $idWanitaSitUp2);
 
         if ($statement->execute()) {
             return true;
@@ -1100,6 +1208,191 @@ class GarjasWanitaSitUp2
 }
 // ===================================GARJAS WANITA SIT UP DI TEKUK===================================
 
+
+// ===================================TES RENANG PRIA===================================
+class TesRenangPria
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function mengamankanString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tambahTesRenangPria($data)
+    {
+        $query = "INSERT INTO tes_renang_pria (NIP_Pengguna, Waktu_Renang_Pria, Nama_Gaya_Renang_Pria, Nilai_Renang_Pria) VALUES (?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "issi",
+            $this->mengamankanString($data['NIP_Pengguna']),
+            $this->mengamankanString($data['Waktu_Renang_Pria']),
+            $this->mengamankanString($data['Nama_Gaya_Renang_Pria']),
+            $this->mengamankanString($data['Nilai_Renang_Pria'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function tampilkanDataTesRenangPria()
+    {
+        $query = "SELECT * FROM tes_renang_pria LEFT JOIN pengguna ON tes_renang_pria.NIP_Pengguna = pengguna.NIP_Pengguna";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function perbaruiTesRenangPria($idRenangPria, $dataRenangPria)
+    {
+        $sql = "UPDATE tes_renang_pria SET Waktu_Renang_Pria = ?, Nama_Gaya_Renang_Pria = ?, Nilai_Renang_Pria = ? WHERE ID_Renang_Pria = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param(
+            "ssii",
+            $dataRenangPria['Waktu_Renang_Pria'],
+            $dataRenangPria['Nama_Gaya_Renang_Pria'],
+            $dataRenangPria['Nilai_Renang_Pria'],
+            $idRenangPria
+        );
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getTesRenangPriaById($idRenangPria)
+    {
+        $sql = "SELECT * FROM tes_renang_pria WHERE ID_Renang_Pria = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("i", $idRenangPria);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+
+        $stmt->close();
+
+        return $data;
+    }
+
+    public function hapusTesRenangPria($idRenangPria)
+    {
+        $queryDelete = "DELETE FROM tes_renang_pria WHERE ID_Renang_Pria=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $idRenangPria);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================TES RENANG PRIA===================================
+
+
+// ===================================TES JALAN KAKI 5KM===================================
+class TesJalanKaki5KMPria
+{
+
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function escapeString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataTesJalanKaki5KMPria()
+    {
+        $query = "SELECT tes_jalan_pria.*, pengguna.*
+                  FROM tes_jalan_pria
+                  LEFT JOIN pengguna ON tes_jalan_pria.NIP_Pengguna = pengguna.NIP_Pengguna";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tambahTesJalanKaki5KMPria($data)
+    {
+        $query = "INSERT INTO tes_jalan_pria (NIP_Pengguna, Waktu_Jalan_Pria, Nilai_Jalan_Pria) VALUES (?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "iii",
+            $this->escapeString($data['NIP_Pengguna']),
+            $this->escapeString($data['Waktu_Jalan_Pria']),
+            $this->escapeString($data['Nilai_Jalan_Pria'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ambilUmurTesJalanKaki5KMPriaOlehNIP($NIP)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['Umur_Pengguna'];
+        } else {
+            return null;
+        }
+    }
+
+    public function hapusTesJalanKaki5KMPria($id)
+    {
+        $queryDelete = "DELETE FROM tes_jalan_pria WHERE ID_Tes_Jalan_Pria=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================TES JALAN KAKI 5KM===================================
 
 // ===================================KOMPETENSI===================================
 class Kompetensi

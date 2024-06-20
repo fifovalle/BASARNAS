@@ -114,7 +114,7 @@
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6">Tidak ada data yang ditemukan.</td>
+                                                        <td colspan="6" class="text-center text-danger fw-bolder">Tidak ada data Sit Up Kaki Di Tekuk yang ditemukan.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
@@ -155,8 +155,8 @@
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/delete-garjas-wanita-situp2.js"></script>
-    <script src="../assets/js/value-garjas-wanita-situp2.js"></script>
     <script src="../assets/js/value-see-garjas-wanita-situp2.js"></script>
+    <script src="../assets/js/value-garjas-wanita-situp2.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

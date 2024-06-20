@@ -19,7 +19,7 @@ $(document).ready(function () {
         } else {
           let nipNama = garjasWanitaShuttleRunData.NIP_Pengguna + " - " + garjasWanitaShuttleRunData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#editGarjasWanitaShuttleRunID").val(garjasWanitaShuttleRunData.ID_Wanita_Shuttle_Run);
+          $("#SuntingGarjasWanitaShuttleRunID").val(garjasWanitaShuttleRunData.ID_Wanita_Shuttle_Run);
           $("#suntingJumlahShuttleRunGarjasWanita").val(garjasWanitaShuttleRunData.Jumlah_Shuttle_Run_Wanita);
           $("#suntingGarjasWanitaShuttleRun").modal("show");
         }
@@ -30,18 +30,18 @@ $(document).ready(function () {
     });
   });
 
-  $("#tombolSimpanGarjasWanitaShuttleRun").submit(function (e) {
+  $("#tombolSimpanGarjasWanitaShuttleRun").click(function (e) {
     e.preventDefault();
 
     let formData = new FormData($(this).closest("form")[0]);
 
     $.ajax({
-      url: "../config/edit-garjas-wanita-shuttle-run.php",
+      url: "../config/edit-garjas-wanita-shuttlerun.php",
       method: "POST",
       data: formData,
       processData: false,
       contentType: false,
-      beforeSend: function () {
+      beforeSend: function (xhr) {
         console.log("Mengirim data ke server:", formData);
       },
       success: function (response) {

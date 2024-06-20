@@ -30,7 +30,7 @@ $(document).ready(function () {
     });
   });
 
-  $("#tombolSimpanGarjasWanitaPushUp").submit(function (e) {
+  $("#tombolSimpanGarjasWanitaPushUp").click(function (e) {
     e.preventDefault();
 
     let formData = new FormData($(this).closest("form")[0]);
@@ -41,7 +41,7 @@ $(document).ready(function () {
       data: formData,
       processData: false,
       contentType: false,
-      beforeSend: function () {
+      beforeSend: function (xhr) {
         console.log("Mengirim data ke server:", formData);
       },
       success: function (response) {
@@ -59,7 +59,7 @@ $(document).ready(function () {
             timerProgressBar: true,
           }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-              window.location.href = "../pages/data-garjas-wanita-push-up.php";
+              window.location.href = "../pages/data-garjas-wanita-pushup.php";
             }
           });
         } else {

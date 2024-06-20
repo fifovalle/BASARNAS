@@ -17,12 +17,13 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="suntingJabatanAdmin" class="form-label">Jabatan</label>
-
-                    </div>
-                    <div class="mb-3">
-                        <label for="suntingNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="suntingNamaAdmin" name="Nama_Lengkap_Admin" disabled>
+                        <label for="suntingGayaRenang" class="form-label">Gaya Renang</label>
+                        <select name="Gaya_Renang" id="suntingGayaRenang" class="form-select">
+                            <option selected>Pilih Gaya Renang</option>
+                            <option value="Dada">Dada</option>
+                            <option value="Bebas">Bebas</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="suntingWaktuRenangAdmin" class="form-label">Waktu Renang</label>

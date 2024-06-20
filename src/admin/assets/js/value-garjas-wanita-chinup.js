@@ -19,7 +19,7 @@ $(document).ready(function () {
         } else {
           let nipNama = garjasWanitaChinUpData.NIP_Pengguna + " - " + garjasWanitaChinUpData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#editGarjasWanitaChinUpID").val(garjasWanitaChinUpData.ID_Wanita_Chin_Up);
+          $("#SuntingGarjasWanitaChinUpID").val(garjasWanitaChinUpData.ID_Wanita_Chin_Up);
           $("#suntingJumlahChinUpGarjasWanita").val(garjasWanitaChinUpData.Jumlah_Chin_Up_Wanita);
           $("#suntingGarjasWanitaChinUp").modal("show");
         }
@@ -30,7 +30,7 @@ $(document).ready(function () {
     });
   });
 
-  $("#tombolSimpanGarjasWanitaChinUp").submit(function (e) {
+  $("#tombolSimpanGarjasWanitaChinUp").click(function (e) {
     e.preventDefault();
 
     let formData = new FormData($(this).closest("form")[0]);
