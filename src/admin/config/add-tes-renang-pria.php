@@ -14,8 +14,14 @@ if (isset($_POST['tambah_nilai'])) {
         $waktuRenang = (int)$waktuRenang;
     }
 
-    $penggunaModel = new Pengguna($koneksi);
-    $umurPengguna = $penggunaModel->ambilUmurPengguna($nipPengguna);
+    $obyekPenggunaPria = new Pengguna($koneksi);
+    $umurPengguna = $obyekPenggunaPria->ambilUmurPengguna($nipPengguna);
+    if ($obyekPenggunaPria->cekNip($nipPengguna)) {
+        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-renang.php");
+        exit;
+    }
+    
 
     $nilaiRenang = [
         'Dada' => [

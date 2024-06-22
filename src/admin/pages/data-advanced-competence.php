@@ -1,4 +1,10 @@
-<?php include('../config/databases.php'); ?>
+<?php include('../config/databases.php');
+if (!isset($_SESSION['NIP_Admin'])) {
+    setPesanKesalahan("Silahkan login terlebih dahulu!");
+    header("Location: " . $akarUrl . "src/admin/pages/login.php");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -32,12 +32,16 @@ if (isset($_POST['tambah_nilai'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
-    $obyekPengguna = new GarjasWanitaSitUp2($koneksi);
+    $obyekPenggunaWanita = new GarjasWanitaSitUp2($koneksi);
 
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
     $jumlahSitUp2Wanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Sit_Up_2_Wanita']);
-    $umurPengguna = $obyekPengguna->ambilUmurGarjasWanitaSitUp2OlehNIP($nipPengguna);
-
+    $umurPengguna = $obyekPenggunaWanita->ambilUmurGarjasWanitaSitUp2OlehNIP($nipPengguna);
+    if ($obyekPenggunaWanita->cekNipAnggotaSitUp2WanitaSudahAda($nipPengguna)) {
+        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-situp2.php");
+        exit;
+    }
 
     $nilaiSitUp2 = [
         44 => 100, 43 => 96, 42 => 91, 41 => 87, 40 => 83,
@@ -61,7 +65,7 @@ if (isset($_POST['tambah_nilai'])) {
         'Nilai_Sit_Up_2_Wanita' => $nilaiAkhir,
     );
 
-    $simpanDataPenggunaWanita = $obyekPengguna->tambahGarjasWanitaSitUp2($dataPenggunaWanita);
+    $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaSitUp2($dataPenggunaWanita);
 
     if ($simpanDataPenggunaWanita) {
         setPesanKeberhasilan("Berhasil, data pengguna baru telah ditambahkan.");

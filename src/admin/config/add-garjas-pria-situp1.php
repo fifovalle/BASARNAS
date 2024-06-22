@@ -38,6 +38,12 @@ if (isset($_POST['Simpan'])) {
     $jumlahSitUpKakiLurusPria = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Sit_Up_Kaki_Lurus_Pria']);
     $umurPengguna = $obyekGarjasPriaSitUpKakiLurus->ambilUmurGarjasSitUpKakiLurusPriaOlehNIP($nipPengguna);
 
+    if ($obyekGarjasPriaSitUpKakiLurus->cekNipAnggotaSitUp1PriaSudahAda($nipPengguna)) {
+        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-situp1.php");
+        exit;
+    }
+
     $nilaiSitUpKakiLurus = [
         'under_25' => [
             46 => 100, 45 => 96, 44 => 93, 43 => 89, 42 => 85,

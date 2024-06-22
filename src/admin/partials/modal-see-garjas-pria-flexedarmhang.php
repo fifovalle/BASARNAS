@@ -8,44 +8,44 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4 text-center">
-                        <img src="../assets/img/arashmil.jpg" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
-                        <h3>Nama Pengguna</h3>
-                        <p class="text-muted">NIP Pengguna</p>
+                        <img id="lihatPotoPenggunaPriaFlexedArmHangTd" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
+                        <h3 id="lihatNamaPengguna"></h3>
+                        <p class="text-muted" id="lihatNIPPenggunaPriaFlexedArmHangTd">
                     </div>
                     <div class="col-8">
                         <h4>Info Hasil Selengkapnya</h4>
                         <table class="table table-borderless">
                             <tr>
                                 <th>Nama Lengkap:</th>
-                                <td>Nama Lengkap Pengguna</td>
+                                <td id="lihatNamaPenggunaPriaFlexedArmHangTd"></td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lahir:</th>
-                                <td>Tanggal Lahir Pengguna</td>
+                                <td id="lihatTglLahirPenggunaPriaFlexedArmHangTd"></td>
                             </tr>
                             <tr>
                                 <th>Jabatan:</th>
-                                <td>Jabatan Pengguna</td>
+                                <td id="lihatJabatanPenggunaPriaFlexedArmHangTd"></td>
                             </tr>
                             <tr>
                                 <th>Jenis Kelamin:</th>
-                                <td>Jenis Kelamin Pengguna</td>
+                                <td id="lihatJenisKelaminPenggunaPriaFlexedArmHangTd"></td>
                             </tr>
                             <tr>
                                 <th>Nomor Telepon:</th>
-                                <td>Nomor Telepon Pengguna</td>
+                                <td id="lihatNoTelpPenggunaPriaFlexedArmHangTd"></td>
                             </tr>
                             <tr>
                                 <th>Umur:</th>
-                                <td>Umur Pengguna</td>
+                                <td id="lihatUmurPenggunaPriaFlexedArmHangTd"></td>
                             </tr>
                             <tr>
                                 <th>Waktu Flexed Arm Hang:</th>
-                                <td>Waktu Flexed Arm Hang Pengguna</td>
+                                <td id="lihatWaktuPriaFlexedArmHangTd"></td>
                             </tr>
                             <tr>
                                 <th>Nilai Flexed Arm Hang:</th>
-                                <td>Nilai Flexed Arm Hang Pengguna</td>
+                                <td id="lihatNilaiPriaFlexedArmHangTd"></td>
                             </tr>
                         </table>
                     </div>

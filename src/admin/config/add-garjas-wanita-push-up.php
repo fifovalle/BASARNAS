@@ -39,6 +39,12 @@ if (isset($_POST['tambah_nilai'])) {
     $jumlahPushUpWanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Push_Up_Wanita']);
     $umurPengguna = $obyekPenggunaWanita->ambilUmurGarjasWanitaPushUpOlehNIP($nipPengguna);
 
+    if ($obyekPenggunaWanita->cekNipAnggotaPushUpWanitaSudahAda($nipPengguna)) {
+        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-pushup.php");
+        exit;
+    }
+
     $nilaiPushUp = [
         'under_25' => [
             38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,

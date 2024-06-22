@@ -6,29 +6,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/" method="post" enctype="multipart/form-data">
+                <form action="../config/add-garjas-pria-flexed-arm-hang.php" method="post" enctype="multipart/form-data">
+                <?php
+                    $penggunaPriaModel = new Pengguna($koneksi);
+                    $penggunaPriaInfo = $penggunaPriaModel->tampilkanDataPenggunaPria();
+                    ?>
                     <div class="mb-3">
                         <label for="tambahNIPAdmin" class="form-label">NIP</label>
-                        <select name="NIP_Admin" id="tambahNIPAdmin" class="form-select">
+                        <select name="NIP_Pengguna" id="tambahNIPAdmin" class="form-select">
                             <option selected>Pilih NIP Pengguna</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
+                            <?php foreach ($penggunaPriaInfo as $penggunaPria) : ?>
+                                <option value="<?php echo $penggunaPria['NIP_Pengguna']; ?>"><?php echo $penggunaPria['NIP_Pengguna'] . ' - ' . $penggunaPria['Nama_Lengkap_Pengguna']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tambahJabatanAdmin" class="form-label">Jabatan</label>
-
-                    </div>
-                    <div class="mb-3">
-                        <label for="tambahNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="tambahNamaAdmin" name="Nama_Lengkap_Admin" disabled>
-                    </div>
-                    <div class="mb-3">
                         <label for="tambahWaktuFlexedArmHangAdmin" class="form-label">Waktu Flexed Arm Hang</label>
-                        <input type="number" class="form-control" id="tambahWaktuFlexedArmHangAdmin" name="Nomor_Telepon_Admin">
+                        <input type="number" class="form-control" id="tambahWaktuFlexedArmHangAdmin" name="Waktu_Menggantung_Pria">
                     </div>
-                    <button type="button" class="btn btn-primary" name="tambah_nilai">Simpan</button>
+                    <button type="submit" class="btn btn-primary" name="Simpan">Simpan</button>
                 </form>
             </div>
         </div>

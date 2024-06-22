@@ -24,6 +24,9 @@ if (isset($_POST['Masuk'])) {
     $_SESSION['NIP_Admin'] = htmlspecialchars($admin['NIP_Admin']);
     $_SESSION['Foto_Admin'] = htmlspecialchars($admin['Foto_Admin']);
     $_SESSION['Nama_Lengkap_Admin'] = htmlspecialchars($admin['Nama_Lengkap_Admin']);
+    $_SESSION['No_Telepon_Admin'] = htmlspecialchars($admin['No_Telepon_Admin']);
+    $_SESSION['Jenis_Kelamin_Admin'] = htmlspecialchars($admin['Jenis_Kelamin_Admin']);
+    $_SESSION['Alamat_Admin'] = htmlspecialchars($admin['Alamat_Admin']);
 
     setPesanKeberhasilan("Selamat datang, " . $_SESSION['Nama_Lengkap_Admin'] . "!");
     header("Location: $akarUrl" . "src/admin/pages/data-admin.php");

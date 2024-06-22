@@ -1,4 +1,11 @@
-<?php include('../config/databases.php'); ?>
+<?php include('../config/databases.php');
+if (!isset($_SESSION['NIP_Admin'])) {
+    setPesanKesalahan("Silahkan login terlebih dahulu!");
+    header("Location: " . $akarUrl . "src/admin/pages/login.php");
+    exit();
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +21,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -71,35 +80,52 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>No</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
                                                     <th>Waktu Renang</th>
+                                                    <th>Gaya Renang</th>
                                                     <th>Nilai</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $tesRenangWanitaModel = new TesRenangWanita($koneksi);
+                                            $tesRenangWanitaInfo = $tesRenangWanitaModel->tampilkanDataTesRenangWanita();
+                                            ?>
                                             <tbody>
-                                                <tr>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Waktu Renang Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasWanitaRenang">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasWanitaRenang">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php if (!empty($tesRenangWanitaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($tesRenangWanitaInfo as $tesRenangWanita) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $tesRenangWanita['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $tesRenangWanita['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $tesRenangWanita['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $tesRenangWanita['Waktu_Renang_Wanita']; ?></td>
+                                                            <td><?php echo $tesRenangWanita['Nama_Gaya_Renang_Wanita']; ?></td>
+                                                            <td><?php echo $tesRenangWanita['Nilai_Renang_Wanita']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                <button type="button" class="btn btn-link btn-primary btn-lg buttonTestRenangWanita" data-bs-toggle="modal" data-id="<?php echo $tesRenangWanita['ID_Renang_Wanita']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaRenang(<?php echo $tesRenangWanita['ID_Renang_Wanita']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatTestRenangWanita" data-bs-toggle="modal" data-id="<?php echo $tesRenangWanita['ID_Renang_Wanita']; ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Tes Renang Wanita!</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -137,6 +163,9 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-garjas-wanita-renang.js"></script>
+    <script src="../assets/js/value-garjas-wanita-renang.js"></script>
+    <script src="../assets/js/value-see-garjas-wanita-renang.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -176,6 +205,10 @@
             });
         });
     </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

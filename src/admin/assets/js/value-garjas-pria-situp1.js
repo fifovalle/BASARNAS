@@ -43,7 +43,7 @@ $(document).ready(function () {
     let formData = new FormData($(this).closest("form")[0]);
 
     $.ajax({
-      url: "../config/edit-garjas-pria-push-up.php",
+      url: "../config/edit-garjas-pria-situp1.php",
       method: "POST",
       data: formData,
       processData: false,
@@ -66,7 +66,7 @@ $(document).ready(function () {
             timerProgressBar: true,
           }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-              window.location.href = "../pages/data-garjas-pria-pushup.php";
+              window.location.href = "../pages/data-garjas-pria-situp1.php";
             }
           });
         } else {

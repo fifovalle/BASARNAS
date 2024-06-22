@@ -28,7 +28,7 @@ function containsXSS($input)
     return false;
 }
 
-if (isset($_POST['tambah_nilai'])) {
+if (isset($_POST['Simpan'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
@@ -37,6 +37,12 @@ if (isset($_POST['tambah_nilai'])) {
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
     $jumlahPushUpPria = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Push_Up_Pria']);
     $umurPengguna = $obyekPengguna->ambilUmurGarjasPushUpPriaOlehNIP($nipPengguna);
+
+    if ($obyekPengguna->cekNipAnggotaPushUpPriaSudahAda($nipPengguna)) {
+        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-pushup.php");
+        exit;
+    }
 
     $nilaiPushUp = [
         'under_25' => [

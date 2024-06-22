@@ -1,4 +1,10 @@
-<?php include('../config/databases.php'); ?>
+<?php include('../config/databases.php'); 
+if (!isset($_SESSION['NIP_Admin'])) {
+    setPesanKesalahan("Silahkan login terlebih dahulu!");
+    header("Location: " . $akarUrl . "src/admin/pages/login.php");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,13 +107,13 @@
                                                             <td><?php echo $tesRenangPria['Nilai_Renang_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaRenang">
+                                                                <button type="button" class="btn btn-link btn-primary btn-lg buttonTestRenangPria" data-bs-toggle="modal" data-id="<?php echo $tesRenangPria['ID_Renang_Pria']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaRenang(<?php echo $tesRenangPria['ID_Renang_Pria']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasPriaRenang">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatTestRenangPria" data-bs-toggle="modal" data-id="<?php echo $tesRenangPria['ID_Renang_Pria']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -156,6 +162,9 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-garjas-pria-renang.js"></script>
+    <script src="../assets/js/value-garjas-pria-renang.js"></script>
+    <script src="../assets/js/value-see-garjas-pria-renang.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

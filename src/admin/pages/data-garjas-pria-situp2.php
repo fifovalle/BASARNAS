@@ -1,4 +1,10 @@
-<?php include('../config/databases.php'); ?>
+<?php include('../config/databases.php'); 
+if (!isset($_SESSION['NIP_Admin'])) {
+    setPesanKesalahan("Silahkan login terlebih dahulu!");
+    header("Location: " . $akarUrl . "src/admin/pages/login.php");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +20,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -71,6 +79,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>NO</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
@@ -80,10 +89,10 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $garjasSitUp2PriaModel = new GarjasPriaSitUpKakiDitekuk($koneksi);
-                                                $garjasSitUp2PriaInfo = $garjasSitUp2PriaModel->tampilkanDataGarjasKakiDitekuk();
-                                                ?>
+                                            <?php
+                                            $garjasSitUp2PriaModel = new GarjasPriaSitUpKakiDitekuk($koneksi);
+                                            $garjasPriaSitUp2Info = $garjasSitUp2PriaModel->tampilkanDataGarjasPriaSitUp2();
+                                            ?>
                                                 <?php if (!empty($garjasPriaSitUp2Info)) : ?>
                                                     <?php $nomor = 1; ?>
                                                     <?php foreach ($garjasPriaSitUp2Info as $garjasPriaSitUp2) : ?>
@@ -92,17 +101,17 @@
                                                             <td><?php echo $garjasPriaSitUp2['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp2['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp2['Umur_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasPriaSitUp2['Jumlah_Sit_Up_Kaki_Lurus_Pria']; ?></td>
-                                                            <td><?php echo $garjasPriaSitUp2['Nilai_Sit_Up_Kaki_Lurus_Pria']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp2['Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria']; ?></td>
+                                                            <td><?php echo $garjasPriaSitUp2['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaSitup2" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaSitup2" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Di_Tekuk_Pria']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaSitUp2(<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Lurus_Pria']; ?>)">
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaSitUp2(<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Di_Tekuk_Pria']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasPriaSitup2" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasPriaSitup2" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Di_Tekuk_Pria']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -151,6 +160,9 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-garjas-pria-situp2.js"></script>
+    <script src="../assets/js/value-see-garjas-pria-situp2.js"></script>
+    <script src="../assets/js/value-garjas-pria-situp2.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -190,6 +202,10 @@
             });
         });
     </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>

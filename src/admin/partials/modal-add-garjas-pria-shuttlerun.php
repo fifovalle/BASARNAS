@@ -6,29 +6,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/" method="post" enctype="multipart/form-data">
+                <form action="../config/add-garjas-pria-shuttle-run.php" method="post" enctype="multipart/form-data">
+                <?php
+                    $garjasPriaShuttleRunModel = new GarjasPriaShuttleRun($koneksi);
+                    $garjasPriaShuttleRunInfo = $garjasPriaShuttleRunModel->tampilkanDataPenggunaGarjasShuttleRunPria();
+                    ?>
                     <div class="mb-3">
-                        <label for="tambahNIPAdmin" class="form-label">NIP</label>
-                        <select name="NIP_Admin" id="tambahNIPAdmin" class="form-select">
-                            <option selected>Pilih NIP Pengguna</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Satu">Satu</option>
+                        <label for="tambahNIPPenggunaPria" class="form-label">NIP</label>
+                        <select name="NIP_Pengguna" id="tambahNIPPenggunaPria" class="form-select">
+                        <option selected>Pilih NIP Pengguna</option>
+                        <?php foreach ($garjasPriaShuttleRunInfo as $garjasPriaShuttleRun) : ?>
+                                <option value="<?php echo $garjasPriaShuttleRun['NIP_Pengguna']; ?>"><?php echo $garjasPriaShuttleRun['NIP_Pengguna'] . ' - ' . $garjasPriaShuttleRun['Nama_Lengkap_Pengguna']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tambahJabatanAdmin" class="form-label">Jabatan</label>
-
+                        <label for="inputBilanganDesimal">Masukkan Bilangan Desimal</label>
+                        <input type="text" class="form-control" id="inputBilanganDesimal" name="Waktu_Shuttle_Run_Pria">
                     </div>
-                    <div class="mb-3">
-                        <label for="tambahNamaAdmin" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="tambahNamaAdmin" name="Nama_Lengkap_Admin" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tambahWaktuShuttleRunAdmin" class="form-label">Waktu Shuttle Run</label>
-                        <input type="number" class="form-control" id="tambahWaktuShuttleRunAdmin" name="Nomor_Telepon_Admin">
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
+                    <button type="submit" class="btn btn-primary" name="Simpan">Simpan</button>
                 </form>
             </div>
         </div>

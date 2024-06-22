@@ -24,7 +24,7 @@
                         <label for="tambahJumlahPushUpAdmin" class="form-label">Jumlah Push Up</label>
                         <input type="number" class="form-control" id="tambahJumlahPushUpAdmin" name="Jumlah_Push_Up_Pria">
                     </div>
-                    <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
+                    <button type="submit" class="btn btn-primary" name="Simpan">Simpan</button>
                 </form>
             </div>
         </div>

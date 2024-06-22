@@ -16,7 +16,7 @@
                         <label for="suntingJumlahSitUp1GarjasPria" class="form-label">Jumlah Sit Up</label>
                         <input type="number" class="form-control" id="suntingJumlahSitUp1GarjasPria" name="Jumlah_Sit_Up_Kaki_Lurus_Pria">
                     </div>
-                    <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaSitUp1" name="Simpan">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaSitUp1">Simpan</button>
                 </form>
             </div>
         </div>

@@ -38,6 +38,11 @@ if (isset($_POST['tambah_nilai'])) {
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
     $jumlahShuttleRunWanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Shuttle_Run_Wanita']);
     $umurPengguna = $obyekPenggunaWanita->ambilUmurGarjasWanitaShuttlerunOlehNIP($nipPengguna);
+    if ($obyekPenggunaWanita->cekNipAnggotaShuttleRunWanitaSudahAda($nipPengguna)) {
+        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-shuttlerun.php");
+        exit;
+    }
 
     $nilaiShuttleRun = [
         38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,

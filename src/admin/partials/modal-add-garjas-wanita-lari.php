@@ -6,14 +6,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/" method="post" enctype="multipart/form-data">
+                <form action="../config/add-tes-lari-wanita.php" method="post" enctype="multipart/form-data">
                     <?php
                     $penggunaWanitaModel = new Pengguna($koneksi);
                     $penggunaWanitaInfo = $penggunaWanitaModel->tampilkanDataPenggunaWanita();
                     ?>
                     <div class="mb-3">
-                        <label for="tambahNIPAdmin" class="form-label">NIP</label>
-                        <select name="NIP_Admin" id="tambahNIPAdmin" class="form-select">
+                        <label for="tambahNIPPenggunaWanita" class="form-label">NIP</label>
+                        <select name="NIP_Pengguna" id="tambahNIPPenggunaWanita" class="form-select">
                             <option selected>Pilih NIP Pengguna</option>
                             <?php foreach ($penggunaWanitaInfo as $penggunaWanita) : ?>
                                 <option value="<?php echo $penggunaWanita['NIP_Pengguna']; ?>"><?php echo $penggunaWanita['NIP_Pengguna'] . ' - ' . $penggunaWanita['Nama_Lengkap_Pengguna']; ?></option>
@@ -21,10 +21,10 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tambahWaktuLariAdmin" class="form-label">Waktu Lari</label>
-                        <input type="number" class="form-control" id="tambahWaktuLariAdmin" name="Nomor_Telepon_Admin">
+                        <label for="tambahWaktuLariWanita" class="form-label">Waktu Lari</label>
+                        <input type="number" class="form-control" id="tambahWaktuLariWanita" name="Waktu_Lari_Wanita">
                     </div>
-                    <button type="button" class="btn btn-primary" name="tambah_nilai">Simpan</button>
+                    <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>
             </div>
         </div>

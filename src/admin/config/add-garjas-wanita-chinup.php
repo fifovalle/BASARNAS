@@ -32,11 +32,16 @@ if (isset($_POST['tambah_nilai'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
-    $obyekPengguna = new GarjasWanitaChinUp($koneksi);
+    $obyekPenggunaWanita = new GarjasWanitaChinUp($koneksi);
 
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
     $jumlahChinUpWanita = mysqli_real_escape_string($koneksi, $_POST['Jumlah_Chin_Up_Wanita']);
-    $umurPengguna = $obyekPengguna->ambilUmurGarjasWanitaChinUpOlehNIP($nipPengguna);
+    $umurPengguna = $obyekPenggunaWanita->ambilUmurGarjasWanitaChinUpOlehNIP($nipPengguna);
+    if ($obyekPenggunaWanita->cekNipAnggotaChinUpWanitaSudahAda($nipPengguna)) {
+        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-chinup.php");
+        exit;
+    }
 
     $nilaiChinUp = [
         44 => 100, 43 => 96, 42 => 91, 41 => 87, 40 => 83,
@@ -60,7 +65,7 @@ if (isset($_POST['tambah_nilai'])) {
         'Nilai_Chin_Up_Wanita' => $nilaiAkhir,
     );
 
-    $simpanDataPenggunaWanita = $obyekPengguna->tambahGarjasWanitaChinUp($dataPenggunaWanita);
+    $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaChinUp($dataPenggunaWanita);
 
     if ($simpanDataPenggunaWanita) {
         setPesanKeberhasilan("Berhasil, data pengguna baru telah ditambahkan.");

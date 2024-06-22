@@ -1,18 +1,9 @@
-<?php include('../config/databases.php'); 
-
+<?php include('../config/databases.php');
 if (!isset($_SESSION['NIP_Admin'])) {
     setPesanKesalahan("Silahkan login terlebih dahulu!");
-    header("Location: login.php");
+    header("Location: " . $akarUrl . "src/admin/pages/login.php");
     exit();
 }
-
-$idSessionAdmin = $_SESSION['NIP_Admin'];
-$adminModel = new Admin($koneksi);
-$dataAdmin = $adminModel->tampilkanAdminDenganSessionNip($idSessionAdmin);
-if (!empty($dataAdmin)) {
-    $admin = $dataAdmin[0];
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -75,9 +66,9 @@ if (!empty($dataAdmin)) {
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
-                                    <img src="../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                                    <h5 class="my-3"><?php echo $admin['Nama_Lengkap_Admin']; ?></h5>
-                                    <p class="text-muted mb-1"><?php echo $admin['NIP_Admin']; ?></p>
+                                    <img src="<?php echo $akarUrl ?>src/admin/uploads/<?php echo $_SESSION['Foto_Admin']; ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 100px; height: 100px;">
+                                    <h5 class="my-3"><?php echo $_SESSION['Nama_Lengkap_Admin']; ?></h5>
+                                    <p class="text-muted mb-1"><?php echo $_SESSION['NIP_Admin']; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +80,7 @@ if (!empty($dataAdmin)) {
                                             <p class="mb-0">Nama Lengkap</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $admin['Nama_Lengkap_Admin']; ?></p>
+                                            <p class="text-muted mb-0"><?php echo $_SESSION['Nama_Lengkap_Admin']; ?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -98,7 +89,7 @@ if (!empty($dataAdmin)) {
                                             <p class="mb-0">Nomor Telepon</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $admin['No_Telepon_Admin']; ?></p>
+                                            <p class="text-muted mb-0"><?php echo $_SESSION['No_Telepon_Admin']; ?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -107,7 +98,7 @@ if (!empty($dataAdmin)) {
                                             <p class="mb-0">Jenis Kelamin</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $admin['Jenis_Kelamin_Admin']; ?></p>
+                                            <p class="text-muted mb-0"><?php echo $_SESSION['Jenis_Kelamin_Admin']; ?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -116,7 +107,7 @@ if (!empty($dataAdmin)) {
                                             <p class="mb-0">Alamat</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $admin['Alamat_Admin']; ?></p>
+                                            <p class="text-muted mb-0"><?php echo $_SESSION['Alamat_Admin']; ?></p>
                                         </div>
                                     </div>
                                 </div>

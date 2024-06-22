@@ -1,4 +1,10 @@
-<?php include('../config/databases.php'); ?>
+<?php include('../config/databases.php'); 
+if (!isset($_SESSION['NIP_Admin'])) {
+    setPesanKesalahan("Silahkan login terlebih dahulu!");
+    header("Location: " . $akarUrl . "src/admin/pages/login.php");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +20,8 @@
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="../assets/css/custom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -71,6 +79,7 @@
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
+                                                    <th>NO</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
@@ -79,27 +88,41 @@
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+                                            $garjasPriaFlexedArmHangModel = new GarjasPriaFlexedArmHang($koneksi);
+                                            $garjasPriaFlexedArmHangInfo = $garjasPriaFlexedArmHangModel->tampilkanDataGarjasPriaFlexedArmHang();
+                                            ?>
                                             <tbody>
-                                                <tr>
-                                                    <td>NIP Pengguna</td>
-                                                    <td>Nama Pengguna</td>
-                                                    <td>Umur Pengguna</td>
-                                                    <td>Waktu Flexed Arm Hang Pengguna</td>
-                                                    <td>Nilai Pengguna</td>
+                                                <?php if (!empty($garjasPriaFlexedArmHangInfo)) : ?>
+                                                <?php $nomor = 1; ?>
+                                                <?php foreach ($garjasPriaFlexedArmHangInfo as $garjasPriaFlexedArmHang) : ?>
+                                                    <tr>
+                                                    <td><?php echo $nomor++; ?></td>
+                                                    <td><?php echo $garjasPriaFlexedArmHang['NIP_Pengguna']; ?></td>
+                                                    <td><?php echo $garjasPriaFlexedArmHang['Nama_Lengkap_Pengguna']; ?></td>
+                                                    <td><?php echo $garjasPriaFlexedArmHang['Umur_Pengguna']; ?></td>
+                                                    <td><?php echo $garjasPriaFlexedArmHang['Waktu_Menggantung_Pria']; ?></td>
+                                                    <td><?php echo $garjasPriaFlexedArmHang['Nilai_Menggantung_Pria']; ?></td>
                                                     <td>
                                                         <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#suntingGarjasPriaFlexedArmHang">
+                                                        <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaFlexedArmHang" data-bs-toggle="modal" data-id="<?php echo $garjasPriaFlexedArmHang['ID_Menggantung_Pria']; ?>">
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
-                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                            <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaFlexedArmHang(<?php echo $garjasPriaFlexedArmHang['ID_Menggantung_Pria']; ?>)">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
-                                                            <button type="button" class="btn btn-link btn-info" data-bs-toggle="modal" data-bs-target="#lihatGarjasPriaFlexedArmHang">
+                                                            <button type="button" class="btn btn-link btn-info buttonlihatGarjasPriaFlexedArmHang" data-bs-toggle="modal" data-id="<?php echo $garjasPriaFlexedArmHang['ID_Menggantung_Pria']; ?>">
                                                                 <i class="fa fa-eye"></i>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Flexed Arm Hang!</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -137,6 +160,9 @@
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/delete-garjas-pria-flexed-arm-hang.js"></script>
+    <script src="../assets/js/value-see-garjas-pria-flexedarmhang.js"></script>
+    <script src="../assets/js/value-garjas-pria-flexedarmhang.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -176,6 +202,10 @@
             });
         });
     </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
+    ?>
 </body>
 
 </html>
