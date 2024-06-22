@@ -1,3 +1,8 @@
+<?php
+$page = basename($_SERVER['PHP_SELF']);
+include('../config/databases.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +11,8 @@
   include('../partials/header.php');
   ?>
   <link rel="stylesheet" href="../assets/css/index.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -98,6 +105,11 @@
   <script src="../assets/js/index.js"></script>
   <script src="../assets/js/navbar.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- ALERT -->
+  <?php
+  include('../partials/alert.php');
+  ?>
 </body>
 
 </html>

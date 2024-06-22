@@ -32,4 +32,3 @@ if (isset($_POST['Masuk'])) {
     header("Location: $akarUrl" . "src/admin/pages/data-admin.php");
     exit();
 }
-?>

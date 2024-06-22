@@ -205,7 +205,6 @@ class Admin
 }
 // ===================================ADMIN===================================
 
-
 // ===================================PENGGUNA===================================
 class Pengguna
 {
@@ -1338,7 +1337,6 @@ class GarjasPriaSitUpKakiDitekuk
             return false;
         }
     }
-   
 }
 // ===================================GARJAS PRIA SIT UP KAKI DITEKUK===================================
 
@@ -2071,6 +2069,16 @@ class TesRenangPria
             return false;
         }
     }
+
+    public function sudahAdaNilaiRenangPria($nipPengguna)
+    {
+        $query = "SELECT COUNT(*) as count FROM Tes_Renang_Pria WHERE NIP_Pengguna = ?";
+        $stmt = $this->koneksi->prepare($query);
+        $stmt->bind_param("s", $nipPengguna);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        return $result['count'] > 0;
+    }
 }
 // ===================================TES RENANG PRIA===================================
 
@@ -2175,6 +2183,15 @@ class TesRenangWanita
         } else {
             return false;
         }
+    }
+    public function sudahAdaNilaiRenangWanita($nipPengguna)
+    {
+        $query = "SELECT COUNT(*) as count FROM Tes_Renang_Wanita WHERE NIP_Pengguna = ?";
+        $stmt = $this->koneksi->prepare($query);
+        $stmt->bind_param("s", $nipPengguna);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        return $result['count'] > 0;
     }
 }
 // ===================================TES RENANG WANITA===================================
@@ -2514,12 +2531,30 @@ class TesJalanKaki5KMPria
 
     public function hapusTesJalanKaki5KMPria($id)
     {
-        $queryDelete = "DELETE FROM tes_jalan_pria WHERE ID_Tes_Jalan_Pria=?";
+        $queryDelete = "DELETE FROM tes_jalan_pria WHERE ID_Jalan_Pria=?";
         $statementDelete = $this->koneksi->prepare($queryDelete);
         $statementDelete->bind_param("i", $id);
         $isDeleted = $statementDelete->execute();
 
         if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function cekNipAnggotaTesJalanKaki5KMPriaSudahAda($nipPengguna)
+    {
+        $query = "SELECT COUNT(*) as total FROM tes_jalan_pria WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $nipPengguna);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+
+        $total = $row['total'];
+
+        if ($total > 0) {
             return true;
         } else {
             return false;
@@ -2706,3 +2741,102 @@ class Kompetensi
     }
 }
 // ===================================KOMPETENSI===================================
+
+// ===================================MODUL===================================
+class Modul
+{
+
+    private $koneksi;
+
+    public function __construct($database)
+    {
+        $this->koneksi = $database;
+    }
+
+    private function mengamankanString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataModul()
+    {
+        $query = "SELECT * FROM modul LEFT JOIN pengguna ON modul.NIP_Pengguna = pengguna.NIP_Pengguna";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tambahModul($data)
+    {
+        $query = "INSERT INTO modul (
+            NIP_Pengguna, Nama_Modul, Judul_Modul, Tanggal_Terbit_Modul, Deskripsi_Modul
+            ) VALUES (?, ?, ?, NOW(), ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "isss",
+            $this->mengamankanString($data['NIP_Pengguna']),
+            $this->mengamankanString($data['Nama_Modul']),
+            $this->mengamankanString($data['Judul_Modul']),
+            $this->mengamankanString($data['Deskripsi_Modul'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function hapusModul($idModul)
+    {
+        $queryDelete = "DELETE FROM modul WHERE ID_Modul=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $idModul);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiModul($id, $data)
+    {
+        $sql = "UPDATE modul SET
+                Nama_Modul = ?,
+                Judul_Modul = ?,
+                Tanggal_Terbit_Modul = NOW(),
+                Deskripsi_Modul = ?
+                WHERE ID_Modul = ?";
+        $stmt = $this->koneksi->prepare($sql);
+
+        if ($stmt === false) {
+            return false;
+        }
+
+        $stmt->bind_param(
+            "sssi",
+            $data['Nama_Modul'],
+            $data['Judul_Modul'],
+            $data['Deskripsi_Modul'],
+            $id
+        );
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================MODUL===================================

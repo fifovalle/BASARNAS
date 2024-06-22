@@ -37,6 +37,11 @@ if (isset($_POST['tambah_nilai'])) {
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
     $waktuJalan = mysqli_real_escape_string($koneksi, $_POST['Waktu_Jalan']);
     $umurPengguna = $obyekPriaJalan->ambilUmurTesJalanKaki5KMPriaOlehNIP($nipPengguna);
+    if ($obyekPriaJalan->cekNipAnggotaTesJalanKaki5KMPriaSudahAda($nipPengguna)) {
+        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-jalan.php");
+        exit;
+    }
 
     if (empty($waktuJalan) || $nipPengguna == '') {
         setPesanKesalahan("Semua data harus diisi.");

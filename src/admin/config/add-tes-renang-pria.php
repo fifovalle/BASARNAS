@@ -6,7 +6,6 @@ if (isset($_POST['tambah_nilai'])) {
     $gayaRenang = mysqli_real_escape_string($koneksi, $_POST['Gaya_Renang']);
     $waktuRenang = mysqli_real_escape_string($koneksi, $_POST['Waktu_Renang']);
 
-    // Konversi waktu renang menjadi detik
     if (strpos($waktuRenang, ':') !== false) {
         list($menit, $detik) = explode(':', $waktuRenang);
         $waktuRenang = ($menit * 60) + $detik;
@@ -16,16 +15,18 @@ if (isset($_POST['tambah_nilai'])) {
 
     $obyekPenggunaPria = new Pengguna($koneksi);
     $umurPengguna = $obyekPenggunaPria->ambilUmurPengguna($nipPengguna);
-    if ($obyekPenggunaPria->cekNip($nipPengguna)) {
-        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-renang.php");
+
+    $tesRenangPriaModel = new TesRenangPria($koneksi);
+    if ($tesRenangPriaModel->sudahAdaNilaiRenangPria($nipPengguna)) {
+        setPesanKesalahan("Nilai renang untuk pengguna ini sudah ada.");
+        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-pria-renang.php");
         exit;
     }
-    
+
 
     $nilaiRenang = [
         'Dada' => [
-            '18-25' => [43, 143],  // 43 detik hingga 2 menit 23 detik (143 detik)
+            '18-25' => [43, 143],
             '26-30' => [46, 146],
             '31-35' => [49, 149],
             '36-40' => [52, 152],
@@ -37,28 +38,28 @@ if (isset($_POST['tambah_nilai'])) {
             '56-58' => [70, 170]
         ],
         'Bebas' => [
-            '18-25' => [43, 223],
-            '26-30' => [46, 226],
-            '31-35' => [49, 229],
-            '36-40' => [52, 232],
-            '41-43' => [55, 235],
-            '44-46' => [58, 238],
-            '47-49' => [101, 241],
-            '50-52' => [105, 244],
-            '53-55' => [108, 247],
-            '56-58' => [111, 250]
+            '18-25' => [39, 223],
+            '26-30' => [42, 226],
+            '31-35' => [45, 229],
+            '36-40' => [48, 232],
+            '41-43' => [51, 235],
+            '44-46' => [54, 238],
+            '47-49' => [57, 241],
+            '50-52' => [101, 244],
+            '53-55' => [104, 247],
+            '56-58' => [107, 250]
         ],
         'Lainnya' => [
-            '18-25' => [43, 223],
-            '26-30' => [46, 226],
-            '31-35' => [49, 229],
-            '36-40' => [52, 232],
-            '41-43' => [55, 235],
-            '44-46' => [58, 238],
-            '47-49' => [101, 241],
-            '50-52' => [105, 244],
-            '53-55' => [108, 247],
-            '56-58' => [111, 250]
+            '18-25' => [38, 223],
+            '26-30' => [41, 226],
+            '31-35' => [44, 229],
+            '36-40' => [47, 232],
+            '41-43' => [50, 235],
+            '44-46' => [53, 238],
+            '47-49' => [56, 241],
+            '50-52' => [59, 244],
+            '53-55' => [103, 247],
+            '56-58' => [106, 250]
         ]
     ];
 

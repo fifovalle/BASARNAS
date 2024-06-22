@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2024 at 04:52 PM
+-- Generation Time: Jun 22, 2024 at 05:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `absensi` (
   `ID_Absensi` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal_Absensi` date NOT NULL,
   `Hari_Absensi` enum('Senin','Rabu') NOT NULL,
   `Status_Absensi` enum('Hadir','Tidak Hadir') NOT NULL
@@ -42,7 +42,7 @@ CREATE TABLE `absensi` (
 --
 
 CREATE TABLE `admin` (
-  `NIP_Admin` int(20) NOT NULL,
+  `NIP_Admin` bigint(20) NOT NULL,
   `Foto_Admin` longblob NOT NULL,
   `Nama_Lengkap_Admin` varchar(30) NOT NULL,
   `Tanggal_Lahir_Admin` date NOT NULL,
@@ -70,7 +70,7 @@ INSERT INTO `admin` (`NIP_Admin`, `Foto_Admin`, `Nama_Lengkap_Admin`, `Tanggal_L
 
 CREATE TABLE `bmi` (
   `ID_BMI` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal Pemeriksaan` date NOT NULL,
   `Tinggi_BMI` int(4) NOT NULL,
   `Berat_BMI` int(4) NOT NULL,
@@ -86,17 +86,10 @@ CREATE TABLE `bmi` (
 
 CREATE TABLE `garjas_pria_chin_up` (
   `ID_Pria_Chin_Up` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Chin_Up_Pria` int(4) NOT NULL,
   `Nilai_Chin_Up_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `garjas_pria_chin_up`
---
-
-INSERT INTO `garjas_pria_chin_up` (`ID_Pria_Chin_Up`, `NIP_Pengguna`, `Jumlah_Chin_Up_Pria`, `Nilai_Chin_Up_Pria`) VALUES
-(2, 2147483647, 20, 100);
 
 -- --------------------------------------------------------
 
@@ -106,7 +99,7 @@ INSERT INTO `garjas_pria_chin_up` (`ID_Pria_Chin_Up`, `NIP_Pengguna`, `Jumlah_Ch
 
 CREATE TABLE `garjas_pria_menggantung` (
   `ID_Menggantung_Pria` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Waktu_Menggantung_Pria` int(4) NOT NULL,
   `Nilai_Menggantung_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -119,7 +112,7 @@ CREATE TABLE `garjas_pria_menggantung` (
 
 CREATE TABLE `garjas_pria_push_up` (
   `ID_Push_Up_Pria` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Push_Up_Pria` int(4) NOT NULL,
   `Nilai_Push_Up_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -129,7 +122,7 @@ CREATE TABLE `garjas_pria_push_up` (
 --
 
 INSERT INTO `garjas_pria_push_up` (`ID_Push_Up_Pria`, `NIP_Pengguna`, `Jumlah_Push_Up_Pria`, `Nilai_Push_Up_Pria`) VALUES
-(44, 210204, 55, 0);
+(46, 555, 22, 38);
 
 -- --------------------------------------------------------
 
@@ -139,7 +132,7 @@ INSERT INTO `garjas_pria_push_up` (`ID_Push_Up_Pria`, `NIP_Pengguna`, `Jumlah_Pu
 
 CREATE TABLE `garjas_pria_shuttle_run` (
   `ID_Shuttle_Run_Pria` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Waktu_Shuttle_Run_Pria` float NOT NULL,
   `Nilai_Shuttle_Run_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -152,17 +145,10 @@ CREATE TABLE `garjas_pria_shuttle_run` (
 
 CREATE TABLE `garjas_pria_sit_up_kaki_di_tekuk` (
   `ID_Sit_Up_Kaki_Di_Tekuk_Pria` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria` int(4) NOT NULL,
   `Nilai_Sit_Up_Kaki_Di_Tekuk_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `garjas_pria_sit_up_kaki_di_tekuk`
---
-
-INSERT INTO `garjas_pria_sit_up_kaki_di_tekuk` (`ID_Sit_Up_Kaki_Di_Tekuk_Pria`, `NIP_Pengguna`, `Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria`, `Nilai_Sit_Up_Kaki_Di_Tekuk_Pria`) VALUES
-(3, 210204, 80, 92);
 
 -- --------------------------------------------------------
 
@@ -172,17 +158,10 @@ INSERT INTO `garjas_pria_sit_up_kaki_di_tekuk` (`ID_Sit_Up_Kaki_Di_Tekuk_Pria`, 
 
 CREATE TABLE `garjas_pria_sit_up_kaki_lurus` (
   `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Sit_Up_Kaki_Lurus_Pria` int(4) NOT NULL,
   `Nilai_Sit_Up_Kaki_Lurus_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `garjas_pria_sit_up_kaki_lurus`
---
-
-INSERT INTO `garjas_pria_sit_up_kaki_lurus` (`ID_Sit_Up_Kaki_Lurus_Pria`, `NIP_Pengguna`, `Jumlah_Sit_Up_Kaki_Lurus_Pria`, `Nilai_Sit_Up_Kaki_Lurus_Pria`) VALUES
-(2, 128478, 34, 56);
 
 -- --------------------------------------------------------
 
@@ -192,7 +171,7 @@ INSERT INTO `garjas_pria_sit_up_kaki_lurus` (`ID_Sit_Up_Kaki_Lurus_Pria`, `NIP_P
 
 CREATE TABLE `garjas_wanita_chin_up` (
   `ID_Wanita_Chin_Up` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Chin_Up_Wanita` int(4) NOT NULL,
   `Nilai_Chin_Up_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -202,7 +181,8 @@ CREATE TABLE `garjas_wanita_chin_up` (
 --
 
 INSERT INTO `garjas_wanita_chin_up` (`ID_Wanita_Chin_Up`, `NIP_Pengguna`, `Jumlah_Chin_Up_Wanita`, `Nilai_Chin_Up_Wanita`) VALUES
-(13, 11221122, 22, 38);
+(14, 1241231, 31, 54),
+(15, 5555, 21, 36);
 
 -- --------------------------------------------------------
 
@@ -212,7 +192,7 @@ INSERT INTO `garjas_wanita_chin_up` (`ID_Wanita_Chin_Up`, `NIP_Pengguna`, `Jumla
 
 CREATE TABLE `garjas_wanita_push_up` (
   `ID_Wanita_Push_Up` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Push_Up_Wanita` int(4) NOT NULL,
   `Nilai_Push_Up_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -222,7 +202,8 @@ CREATE TABLE `garjas_wanita_push_up` (
 --
 
 INSERT INTO `garjas_wanita_push_up` (`ID_Wanita_Push_Up`, `NIP_Pengguna`, `Jumlah_Push_Up_Wanita`, `Nilai_Push_Up_Wanita`) VALUES
-(17, 11221122, 22, 66);
+(18, 5555, 44, 0),
+(19, 1241231, 11, 43);
 
 -- --------------------------------------------------------
 
@@ -232,7 +213,7 @@ INSERT INTO `garjas_wanita_push_up` (`ID_Wanita_Push_Up`, `NIP_Pengguna`, `Jumla
 
 CREATE TABLE `garjas_wanita_shuttle_run` (
   `ID_Wanita_Shuttle_Run` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Shuttle_Run_Wanita` int(4) NOT NULL,
   `Nilai_Shuttle_Run_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -242,7 +223,8 @@ CREATE TABLE `garjas_wanita_shuttle_run` (
 --
 
 INSERT INTO `garjas_wanita_shuttle_run` (`ID_Wanita_Shuttle_Run`, `NIP_Pengguna`, `Jumlah_Shuttle_Run_Wanita`, `Nilai_Shuttle_Run_Wanita`) VALUES
-(16, 11221122, 12, 45);
+(17, 1241231, 43, 0),
+(18, 5555, 11, 43);
 
 -- --------------------------------------------------------
 
@@ -252,7 +234,7 @@ INSERT INTO `garjas_wanita_shuttle_run` (`ID_Wanita_Shuttle_Run`, `NIP_Pengguna`
 
 CREATE TABLE `garjas_wanita_sit_up_kaki_di_tekuk` (
   `ID_Wanita_Sit_Up_Kaki_Di_Tekuk` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita` int(4) NOT NULL,
   `Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -262,7 +244,8 @@ CREATE TABLE `garjas_wanita_sit_up_kaki_di_tekuk` (
 --
 
 INSERT INTO `garjas_wanita_sit_up_kaki_di_tekuk` (`ID_Wanita_Sit_Up_Kaki_Di_Tekuk`, `NIP_Pengguna`, `Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita`, `Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita`) VALUES
-(7, 333333, 23, 40);
+(8, 5555, 38, 74),
+(9, 1241231, 22, 38);
 
 -- --------------------------------------------------------
 
@@ -272,7 +255,7 @@ INSERT INTO `garjas_wanita_sit_up_kaki_di_tekuk` (`ID_Wanita_Sit_Up_Kaki_Di_Teku
 
 CREATE TABLE `garjas_wanita_sit_up_kaki_lurus` (
   `ID_Wanita_Sit_Up_Kaki_Lurus` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Jumlah_Sit_Up_Kaki_Lurus_Wanita` int(4) NOT NULL,
   `Nilai_Sit_Up_Kaki_Lurus_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -282,7 +265,8 @@ CREATE TABLE `garjas_wanita_sit_up_kaki_lurus` (
 --
 
 INSERT INTO `garjas_wanita_sit_up_kaki_lurus` (`ID_Wanita_Sit_Up_Kaki_Lurus`, `NIP_Pengguna`, `Jumlah_Sit_Up_Kaki_Lurus_Wanita`, `Nilai_Sit_Up_Kaki_Lurus_Wanita`) VALUES
-(15, 333333, 22, 38);
+(16, 5555, 44, 100),
+(17, 1241231, 23, 40);
 
 -- --------------------------------------------------------
 
@@ -292,7 +276,7 @@ INSERT INTO `garjas_wanita_sit_up_kaki_lurus` (`ID_Wanita_Sit_Up_Kaki_Lurus`, `N
 
 CREATE TABLE `kompetensi` (
   `ID_Kompetensi` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `File_Sertifikat` longblob NOT NULL,
   `Nama_Sertifikat` varchar(50) NOT NULL,
   `Tanggal_Penerbitan_Sertifikat` date NOT NULL,
@@ -310,12 +294,19 @@ CREATE TABLE `kompetensi` (
 
 CREATE TABLE `modul` (
   `ID_Modul` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Nama_Modul` varchar(20) NOT NULL,
   `Judul_Modul` varchar(20) NOT NULL,
   `Tanggal_Terbit_Modul` date NOT NULL,
   `Deskripsi_Modul` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `modul`
+--
+
+INSERT INTO `modul` (`ID_Modul`, `NIP_Pengguna`, `Nama_Modul`, `Judul_Modul`, `Tanggal_Terbit_Modul`, `Deskripsi_Modul`) VALUES
+(3, 555, 'Modul 1', 'C', '2024-06-22', 'C');
 
 -- --------------------------------------------------------
 
@@ -324,7 +315,7 @@ CREATE TABLE `modul` (
 --
 
 CREATE TABLE `pengguna` (
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Foto_Pengguna` longblob NOT NULL,
   `Nama_Lengkap_Pengguna` varchar(30) NOT NULL,
   `Tanggal_Lahir_Pengguna` date NOT NULL,
@@ -342,9 +333,11 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`NIP_Pengguna`, `Foto_Pengguna`, `Nama_Lengkap_Pengguna`, `Tanggal_Lahir_Pengguna`, `Umur_Pengguna`, `Alamat_Pengguna`, `No_Telepon_Pengguna`, `Jabatan_Pengguna`, `Jenis_Kelamin_Pengguna`, `Kata_Sandi_Pengguna`, `Konfirmasi_Kata_Sandi_Pengguna`) VALUES
-(210204, 0x363637353366353031626431632e6a7067, 'Sandro Anugrah Tambunan', '2004-02-21', 20, 'Batujajar Barat', '+62 822-7653-4455', 'Satu', 'Pria', '$2y$10$iIdEGLIvF5yY6RNw0JNtqetOqbhJOIPLk7a9e4/OOVsSgW/qawg1K', '$2y$10$iIdEGLIvF5yY6RNw0JNtqetOqbhJOIPLk7a9e4/OOVsSgW/qawg1K'),
-(333333, 0x363637353665656233386432362e706e67, 'Cewe', '2001-12-07', 22, 'Bandung', '+62 812-2261-28239', 'Satu', 'Wanita', '$2y$10$FydtCLf1/UCIy3Sn3qCuMuloaOzJF/pmSL7lUU/Be1FpLOCW0VUT6', '$2y$10$FydtCLf1/UCIy3Sn3qCuMuloaOzJF/pmSL7lUU/Be1FpLOCW0VUT6'),
-(11221122, 0x363637353734326361626562352e6a7067, 'SYNTAX SQUAD BROWW', '2004-02-18', 20, 'BISMILLAH... \r\nSYNTAX SQUAD\r\nJAYA JAYA JAYA!!!!', '+62 812-2291-2323', 'Satu', 'Wanita', '$2y$10$nHWSq5TtJAzv/6AXyNzNoOW4MYQU0uDYp8E.kggUAqAV7/9UdbAtG', '$2y$10$nHWSq5TtJAzv/6AXyNzNoOW4MYQU0uDYp8E.kggUAqAV7/9UdbAtG');
+(555, 0x363637363333303462646533642e6a7067, 'Adrian', '2005-12-07', 18, 'bababa', '+62 781-2382-323', 'Satu', 'Pria', '$2y$10$zvkcKevqwg1vBLtEdakW1OCBiqzKUBxX8GeFs8qQOzlnRUFCm.ZEe', '$2y$10$zvkcKevqwg1vBLtEdakW1OCBiqzKUBxX8GeFs8qQOzlnRUFCm.ZEe'),
+(5555, 0x363637363366646530383435632e6a7067, 'Sayang', '2005-10-07', 18, 'Bandung', '+62 812-2727-3232', 'Satu', 'Wanita', '$2y$10$cYUf/AlcDsdwpvhDXJ4LA.OLFNExy10U5V10YcUKWvUBdL9cfGIVq', '$2y$10$cYUf/AlcDsdwpvhDXJ4LA.OLFNExy10U5V10YcUKWvUBdL9cfGIVq'),
+(210204, 0x363637363361393064346636632e6a7067, 'Sandro Anugrah Tambunan', '2004-02-21', 20, 'Batujajar', '+62 822-1345-6788', 'Satu', 'Pria', '$2y$10$vnlx.UXjDxWps1G1fxPAM.MPG9APe7kGnl/2Tj6xxE.3x2mCBFgCi', '$2y$10$vnlx.UXjDxWps1G1fxPAM.MPG9APe7kGnl/2Tj6xxE.3x2mCBFgCi'),
+(1241231, 0x363637363430353133303734362e6a7067, 'Yunaaa', '2006-12-07', 17, 'asdasdasdasd', '+62 812-2623-62322', 'Satu', 'Wanita', '$2y$10$9Y6lrviqOkNhpk1wB5Aq8ut.3o4flK89Au5CSASJ/c3IahL4JwyiK', '$2y$10$9Y6lrviqOkNhpk1wB5Aq8ut.3o4flK89Au5CSASJ/c3IahL4JwyiK'),
+(2250081109, 0x363637363338323039326365382e6a7067, 'NaufalRacing777', '2001-04-14', 23, 'dfvb', '81284118344', 'Satu', 'Pria', '$2y$10$rp8dQfVEiaQac6UwO5RZy.OdbwnfoER.4k88PgTCZkZ2AcHWjphLG', '$2y$10$rp8dQfVEiaQac6UwO5RZy.OdbwnfoER.4k88PgTCZkZ2AcHWjphLG');
 
 -- --------------------------------------------------------
 
@@ -353,10 +346,30 @@ INSERT INTO `pengguna` (`NIP_Pengguna`, `Foto_Pengguna`, `Nama_Lengkap_Pengguna`
 --
 
 CREATE TABLE `tes_jalan_pria` (
-  `ID_Tes_Jalan_Pria` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `ID_Jalan_Pria` int(11) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Waktu_Jalan_Pria` decimal(10,1) NOT NULL,
   `Nilai_Jalan_Pria` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tes_jalan_pria`
+--
+
+INSERT INTO `tes_jalan_pria` (`ID_Jalan_Pria`, `NIP_Pengguna`, `Waktu_Jalan_Pria`, `Nilai_Jalan_Pria`) VALUES
+(28, 555, 11.0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tes_jalan_wanita`
+--
+
+CREATE TABLE `tes_jalan_wanita` (
+  `ID_Jalan_Wanita` int(11) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
+  `Waktu_Jalan_Wanita` decimal(10,0) NOT NULL,
+  `Nilai_Lari_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -367,7 +380,7 @@ CREATE TABLE `tes_jalan_pria` (
 
 CREATE TABLE `tes_lari_pria` (
   `ID_Lari_Pria` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Waktu_Lari_Pria` varchar(50) NOT NULL,
   `Nilai_Lari_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -377,7 +390,9 @@ CREATE TABLE `tes_lari_pria` (
 --
 
 INSERT INTO `tes_lari_pria` (`ID_Lari_Pria`, `NIP_Pengguna`, `Waktu_Lari_Pria`, `Nilai_Lari_Pria`) VALUES
-(10, 210204, '33', 89);
+(11, 555, '22', 66),
+(12, 210204, '21', 64),
+(13, 2250081109, '31', 85);
 
 -- --------------------------------------------------------
 
@@ -387,7 +402,7 @@ INSERT INTO `tes_lari_pria` (`ID_Lari_Pria`, `NIP_Pengguna`, `Waktu_Lari_Pria`, 
 
 CREATE TABLE `tes_lari_wanita` (
   `ID_Lari_Wanita` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Waktu_Lari_Wanita` varchar(50) NOT NULL,
   `Nilai_Lari_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -397,7 +412,8 @@ CREATE TABLE `tes_lari_wanita` (
 --
 
 INSERT INTO `tes_lari_wanita` (`ID_Lari_Wanita`, `NIP_Pengguna`, `Waktu_Lari_Wanita`, `Nilai_Lari_Wanita`) VALUES
-(5, 333333, '2', 5);
+(6, 5555, '1', 1),
+(7, 1241231, '3', 10);
 
 -- --------------------------------------------------------
 
@@ -407,7 +423,7 @@ INSERT INTO `tes_lari_wanita` (`ID_Lari_Wanita`, `NIP_Pengguna`, `Waktu_Lari_Wan
 
 CREATE TABLE `tes_renang_pria` (
   `ID_Renang_Pria` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Waktu_Renang_Pria` varchar(50) NOT NULL,
   `Nama_Gaya_Renang_Pria` enum('Dada','Bebas','Lainnya','') NOT NULL,
   `Nilai_Renang_Pria` int(3) NOT NULL
@@ -418,7 +434,9 @@ CREATE TABLE `tes_renang_pria` (
 --
 
 INSERT INTO `tes_renang_pria` (`ID_Renang_Pria`, `NIP_Pengguna`, `Waktu_Renang_Pria`, `Nama_Gaya_Renang_Pria`, `Nilai_Renang_Pria`) VALUES
-(28, 210204, '00:33', 'Bebas', 100);
+(35, 210204, '00:21', 'Bebas', 100),
+(36, 555, '00:43', 'Dada', 100),
+(37, 2250081109, '00:21', 'Dada', 100);
 
 -- --------------------------------------------------------
 
@@ -428,7 +446,7 @@ INSERT INTO `tes_renang_pria` (`ID_Renang_Pria`, `NIP_Pengguna`, `Waktu_Renang_P
 
 CREATE TABLE `tes_renang_wanita` (
   `ID_Renang_Wanita` int(11) NOT NULL,
-  `NIP_Pengguna` int(20) NOT NULL,
+  `NIP_Pengguna` bigint(20) NOT NULL,
   `Waktu_Renang_Wanita` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Nama_Gaya_Renang_Wanita` enum('Dada','Bebas','Lainnya','') NOT NULL,
   `Nilai_Renang_Wanita` int(3) NOT NULL
@@ -439,7 +457,8 @@ CREATE TABLE `tes_renang_wanita` (
 --
 
 INSERT INTO `tes_renang_wanita` (`ID_Renang_Wanita`, `NIP_Pengguna`, `Waktu_Renang_Wanita`, `Nama_Gaya_Renang_Wanita`, `Nilai_Renang_Wanita`) VALUES
-(10, 333333, '0000-00-00 00:00:00', 'Bebas', 100);
+(15, 5555, '0000-00-00 00:00:00', 'Bebas', 100),
+(16, 1241231, '0000-00-00 00:00:00', 'Bebas', 0);
 
 --
 -- Indexes for dumped tables
@@ -567,7 +586,14 @@ ALTER TABLE `pengguna`
 -- Indexes for table `tes_jalan_pria`
 --
 ALTER TABLE `tes_jalan_pria`
-  ADD PRIMARY KEY (`ID_Tes_Jalan_Pria`),
+  ADD PRIMARY KEY (`ID_Jalan_Pria`),
+  ADD KEY `NIP_Pengguna` (`NIP_Pengguna`);
+
+--
+-- Indexes for table `tes_jalan_wanita`
+--
+ALTER TABLE `tes_jalan_wanita`
+  ADD PRIMARY KEY (`ID_Jalan_Wanita`),
   ADD KEY `NIP_Pengguna` (`NIP_Pengguna`);
 
 --
@@ -630,7 +656,7 @@ ALTER TABLE `garjas_pria_menggantung`
 -- AUTO_INCREMENT for table `garjas_pria_push_up`
 --
 ALTER TABLE `garjas_pria_push_up`
-  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_shuttle_run`
@@ -654,31 +680,31 @@ ALTER TABLE `garjas_pria_sit_up_kaki_lurus`
 -- AUTO_INCREMENT for table `garjas_wanita_chin_up`
 --
 ALTER TABLE `garjas_wanita_chin_up`
-  MODIFY `ID_Wanita_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_Wanita_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_push_up`
 --
 ALTER TABLE `garjas_wanita_push_up`
-  MODIFY `ID_Wanita_Push_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID_Wanita_Push_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_shuttle_run`
 --
 ALTER TABLE `garjas_wanita_shuttle_run`
-  MODIFY `ID_Wanita_Shuttle_Run` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID_Wanita_Shuttle_Run` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_sit_up_kaki_di_tekuk`
 --
 ALTER TABLE `garjas_wanita_sit_up_kaki_di_tekuk`
-  MODIFY `ID_Wanita_Sit_Up_Kaki_Di_Tekuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Wanita_Sit_Up_Kaki_Di_Tekuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_sit_up_kaki_lurus`
 --
 ALTER TABLE `garjas_wanita_sit_up_kaki_lurus`
-  MODIFY `ID_Wanita_Sit_Up_Kaki_Lurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_Wanita_Sit_Up_Kaki_Lurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `kompetensi`
@@ -690,37 +716,43 @@ ALTER TABLE `kompetensi`
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
-  MODIFY `ID_Modul` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Modul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tes_jalan_pria`
 --
 ALTER TABLE `tes_jalan_pria`
-  MODIFY `ID_Tes_Jalan_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_Jalan_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `tes_jalan_wanita`
+--
+ALTER TABLE `tes_jalan_wanita`
+  MODIFY `ID_Jalan_Wanita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tes_lari_pria`
 --
 ALTER TABLE `tes_lari_pria`
-  MODIFY `ID_Lari_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_Lari_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tes_lari_wanita`
 --
 ALTER TABLE `tes_lari_wanita`
-  MODIFY `ID_Lari_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Lari_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tes_renang_pria`
 --
 ALTER TABLE `tes_renang_pria`
-  MODIFY `ID_Renang_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID_Renang_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tes_renang_wanita`
 --
 ALTER TABLE `tes_renang_wanita`
-  MODIFY `ID_Renang_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_Renang_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -739,10 +771,10 @@ ALTER TABLE `bmi`
   ADD CONSTRAINT `bmi_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `garjas_pria_menggantung`
+-- Constraints for table `garjas_pria_chin_up`
 --
-ALTER TABLE `garjas_pria_menggantung`
-  ADD CONSTRAINT `garjas_pria_menggantung_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `garjas_pria_chin_up`
+  ADD CONSTRAINT `garjas_pria_chin_up_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `garjas_pria_push_up`
@@ -751,16 +783,16 @@ ALTER TABLE `garjas_pria_push_up`
   ADD CONSTRAINT `garjas_pria_push_up_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `garjas_pria_shuttle_run`
---
-ALTER TABLE `garjas_pria_shuttle_run`
-  ADD CONSTRAINT `garjas_pria_shuttle_run_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `garjas_pria_sit_up_kaki_di_tekuk`
 --
 ALTER TABLE `garjas_pria_sit_up_kaki_di_tekuk`
   ADD CONSTRAINT `garjas_pria_sit_up_kaki_di_tekuk_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `garjas_pria_sit_up_kaki_lurus`
+--
+ALTER TABLE `garjas_pria_sit_up_kaki_lurus`
+  ADD CONSTRAINT `garjas_pria_sit_up_kaki_lurus_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `garjas_wanita_chin_up`
@@ -797,12 +829,6 @@ ALTER TABLE `garjas_wanita_sit_up_kaki_lurus`
 --
 ALTER TABLE `kompetensi`
   ADD CONSTRAINT `kompetensi_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `modul`
---
-ALTER TABLE `modul`
-  ADD CONSTRAINT `modul_ibfk_1` FOREIGN KEY (`NIP_Pengguna`) REFERENCES `pengguna` (`NIP_Pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tes_jalan_pria`

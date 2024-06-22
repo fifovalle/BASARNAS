@@ -1,4 +1,4 @@
-<?php include('../config/databases.php'); 
+<?php include('../config/databases.php');
 if (!isset($_SESSION['NIP_Admin'])) {
     setPesanKesalahan("Silahkan login terlebih dahulu!");
     header("Location: " . $akarUrl . "src/admin/pages/login.php");
@@ -104,13 +104,13 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $tesJalanPria['Nilai_Jalan_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Tes_Jalan_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Jalan_Pria']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusPriaJalan(<?php echo $tesJalanPria['ID_Tes_Jalan_Pria']; ?>)">
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusPriaJalan(<?php echo $tesJalanPria['ID_Jalan_Pria']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info buttonLihatPriaJalan" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Tes_Jalan_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatPriaJalan" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Jalan_Pria']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>

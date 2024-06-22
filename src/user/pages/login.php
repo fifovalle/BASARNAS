@@ -1,8 +1,10 @@
 <?php
-$page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama berkas yang sedang dijalankan
+$page = basename($_SERVER['PHP_SELF']);
+include('../config/databases.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <?php
@@ -16,6 +18,8 @@ $page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama berkas yang sedang d
             }
         </style>
     <?php endif; ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -33,26 +37,26 @@ $page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama berkas yang sedang d
                     <h1 class=" ">Welcome to <b>SIMORE</b></h1>
                     <lead class=" ">Sistem Monitoring Kompetensi Rescuer</lead>
                 </div>
-                <form action="" method="post" class="d-flex flex-column justify-content-center align-items-center section-login">
+                <form action="../config/login-user.php" method="post" class="d-flex flex-column justify-content-center align-items-center section-login">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">NIP</span>
-                        <input type="text" class="form-control" placeholder="Masukkan NIP Anda" aria-label="NIP" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Masukkan NIP Anda" aria-label="NIP" aria-describedby="basic-addon1" name="NIP_Pengguna">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon2">Password</span>
-                        <input type="password" class="form-control" placeholder="Masukkan Password Anda" aria-label="Password" aria-describedby="basic-addon2">
+                        <input type="password" class="form-control" placeholder="Masukkan Password Anda" aria-label="Password" aria-describedby="basic-addon2" name="Kata_Sandi_Pengguna">
                     </div>
                     <div class="input-group mb-3">
                         <svg width="350" height="120" xmlns="http://www.w3.org/2000/svg">
                             <rect width="250" height="100" x="40" y="10" rx="20" ry="20" fill="lightgray" opacity="0.6" />
-                            <text x="165" y="60" font-family="Arial" font-size="20" fill="black" text-anchor="middle" alignment-baseline="middle">
-                                12a34AZ
+                            <text id="captcha-text" x="165" y="60" font-family="Arial" font-size="20" fill="black" text-anchor="middle" alignment-baseline="middle">
+                                <!-- DOM -->
                             </text>
                         </svg>
-                        <input type="text" class="form-control" placeholder="Masukkan Captcha Code" aria-label="Password" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" placeholder="Masukkan Captcha Code" aria-label="Captcha" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3 justify-content-center">
-                        <button type="submit" class="btn btn-outline-primary text-center">MASUK</button>
+                        <button type="submit" class="btn btn-outline-primary text-center" name="Masuk">MASUK</button>
                     </div>
                 </form>
             </div>
@@ -67,6 +71,28 @@ $page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama berkas yang sedang d
     </section>
     <?php
     include('../partials/footer.php');
+    ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function generateCaptcha() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let captcha = '';
+            for (let i = 0; i < 7; i++) {
+                captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return captcha;
+        }
+
+        function setCaptcha() {
+            const captchaText = document.getElementById('captcha-text');
+            captchaText.textContent = generateCaptcha();
+        }
+
+        window.onload = setCaptcha;
+    </script>
+    <!-- ALERT -->
+    <?php
+    include('../partials/alert.php');
     ?>
 </body>
 

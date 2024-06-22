@@ -16,11 +16,13 @@ if (isset($_POST['tambah_nilai'])) {
 
     $obyekPenggunaWanita = new Pengguna($koneksi);
     $umurPengguna = $obyekPenggunaWanita->ambilUmurPengguna($nipPengguna);
-    if ($obyekPenggunaWanita->cekNip($nipPengguna)) {
-        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-renang.php");
+    $tesRenangWanitaModel = new TesRenangWanita($koneksi);
+    if ($tesRenangWanitaModel->sudahAdaNilaiRenangWanita($nipPengguna)) {
+        setPesanKesalahan("Nilai renang untuk pengguna ini sudah ada.");
+        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-wanita-renang.php");
         exit;
     }
+
 
     $nilaiRenang = [
         'Dada' => [

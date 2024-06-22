@@ -224,6 +224,32 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-modul.php') ? 'active' : ''; ?>">
+                    <a data-bs-toggle="collapse" href="#data">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Data</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-modul.php') ? 'show' : ''; ?>" id="data">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-modul.php">
+                                    <span class="sub-item">Modul</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/">
+                                    <span class="sub-item">Absensi</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/">
+                                    <span class="sub-item">BMI</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
