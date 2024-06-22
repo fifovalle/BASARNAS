@@ -76,14 +76,19 @@
   margin-bottom: 30px;
 }
 
+.modul {
+  text-align: end;
+  padding: 0;
+}
+
 .hadir {
   text-align: end;
-  padding-right: 5px;
+  padding: 0;
 }
 
 .selesai {
   text-align: start;
-  padding-left: 5px;
+  padding: 0;
 }
 
 .activated1 {

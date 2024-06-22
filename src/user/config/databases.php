@@ -51,6 +51,29 @@ class Pengguna
             return null;
         }
     }
+
+    public function tampilkanKompetensiDenganSessionNip($nipSessionPengguna)
+    {
+        $query = "SELECT kompetensi.*, pengguna.* 
+                  FROM kompetensi 
+                  LEFT JOIN pengguna ON kompetensi.NIP_Pengguna = pengguna.NIP_Pengguna 
+                  WHERE pengguna.NIP_Pengguna = ?";
+
+        $stmt = $this->koneksi->prepare($query);
+        $stmt->bind_param("i", $nipSessionPengguna);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
 }
 
 // ===================================PENGGUNA===================================

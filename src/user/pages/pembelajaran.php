@@ -1,3 +1,7 @@
+<?php
+include('../config/databases.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,6 +97,9 @@
 										Deskripsi Modul Tanggal ini
 									</div>
 									<div class="row justify-content-end p-0">
+										<div class=" modul col-lg-3 col-sm-12">
+											<button type="button" class="btn btn-success">Lihat Modul</button>
+										</div>
 										<div class=" hadir col-lg-3 col-sm-12">
 											<button type="button" class="btn btn-success">Presensi Hadir</button>
 										</div>
@@ -119,6 +126,9 @@
 										Deskripsi Modul Tanggal ini
 									</div>
 									<div class="row justify-content-end p-0">
+										<div class=" modul col-lg-3 col-sm-12">
+											<button type="button" class="btn btn-success">Lihat Modul</button>
+										</div>
 										<div class=" hadir col-lg-3 col-sm-12">
 											<button type="button" class="btn btn-success">Presensi Hadir</button>
 										</div>
@@ -138,7 +148,24 @@
 						<h5>Monday, January 10, 2022</h5>
 					</div>
 					<div class="description-module" style="text-align: justify;">
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et sapiente, ut quo rem distinctio eius sunt asperiores eveniet laboriosam, facilis debitis. Quibusdam alias quo iste magni dolore, consectetur velit asperiores voluptatem. Officiis quisquam repellendus, fugiat eum, quos nihil illum ex asperiores laboriosam, corrupti porro facere reiciendis ipsam recusandae hic? Consectetur!</p>
+						<div class="module">
+							<h3 onclick="toggleContent(this)">Tanggal 22/6/2024</h3>
+							<div class="module-content">
+								<div class="row w-100 mx-4">
+									<div class="col-lg-12 col-sm-12">
+										Deskripsi Modul Tanggal ini
+									</div>
+									<div class="row justify-content-end p-0">
+										<div class=" hadir col-lg-3 col-sm-12">
+											<button type="button" class="btn btn-success">Presensi Hadir</button>
+										</div>
+										<div class=" selesai col-lg-3 col-sm-12 ">
+											<button type="button" class="btn btn-success">Presensi Selesai</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

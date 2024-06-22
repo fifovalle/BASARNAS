@@ -1,3 +1,7 @@
+<?php
+include '../config/databases.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,28 +52,47 @@
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
-					<tr>
-						<td>1</td>
-						<td>Sertifikat Diving</td>
-						<td>2024-06-08</td>
-						<td>2025-06-08</td>
-						<td>12 bulan</td>
-						<td>Rescuer Pemula</td>
-						<td>
-							<i class="bi bi-check-circle-fill" style="color: green; font-size: 20px;"></i>
-							<i class=" d-none bi bi-x-circle-fill" style="color: red; font-size: 20px;"></i>
-						</td>
-						<td>
-							<div class="btn-group ">
-								<div class="btn btn-secondary bg-transparent border border-0 p-0 pe-2" data-bs-toggle="modal" data-bs-target="#previewSertifikatKompetensi">
-									<i class="bi bi-eye" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
-								</div>
-								<div class="btn btn-secondary bg-transparent border border-0 p-0 ps-2">
-									<i class="bi bi-cloud-download" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
-								</div>
-							</div>
-						</td>
-					</tr>
+					<?php
+					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
+					$kompetensiModel = new Pengguna($koneksi);
+					$kompetensiInfo = $kompetensiModel->tampilkanKompetensiDenganSessionNip($nipSessionPengguna);
+
+					if (!empty($kompetensiInfo)) {
+						foreach ($kompetensiInfo as $kompetensi) {
+					?>
+							<tr>
+								<td><?php echo $kompetensi['ID_Kompetensi']; ?></td>
+								<td><?php echo $kompetensi['Nama_Sertifikat']; ?></td>
+								<td><?php echo $kompetensi['Tanggal_Penerbitan_Sertifikat']; ?></td>
+								<td><?php echo $kompetensi['Tanggal_Berakhir_Sertifikat']; ?></td>
+								<td><?php echo $kompetensi['Masa_Berlaku']; ?></td>
+								<td><?php echo $kompetensi['Kategori_Kompetensi']; ?></td>
+								<td>
+									<?php if ($kompetensi['Status'] == 'Aktif') : ?>
+										<i class="bi bi-check-circle-fill" style="color: green; font-size: 20px;"></i>
+									<?php else : ?>
+										<i class="bi bi-x-circle-fill" style="color: red; font-size: 20px;"></i>
+									<?php endif; ?>
+								</td>
+								<td><?php echo $kompetensi['Nama_Lengkap_Pengguna']; ?></td>
+								<td>
+									<div class="btn-group">
+										<div class="btn btn-secondary bg-transparent border border-0 p-0 pe-2" data-bs-toggle="modal" data-bs-target="#previewSertifikatKompetensi">
+											<i class="bi bi-eye" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
+										</div>
+										<div class="btn btn-secondary bg-transparent border border-0 p-0 ps-2">
+											<i class="bi bi-cloud-download" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
+										</div>
+									</div>
+								</td>
+							</tr>
+					<?php
+						}
+					} else {
+						echo "<tr><td colspan='9'>Tidak ada data kompetensi yang ditemukan.</td></tr>";
+					}
+					?>
+
 					<tr>
 						<td colspan="8">
 							<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#inputSertifikatKompetensi"><i class='bx bx-file pe-2'></i>Tambahkan Sertifikat</button>
