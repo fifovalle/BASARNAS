@@ -104,7 +104,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $tesJalanPria['Nilai_Jalan_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Jalan_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonPriaJalan" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Jalan_Pria']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusPriaJalan(<?php echo $tesJalanPria['ID_Jalan_Pria']; ?>)">
@@ -160,6 +160,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/delete-pria-jalan.js"></script>
+    <script src="../assets/js/value-garjas-pria-jalan.js"></script>
     <script src="../assets/js/value-see-garjas-pria-jalan.js"></script>
     <script>
         $(document).ready(function() {

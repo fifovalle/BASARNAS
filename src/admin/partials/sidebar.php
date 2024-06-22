@@ -182,17 +182,22 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-garjas-pria-jalan.php') ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-garjas-pria-jalan.php') || apakahAktif('src/admin/pages/data-garjas-wanita-jalan.php') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#tesJalan">
                         <i class="fas fa-layer-group"></i>
                         <p>Tes Jalan</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-garjas-pria-jalan.php') ? 'show' : ''; ?>" id="tesJalan">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-garjas-pria-jalan.php') || apakahAktif('src/admin/pages/data-garjas-wanita-jalan.php') ? 'show' : ''; ?>" id="tesJalan">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-garjas-pria-jalan.php">
                                     <span class="sub-item">Pria</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-garjas-wanita-jalan.php">
+                                    <span class="sub-item">Wanita</span>
                                 </a>
                             </li>
                         </ul>
@@ -224,13 +229,13 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-modul.php') ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-modul.php') || apakahAktif('src/admin/pages/data-absence.php') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#data">
                         <i class="fas fa-layer-group"></i>
                         <p>Data</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-modul.php') ? 'show' : ''; ?>" id="data">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-modul.php') || apakahAktif('src/admin/pages/data-absence.php') ? 'show' : ''; ?>" id="data">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-modul.php">
@@ -238,7 +243,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo $akarUrl ?>src/admin/pages/">
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-absence.php">
                                     <span class="sub-item">Absensi</span>
                                 </a>
                             </li>

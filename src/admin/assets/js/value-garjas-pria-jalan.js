@@ -1,37 +1,34 @@
 $(document).ready(function () {
-  $(".buttonTestRenangWanita").click(function (e) {
+  $(".buttonPriaJalan").click(function (e) {
     e.preventDefault();
-    let garjasTestRenangWanita = $(this).data("id");
-    console.log(garjasTestRenangWanita);
+    let garjasPriaTestJalanID = $(this).data("id");
+    console.log(garjasPriaTestJalanID);
     $.ajax({
-      url: "../config/get-garjas-wanita-renang-data.php",
+      url: "../config/get-garjas-pria-jalan-data.php",
       method: "GET",
       data: {
-        test_wanita_renang_id: garjasTestRenangWanita,
+        test_pria_jalan_id: garjasPriaTestJalanID,
       },
       success: function (data) {
         console.log(data);
-        let garjasTestRenangWanitaData = JSON.parse(data);
-        console.log(garjasTestRenangWanitaData);
+        let garjasPriaTestJalanData = JSON.parse(data);
+        console.log(garjasPriaTestJalanData);
 
-        if (garjasTestRenangWanitaData.success === false) {
-          alert(garjasTestRenangWanitaData.message);
+        if (garjasPriaTestJalanData.success === false) {
+          alert(garjasPriaTestJalanData.message);
         } else {
           let nipNama =
-            garjasTestRenangWanitaData.NIP_Pengguna +
+            garjasPriaTestJalanData.NIP_Pengguna +
             " - " +
-            garjasTestRenangWanitaData.Nama_Lengkap_Pengguna;
+            garjasPriaTestJalanData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#SuntingGarjasWanitaRenangID").val(
-            garjasTestRenangWanitaData.ID_Renang_Wanita
+          $("#SuntingGarjasPriaJalanID").val(
+            garjasPriaTestJalanData.ID_Jalan_Pria
           );
-          $("#suntingGayaRenang").val(
-            garjasTestRenangWanitaData.Nama_Gaya_Renang_Wanita
+          $("#suntingWaktuGarjasPriaJalan").val(
+            garjasPriaTestJalanData.Waktu_Jalan_Pria
           );
-          $("#suntingWaktuTestRenangWanita").val(
-            garjasTestRenangWanitaData.Waktu_Renang_Wanita
-          );
-          $("#suntingGarjasWanitaRenang").modal("show");
+          $("#suntingGarjasPriaJalan").modal("show");
         }
       },
       error: function (xhr) {
@@ -40,13 +37,13 @@ $(document).ready(function () {
     });
   });
 
-  $("#tombolSimpanWaktuTestRenangWanita").click(function (e) {
+  $("#tombolSimpanGarjasPriaJalan").click(function (e) {
     e.preventDefault();
 
     let formData = new FormData($(this).closest("form")[0]);
 
     $.ajax({
-      url: "../config/edit-garjas-wanita-renang.php",
+      url: "../config/edit-garjas-pria-jalan.php",
       method: "POST",
       data: formData,
       processData: false,
@@ -69,7 +66,7 @@ $(document).ready(function () {
             timerProgressBar: true,
           }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-              window.location.href = "../pages/data-garjas-wanita-renang.php";
+              window.location.href = "../pages/data-garjas-pria-jalan.php";
             }
           });
         } else {
@@ -99,7 +96,7 @@ $(document).ready(function () {
         });
       },
       complete: function () {
-        $("#suntingGarjasWanitaRenang").modal("hide");
+        $("#suntingGarjasPriaJalan").modal("hide");
       },
     });
   });

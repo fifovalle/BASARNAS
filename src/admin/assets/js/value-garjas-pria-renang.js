@@ -1,13 +1,13 @@
 $(document).ready(function () {
-  $(".buttonTestRenangPria").click(function (e) {
+  $(".buttonGarjasPriaTestRenang").click(function (e) {
     e.preventDefault();
-    let garjasTestRenangPriaID = $(this).data("id");
-    console.log(garjasTestRenangPriaID);
+    let garjasTestRenangPria = $(this).data("id");
+    console.log(garjasTestRenangPria);
     $.ajax({
       url: "../config/get-garjas-pria-renang-data.php",
       method: "GET",
       data: {
-        test_pria_renang_id: garjasTestRenangPriaID,
+        test_pria_renang_id: garjasTestRenangPria,
       },
       success: function (data) {
         console.log(data);
@@ -21,7 +21,7 @@ $(document).ready(function () {
             garjasTestRenangPriaData.NIP_Pengguna +
             " - " +
             garjasTestRenangPriaData.Nama_Lengkap_Pengguna;
-          $("#suntingNIPPengguna").val(garjasTestRenangPriaData.NIP_Pengguna);
+          $("#suntingNIPPengguna").val(nipNama);
           $("#suntingGarjasPriaRenangID").val(
             garjasTestRenangPriaData.ID_Renang_Pria
           );
@@ -40,13 +40,13 @@ $(document).ready(function () {
     });
   });
 
-  $("#tombolSimpanGarjasTestRenangPria").click(function (e) {
+  $("#tombolSimpanGarjasPriaTestRenang").click(function (e) {
     e.preventDefault();
 
     let formData = new FormData($(this).closest("form")[0]);
 
     $.ajax({
-      url: "../config/edit-garjas-wanita-shuttlerun.php",
+      url: "../config/edit-garjas-pria-renang.php",
       method: "POST",
       data: formData,
       processData: false,
@@ -69,8 +69,7 @@ $(document).ready(function () {
             timerProgressBar: true,
           }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-              window.location.href =
-                "../pages/data-garjas-wanita-shuttlerun.php";
+              window.location.href = "../pages/data-garjas-pria-renang.php";
             }
           });
         } else {
@@ -100,7 +99,7 @@ $(document).ready(function () {
         });
       },
       complete: function () {
-        $("#suntingGarjasTestRenangPria").modal("hide");
+        $("#suntingGarjasPriaRenang").modal("hide");
       },
     });
   });

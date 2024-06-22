@@ -2002,6 +2002,20 @@ class TesRenangPria
         }
     }
 
+    public function ambilUmurGarjasRenangPriaOlehNIP($NIP)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['Umur_Pengguna'];
+        } else {
+            return null;
+        }
+    }
+
     public function tampilkanDataTesRenangPria()
     {
         $query = "SELECT * FROM tes_renang_pria LEFT JOIN pengguna ON tes_renang_pria.NIP_Pengguna = pengguna.NIP_Pengguna";
@@ -2024,7 +2038,7 @@ class TesRenangPria
                     Nama_Gaya_Renang_Pria=?,
                     Waktu_Renang_Pria=?, 
                     Nilai_Renang_Pria=? 
-                    WHERE ID_Wanita_Chin_Up=?";
+                    WHERE ID_Renang_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $namaRenangPria = $this->mengamankanString($data['Nama_Gaya_Renang_Pria']);
@@ -2139,7 +2153,7 @@ class TesRenangWanita
                     Nama_Gaya_Renang_Wanita=?,
                     Waktu_Renang_Wanita=?, 
                     Nilai_Renang_Wanita=? 
-                    WHERE ID_Wanita_Chin_Up=?";
+                    WHERE ID_Renang_Wanita=?";
 
         $statement = $this->koneksi->prepare($query);
         $namaRenangWanita = $this->mengamankanString($data['Nama_Gaya_Renang_Wanita']);
@@ -2192,6 +2206,20 @@ class TesRenangWanita
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
         return $result['count'] > 0;
+    }
+
+    public function ambilUmurGarjasRenangWanitaOlehNIP($NIP)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['Umur_Pengguna'];
+        } else {
+            return null;
+        }
     }
 }
 // ===================================TES RENANG WANITA===================================
@@ -2462,7 +2490,7 @@ class TesLariWanita
 }
 // ===================================TES LARI WANITA===================================
 
-// ===================================TES JALAN KAKI 5KM===================================
+// ===================================TES JALAN KAKI PRIA 5KM===================================
 class TesJalanKaki5KMPria
 {
 
@@ -2560,8 +2588,151 @@ class TesJalanKaki5KMPria
             return false;
         }
     }
+
+    public function perbaruiTesJalanPria($id, $data)
+    {
+        $query = "UPDATE tes_jalan_pria SET 
+                    Waktu_Jalan_Pria=?, 
+                    Nilai_Jalan_Pria=? 
+                    WHERE ID_Jalan_Pria=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $waktuJalanPria = $this->mengamankanString($data['Waktu_Jalan_Pria']);
+        $nilaiJalanPria = $this->mengamankanString($data['Nilai_Jalan_Pria']);
+        $idJalanPria = $id;
+
+        $statement->bind_param("sii", $waktuJalanPria, $nilaiJalanPria, $idJalanPria);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
-// ===================================TES JALAN KAKI 5KM===================================
+// ===================================TES JALAN KAKI PRIA 5KM===================================
+
+// ===================================TES JALAN KAKI WANITA 5KM===================================
+class TesJalanKaki5KMWanita
+{
+
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function mengamankanString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataTesJalanKaki5KMWanita()
+    {
+        $query = "SELECT tes_jalan_wanita.*, pengguna.*
+                  FROM tes_jalan_wanita
+                  LEFT JOIN pengguna ON tes_jalan_wanita.NIP_Pengguna = pengguna.NIP_Pengguna";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tambahTesJalanKaki5KMWanita($data)
+    {
+        $query = "INSERT INTO tes_jalan_wanita (NIP_Pengguna, Waktu_Jalan_Wanita, Nilai_Jalan_Wanita) VALUES (?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "iii",
+            $this->mengamankanString($data['NIP_Pengguna']),
+            $this->mengamankanString($data['Waktu_Jalan_Wanita']),
+            $this->mengamankanString($data['Nilai_Jalan_Wanita'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ambilUmurTesJalanKaki5KMWanitaOlehNIP($NIP)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['Umur_Pengguna'];
+        } else {
+            return null;
+        }
+    }
+
+    public function hapusTesJalanKaki5KMWanita($id)
+    {
+        $queryDelete = "DELETE FROM tes_jalan_wanita WHERE ID_Jalan_Wanita=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function cekNipAnggotaTesJalanKaki5KMWanitaSudahAda($nipPengguna)
+    {
+        $query = "SELECT COUNT(*) as total FROM tes_jalan_wanita WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $nipPengguna);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+
+        $total = $row['total'];
+
+        if ($total > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiTesJalanWanita($id, $data)
+    {
+        $query = "UPDATE tes_jalan_wanita SET 
+                    Waktu_Jalan_Wanita=?, 
+                    Nilai_Jalan_Wanita=? 
+                    WHERE ID_Jalan_Wanita=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $waktuJalanWanita = $this->mengamankanString($data['Waktu_Jalan_Wanita']);
+        $nilaiJalanWanita = $this->mengamankanString($data['Nilai_Jalan_Wanita']);
+        $idJalanWanita = $id;
+
+        $statement->bind_param("sii", $waktuJalanWanita, $nilaiJalanWanita, $idJalanWanita);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================TES JALAN KAKI WANITA 5KM===================================
 
 // ===================================KOMPETENSI===================================
 class Kompetensi
@@ -2840,3 +3011,37 @@ class Modul
     }
 }
 // ===================================MODUL===================================
+
+// ===================================ABSENSI===================================
+class Absensi
+{
+
+    private $koneksi;
+
+    public function __construct($database)
+    {
+        $this->koneksi = $database;
+    }
+
+    private function mengamankanString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataAbsensi()
+    {
+        $query = "SELECT * FROM absensi LEFT JOIN pengguna ON absensi.NIP_Pengguna = pengguna.NIP_Pengguna";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+}
+// ===================================ABSENSI===================================

@@ -6,15 +6,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form method="post" enctype="multipart/form-data">
-                    <input type="hidden" id="SuntingGarjasPriaRenangID" name="ID_Renang_Pria" autocomplete="off">
+                <form method="post" enctype="multipart/form-data">
+                    <input type="hidden" id="SuntingGarjasWanitaRenangID" name="ID_Renang_Wanita" autocomplete="off">
                     <div class="mb-3">
                         <label for="suntingNIPPengguna" class="form-label">NIP dan Nama Anggota</label>
                         <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="suntingGayaRenang" class="form-label">Gaya Renang</label>
-                        <select name="Gaya_Renang" id="suntingGayaRenang" class="form-select">
+                        <select name="Nama_Gaya_Renang_Wanita" id="suntingGayaRenang" class="form-select">
                             <option selected>Pilih Gaya Renang</option>
                             <option value="Dada">Dada</option>
                             <option value="Bebas">Bebas</option>
@@ -22,10 +22,10 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="suntingWaktuTestRenangPria" class="form-label">Waktu Renang</label>
-                        <input type="number" class="form-control" id="suntingWaktuTestRenangPria" name="Waktu_Renang_Pria">
+                        <label for="suntingWaktuTestRenangWanita" class="form-label">Waktu Renang</label>
+                        <input type="number" class="form-control" id="suntingWaktuTestRenangWanita" name="Waktu_Renang_Wanita">
                     </div>
-                    <button type="submit" class="btn btn-primary" id="tombolSimpanWaktuTestRenangPria" name="Simpan">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="tombolSimpanWaktuTestRenangWanita">Simpan</button>
                 </form>
             </div>
         </div>

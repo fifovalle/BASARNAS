@@ -8,71 +8,45 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4 text-center">
-                        <img id="lihatPotoAdmin" alt="Admin Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
-                        <!-- DOM -->
-                        <h3 id="lihatNamaAdmin">
-                            <!-- DOM -->
+                        <img id="lihatPotoPenggunaTd" alt="Pengguna Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
+                        <h3 id="lihatNamaPengguna">
                         </h3>
-                        <p class="text-muted" id="lihatNIPAdmin">
-                            <!-- DOM -->
-                        </p>
+                        <p class="text-muted" id="lihatNIPPenggunaTd">
                     </div>
                     <div class="col-8">
                         <h4>Info Hasil Selengkapnya</h4>
                         <table class="table table-borderless">
                             <tr>
                                 <th>Nama Lengkap:</th>
-                                <td id="lihatNamaAdminTd">
-                                    <!-- DOM -->
-                                </td>
+                                <td id="lihatNamaPenggunaTd"></td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lahir:</th>
-                                <td id="lihatTglLahirAdminTd">
-                                    <!-- DOM -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Alamat:</th>
-                                <td id="lihatAlamatAdminTd">
-                                    <!-- DOM -->
-                                </td>
+                                <td id="lihatTglLahirPenggunaTd"></td>
                             </tr>
                             <tr>
                                 <th>Jabatan:</th>
-                                <td id="lihatJabatanAdminTd">
-                                    <!-- DOM -->
-                                </td>
+                                <td id="lihatJabatanPenggunaTd"></td>
                             </tr>
                             <tr>
                                 <th>Jenis Kelamin:</th>
-                                <td id="lihatJenisKelaminAdminTd">
-                                    <!-- DOM -->
-                                </td>
+                                <td id="lihatJenisKelaminPenggunaTd"></td>
                             </tr>
                             <tr>
                                 <th>Nomor Telepon:</th>
-                                <td id="lihatNoTelpAdminTd">
-                                    <!-- DOM -->
-                                </td>
+                                <td id="lihatNoTelpPenggunaTd"></td>
                             </tr>
                             <tr>
                                 <th>Umur:</th>
-                                <td id="lihatUmurAdminTd">
-                                    <!-- DOM -->
-                                </td>
+                                <td id="lihatUmurPenggunaTd"></td>
                             </tr>
                             <tr>
-                                <th>Waktu Jalan Kaki :</th>
-                                <td id="lihatWaktuJalanKakiAdminTd">
-                                    <!-- DOM -->
-                                </td>
+                                <th>Waktu Jalan:</th>
+                                <td id="lihatWaktuTesJalanPriaTd"></td>
                             </tr>
                             <tr>
-                                <th>Nilai Jalan Kaki :</th>
-                                <td id="lihatNilaiJalanKakiAdminTd">
-                                    <!-- DOM -->
-                                </td>
+                                <th>Nilai Jalan:</th>
+                                <td id="lihatNilaiTesJalanPriaTd"></td>
                             </tr>
                         </table>
                     </div>

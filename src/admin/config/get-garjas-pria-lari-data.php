@@ -16,4 +16,3 @@ foreach ($dataGarjasTestLariPria as $garjasTestLariPria) {
 }
 
 echo json_encode($garjasTestLariPriaDitemukan);
-

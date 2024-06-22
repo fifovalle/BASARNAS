@@ -6,12 +6,13 @@ if (!isset($_SESSION['NIP_Admin'])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Data Garjas Pria (Renang) Basarnas</title>
+    <title>Data Absensi</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="../assets/js/wenfontpages.js"></script>
@@ -57,20 +58,19 @@ if (!isset($_SESSION['NIP_Admin'])) {
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Data Hasil Garjas Pria (Renang)</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Pria (Renang) Basarnas</h6>
+                            <h3 class="fw-bold mb-3">Data Hasil Absensi</h3>
+                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Absensi Basarnas</h6>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
-                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaRenang">
+                                        <h4 class="card-title">Tambah Absensi</h4>
+                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahAbsensi">
                                             <i class="fa fa-plus"></i>
-                                            Tambah Nilai
+                                            Tambah Absensi
                                         </button>
                                     </div>
                                 </div>
@@ -79,41 +79,43 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>NIP</th>
-                                                    <th>Nama</th>
-                                                    <th>Umur</th>
-                                                    <th>Waktu Renang</th>
-                                                    <th>Gaya Renang</th>
-                                                    <th>Nilai</th>
+                                                    <th>Nomor</th>
+                                                    <th>Nama Pengguna</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Hari</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <?php
-                                            $tesRenangPriaModel = new TesRenangPria($koneksi);
-                                            $tesRenangPriaInfo = $tesRenangPriaModel->tampilkanDataTesRenangPria();
+                                            $absensiModel = new Absensi($koneksi);
+                                            $absensiInfo = $absensiModel->tampilkanDataAbsensi();
                                             ?>
                                             <tbody>
-                                                <?php if (!empty($tesRenangPriaInfo)) : ?>
+                                                <?php if (!empty($absensiInfo)) : ?>
                                                     <?php $nomor = 1; ?>
-                                                    <?php foreach ($tesRenangPriaInfo as $tesRenangPria) : ?>
+                                                    <?php foreach ($absensiInfo as $Absensi) : ?>
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
-                                                            <td><?php echo $tesRenangPria['NIP_Pengguna']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Umur_Pengguna']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Waktu_Renang_Pria']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Nama_Gaya_Renang_Pria']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Nilai_Renang_Pria']; ?></td>
+                                                            <td><?php echo $Absensi['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $Absensi['Tanggal_Absensi']; ?></td>
+                                                            <td><?php echo $Absensi['Hari_Absensi']; ?></td>
+                                                            <td>
+                                                                <?php
+                                                                echo ($Absensi['Status_Absensi'] == 'Hadir')
+                                                                    ? '<span class="badge badge-success">Hadir</span>'
+                                                                    : '<span class="badge badge-danger">Tidak Hadir</span>';
+                                                                ?>
+                                                            </td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaTestRenang" data-bs-toggle="modal" data-id="<?php echo $tesRenangPria['ID_Renang_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAbsensi" data-bs-toggle="modal" data-id="<?php echo $Absensi['ID_Absensi']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaRenang(<?php echo $tesRenangPria['ID_Renang_Pria']; ?>)">
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusAbsensi(<?php echo $Absensi['ID_Absensi']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info buttonLihatTestRenangPria" data-bs-toggle="modal" data-id="<?php echo $tesRenangPria['ID_Renang_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatAbsensi" data-bs-toggle="modal" data-id="<?php echo $Absensi['ID_Absensi']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -122,7 +124,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Tes Renang Pria!</td>
+                                                        <td colspan="9" class="text-center text-danger fw-bold">Tidak Ada Data Absensi!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
@@ -144,9 +146,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <!-- CUSTOM END -->
 
     <!-- MODALS START -->
-    <?php include('../partials/modal-add-garjas-pria-renang.php'); ?>
-    <?php include('../partials/modal-edit-garjas-pria-renang.php'); ?>
-    <?php include('../partials/modal-see-garjas-pria-renang.php'); ?>
+    <?php include('../partials/modal-add-modul.php'); ?>
+    <?php include('../partials/modal-edit-modul.php'); ?>
+    <?php include('../partials/modal-see-modul.php'); ?>
     <!-- MODALS END -->
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
@@ -162,9 +164,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
-    <script src="../assets/js/delete-garjas-pria-renang.js"></script>
-    <script src="../assets/js/value-garjas-pria-renang.js"></script>
-    <script src="../assets/js/value-see-garjas-pria-renang.js"></script>
+    <script src="../assets/js/delete-modul.js"></script>
+    <script src="../assets/js/value-modul.js"></script>
+    <script src="../assets/js/value-see-modul.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

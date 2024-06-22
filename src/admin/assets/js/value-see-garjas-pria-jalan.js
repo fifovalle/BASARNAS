@@ -1,40 +1,42 @@
 $(document).ready(function () {
   $(".buttonLihatPriaJalan").click(function (e) {
     e.preventDefault();
-    let priaJalanID = $(this).data("id");
-    console.log(priaJalanID);
+    let garjasTestJalanPriaID = $(this).data("id");
+    console.log(garjasTestJalanPriaID);
+
     $.ajax({
-      url: "../config/get-data-pria-jalan.php",
+      url: "../config/get-garjas-pria-jalan-data.php",
       method: "GET",
       data: {
-        pria_jalan_id: priaJalanID,
+        test_pria_jalan_id: garjasTestJalanPriaID,
       },
       success: function (data) {
         console.log(data);
-        let terampilData = JSON.parse(data);
-        console.log(terampilData);
+        let penggunaData = JSON.parse(data);
+        console.log(penggunaData);
 
-        if (terampilData.success === false) {
-          alert(terampilData.message);
+        if (penggunaData.success === false) {
+          alert(penggunaData.message);
         } else {
-          $("#lihatNamaAdmin").text(terampilData.Nama_Lengkap_Pengguna);
-          $("#lihatNIPAdmin").text(terampilData.NIP_Pengguna);
-          $("#lihatPotoAdmin").attr(
+          $("#lihatNamaPengguna").text(penggunaData.Nama_Lengkap_Pengguna);
+          $("#lihatNIPPenggunaTd").text(penggunaData.NIP_Pengguna);
+          $("#lihatPotoPenggunaTd").attr(
             "src",
-            "../uploads/" + terampilData.Foto_Pengguna
+            "../uploads/" + penggunaData.Foto_Pengguna
           );
-          $("#lihatNamaAdminTd").text(terampilData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirAdminTd").text(terampilData.Tanggal_Lahir_Pengguna);
-          $("#lihatAlamatAdminTd").text(terampilData.Alamat_Pengguna);
-          $("#lihatJabatanAdminTd").text(terampilData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminAdminTd").text(
-            terampilData.Jenis_Kelamin_Pengguna
+          $("#lihatNamaPenggunaTd").text(penggunaData.Nama_Lengkap_Pengguna);
+          $("#lihatTglLahirPenggunaTd").text(
+            penggunaData.Tanggal_Lahir_Pengguna
           );
-          $("#lihatNoTelpAdminTd").text(terampilData.No_Telepon_Pengguna);
-          $("#lihatUmurAdminTd").text(terampilData.Umur_Pengguna);
-          $("#lihatWaktuJalanKakiAdminTd").text(terampilData.Waktu_Jalan_Pria);
-          $("#lihatNilaiJalanKakiAdminTd").text(terampilData.Nilai_Jalan_Pria);
-
+          $("#lihatAlamatPenggunaTd").text(penggunaData.Alamat_Pengguna);
+          $("#lihatJabatanPenggunaTd").text(penggunaData.Jabatan_Pengguna);
+          $("#lihatJenisKelaminPenggunaTd").text(
+            penggunaData.Jenis_Kelamin_Pengguna
+          );
+          $("#lihatNoTelpPenggunaTd").text(penggunaData.No_Telepon_Pengguna);
+          $("#lihatUmurPenggunaTd").text(penggunaData.Umur_Pengguna);
+          $("#lihatWaktuTesJalanPriaTd").text(penggunaData.Waktu_Jalan_Pria);
+          $("#lihatNilaiTesJalanPriaTd").text(penggunaData.Nilai_Jalan_Pria);
           $("#lihatGarjasPriaJalan").modal("show");
         }
       },

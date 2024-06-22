@@ -11,7 +11,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Data Garjas Pria (Renang) Basarnas</title>
+    <title>Data Garjas Wanita (Jalan Kaki 5 KM) Basarnas</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="../assets/js/wenfontpages.js"></script>
@@ -57,18 +57,17 @@ if (!isset($_SESSION['NIP_Admin'])) {
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Data Hasil Garjas Pria (Renang)</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Pria (Renang) Basarnas</h6>
+                            <h3 class="fw-bold mb-3">Data Hasil Garjas Wanita (Jalan Kaki 5 KM)</h3>
+                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Wanita (Jalan Kaki 5 KM) Basarnas</h6>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         <h4 class="card-title">Tambah Nilai</h4>
-                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaRenang">
+                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasWanitaJalan">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
                                         </button>
@@ -79,41 +78,39 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
+                                                    <th>Nomor</th>
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
-                                                    <th>Waktu Renang</th>
-                                                    <th>Gaya Renang</th>
+                                                    <th>Waktu Jalan</th>
                                                     <th>Nilai</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
-                                            <?php
-                                            $tesRenangPriaModel = new TesRenangPria($koneksi);
-                                            $tesRenangPriaInfo = $tesRenangPriaModel->tampilkanDataTesRenangPria();
-                                            ?>
                                             <tbody>
-                                                <?php if (!empty($tesRenangPriaInfo)) : ?>
+                                                <?php
+                                                $tesJalanKaki5KMWanitaModel = new TesJalanKaki5KMWanita($koneksi);
+                                                $tesJalanKaki5KMWanitaInfo = $tesJalanKaki5KMWanitaModel->tampilkanDataTesJalanKaki5KMWanita();
+                                                ?>
+                                                <?php if (!empty($tesJalanKaki5KMWanitaInfo)) : ?>
                                                     <?php $nomor = 1; ?>
-                                                    <?php foreach ($tesRenangPriaInfo as $tesRenangPria) : ?>
+                                                    <?php foreach ($tesJalanKaki5KMWanitaInfo as $tesJalanWanita) : ?>
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
-                                                            <td><?php echo $tesRenangPria['NIP_Pengguna']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Umur_Pengguna']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Waktu_Renang_Pria']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Nama_Gaya_Renang_Pria']; ?></td>
-                                                            <td><?php echo $tesRenangPria['Nilai_Renang_Pria']; ?></td>
+                                                            <td><?php echo $tesJalanWanita['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $tesJalanWanita['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $tesJalanWanita['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $tesJalanWanita['Waktu_Jalan_Wanita']; ?></td>
+                                                            <td><?php echo $tesJalanWanita['Nilai_Jalan_Wanita']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaTestRenang" data-bs-toggle="modal" data-id="<?php echo $tesRenangPria['ID_Renang_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonWanitaJalan" data-bs-toggle="modal" data-id="<?php echo $tesJalanWanita['ID_Jalan_Wanita']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaRenang(<?php echo $tesRenangPria['ID_Renang_Pria']; ?>)">
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusWanitaJalan(<?php echo $tesJalanWanita['ID_Jalan_Wanita']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-info buttonLihatTestRenangPria" data-bs-toggle="modal" data-id="<?php echo $tesRenangPria['ID_Renang_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatWanitaJalan" data-bs-toggle="modal" data-id="<?php echo $tesJalanWanita['ID_Jalan_Wanita']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -122,7 +119,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Tes Renang Pria!</td>
+                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data tes jalan kaki 5 km Wanita!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
@@ -144,9 +141,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <!-- CUSTOM END -->
 
     <!-- MODALS START -->
-    <?php include('../partials/modal-add-garjas-pria-renang.php'); ?>
-    <?php include('../partials/modal-edit-garjas-pria-renang.php'); ?>
-    <?php include('../partials/modal-see-garjas-pria-renang.php'); ?>
+    <?php include('../partials/modal-add-garjas-wanita-jalan.php'); ?>
+    <?php include('../partials/modal-edit-garjas-wanita-jalan.php'); ?>
+    <?php include('../partials/modal-see-garjas-wanita-jalan.php'); ?>
     <!-- MODALS END -->
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
@@ -162,9 +159,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
-    <script src="../assets/js/delete-garjas-pria-renang.js"></script>
-    <script src="../assets/js/value-garjas-pria-renang.js"></script>
-    <script src="../assets/js/value-see-garjas-pria-renang.js"></script>
+    <script src="../assets/js/delete-wanita-jalan.js"></script>
+    <script src="../assets/js/value-garjas-wanita-jalan.js"></script>
+    <script src="../assets/js/value-see-garjas-wanita-jalan.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

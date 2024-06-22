@@ -14,7 +14,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingGayaRenangPria" class="form-label">Gaya Renang</label>
-                        <select name="Gaya_Renang" id="suntingGayaRenangPria" class="form-select">
+                        <select name="Nama_Gaya_Renang_Pria" id="suntingGayaRenangPria" class="form-select">
                             <option selected>Pilih Gaya Renang</option>
                             <option value="Dada">Dada</option>
                             <option value="Bebas">Bebas</option>
@@ -25,7 +25,7 @@
                         <label for="suntingWaktuTestRenangPria" class="form-label">Waktu Renang</label>
                         <input type="time" class="form-control" id="suntingWaktuTestRenangPria" name="Waktu_Renang_Pria">
                     </div>
-                    <button type="submit" class="btn btn-primary" id="tombolSimpanWaktuTestRenangPria" name="Simpan">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaTestRenang">Simpan</button>
                 </form>
             </div>
         </div>
