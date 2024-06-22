@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 05:42 AM
+-- Generation Time: Jun 22, 2024 at 10:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,6 +32,7 @@ CREATE TABLE `absensi` (
   `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal_Absensi` date NOT NULL,
   `Hari_Absensi` enum('Senin','Rabu') NOT NULL,
+  `Jam_Absen` time NOT NULL,
   `Status_Absensi` enum('Hadir','Tidak Hadir') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -286,6 +287,14 @@ CREATE TABLE `kompetensi` (
   `Status` enum('Aktif','Tidak Aktif') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `kompetensi`
+--
+
+INSERT INTO `kompetensi` (`ID_Kompetensi`, `NIP_Pengguna`, `File_Sertifikat`, `Nama_Sertifikat`, `Tanggal_Penerbitan_Sertifikat`, `Masa_Berlaku`, `Tanggal_Berakhir_Sertifikat`, `Kategori_Kompetensi`, `Status`) VALUES
+(22, 210204, 0x363637363733653434373236612e706466, 'Laprak', '2022-02-12', 36, '2025-02-12', 'Pemula', 'Aktif'),
+(23, 210204, 0x363637363734336235393638642e706466, 'GGS', '2020-02-02', 72, '2026-02-02', 'Terampil', 'Aktif');
+
 -- --------------------------------------------------------
 
 --
@@ -300,13 +309,6 @@ CREATE TABLE `modul` (
   `Tanggal_Terbit_Modul` date NOT NULL,
   `Deskripsi_Modul` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `modul`
---
-
-INSERT INTO `modul` (`ID_Modul`, `NIP_Pengguna`, `Nama_Modul`, `Judul_Modul`, `Tanggal_Terbit_Modul`, `Deskripsi_Modul`) VALUES
-(3, 555, 'Modul 1', 'C', '2024-06-22', 'C');
 
 -- --------------------------------------------------------
 
@@ -335,7 +337,7 @@ CREATE TABLE `pengguna` (
 INSERT INTO `pengguna` (`NIP_Pengguna`, `Foto_Pengguna`, `Nama_Lengkap_Pengguna`, `Tanggal_Lahir_Pengguna`, `Umur_Pengguna`, `Alamat_Pengguna`, `No_Telepon_Pengguna`, `Jabatan_Pengguna`, `Jenis_Kelamin_Pengguna`, `Kata_Sandi_Pengguna`, `Konfirmasi_Kata_Sandi_Pengguna`) VALUES
 (555, 0x363637363333303462646533642e6a7067, 'Adrian', '2005-12-07', 18, 'bababa', '+62 781-2382-323', 'Satu', 'Pria', '$2y$10$zvkcKevqwg1vBLtEdakW1OCBiqzKUBxX8GeFs8qQOzlnRUFCm.ZEe', '$2y$10$zvkcKevqwg1vBLtEdakW1OCBiqzKUBxX8GeFs8qQOzlnRUFCm.ZEe'),
 (5555, 0x363637363366646530383435632e6a7067, 'Sayang', '2005-10-07', 18, 'Bandung', '+62 812-2727-3232', 'Satu', 'Wanita', '$2y$10$cYUf/AlcDsdwpvhDXJ4LA.OLFNExy10U5V10YcUKWvUBdL9cfGIVq', '$2y$10$cYUf/AlcDsdwpvhDXJ4LA.OLFNExy10U5V10YcUKWvUBdL9cfGIVq'),
-(210204, 0x363637363361393064346636632e6a7067, 'Sandro Anugrah Tambunan', '2004-02-21', 20, 'Batujajar', '+62 822-1345-6788', 'Satu', 'Pria', '$2y$10$vnlx.UXjDxWps1G1fxPAM.MPG9APe7kGnl/2Tj6xxE.3x2mCBFgCi', '$2y$10$vnlx.UXjDxWps1G1fxPAM.MPG9APe7kGnl/2Tj6xxE.3x2mCBFgCi'),
+(210204, 0x363637363361393064346636632e6a7067, 'Sandro Ganteng', '2004-02-21', 20, 'Batujajar', '+62 822-1345-6788', 'Satu', 'Pria', '$2y$10$vnlx.UXjDxWps1G1fxPAM.MPG9APe7kGnl/2Tj6xxE.3x2mCBFgCi', '$2y$10$vnlx.UXjDxWps1G1fxPAM.MPG9APe7kGnl/2Tj6xxE.3x2mCBFgCi'),
 (1241231, 0x363637363430353133303734362e6a7067, 'Yunaaa', '2006-12-07', 17, 'asdasdasdasd', '+62 812-2623-62322', 'Satu', 'Wanita', '$2y$10$9Y6lrviqOkNhpk1wB5Aq8ut.3o4flK89Au5CSASJ/c3IahL4JwyiK', '$2y$10$9Y6lrviqOkNhpk1wB5Aq8ut.3o4flK89Au5CSASJ/c3IahL4JwyiK'),
 (2250081109, 0x363637363338323039326365382e6a7067, 'NaufalRacing777', '2001-04-14', 23, 'dfvb', '81284118344', 'Satu', 'Pria', '$2y$10$rp8dQfVEiaQac6UwO5RZy.OdbwnfoER.4k88PgTCZkZ2AcHWjphLG', '$2y$10$rp8dQfVEiaQac6UwO5RZy.OdbwnfoER.4k88PgTCZkZ2AcHWjphLG');
 
@@ -357,7 +359,9 @@ CREATE TABLE `tes_jalan_pria` (
 --
 
 INSERT INTO `tes_jalan_pria` (`ID_Jalan_Pria`, `NIP_Pengguna`, `Waktu_Jalan_Pria`, `Nilai_Jalan_Pria`) VALUES
-(28, 555, 11.0, 0);
+(42, 555, 1.0, 0),
+(43, 210204, 2.0, 0),
+(44, 2250081109, 3.0, 0);
 
 -- --------------------------------------------------------
 
@@ -413,7 +417,7 @@ CREATE TABLE `tes_lari_wanita` (
 
 INSERT INTO `tes_lari_wanita` (`ID_Lari_Wanita`, `NIP_Pengguna`, `Waktu_Lari_Wanita`, `Nilai_Lari_Wanita`) VALUES
 (6, 5555, '1', 1),
-(7, 1241231, '3', 10);
+(7, 1241231, '2', 5);
 
 -- --------------------------------------------------------
 
@@ -434,9 +438,7 @@ CREATE TABLE `tes_renang_pria` (
 --
 
 INSERT INTO `tes_renang_pria` (`ID_Renang_Pria`, `NIP_Pengguna`, `Waktu_Renang_Pria`, `Nama_Gaya_Renang_Pria`, `Nilai_Renang_Pria`) VALUES
-(35, 210204, '00:21', 'Bebas', 100),
-(36, 555, '00:43', 'Dada', 100),
-(37, 2250081109, '00:21', 'Dada', 100);
+(37, 2250081109, '0', 'Dada', 100);
 
 -- --------------------------------------------------------
 
@@ -458,7 +460,7 @@ CREATE TABLE `tes_renang_wanita` (
 
 INSERT INTO `tes_renang_wanita` (`ID_Renang_Wanita`, `NIP_Pengguna`, `Waktu_Renang_Wanita`, `Nama_Gaya_Renang_Wanita`, `Nilai_Renang_Wanita`) VALUES
 (15, 5555, '0000-00-00 00:00:00', 'Bebas', 100),
-(16, 1241231, '0000-00-00 00:00:00', 'Bebas', 0);
+(16, 1241231, '0000-00-00 00:00:00', 'Lainnya', 0);
 
 --
 -- Indexes for dumped tables
@@ -710,19 +712,19 @@ ALTER TABLE `garjas_wanita_sit_up_kaki_lurus`
 -- AUTO_INCREMENT for table `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
-  MODIFY `ID_Modul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Modul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tes_jalan_pria`
 --
 ALTER TABLE `tes_jalan_pria`
-  MODIFY `ID_Jalan_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `ID_Jalan_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `tes_jalan_wanita`
