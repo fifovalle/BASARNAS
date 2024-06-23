@@ -58,12 +58,12 @@ include '../config/databases.php';
 					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
 					$kompetensiModel = new Pengguna($koneksi);
 					$kompetensiInfo = $kompetensiModel->tampilkanKompetensiDenganSessionNip($nipSessionPengguna);
-
+					$nomorUrut = 0;
 					if (!empty($kompetensiInfo)) {
 						foreach ($kompetensiInfo as $kompetensi) {
 					?>
 							<tr>
-								<td><?php echo $kompetensi['ID_Kompetensi']; ?></td>
+								<td><?php echo ++$nomorUrut; ?></td>
 								<td><?php echo $kompetensi['Nama_Sertifikat']; ?></td>
 								<td><?php echo $kompetensi['Tanggal_Penerbitan_Sertifikat']; ?></td>
 								<td><?php echo $kompetensi['Tanggal_Berakhir_Sertifikat']; ?></td>
@@ -78,7 +78,7 @@ include '../config/databases.php';
 								</td>
 								<td>
 									<div class="btn-group">
-										<div class="btn btn-secondary bg-transparent border border-0 p-0 pe-2" data-bs-toggle="modal" data-bs-target="#previewSertifikatKompetensi">
+										<div class="btn btn-secondary bg-transparent border border-0 p-0 pe-2 buttonLihatKompetensi" data-bs-toggle="modal" data-id="<?php echo $kompetensi['ID_Kompetensi']; ?>">
 											<i class="bi bi-eye" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
 										</div>
 										<div class="btn btn-secondary bg-transparent border border-0 p-0 ps-2">
@@ -177,7 +177,9 @@ include '../config/databases.php';
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body text-center">
-					<img src="../assets/img/tester.jpg" class="img-fluid" alt="...">
+					<div id="lihatFileSertifikat">
+						<!-- DOM -->
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -191,6 +193,7 @@ include '../config/databases.php';
 	<?php
 	include('../partials/alert.php');
 	?>
+	<script src="../assets/js/value-see-competence.js"></script>
 </body>
 
 </html>
