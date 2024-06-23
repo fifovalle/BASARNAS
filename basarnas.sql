@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 03:49 AM
+-- Generation Time: Jun 23, 2024 at 05:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -304,11 +304,20 @@ INSERT INTO `kompetensi` (`ID_Kompetensi`, `NIP_Pengguna`, `File_Sertifikat`, `N
 CREATE TABLE `modul` (
   `ID_Modul` int(11) NOT NULL,
   `NIP_Pengguna` bigint(20) NOT NULL,
+  `File_Modul` longblob NOT NULL,
   `Nama_Modul` varchar(20) NOT NULL,
   `Judul_Modul` varchar(20) NOT NULL,
   `Tanggal_Terbit_Modul` date NOT NULL,
   `Deskripsi_Modul` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `modul`
+--
+
+INSERT INTO `modul` (`ID_Modul`, `NIP_Pengguna`, `File_Modul`, `Nama_Modul`, `Judul_Modul`, `Tanggal_Terbit_Modul`, `Deskripsi_Modul`) VALUES
+(7, 2250081109, 0x363637373932306239333537352e706466, 'Modul 1', 'Cara Bulk', '2024-06-23', 'Turu Sajah'),
+(8, 2250081109, 0x363637373939353263626630392e646f6378, 'Modul 2', 'Cara Cut', '2024-06-23', 'Tinggal Turu Ngak Usah Makan');
 
 -- --------------------------------------------------------
 
@@ -726,7 +735,7 @@ ALTER TABLE `kompetensi`
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
-  MODIFY `ID_Modul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Modul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tes_jalan_pria`

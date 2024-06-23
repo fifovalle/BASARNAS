@@ -203,7 +203,8 @@ class Admin
         }
     }
 
-    public function getNIPAdminById($id) {
+    public function getNIPAdminById($id)
+    {
         $query = "SELECT NIP_Admin FROM admin WHERE NIP_Admin = ?";
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param("i", $id);
@@ -2958,13 +2959,14 @@ class Modul
     public function tambahModul($data)
     {
         $query = "INSERT INTO modul (
-            NIP_Pengguna, Nama_Modul, Judul_Modul, Tanggal_Terbit_Modul, Deskripsi_Modul
-            ) VALUES (?, ?, ?, NOW(), ?)";
+            NIP_Pengguna, File_Modul, Nama_Modul, Judul_Modul, Tanggal_Terbit_Modul, Deskripsi_Modul
+            ) VALUES (?, ?, ?, ?, NOW(), ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isss",
+            "issss",
             $this->mengamankanString($data['NIP_Pengguna']),
+            $this->mengamankanString($data['File_Modul']),
             $this->mengamankanString($data['Nama_Modul']),
             $this->mengamankanString($data['Judul_Modul']),
             $this->mengamankanString($data['Deskripsi_Modul'])
@@ -2979,13 +2981,36 @@ class Modul
 
     public function hapusModul($idModul)
     {
+        $query = "SELECT ID_Modul, File_Modul FROM modul WHERE ID_Modul=?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $idModul);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        $idPemilikFoto = $row['ID_Modul'];
+        $namaFoto = $row['File_Modul'];
+
+        if ($idPemilikFoto != $idModul) {
+            return false;
+        }
+
         $queryDelete = "DELETE FROM modul WHERE ID_Modul=?";
         $statementDelete = $this->koneksi->prepare($queryDelete);
         $statementDelete->bind_param("i", $idModul);
         $isDeleted = $statementDelete->execute();
 
         if ($isDeleted) {
-            return true;
+            $direktoriFoto = "../uploads/";
+
+            if (file_exists($direktoriFoto . $namaFoto)) {
+                if (unlink($direktoriFoto . $namaFoto)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
         } else {
             return false;
         }
@@ -2994,6 +3019,7 @@ class Modul
     public function perbaruiModul($id, $data)
     {
         $sql = "UPDATE modul SET
+                File_Modul = ?,
                 Nama_Modul = ?,
                 Judul_Modul = ?,
                 Tanggal_Terbit_Modul = NOW(),
@@ -3006,7 +3032,8 @@ class Modul
         }
 
         $stmt->bind_param(
-            "sssi",
+            "ssssi",
+            $data['File_Modul'],
             $data['Nama_Modul'],
             $data['Judul_Modul'],
             $data['Deskripsi_Modul'],
@@ -3017,6 +3044,22 @@ class Modul
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getFileModulOlehID($idModul)
+    {
+        $query = "SELECT File_Modul FROM modul WHERE ID_Modul = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $idModul);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            return $data['File_Modul'];
+        } else {
+            return null;
         }
     }
 }

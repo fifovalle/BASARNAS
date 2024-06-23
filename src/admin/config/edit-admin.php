@@ -26,16 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nomorTeleponFormatted = $nomorTeleponAdmin;
 
     $nomorTeleponFormatted = preg_replace('/\D/', '', $nomorTeleponFormatted);
-    
+
     if (strpos($nomorTeleponFormatted, '0') === 0) {
         $nomorTeleponFormatted = '+62' . substr($nomorTeleponFormatted, 1);
     }
-    
+
     if (strpos($nomorTeleponFormatted, '+62') === 0) {
         $nomorTeleponFormatted = substr($nomorTeleponFormatted, 0, 3) . ' ' . substr($nomorTeleponFormatted, 3, 3) . '-' . substr($nomorTeleponFormatted, 6, 4) . '-' . substr($nomorTeleponFormatted, 10);
     }
-    
-    
 
     $adminModel = new Admin($koneksi);
 
@@ -84,4 +82,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo json_encode(array("success" => false, "message" => "Metode request tidak valid."));
 }
-?>

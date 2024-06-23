@@ -58,6 +58,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>File Modul:</th>
+                                <td id="lihatFileModulTd">
+                                    <!-- DOM -->
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Nama Modul:</th>
                                 <td id="lihatNamaModulTd">
                                     <!-- DOM -->

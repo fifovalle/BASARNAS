@@ -23,6 +23,7 @@ $(document).ready(function () {
               " - " +
               terampilData.Nama_Lengkap_Pengguna
           );
+          $("#suntingFileModul").val(terampilData.File_Modul);
           $("#suntingNamaModul").val(terampilData.Nama_Modul);
           $("#suntingJudulModul").val(terampilData.Judul_Modul);
           $("#suntingDeskripsiModul").val(terampilData.Deskripsi_Modul);

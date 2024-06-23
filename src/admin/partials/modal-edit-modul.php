@@ -13,6 +13,10 @@
                         <input type="text" class="form-control" id="suntingNIPPenggunaModul" name="NIP_Pengguna" readonly>
                     </div>
                     <div class="mb-3">
+                        <label for="suntingFileModul" class="form-label">File Modul</label>
+                        <input type="file" class="form-control" id="suntingFileModul" name="File_Modul">
+                    </div>
+                    <div class="mb-3">
                         <label for="suntingNamaModul" class="form-label">Nama Modul</label>
                         <input type="text" class="form-control" id="suntingNamaModul" name="Nama_Modul">
                     </div>

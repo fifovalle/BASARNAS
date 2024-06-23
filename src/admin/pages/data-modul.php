@@ -81,7 +81,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                 <tr>
                                                     <th>Nomor</th>
                                                     <th>Nama Pengguna</th>
-                                                    <th>Nama</th>
+                                                    <th>File</th>
                                                     <th>Judul</th>
                                                     <th>Tanggal Terbit</th>
                                                     <th>Deskripsi</th>
@@ -99,7 +99,11 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $Modul['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $Modul['Nama_Modul']; ?></td>
+                                                            <td>
+                                                                <a href="../uploads/<?php echo $Modul['File_Modul']; ?>" target="_blank" class="btn btn-link btn-primary">
+                                                                    <?php echo $Modul['Nama_Modul']; ?>
+                                                                </a>
+                                                            </td>
                                                             <td><?php echo $Modul['Judul_Modul']; ?></td>
                                                             <td><?php echo $Modul['Tanggal_Terbit_Modul']; ?></td>
                                                             <td>

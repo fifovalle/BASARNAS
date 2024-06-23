@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../config/add-modul.php" method="post">
+                <form action="../config/add-modul.php" method="post" enctype="multipart/form-data">
                     <?php
                     $penggunaModel = new Pengguna($koneksi);
                     $penggunaInfo = $penggunaModel->tampilkanDataPengguna();
@@ -25,6 +25,10 @@
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tambahFileModul" class="form-label">File Modul</label>
+                        <input type="file" class="form-control" id="tambahFileModul" name="File_Modul">
                     </div>
                     <div class="mb-3">
                         <label for="tambahNamaModul" class="form-label">Nama Modul</label>
