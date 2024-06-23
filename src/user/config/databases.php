@@ -74,6 +74,39 @@ class Pengguna
             return null;
         }
     }
+
+    public function tambahKompetensiSesuaiNip($data)
+    {
+        $query = "INSERT INTO kompetensi (
+            NIP_Pengguna, 
+            Nama_Sertifikat, 
+            Tanggal_Penerbitan_Sertifikat, 
+            Masa_Berlaku,
+            Tanggal_Berakhir_Sertifikat, 
+            Kategori_Kompetensi, 
+            Status, 
+            File_Sertifikat
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "sssissss",
+            $this->mengamankanString($data['NIP_Pengguna']),
+            $this->mengamankanString($data['Nama_Sertifikat']),
+            $this->mengamankanString($data['Tanggal_Penerbitan_Sertifikat']),
+            $this->mengamankanString($data['Masa Berlaku']),
+            $this->mengamankanString($data['Tanggal_Berakhir_Sertifikat']),
+            $this->mengamankanString($data['Kategori_Kompetensi']),
+            $this->mengamankanString($data['Status']),
+            $this->mengamankanString($data['File_Sertifikat'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 // ===================================PENGGUNA===================================

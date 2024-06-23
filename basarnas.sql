@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 05:41 AM
+-- Generation Time: Jun 23, 2024 at 06:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -293,7 +293,9 @@ CREATE TABLE `kompetensi` (
 
 INSERT INTO `kompetensi` (`ID_Kompetensi`, `NIP_Pengguna`, `File_Sertifikat`, `Nama_Sertifikat`, `Tanggal_Penerbitan_Sertifikat`, `Masa_Berlaku`, `Tanggal_Berakhir_Sertifikat`, `Kategori_Kompetensi`, `Status`) VALUES
 (22, 210204, 0x363637363733653434373236612e706466, 'Laprak', '2022-02-12', 36, '2025-02-12', 'Pemula', 'Aktif'),
-(23, 210204, 0x363637363734336235393638642e706466, 'GGS', '2020-02-02', 72, '2026-02-02', 'Terampil', 'Aktif');
+(23, 210204, 0x363637363734336235393638642e706466, 'GGS', '2020-02-02', 72, '2026-02-02', 'Terampil', 'Aktif'),
+(25, 2250081109, 0x363637376131336231346561352e706466, 'KUY', '2024-02-07', 4, '2024-06-27', 'Mahir', 'Aktif'),
+(26, 2250081109, 0x363637376131663539313231352e646f6378, 'WOY', '2024-01-09', 6, '2024-07-26', 'Pemula', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -729,7 +731,7 @@ ALTER TABLE `garjas_wanita_sit_up_kaki_lurus`
 -- AUTO_INCREMENT for table `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `modul`

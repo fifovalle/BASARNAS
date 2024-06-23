@@ -10,6 +10,8 @@ include '../config/databases.php';
 	include('../partials/header.php');
 	?>
 	<link rel="stylesheet" href="../assets/css/kompetensi.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -74,14 +76,15 @@ include '../config/databases.php';
 										<i class="bi bi-x-circle-fill" style="color: red; font-size: 20px;"></i>
 									<?php endif; ?>
 								</td>
-								<td><?php echo $kompetensi['Nama_Lengkap_Pengguna']; ?></td>
 								<td>
 									<div class="btn-group">
 										<div class="btn btn-secondary bg-transparent border border-0 p-0 pe-2" data-bs-toggle="modal" data-bs-target="#previewSertifikatKompetensi">
 											<i class="bi bi-eye" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
 										</div>
 										<div class="btn btn-secondary bg-transparent border border-0 p-0 ps-2">
-											<i class="bi bi-cloud-download" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
+											<a href="../../admin/uploads/<?php echo $kompetensi['File_Sertifikat']; ?>" download="<?php echo basename($kompetensi['File_Sertifikat']); ?>">
+												<i class="bi bi-cloud-download" style="color: black; font-size: 20px; -webkit-text-stroke-width: 0.8px;"></i>
+											</a>
 										</div>
 									</div>
 								</td>
@@ -92,7 +95,6 @@ include '../config/databases.php';
 						echo "<tr><td colspan='9'>Tidak ada data kompetensi yang ditemukan.</td></tr>";
 					}
 					?>
-
 					<tr>
 						<td colspan="8">
 							<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#inputSertifikatKompetensi"><i class='bx bx-file pe-2'></i>Tambahkan Sertifikat</button>
@@ -103,27 +105,23 @@ include '../config/databases.php';
 											<h1 class="modal-title" id="inputSertifikatKompetensiLabel">Tambahkan Sertifikat Kompetensi Anda</h1>
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
-										<form class="form-control" method="post" action="">
+										<form class="form-control" method="post" action="../config/add-competence.php" enctype="multipart/form-data">
 											<div class="modal-body text-start">
 												<div class="mb-3">
 													<label for="inputNamaSertifikat" class="form-label">Nama Sertifikat</label>
-													<input type="text" class="form-control" id="inputNamaSertifikat" name="inputNamaSertifikat" placeholder="Masukkan Nama Sertifikat">
+													<input type="text" class="form-control" id="inputNamaSertifikat" name="Nama_Sertifikat" placeholder="Masukkan Nama Sertifikat">
 												</div>
 												<div class="mb-3">
-													<label for="inputTanggalPembuatanSertifikat" class="form-label">Tanggal Pembuatan Sertifikat</label>
-													<input type="date" class="form-control" id="inputTanggalPembuatanSertifikat" name="inputTanggalPembuatanSertifikat" placeholder="...">
+													<label for="inputTanggalPenerbitanSertifikat" class="form-label">Tanggal Penerbitan Sertifikat</label>
+													<input type="date" class="form-control" id="inputTanggalPenerbitanSertifikat" name="Tanggal_Penerbitan_Sertifikat">
 												</div>
 												<div class="mb-3">
 													<label for="inputTanggalBerakhirSertifikat" class="form-label">Tanggal Berakhir Sertifikat</label>
-													<input type="date" class="form-control" id="inputTanggalBerakhirSertifikat" name="inputTanggalBerakhirSertifikat" placeholder="...">
-												</div>
-												<div class="mb-3">
-													<label for="inputMasaBerlakuSertifikat" class="form-label">Masa Berlaku Sertifikat</label>
-													<input type="number" class="form-control" id="inputMasaBerlakuSertifikat" name="inputMasaBerlakuSertifikat" placeholder="Masukan Masa Berlaku Sertifikat (dalam hitungan bulan)">
+													<input type="date" class="form-control" id="inputTanggalBerakhirSertifikat" name="Tanggal_Berakhir_Sertifikat">
 												</div>
 												<div class="mb-3">
 													<label for="inputKategoriKompetensi" class="form-label">Kategori Kompetensi</label>
-													<select class="form-select" aria-label="Default select example">
+													<select name="Kategori_Kompetensi" class="form-select" aria-label="Default select example">
 														<option selected>Pilih Kategori Kompetensi</option>
 														<option value="Pemula">Pemula</option>
 														<option value="Terampil">Terampil</option>
@@ -143,7 +141,7 @@ include '../config/databases.php';
 																	<p>atau</p>
 																	<span class="browse-button">Cari File</span>
 																</div>
-																<input id="file" type="file" />
+																<input id="file" type="file" name="File_Sertifikat" />
 															</label>
 														</div>
 													</div>
@@ -153,7 +151,7 @@ include '../config/databases.php';
 												</div>
 											</div>
 											<div class="modal-footer">
-												<button type="submit" class="btn btn-primary">Kirim</button>
+												<button type="submit" class="btn btn-primary" name="tambah_sertifikat">Kirim</button>
 											</div>
 										</form>
 									</div>
@@ -187,6 +185,12 @@ include '../config/databases.php';
 			</div>
 		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 </body>
 
 </html>
