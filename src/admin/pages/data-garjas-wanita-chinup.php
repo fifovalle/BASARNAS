@@ -68,7 +68,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
+                                        <h4 class="card-title">Data Nilai Garjas Wanita (Chin Up)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasWanitaChinUp">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
@@ -106,7 +106,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasChinUpWanita['Nilai_Chin_Up_Wanita']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpWanita['ID_Wanita_Chin_Up']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpWanita['ID_Wanita_Chin_Up']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaChinUp(<?php echo $garjasChinUpWanita['ID_Wanita_Chin_Up']; ?>)">

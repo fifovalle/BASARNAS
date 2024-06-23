@@ -66,7 +66,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Sertifikat</h4>
+                                        <h4 class="card-title">Data Sertifikat Mahir</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahKompetensiMahir">
                                             <i class="fa fa-plus"></i>
                                             Tambah Sertifikat

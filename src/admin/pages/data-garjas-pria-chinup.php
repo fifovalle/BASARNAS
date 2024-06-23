@@ -1,4 +1,4 @@
-<?php include('../config/databases.php'); 
+<?php include('../config/databases.php');
 if (!isset($_SESSION['NIP_Admin'])) {
     setPesanKesalahan("Silahkan login terlebih dahulu!");
     header("Location: " . $akarUrl . "src/admin/pages/login.php");
@@ -67,7 +67,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
+                                        <h4 class="card-title">Data Garjas Pria (Chin Up)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaChinUp">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
@@ -93,31 +93,31 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                             $garjasChinUpPriaInfo = $garjasChinUpPriaModel->tampilkanDataGarjasPriaChinUp();
                                             ?>
                                             <tbody>
-                                            <?php if (!empty($garjasChinUpPriaInfo)) : ?>
-                                                <?php $nomor = 1; ?>
-                                                <?php foreach ($garjasChinUpPriaInfo as $garjasChinUpPria) : ?>
-                                                    <tr>
-                                                        <td><?php echo $nomor++; ?></td>
-                                                        <td><?php echo $garjasChinUpPria['NIP_Pengguna']; ?></td>
-                                                        <td><?php echo $garjasChinUpPria['Nama_Lengkap_Pengguna']; ?></td>
-                                                        <td><?php echo $garjasChinUpPria['Umur_Pengguna']; ?></td>
-                                                        <td><?php echo $garjasChinUpPria['Jumlah_Chin_Up_Pria']; ?></td>
-                                                        <td><?php echo $garjasChinUpPria['Nilai_Chin_Up_Pria']; ?></td>
-                                                        <td>
-                                                        <div class="form-button-action">
-                                                            <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpPria['ID_Pria_Chin_Up']; ?>">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaChinUp(<?php echo $garjasChinUpPria['ID_Pria_Chin_Up']; ?>)">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info buttonLihatGarjasPriaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpPria['ID_Pria_Chin_Up']; ?>">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <?php endforeach; ?>
+                                                <?php if (!empty($garjasChinUpPriaInfo)) : ?>
+                                                    <?php $nomor = 1; ?>
+                                                    <?php foreach ($garjasChinUpPriaInfo as $garjasChinUpPria) : ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $garjasChinUpPria['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasChinUpPria['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasChinUpPria['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasChinUpPria['Jumlah_Chin_Up_Pria']; ?></td>
+                                                            <td><?php echo $garjasChinUpPria['Nilai_Chin_Up_Pria']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpPria['ID_Pria_Chin_Up']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaChinUp(<?php echo $garjasChinUpPria['ID_Pria_Chin_Up']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatGarjasPriaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpPria['ID_Pria_Chin_Up']; ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
                                                         <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Chin Up!</td>
@@ -202,8 +202,8 @@ if (!isset($_SESSION['NIP_Admin'])) {
             });
         });
     </script>
-     <!-- ALERT -->
-     <?php
+    <!-- ALERT -->
+    <?php
     include('../partials/alert.php');
     ?>
 </body>

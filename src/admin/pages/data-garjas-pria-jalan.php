@@ -66,7 +66,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
+                                        <h4 class="card-title">Data Nilai Garjas Pria (Jalan Kaki 5 KM)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaJalan">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai

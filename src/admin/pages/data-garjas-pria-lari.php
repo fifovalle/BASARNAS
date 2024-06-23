@@ -1,4 +1,4 @@
-<?php include('../config/databases.php'); 
+<?php include('../config/databases.php');
 if (!isset($_SESSION['NIP_Admin'])) {
     setPesanKesalahan("Silahkan login terlebih dahulu!");
     header("Location: " . $akarUrl . "src/admin/pages/login.php");
@@ -67,7 +67,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
+                                        <h4 class="card-title">Data Nilai Garjas Pria (Lari 2400 M)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaLari">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
@@ -105,7 +105,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasTesLariPria['Nilai_Lari_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasTestLariPria" data-bs-toggle="modal" data-id="<?php echo $garjasTesLariPria['ID_Lari_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasTestLariPria" data-bs-toggle="modal" data-id="<?php echo $garjasTesLariPria['ID_Lari_Pria']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaTesLari(<?php echo $garjasTesLariPria['ID_Lari_Pria']; ?>)">

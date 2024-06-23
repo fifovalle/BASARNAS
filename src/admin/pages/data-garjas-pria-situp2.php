@@ -1,4 +1,4 @@
-<?php include('../config/databases.php'); 
+<?php include('../config/databases.php');
 if (!isset($_SESSION['NIP_Admin'])) {
     setPesanKesalahan("Silahkan login terlebih dahulu!");
     header("Location: " . $akarUrl . "src/admin/pages/login.php");
@@ -67,7 +67,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
+                                        <h4 class="card-title">Data Nilai Garjas Pria (Sit Up Kaki Ditekuk)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaSitUp2">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
@@ -89,10 +89,10 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php
-                                            $garjasSitUp2PriaModel = new GarjasPriaSitUpKakiDitekuk($koneksi);
-                                            $garjasPriaSitUp2Info = $garjasSitUp2PriaModel->tampilkanDataGarjasPriaSitUp2();
-                                            ?>
+                                                <?php
+                                                $garjasSitUp2PriaModel = new GarjasPriaSitUpKakiDitekuk($koneksi);
+                                                $garjasPriaSitUp2Info = $garjasSitUp2PriaModel->tampilkanDataGarjasPriaSitUp2();
+                                                ?>
                                                 <?php if (!empty($garjasPriaSitUp2Info)) : ?>
                                                     <?php $nomor = 1; ?>
                                                     <?php foreach ($garjasPriaSitUp2Info as $garjasPriaSitUp2) : ?>

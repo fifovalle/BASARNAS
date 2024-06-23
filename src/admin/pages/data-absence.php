@@ -67,11 +67,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Absensi</h4>
-                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahAbsensi">
-                                            <i class="fa fa-plus"></i>
-                                            Tambah Absensi
-                                        </button>
+                                        <h4 class="card-title">Data Absensi</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">

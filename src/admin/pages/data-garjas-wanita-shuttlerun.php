@@ -68,7 +68,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
+                                        <h4 class="card-title">Data Nilai Garjas Wanita (Shuttle Run)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasWanitaShuttleRun">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
@@ -106,7 +106,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasShuttleRunWanita['Nilai_Shuttle_Run_Wanita']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasShuttleRunWanita['ID_Wanita_Shuttle_Run']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasShuttleRunWanita['ID_Wanita_Shuttle_Run']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasWanitaShuttleRun(<?php echo $garjasShuttleRunWanita['ID_Wanita_Shuttle_Run']; ?>)">

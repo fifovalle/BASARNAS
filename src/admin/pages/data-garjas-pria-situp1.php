@@ -1,4 +1,4 @@
-<?php include('../config/databases.php'); 
+<?php include('../config/databases.php');
 if (!isset($_SESSION['NIP_Admin'])) {
     setPesanKesalahan("Silahkan login terlebih dahulu!");
     header("Location: " . $akarUrl . "src/admin/pages/login.php");
@@ -66,7 +66,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
+                                        <h4 class="card-title">Data Nilai Garjas Pria (Sit Up Kaki Lurus)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaSitUp1">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
@@ -104,7 +104,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasPriaSitUp1['Nilai_Sit_Up_Kaki_Lurus_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaSitup1" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp1['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaSitup1" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp1['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                     <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaSitUp1(<?php echo $garjasPriaSitUp1['ID_Sit_Up_Kaki_Lurus_Pria']; ?>)">
@@ -116,7 +116,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                    <?php endforeach; ?>    
+                                                    <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
                                                         <td colspan="7" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Garjas Pria Sit Up Kaki Lurus!</td>

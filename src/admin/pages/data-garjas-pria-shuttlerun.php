@@ -1,4 +1,4 @@
-<?php include('../config/databases.php'); 
+<?php include('../config/databases.php');
 if (!isset($_SESSION['NIP_Admin'])) {
     setPesanKesalahan("Silahkan login terlebih dahulu!");
     header("Location: " . $akarUrl . "src/admin/pages/login.php");
@@ -67,7 +67,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Nilai</h4>
+                                        <h4 class="card-title">Data Nilai Garjas Pria (Shuttle Run)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaShuttleRun">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
@@ -93,31 +93,31 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                             $garjasPriaShuttleRunInfo = $garjasPriaShuttleRunModel->tampilkanDataGarjasPriaShuttleRun();
                                             ?>
                                             <tbody>
-                                            <?php if (!empty($garjasPriaShuttleRunInfo)) : ?>
+                                                <?php if (!empty($garjasPriaShuttleRunInfo)) : ?>
                                                     <?php $nomor = 1; ?>
                                                     <?php foreach ($garjasPriaShuttleRunInfo as $garjasPriaShuttleRun) : ?>
-                                                    <tr>
-                                                    <td><?php echo $nomor++; ?></td>
-                                                    <td><?php echo $garjasPriaShuttleRun['NIP_Pengguna']; ?></td>
-                                                    <td><?php echo $garjasPriaShuttleRun['Nama_Lengkap_Pengguna']; ?></td>
-                                                    <td><?php echo $garjasPriaShuttleRun['Umur_Pengguna']; ?></td>
-                                                    <td><?php echo $garjasPriaShuttleRun['Waktu_Shuttle_Run_Pria']; ?></td>
-                                                    <td><?php echo $garjasPriaShuttleRun['Nilai_Shuttle_Run_Pria']; ?></td>
-                                                    <td>
-                                                        <div class="form-button-action">
-                                                        <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasPriaShuttleRun['ID_Shuttle_Run_Pria']; ?>">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaShuttleRun(<?php echo $garjasPriaShuttleRun['ID_Shuttle_Run_Pria']; ?>)">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-link btn-info buttonlihatGarjasPriaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasPriaShuttleRun['ID_Shuttle_Run_Pria']; ?>">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <?php endforeach; ?>
+                                                        <tr>
+                                                            <td><?php echo $nomor++; ?></td>
+                                                            <td><?php echo $garjasPriaShuttleRun['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaShuttleRun['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaShuttleRun['Umur_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaShuttleRun['Waktu_Shuttle_Run_Pria']; ?></td>
+                                                            <td><?php echo $garjasPriaShuttleRun['Nilai_Shuttle_Run_Pria']; ?></td>
+                                                            <td>
+                                                                <div class="form-button-action">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasPriaShuttleRun['ID_Shuttle_Run_Pria']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" onclick="konfirmasiHapusGarjasPriaShuttleRun(<?php echo $garjasPriaShuttleRun['ID_Shuttle_Run_Pria']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonlihatGarjasPriaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasPriaShuttleRun['ID_Shuttle_Run_Pria']; ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
                                                         <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Shuttle Run!</td>
