@@ -202,6 +202,16 @@ class Admin
             return null;
         }
     }
+
+    public function getNIPAdminById($id) {
+        $query = "SELECT NIP_Admin FROM admin WHERE NIP_Admin = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result();
+        $admin = $result->fetch_assoc();
+        return $admin['NIP_Admin'] ?? null;
+    }
 }
 // ===================================ADMIN===================================
 

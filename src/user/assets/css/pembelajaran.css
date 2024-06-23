@@ -76,19 +76,32 @@
   margin-bottom: 30px;
 }
 
-.modul {
+.modul{
   text-align: end;
   padding: 0;
 }
 
 .hadir {
-  text-align: end;
+  text-align: center;
   padding: 0;
 }
 
 .selesai {
   text-align: start;
   padding: 0;
+}
+
+.module-rabu h1{
+  border-radius: 10px;
+  border: 1px solid #fd800c;
+  padding: 10px;
+  font-size: 15px;
+}
+.module-senin h1{
+  border-radius: 10px;
+  border: 1px solid #fd800c;
+  padding: 10px;
+  font-size: 15px;
 }
 
 .activated1 {
@@ -110,13 +123,20 @@
   #page-modul3 {
     margin: 0 10px 0 10px;
   }
-  .hadir {
-    margin: 20px 0 10px 0;
-    padding-right: 20px;
+
+  .modul {
     text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .hadir {
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
   }
 
   .selesai {
     text-align: center;
+    justify-content: center;
   }
 }

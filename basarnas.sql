@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 10:43 AM
+-- Generation Time: Jun 23, 2024 at 03:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,7 +61,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`NIP_Admin`, `Foto_Admin`, `Nama_Lengkap_Admin`, `Tanggal_Lahir_Admin`, `Umur_Admin`, `Alamat_Admin`, `No_Telepon_Admin`, `Jabatan_Admin`, `Jenis_Kelamin_Admin`, `Kata_Sandi_Admin`, `Konfirmasi_Kata_Sandi_Admin`) VALUES
-(12345, 0x363637323662373234333965332e6a7067, 'Syntax Squad', '2001-02-12', 23, 'Bandung', '+62 812-2282-38281', 'Dua', 'Pria', '$2y$10$QJuIGInGlETIKA90g.UNMeBqlBlvEQ0wkKWDnnQDpdVZdVspdCaRu', '$2y$10$QJuIGInGlETIKA90g.UNMeBqlBlvEQ0wkKWDnnQDpdVZdVspdCaRu');
+(12345, 0x363637366238613139373063362e6a7067, 'Syntax Squad', '2005-12-06', 18, 'Bandung', '+62 812-2272-8232', 'Tiga', 'Pria', '$2y$10$xGmPCeehCwkaNKGljJvbf.SiSwsIhFIKlpsW0eBsiN.oajHCf9fjO', '$2y$10$xGmPCeehCwkaNKGljJvbf.SiSwsIhFIKlpsW0eBsiN.oajHCf9fjO');
 
 -- --------------------------------------------------------
 
@@ -359,9 +359,9 @@ CREATE TABLE `tes_jalan_pria` (
 --
 
 INSERT INTO `tes_jalan_pria` (`ID_Jalan_Pria`, `NIP_Pengguna`, `Waktu_Jalan_Pria`, `Nilai_Jalan_Pria`) VALUES
-(42, 555, 1.0, 0),
 (43, 210204, 2.0, 0),
-(44, 2250081109, 3.0, 0);
+(44, 2250081109, 3.0, 0),
+(45, 555, 22.0, 0);
 
 -- --------------------------------------------------------
 
@@ -372,9 +372,17 @@ INSERT INTO `tes_jalan_pria` (`ID_Jalan_Pria`, `NIP_Pengguna`, `Waktu_Jalan_Pria
 CREATE TABLE `tes_jalan_wanita` (
   `ID_Jalan_Wanita` int(11) NOT NULL,
   `NIP_Pengguna` bigint(20) NOT NULL,
-  `Waktu_Jalan_Wanita` decimal(10,0) NOT NULL,
-  `Nilai_Lari_Wanita` int(3) NOT NULL
+  `Waktu_Jalan_Wanita` decimal(10,1) NOT NULL,
+  `Nilai_Jalan_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tes_jalan_wanita`
+--
+
+INSERT INTO `tes_jalan_wanita` (`ID_Jalan_Wanita`, `NIP_Pengguna`, `Waktu_Jalan_Wanita`, `Nilai_Jalan_Wanita`) VALUES
+(4, 5555, 22.0, 0),
+(5, 1241231, 11.0, 0);
 
 -- --------------------------------------------------------
 
@@ -438,7 +446,7 @@ CREATE TABLE `tes_renang_pria` (
 --
 
 INSERT INTO `tes_renang_pria` (`ID_Renang_Pria`, `NIP_Pengguna`, `Waktu_Renang_Pria`, `Nama_Gaya_Renang_Pria`, `Nilai_Renang_Pria`) VALUES
-(37, 2250081109, '0', 'Dada', 100);
+(38, 555, '00:22', 'Dada', 100);
 
 -- --------------------------------------------------------
 
@@ -724,13 +732,13 @@ ALTER TABLE `modul`
 -- AUTO_INCREMENT for table `tes_jalan_pria`
 --
 ALTER TABLE `tes_jalan_pria`
-  MODIFY `ID_Jalan_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `ID_Jalan_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tes_jalan_wanita`
 --
 ALTER TABLE `tes_jalan_wanita`
-  MODIFY `ID_Jalan_Wanita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Jalan_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tes_lari_pria`
@@ -748,7 +756,7 @@ ALTER TABLE `tes_lari_wanita`
 -- AUTO_INCREMENT for table `tes_renang_pria`
 --
 ALTER TABLE `tes_renang_pria`
-  MODIFY `ID_Renang_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ID_Renang_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tes_renang_wanita`

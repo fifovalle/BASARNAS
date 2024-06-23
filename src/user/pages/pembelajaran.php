@@ -43,13 +43,13 @@ include('../config/databases.php');
 								</div>
 								<div class="col-10 mb-1 small">Absensi Hadir Hari Rabu</div>
 							</a>
-							<a href="#" class="list-group-item" id="modul3-linked">
+							<!-- <a href="#" class="list-group-item" id="modul3-linked">
 								<div class="d-flex w-100 align-items-center justify-content-between">
 									<strong class="mb-1">Module 3</strong>
 									<small>Senin</small>
 								</div>
 								<div class="col-10 mb-1 small">Module 3 Description.</div>
-							</a>
+							</a> -->
 						</div>
 					</div>
 				</div>
@@ -72,13 +72,13 @@ include('../config/databases.php');
 							</div>
 							<div class="col-10 mb-1 small">Absensi Hadir Hari Rabu</div>
 						</a>
-						<a href="#" class="list-group-item" id="modul3-link">
+						<!-- <a href="#" class="list-group-item" id="modul3-link">
 							<div class="d-flex w-100 align-items-center justify-content-between">
 								<strong class="mb-1">Module 3</strong>
 								<small>Senin</small>
 							</div>
 							<div class="col-10 mb-1 small">Module 3 Description.</div>
-						</a>
+						</a> -->
 					</div>
 				</div>
 			</div>
@@ -98,7 +98,7 @@ include('../config/databases.php');
 									</div>
 									<div class="row justify-content-end p-0">
 										<div class=" modul col-lg-3 col-sm-12">
-											<button type="button" class="btn btn-success">Lihat Modul</button>
+											<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modulSenin">Lihat Modul</button>
 										</div>
 										<div class=" hadir col-lg-3 col-sm-12">
 											<button type="button" class="btn btn-success">Presensi Hadir</button>
@@ -127,7 +127,7 @@ include('../config/databases.php');
 									</div>
 									<div class="row justify-content-end p-0">
 										<div class=" modul col-lg-3 col-sm-12">
-											<button type="button" class="btn btn-success">Lihat Modul</button>
+											<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modulRabu">Lihat Modul</button>
 										</div>
 										<div class=" hadir col-lg-3 col-sm-12">
 											<button type="button" class="btn btn-success">Presensi Hadir</button>
@@ -141,7 +141,7 @@ include('../config/databases.php');
 						</div>
 					</div>
 				</div>
-				<div class="module-page" id="page-modul3" style="display: none;">
+				<!-- <div class="module-page" id="page-modul3" style="display: none;">
 					<div class="title-module">
 						<h4>Module 3</h4>
 						<h3>Module 3 Title</h3>
@@ -156,6 +156,9 @@ include('../config/databases.php');
 										Deskripsi Modul Tanggal ini
 									</div>
 									<div class="row justify-content-end p-0">
+										<div class=" modul col-lg-3 col-sm-12">
+											<button type="button" class="btn btn-success">Lihat Modul</button>
+										</div>
 										<div class=" hadir col-lg-3 col-sm-12">
 											<button type="button" class="btn btn-success">Presensi Hadir</button>
 										</div>
@@ -167,10 +170,47 @@ include('../config/databases.php');
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>
+	<!-- Modal -->
+	<div class="modal fade" id="modulSenin" tabindex="-1" aria-labelledby="modulSeninLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<section class="module-senin">
+					<h1>Nama Modul_Senin_Tanggal Modul.pdf</h1>
+				</section>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Download</button>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modulRabu" tabindex="-1" aria-labelledby="modulRabuLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<section class="module-rabu">
+					<h1>Nama Modul_Rabu_Tanggal Modul.pdf</h1>
+				</section>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Download</button>
+			</div>
+			</div>
+		</div>
+	</div>
 	<?php
 	include('../partials/footer.php');
 	?>

@@ -6,7 +6,6 @@ if (isset($_POST['tambah_nilai'])) {
     $gayaRenang = mysqli_real_escape_string($koneksi, $_POST['Gaya_Renang']);
     $waktuRenang = mysqli_real_escape_string($koneksi, $_POST['Waktu_Renang']);
 
-    // Konversi waktu renang menjadi detik
     if (strpos($waktuRenang, ':') !== false) {
         list($menit, $detik) = explode(':', $waktuRenang);
         $waktuRenang = ($menit * 60) + $detik;
@@ -16,6 +15,7 @@ if (isset($_POST['tambah_nilai'])) {
 
     $obyekPenggunaWanita = new Pengguna($koneksi);
     $umurPengguna = $obyekPenggunaWanita->ambilUmurPengguna($nipPengguna);
+
     $tesRenangWanitaModel = new TesRenangWanita($koneksi);
     if ($tesRenangWanitaModel->sudahAdaNilaiRenangWanita($nipPengguna)) {
         setPesanKesalahan("Nilai renang untuk pengguna ini sudah ada.");
@@ -26,7 +26,7 @@ if (isset($_POST['tambah_nilai'])) {
 
     $nilaiRenang = [
         'Dada' => [
-            '18-25' => [43, 143],  // 43 detik hingga 2 menit 23 detik (143 detik)
+            '18-25' => [43, 143],
             '26-30' => [46, 146],
             '31-35' => [49, 149],
             '36-40' => [52, 152],
