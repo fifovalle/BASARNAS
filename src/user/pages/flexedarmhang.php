@@ -1,3 +1,7 @@
+<?php
+include '../config/databases.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,13 +62,28 @@
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
-					<tr>
-						<td>1</td>
-						<td>2024-06-08</td>
-						<td>Flexed Arm Hang</td>
-						<td>09:00:00</td>
-						<td>100</td>
-					</tr>
+					<?php
+					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
+					$flexedArmHangModel = new Pengguna($koneksi);
+					$flexedArmHangInfo = $flexedArmHangModel->tampilkanFlexedArmHangDenganSessionNip($nipSessionPengguna);
+					$nomorUrut = 0;
+					if (!empty($flexedArmHangInfo)) {
+						foreach ($flexedArmHangInfo as $flexedArmHang) {
+					?>
+							<tr>
+								<td><?php echo ++$nomorUrut; ?></td>
+								<td><?php echo $flexedArmHang['Tgl_Menggantung_Pria']; ?></td>
+								<td><?php echo $flexedArmHang['Kegiatan_Menggantung_Pria']; ?></td>
+								<td><?php echo $flexedArmHang['Waktu_Menggantung_Pria']; ?></td>
+								<td><?php echo $flexedArmHang['Waktu_Menggantung_Pria']; ?></td>
+								<td><?php echo $flexedArmHang['Nilai_Menggantung_Pria']; ?></td>
+							</tr>
+					<?php
+						}
+					} else {
+						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Flexed Arm Hang.</td></tr>';
+					}
+					?>
 				</tbody>
 			</table>
 		</div>

@@ -92,7 +92,7 @@ include '../config/databases.php';
 					<?php
 						}
 					} else {
-						echo "<tr><td colspan='9'>Tidak ada data kompetensi yang ditemukan.</td></tr>";
+						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Kompetensi.</td></tr>';
 					}
 					?>
 					<tr>

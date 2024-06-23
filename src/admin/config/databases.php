@@ -3098,3 +3098,113 @@ class Absensi
     }
 }
 // ===================================ABSENSI===================================
+
+
+// ===================================BMI===================================
+class Bmi
+{
+    private $koneksi;
+
+    public function __construct($database)
+    {
+        $this->koneksi = $database;
+    }
+
+    private function mengamankanString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataBMI()
+    {
+        $query = "SELECT * FROM bmi LEFT JOIN pengguna ON bmi.NIP_Pengguna = pengguna.NIP_Pengguna";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tambahBMI($data)
+    {
+        $query = "INSERT INTO bmi (
+            NIP_Pengguna, Tanggal_Pemeriksaan, Tinggi_BMI, Berat_BMI, Skor, Keterangan
+            ) VALUES (?, NOW(), ?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "issss",
+            $this->mengamankanString($data['NIP_Pengguna']),
+            $this->mengamankanString($data['Tinggi_BMI']),
+            $this->mengamankanString($data['Berat_BMI']),
+            $this->mengamankanString($data['Skor']),
+            $this->mengamankanString($data['Keterangan'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function hitungBMI($tinggi_cm, $berat, $umur)
+    {
+        $tinggi_m = $tinggi_cm / 100;
+
+        return $berat / ($tinggi_m * $tinggi_m) * ($umur >= 18 ? 1 : 0.9);
+    }
+
+    public function cekUmurPengguna($nip)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("s", $nip);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        return $row['Umur_Pengguna'];
+    }
+
+    public function hapusBMI($id)
+    {
+        $queryDelete = "DELETE FROM bmi WHERE ID_BMI=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaharuiBMI($id, $data)
+    {
+        $query = "UPDATE bmi SET Tinggi_BMI=?, Tanggal_Pemeriksaan=NOW(), Berat_BMI=?, Skor=?, Keterangan=? WHERE ID_BMI=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "iiisi",
+            $data['Tinggi_BMI'],
+            $data['Berat_BMI'],
+            $data['Skor'],
+            $data['Keterangan'],
+            $id
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================BMI===================================

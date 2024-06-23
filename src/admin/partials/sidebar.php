@@ -229,13 +229,13 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-modul.php') || apakahAktif('src/admin/pages/data-absence.php') ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-modul.php') || apakahAktif('src/admin/pages/data-absence.php') || apakahAktif('src/admin/pages/data-bmi.php') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#data">
                         <i class="fas fa-layer-group"></i>
                         <p>Data</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-modul.php') || apakahAktif('src/admin/pages/data-absence.php') ? 'show' : ''; ?>" id="data">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-modul.php') || apakahAktif('src/admin/pages/data-absence.php') || apakahAktif('src/admin/pages/data-bmi.php') ? 'show' : ''; ?>" id="data">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-modul.php">
@@ -248,7 +248,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo $akarUrl ?>src/admin/pages/">
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-bmi.php">
                                     <span class="sub-item">BMI</span>
                                 </a>
                             </li>

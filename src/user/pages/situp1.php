@@ -1,3 +1,7 @@
+<?php
+include '../config/databases.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,13 +62,46 @@
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
-					<tr>
-						<td>1</td>
-						<td>2024-06-08</td>
-						<td>Sit Up Kaki Lurus</td>
-						<td>44</td>
-						<td>100</td>
-					</tr>
+					<?php
+					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
+					$sitUp1Model = new Pengguna($koneksi);
+					$queryJenisKelamin = "SELECT Jenis_Kelamin_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+					$stmtJenisKelamin = $koneksi->prepare($queryJenisKelamin);
+					$stmtJenisKelamin->bind_param("i", $nipSessionPengguna);
+					$stmtJenisKelamin->execute();
+					$resultJenisKelamin = $stmtJenisKelamin->get_result();
+					$pengguna = $resultJenisKelamin->fetch_assoc();
+					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
+					$nomorUrut = 0;
+					if ($jenisKelamin == 'Pria') {
+						$sitUp1Info = $sitUp1Model->tampilkanSitUp1DenganSessionNipPria($nipSessionPengguna);
+						$jumlahField = 'Jumlah_Sit_Up_Kaki_Lurus_Pria';
+						$nilaiField = 'Nilai_Sit_Up_Kaki_Lurus_Pria';
+					} elseif ($jenisKelamin == 'Wanita') {
+						$sitUp1Info = $sitUp1Model->tampilkanSitUp1DenganSessionNipWanita($nipSessionPengguna);
+						$jumlahField = 'Jumlah_Sit_Up_Kaki_Lurus_Wanita';
+						$nilaiField = 'Nilai_Sit_Up_Kaki_Lurus_Wanita';
+					} else {
+						$sitUp1Info = null;
+					}
+
+					if (!empty($sitUp1Info)) {
+						foreach ($sitUp1Info as $sitUp1) {
+							$nomorUrut++;
+					?>
+							<tr>
+								<td><?php echo $nomorUrut; ?></td>
+								<td>2024-06-08</td>
+								<td>Sit Up Kaki Lurus</td>
+								<td><?php echo htmlspecialchars($sitUp1[$jumlahField]); ?></td>
+								<td><?php echo htmlspecialchars($sitUp1[$nilaiField]); ?></td>
+							</tr>
+					<?php
+						}
+					} else {
+						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Sit Up Kaki Lurus.</td></tr>';
+					}
+					?>
 				</tbody>
 			</table>
 		</div>

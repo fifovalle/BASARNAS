@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 06:42 AM
+-- Generation Time: Jun 23, 2024 at 09:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,12 +72,19 @@ INSERT INTO `admin` (`NIP_Admin`, `Foto_Admin`, `Nama_Lengkap_Admin`, `Tanggal_L
 CREATE TABLE `bmi` (
   `ID_BMI` int(11) NOT NULL,
   `NIP_Pengguna` bigint(20) NOT NULL,
-  `Tanggal Pemeriksaan` date NOT NULL,
+  `Tanggal_Pemeriksaan` date NOT NULL,
   `Tinggi_BMI` int(4) NOT NULL,
   `Berat_BMI` int(4) NOT NULL,
   `Skor` int(3) NOT NULL,
-  `Keterangan` enum('Berat Badan Kurang','Berat Badan Normal','Berat Badan Lebih') NOT NULL
+  `Keterangan` enum('Berat Badan Kurang','Berat Badan Normal','Berat Badan Lebih','Obesitas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bmi`
+--
+
+INSERT INTO `bmi` (`ID_BMI`, `NIP_Pengguna`, `Tanggal_Pemeriksaan`, `Tinggi_BMI`, `Berat_BMI`, `Skor`, `Keterangan`) VALUES
+(2, 2250081109, '2024-06-23', 173, 73, 24, 'Berat Badan Normal');
 
 -- --------------------------------------------------------
 
@@ -91,6 +98,13 @@ CREATE TABLE `garjas_pria_chin_up` (
   `Jumlah_Chin_Up_Pria` int(4) NOT NULL,
   `Nilai_Chin_Up_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `garjas_pria_chin_up`
+--
+
+INSERT INTO `garjas_pria_chin_up` (`ID_Pria_Chin_Up`, `NIP_Pengguna`, `Jumlah_Chin_Up_Pria`, `Nilai_Chin_Up_Pria`) VALUES
+(3, 210204, 18, 92);
 
 -- --------------------------------------------------------
 
@@ -123,7 +137,8 @@ CREATE TABLE `garjas_pria_push_up` (
 --
 
 INSERT INTO `garjas_pria_push_up` (`ID_Push_Up_Pria`, `NIP_Pengguna`, `Jumlah_Push_Up_Pria`, `Nilai_Push_Up_Pria`) VALUES
-(46, 555, 22, 38);
+(46, 555, 22, 38),
+(47, 210204, 44, 100);
 
 -- --------------------------------------------------------
 
@@ -163,6 +178,13 @@ CREATE TABLE `garjas_pria_sit_up_kaki_lurus` (
   `Jumlah_Sit_Up_Kaki_Lurus_Pria` int(4) NOT NULL,
   `Nilai_Sit_Up_Kaki_Lurus_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `garjas_pria_sit_up_kaki_lurus`
+--
+
+INSERT INTO `garjas_pria_sit_up_kaki_lurus` (`ID_Sit_Up_Kaki_Lurus_Pria`, `NIP_Pengguna`, `Jumlah_Sit_Up_Kaki_Lurus_Pria`, `Nilai_Sit_Up_Kaki_Lurus_Pria`) VALUES
+(3, 210204, 40, 78);
 
 -- --------------------------------------------------------
 
@@ -660,13 +682,13 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT for table `bmi`
 --
 ALTER TABLE `bmi`
-  MODIFY `ID_BMI` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_BMI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_chin_up`
 --
 ALTER TABLE `garjas_pria_chin_up`
-  MODIFY `ID_Pria_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Pria_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_menggantung`
@@ -678,7 +700,7 @@ ALTER TABLE `garjas_pria_menggantung`
 -- AUTO_INCREMENT for table `garjas_pria_push_up`
 --
 ALTER TABLE `garjas_pria_push_up`
-  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_shuttle_run`
@@ -696,7 +718,7 @@ ALTER TABLE `garjas_pria_sit_up_kaki_di_tekuk`
 -- AUTO_INCREMENT for table `garjas_pria_sit_up_kaki_lurus`
 --
 ALTER TABLE `garjas_pria_sit_up_kaki_lurus`
-  MODIFY `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_chin_up`

@@ -1,3 +1,7 @@
+<?php
+include '../config/databases.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,13 +62,46 @@
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
-					<tr>
-						<td>1</td>
-						<td>2024-06-08</td>
-						<td>Jalan Kaki 5 KM</td>
-						<td>09:00:00</td>
-						<td>100</td>
-					</tr>
+					<?php
+					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
+					$jalanKakiModel = new Pengguna($koneksi);
+					$queryJenisKelamin = "SELECT Jenis_Kelamin_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+					$stmtJenisKelamin = $koneksi->prepare($queryJenisKelamin);
+					$stmtJenisKelamin->bind_param("i", $nipSessionPengguna);
+					$stmtJenisKelamin->execute();
+					$resultJenisKelamin = $stmtJenisKelamin->get_result();
+					$pengguna = $resultJenisKelamin->fetch_assoc();
+					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
+					$nomorUrut = 0;
+					if ($jenisKelamin == 'Pria') {
+						$jalanKakiInfo = $jalanKakiModel->tampilkanJalanKakiDenganSessionNipPria($nipSessionPengguna);
+						$waktuField = 'Waktu_Jalan_Pria';
+						$nilaiField = 'Nilai_Jalan_Pria';
+					} elseif ($jenisKelamin == 'Wanita') {
+						$jalanKakiInfo = $jalanKakiModel->tampilkanJalanKakiDenganSessionNipWanita($nipSessionPengguna);
+						$waktuField = 'Waktu_Jalan_Wanita';
+						$nilaiField = 'Nilai_Jalan_Wanita';
+					} else {
+						$jalanKakiInfo = null;
+					}
+
+					if (!empty($jalanKakiInfo)) {
+						foreach ($jalanKakiInfo as $jalanKaki) {
+							$nomorUrut++;
+					?>
+							<tr>
+								<td><?php echo $nomorUrut; ?></td>
+								<td>2024-06-08</td>
+								<td>Jalan Kaki 5 KM</td>
+								<td><?php echo htmlspecialchars($jalanKaki[$waktuField]); ?></td>
+								<td><?php echo htmlspecialchars($jalanKaki[$nilaiField]); ?></td>
+							</tr>
+					<?php
+						}
+					} else {
+						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Jalan Kaki.</td></tr>';
+					}
+					?>
 				</tbody>
 			</table>
 		</div>

@@ -1,3 +1,7 @@
+<?php
+include '../config/databases.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,18 +57,55 @@
 						<th>Nomor</th>
 						<th>Tanggal Pelaksanaan</th>
 						<th>Kegiatan</th>
+						<th>Nama Gaya Renang</th>
 						<th>Waktu Renang</th>
 						<th>Nilai</th>
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
-					<tr>
-						<td>1</td>
-						<td>2024-06-08</td>
-						<td>Renang 50m</td>
-						<td>01:00:00</td>
-						<td>100</td>
-					</tr>
+					<?php
+					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
+					$renangModel = new Pengguna($koneksi);
+					$queryJenisKelamin = "SELECT Jenis_Kelamin_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+					$stmtJenisKelamin = $koneksi->prepare($queryJenisKelamin);
+					$stmtJenisKelamin->bind_param("i", $nipSessionPengguna);
+					$stmtJenisKelamin->execute();
+					$resultJenisKelamin = $stmtJenisKelamin->get_result();
+					$pengguna = $resultJenisKelamin->fetch_assoc();
+					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
+					$nomorUrut = 0;
+					if ($jenisKelamin == 'Pria') {
+						$renangInfo = $renangModel->tampilkanRenangDenganSessionNipPria($nipSessionPengguna);
+						$gayaField = 'Nama_Gaya_Renang_Pria';
+						$waktuField = 'Waktu_Renang_Pria';
+						$nilaiField = 'Nilai_Renang_Pria';
+					} elseif ($jenisKelamin == 'Wanita') {
+						$renangInfo = $renangModel->tampilkanRenangDenganSessionNipWanita($nipSessionPengguna);
+						$gayaField = 'Nama_Gaya_Renang_Wanita';
+						$waktuField = 'Waktu_Renang_Wanita';
+						$nilaiField = 'Nilai_Renang_Wanita';
+					} else {
+						$renangInfo = null;
+					}
+
+					if (!empty($renangInfo)) {
+						foreach ($renangInfo as $renang) {
+							$nomorUrut++;
+					?>
+							<tr>
+								<td>1</td>
+								<td>2024-06-08</td>
+								<td>Renang 50m</td>
+								<td><?php echo htmlspecialchars($lari[$gayaField]); ?></td>
+								<td><?php echo htmlspecialchars($lari[$waktuField]); ?></td>
+								<td><?php echo htmlspecialchars($lari[$nilaiField]); ?></td>
+							</tr>
+					<?php
+						}
+					} else {
+						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data renang.</td></tr>';
+					}
+					?>
 				</tbody>
 			</table>
 		</div>

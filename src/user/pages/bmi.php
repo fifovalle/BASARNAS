@@ -1,3 +1,7 @@
+<?php
+include '../config/databases.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,15 +51,39 @@
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
-					<tr>
-						<td>1</td>
-						<td>2024-06-08</td>
-						<td>25</td>
-						<td>165</td>
-						<td>65</td>
-						<td>23</td>
-						<td>Ideal</td>
-					</tr>
+					<?php
+					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
+					$bmiModel = new Pengguna($koneksi);
+					$bmiInfo = $bmiModel->tampilkanBMIDenganSessionNip($nipSessionPengguna);
+					$nomorUrut = 0;
+					if (!empty($bmiInfo)) {
+						foreach ($bmiInfo as $bmi) {
+					?>
+							<tr>
+								<td><?= ++$nomorUrut ?></td>
+								<td><?= $bmi['Tanggal_Pemeriksaan'] ?></td>
+								<td><?= $bmi['Umur_Pengguna'] ?></td>
+								<td><?= $bmi['Tinggi_BMI'] ?></td>
+								<td><?= $bmi['Berat_BMI'] ?></td>
+								<td><?= $bmi['Skor'] ?></td>
+								<td>
+									<?php
+									echo $bmi['Keterangan'] == "Berat Badan Kurang"
+										? "<span class='badge bg-danger'>Kurus</span>"
+										: ($bmi['Keterangan'] == "Berat Badan Normal"
+											? "<span class='badge bg-success'>Ideal</span>"
+											: ($bmi['Keterangan'] == "Berat Badan Lebih"
+												? "<span class='badge bg-primary'>Gemuk</span>"
+												: "<span class='badge bg-warning'>Obesitas</span>"));
+									?>
+								</td>
+							</tr>
+					<?php
+						}
+					} else {
+						echo "<tr><td colspan='9' class='text-center text-danger fw-bold'>Tidak ada data bmi yang ditemukan!</td></tr>";
+					}
+					?>
 				</tbody>
 			</table>
 		</div>

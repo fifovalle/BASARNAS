@@ -1,3 +1,7 @@
+<?php
+include '../config/databases.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,13 +62,46 @@
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
-					<tr>
-						<td>1</td>
-						<td>2024-06-08</td>
-						<td>Lari 2400m</td>
-						<td>09:00:00</td>
-						<td>100</td>
-					</tr>
+					<?php
+					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
+					$lariModel = new Pengguna($koneksi);
+					$queryJenisKelamin = "SELECT Jenis_Kelamin_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+					$stmtJenisKelamin = $koneksi->prepare($queryJenisKelamin);
+					$stmtJenisKelamin->bind_param("i", $nipSessionPengguna);
+					$stmtJenisKelamin->execute();
+					$resultJenisKelamin = $stmtJenisKelamin->get_result();
+					$pengguna = $resultJenisKelamin->fetch_assoc();
+					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
+					$nomorUrut = 0;
+					if ($jenisKelamin == 'Pria') {
+						$lariInfo = $lariModel->tampilkanLariDenganSessionNipPria($nipSessionPengguna);
+						$waktuField = 'Waktu_Lari_Pria';
+						$nilaiField = 'Nilai_Lari_Pria';
+					} elseif ($jenisKelamin == 'Wanita') {
+						$lariInfo = $lariModel->tampilkanLariDenganSessionNipWanita($nipSessionPengguna);
+						$waktuField = 'Waktu_Lari_Wanita';
+						$nilaiField = 'Nilai_Lari_Wanita';
+					} else {
+						$lariInfo = null;
+					}
+
+					if (!empty($lariInfo)) {
+						foreach ($lariInfo as $lari) {
+							$nomorUrut++;
+					?>
+							<tr>
+								<td><?php echo $nomorUrut; ?></td>
+								<td>2024-08-06</td>
+								<td>Lari 2400m</td>
+								<td><?php echo htmlspecialchars($lari[$waktuField]); ?></td>
+								<td><?php echo htmlspecialchars($lari[$nilaiField]); ?></td>
+							</tr>
+					<?php
+						}
+					} else {
+						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data lari.</td></tr>';
+					}
+					?>
 				</tbody>
 			</table>
 		</div>

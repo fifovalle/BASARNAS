@@ -1,3 +1,7 @@
+<?php
+include '../config/databases.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,13 +62,46 @@
 					</tr>
 				</thead>
 				<tbody class="table-group-divider text-center">
-					<tr>
-						<td>1</td>
-						<td>2024-06-08</td>
-						<td>Push Up</td>
-						<td>44</td>
-						<td>100</td>
-					</tr>
+					<?php
+					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
+					$pushUpModel = new Pengguna($koneksi);
+					$queryJenisKelamin = "SELECT Jenis_Kelamin_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+					$stmtJenisKelamin = $koneksi->prepare($queryJenisKelamin);
+					$stmtJenisKelamin->bind_param("i", $nipSessionPengguna);
+					$stmtJenisKelamin->execute();
+					$resultJenisKelamin = $stmtJenisKelamin->get_result();
+					$pengguna = $resultJenisKelamin->fetch_assoc();
+					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
+					$nomorUrut = 0;
+					if ($jenisKelamin == 'Pria') {
+						$pushUpInfo = $pushUpModel->tampilkanPushUpDenganSessionNipPria($nipSessionPengguna);
+						$jumlahField = 'Jumlah_Push_Up_Pria';
+						$nilaiField = 'Nilai_Push_Up_Pria';
+					} elseif ($jenisKelamin == 'Wanita') {
+						$pushUpInfo = $pushUpModel->tampilkanPushUpDenganSessionNipWanita($nipSessionPengguna);
+						$jumlahField = 'Jumlah_Push_Up_Wanita';
+						$nilaiField = 'Nilai_Push_Up_Wanita';
+					} else {
+						$pushUpInfo = null;
+					}
+
+					if (!empty($pushUpInfo)) {
+						foreach ($pushUpInfo as $pushUp) {
+							$nomorUrut++;
+					?>
+							<tr>
+								<td><?php echo $nomorUrut; ?></td>
+								<td>2024-06-08</td>
+								<td>Push Up</td>
+								<td><?php echo htmlspecialchars($pushUp[$jumlahField]); ?></td>
+								<td><?php echo htmlspecialchars($pushUp[$nilaiField]); ?></td>
+							</tr>
+					<?php
+						}
+					} else {
+						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Push Up.</td></tr>';
+					}
+					?>
 				</tbody>
 			</table>
 		</div>
