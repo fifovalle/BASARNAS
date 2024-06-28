@@ -28,6 +28,9 @@ $(document).ready(function () {
           $("#suntingWaktuGarjasPriaJalan").val(
             garjasPriaTestJalanData.Waktu_Jalan_Pria
           );
+          $("#suntingTanggalPelaksanaanGarjasPriaJalan").val(
+            garjasPriaTestJalanData.Tanggal_Pelaksanaan_Tes_Jalan_Pria
+          );
           $("#suntingGarjasPriaJalan").modal("show");
         }
       },

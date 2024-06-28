@@ -28,6 +28,9 @@ $(document).ready(function () {
           $("#suntingWaktuFlexedArmHangAdmin").val(
             garjasPriaFlexedArmHangData.Waktu_Menggantung_Pria
           );
+          $("#suntingtanggalPelaksanaanFlexedArmHangPengguna").val(
+            garjasPriaFlexedArmHangData.Tanggal_Pelaksanaan_Pria_Menggantung
+          );
           $("#suntingGarjasPriaFlexedArmHang").modal("show");
         }
       },

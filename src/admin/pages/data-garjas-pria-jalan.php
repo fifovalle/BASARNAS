@@ -80,6 +80,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                 <tr>
                                                     <th>Nomor</th>
                                                     <th>NIP</th>
+                                                    <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
                                                     <th>Waktu Jalan</th>
@@ -98,6 +99,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $tesJalanPria['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $tesJalanPria['Tanggal_Pelaksanaan_Tes_Jalan_Pria']; ?></td>
                                                             <td><?php echo $tesJalanPria['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $tesJalanPria['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $tesJalanPria['Waktu_Jalan_Pria']; ?></td>

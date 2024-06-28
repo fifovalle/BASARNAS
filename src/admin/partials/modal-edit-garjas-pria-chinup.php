@@ -7,10 +7,14 @@
             </div>
             <div class="modal-body">
                 <form>
-                <input type="hidden" id="editGarjasPriaChinUpID" name="ID_Pria_Chin_Up" autocomplete="off">
-                <div class="mb-3">
+                    <input type="hidden" id="editGarjasPriaChinUpID" name="ID_Pria_Chin_Up" autocomplete="off">
+                    <div class="mb-3">
                         <label for="suntingNIPPengguna" class="form-label">NIP dan Nama Anggota</label>
                         <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="suntingTanggalPelaksanaanChinUpAnggota" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="suntingTanggalPelaksanaanChinUpAnggota" name="Tanggal_Pelaksanaan_Chin_Up_Pria">
                     </div>
                     <div class="mb-3">
                         <label for="suntingJumlahChinUpAnggota" class="form-label">Jumlah Chin Up</label>

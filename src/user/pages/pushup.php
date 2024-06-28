@@ -1,5 +1,12 @@
 <?php
 include '../config/databases.php';
+
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +63,6 @@ include '../config/databases.php';
 					<tr>
 						<th>Nomor</th>
 						<th>Tanggal Pelaksanaan</th>
-						<th>Kegiatan</th>
 						<th>Jumlah Push Up</th>
 						<th>Nilai</th>
 					</tr>
@@ -77,10 +83,12 @@ include '../config/databases.php';
 						$pushUpInfo = $pushUpModel->tampilkanPushUpDenganSessionNipPria($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Push_Up_Pria';
 						$nilaiField = 'Nilai_Push_Up_Pria';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Push_Up_Pria';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$pushUpInfo = $pushUpModel->tampilkanPushUpDenganSessionNipWanita($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Push_Up_Wanita';
 						$nilaiField = 'Nilai_Push_Up_Wanita';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Push_Up_Wanita';
 					} else {
 						$pushUpInfo = null;
 					}
@@ -91,8 +99,7 @@ include '../config/databases.php';
 					?>
 							<tr>
 								<td><?php echo $nomorUrut; ?></td>
-								<td>2024-06-08</td>
-								<td>Push Up</td>
+								<td><?php echo htmlspecialchars($pushUp[$tanggalPelaksanaanField]); ?></td>
 								<td><?php echo htmlspecialchars($pushUp[$jumlahField]); ?></td>
 								<td><?php echo htmlspecialchars($pushUp[$nilaiField]); ?></td>
 							</tr>

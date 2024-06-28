@@ -1,5 +1,12 @@
 <?php
 include '../config/databases.php';
+
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +63,6 @@ include '../config/databases.php';
 					<tr>
 						<th>Nomor</th>
 						<th>Tanggal Pelaksanaan</th>
-						<th>Kegiatan</th>
 						<th>Waktu Lari</th>
 						<th>Nilai</th>
 					</tr>
@@ -77,10 +83,12 @@ include '../config/databases.php';
 						$lariInfo = $lariModel->tampilkanLariDenganSessionNipPria($nipSessionPengguna);
 						$waktuField = 'Waktu_Lari_Pria';
 						$nilaiField = 'Nilai_Lari_Pria';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Tes_Lari_Pria';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$lariInfo = $lariModel->tampilkanLariDenganSessionNipWanita($nipSessionPengguna);
 						$waktuField = 'Waktu_Lari_Wanita';
 						$nilaiField = 'Nilai_Lari_Wanita';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Tes_Lari_Wanita';
 					} else {
 						$lariInfo = null;
 					}
@@ -91,8 +99,7 @@ include '../config/databases.php';
 					?>
 							<tr>
 								<td><?php echo $nomorUrut; ?></td>
-								<td>2024-08-06</td>
-								<td>Lari 2400m</td>
+								<td><?php echo htmlspecialchars($lari[$tanggalPelaksanaanField]); ?></td>
 								<td><?php echo htmlspecialchars($lari[$waktuField]); ?></td>
 								<td><?php echo htmlspecialchars($lari[$nilaiField]); ?></td>
 							</tr>

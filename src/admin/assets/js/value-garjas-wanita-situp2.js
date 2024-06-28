@@ -17,10 +17,20 @@ $(document).ready(function () {
         if (garjasSitUp2WanitaData.success === false) {
           alert(garjasSitUp2WanitaData.message);
         } else {
-          let nipNama = garjasSitUp2WanitaData.NIP_Pengguna + " - " + garjasSitUp2WanitaData.Nama_Lengkap_Pengguna;
+          let nipNama =
+            garjasSitUp2WanitaData.NIP_Pengguna +
+            " - " +
+            garjasSitUp2WanitaData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#SuntingGarjasWanitaSitUp2ID").val(garjasSitUp2WanitaData.ID_Wanita_Sit_Up_Kaki_Di_Tekuk);
-          $("#suntingJumlahSitUp2GarjasWanita").val(garjasSitUp2WanitaData.Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita);
+          $("#SuntingGarjasWanitaSitUp2ID").val(
+            garjasSitUp2WanitaData.ID_Wanita_Sit_Up_Kaki_Di_Tekuk
+          );
+          $("#suntingJumlahSitUp2GarjasWanita").val(
+            garjasSitUp2WanitaData.Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita
+          );
+          $("#suntingTanggalPelaksanaanSitUp2GarjasWanita").val(
+            garjasSitUp2WanitaData.Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita
+          );
           $("#suntingGarjasWanitaSitUp2").modal("show");
         }
       },

@@ -1,5 +1,12 @@
 <?php
 include '../config/databases.php';
+
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +63,6 @@ include '../config/databases.php';
 					<tr>
 						<th>Nomor</th>
 						<th>Tanggal Pelaksanaan</th>
-						<th>Kegiatan</th>
 						<th>Waktu Jalan</th>
 						<th>Nilai</th>
 					</tr>
@@ -64,37 +70,17 @@ include '../config/databases.php';
 				<tbody class="table-group-divider text-center">
 					<?php
 					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
-					$jalanKakiModel = new Pengguna($koneksi);
-					$queryJenisKelamin = "SELECT Jenis_Kelamin_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
-					$stmtJenisKelamin = $koneksi->prepare($queryJenisKelamin);
-					$stmtJenisKelamin->bind_param("i", $nipSessionPengguna);
-					$stmtJenisKelamin->execute();
-					$resultJenisKelamin = $stmtJenisKelamin->get_result();
-					$pengguna = $resultJenisKelamin->fetch_assoc();
-					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
+					$jalanKakiPriaModel = new Pengguna($koneksi);
+					$jalanKakiPriaInfo = $jalanKakiPriaModel->tampilkanJalanKakiDenganSessionNipPria($nipSessionPengguna);
 					$nomorUrut = 0;
-					if ($jenisKelamin == 'Pria') {
-						$jalanKakiInfo = $jalanKakiModel->tampilkanJalanKakiDenganSessionNipPria($nipSessionPengguna);
-						$waktuField = 'Waktu_Jalan_Pria';
-						$nilaiField = 'Nilai_Jalan_Pria';
-					} elseif ($jenisKelamin == 'Wanita') {
-						$jalanKakiInfo = $jalanKakiModel->tampilkanJalanKakiDenganSessionNipWanita($nipSessionPengguna);
-						$waktuField = 'Waktu_Jalan_Wanita';
-						$nilaiField = 'Nilai_Jalan_Wanita';
-					} else {
-						$jalanKakiInfo = null;
-					}
-
-					if (!empty($jalanKakiInfo)) {
-						foreach ($jalanKakiInfo as $jalanKaki) {
-							$nomorUrut++;
+					if (!empty($jalanKakiPriaInfo)) {
+						foreach ($jalanKakiPriaInfo as $jalanKaki) {
 					?>
 							<tr>
-								<td><?php echo $nomorUrut; ?></td>
-								<td>2024-06-08</td>
-								<td>Jalan Kaki 5 KM</td>
-								<td><?php echo htmlspecialchars($jalanKaki[$waktuField]); ?></td>
-								<td><?php echo htmlspecialchars($jalanKaki[$nilaiField]); ?></td>
+								<td><?php echo ++$nomorUrut; ?></td>
+								<td><?php echo $jalanKaki['Tanggal_Pelaksanaan_Tes_Jalan_Pria']; ?></td>
+								<td><?php echo $jalanKaki['Waktu_Jalan_Pria']; ?></td>
+								<td><?php echo $jalanKaki['Nilai_Jalan_Pria']; ?></td>
 							</tr>
 					<?php
 						}

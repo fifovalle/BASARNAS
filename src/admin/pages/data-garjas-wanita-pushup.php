@@ -82,6 +82,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                 <tr>
                                                     <th>No</th>
                                                     <th>NIP</th>
+                                                    <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
                                                     <th>Jumlah Push Up</th>
@@ -100,6 +101,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $garjasPushUpWanita['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPushUpWanita['Tanggal_Pelaksanaan_Push_Up_Wanita']; ?></td>
                                                             <td><?php echo $garjasPushUpWanita['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPushUpWanita['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPushUpWanita['Jumlah_Push_Up_Wanita']; ?></td>

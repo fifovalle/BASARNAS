@@ -24,16 +24,28 @@
                         <input type="date" class="form-control" id="tambahTanggalLahirAdmin" name="Tanggal_Lahir_Admin">
                     </div>
                     <div class="mb-3">
-                        <label for="tambahAlamatAdmin" class="form-label">Alamat</label>
-                        <textarea id="tambahAlamatAdmin" class="form-control" name="Alamat_Admin"></textarea>
+                        <label for="tambahPeranAdmin" class="form-label">Peran Admin</label>
+                        <select name="Peran_Admin" id="tambahPeranAdmin" class="form-select">
+                            <?php if ($_SESSION['Peran_Admin'] === 'Super Admin') : ?>
+                                <option value="SuperAdmin" selected>Super Admin</option>
+                                <option value="Admin">Admin</option>
+                            <?php elseif ($_SESSION['Peran_Admin'] === 'Admin') : ?>
+                                <option value="Admin" selected>Admin</option>
+                            <?php else : ?>
+                                <option selected disabled>Pilih Peran</option>
+                                <option value="SuperAdmin">Super Admin</option>
+                                <option value="Admin">Admin</option>
+                            <?php endif; ?>
+                        </select>
                     </div>
+
                     <div class="mb-3">
                         <label for="tambahJabatanAdmin" class="form-label">Jabatan</label>
                         <select name="Jabatan_Admin" id="tambahJabatanAdmin" class="form-select">
                             <option selected disabled>Pilih Jabatan</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Dua">Dua</option>
-                            <option value="Tiga">Tiga</option>
+                            <option value="Pemula">Pemula</option>
+                            <option value="Terampil">Terampil</option>
+                            <option value="Mahir">Mahir</option>
                         </select>
                     </div>
                     <div class="mb-3">

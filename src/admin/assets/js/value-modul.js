@@ -11,22 +11,18 @@ $(document).ready(function () {
       },
       success: function (data) {
         console.log(data);
-        let terampilData = JSON.parse(data);
-        console.log(terampilData);
+        let modulData = JSON.parse(data);
+        console.log(modulData);
 
-        if (terampilData.success === false) {
-          alert(terampilData.message);
+        if (modulData.success === false) {
+          alert(modulData.message);
         } else {
-          $("#suntingIDModul").val(terampilData.ID_Modul);
-          $("#suntingNIPPenggunaModul").val(
-            terampilData.NIP_Pengguna +
-              " - " +
-              terampilData.Nama_Lengkap_Pengguna
-          );
-          $("#suntingFileModul").val(terampilData.File_Modul);
-          $("#suntingNamaModul").val(terampilData.Nama_Modul);
-          $("#suntingJudulModul").val(terampilData.Judul_Modul);
-          $("#suntingDeskripsiModul").val(terampilData.Deskripsi_Modul);
+          $("#suntingIDModul").val(modulData.ID_Modul);
+          $("#suntingFileModul").text(modulData.File_Modul);
+          $("#suntingTanggalTerbitModul").val(modulData.Tanggal_Terbit_Modul);
+          $("#suntingNamaModul").val(modulData.Nama_Modul);
+          $("#suntingJudulModul").val(modulData.Judul_Modul);
+          $("#suntingDeskripsiModul").val(modulData.Deskripsi_Modul);
           $("#suntingModul").modal("show");
         }
       },

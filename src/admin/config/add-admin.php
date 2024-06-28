@@ -45,7 +45,7 @@ if (isset($_POST['Simpan'])) {
     $tgl_today = new DateTime('now');
     $umur_admin = $tgl_today->diff($tgl_lahir)->y;
 
-    $alamatAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Alamat_Admin', FILTER_SANITIZE_STRING));
+    $peranAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Peran_Admin', FILTER_SANITIZE_STRING));
     $noTeleponAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'No_Telepon_Admin', FILTER_SANITIZE_STRING));
     $jabatanAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Admin', FILTER_SANITIZE_STRING));
     $jenisKelaminAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Admin', FILTER_SANITIZE_STRING));
@@ -75,7 +75,7 @@ if (isset($_POST['Simpan'])) {
     if (
         empty($nipAdmin) || empty($namaLengkapAdmin) || empty($tanggalLahirAdmin) ||
         empty($kataSandiAdmin) || empty($konfirmasiKataSandiAdmin) || empty($noTeleponAdmin) || empty($jenisKelaminAdmin) ||
-        empty($alamatAdmin) || empty($jabatanAdmin)
+        empty($peranAdmin) || empty($jabatanAdmin)
     ) {
         $pesanKesalahan .= "Semua bidang harus diisi. ";
     }
@@ -146,7 +146,7 @@ if (isset($_POST['Simpan'])) {
         'Nama_Lengkap_Admin' => $namaLengkapAdmin,
         'Tanggal_Lahir_Admin' => $tanggalLahirAdmin,
         'Umur_Admin' => $umur_admin,
-        'Alamat_Admin' => $alamatAdmin,
+        'Peran_Admin' => $peranAdmin,
         'No_Telepon_Admin' => $nomorTeleponFormatted,
         'Jabatan_Admin' => $jabatanAdmin,
         'Jenis_Kelamin_Admin' => $jenisKelaminAdmin,

@@ -45,7 +45,6 @@ if (isset($_POST['Simpan'])) {
 
     $nipPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'NIP_Pengguna', FILTER_SANITIZE_STRING));
     $namaLengkapPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nama_Lengkap_Pengguna', FILTER_SANITIZE_STRING));
-    $alamatPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Alamat_Pengguna', FILTER_SANITIZE_STRING));
     $noTeleponPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'No_Telepon_Pengguna', FILTER_SANITIZE_STRING));
     $jabatanPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Pengguna', FILTER_SANITIZE_STRING));
     $jenisKelaminPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Pengguna', FILTER_SANITIZE_STRING));
@@ -67,7 +66,7 @@ if (isset($_POST['Simpan'])) {
         $noTeleponPenggunaFormatted = substr($noTeleponPenggunaFormatted, 0, 3) . ' ' . substr($noTeleponPenggunaFormatted, 3, 3) . '-' . substr($noTeleponPenggunaFormatted, 6, 4) . '-' . substr($noTeleponPenggunaFormatted, 10);
     }
 
-    if (empty($nipPengguna) || empty($namaLengkapPengguna) || empty($alamatPengguna) || empty($kataSandiPengguna) || empty($konfirmasiKataSandiPengguna) || empty($noTeleponPengguna) || empty($jabatanPengguna) || empty($jenisKelaminPengguna)) {
+    if (empty($nipPengguna) || empty($namaLengkapPengguna) || empty($kataSandiPengguna) || empty($konfirmasiKataSandiPengguna) || empty($noTeleponPengguna) || empty($jabatanPengguna) || empty($jenisKelaminPengguna)) {
         $pesanKesalahan .= "Semua bidang harus diisi. ";
     }
 
@@ -141,7 +140,6 @@ if (isset($_POST['Simpan'])) {
         'Nama_Lengkap_Pengguna' => $namaLengkapPengguna,
         'Tanggal_Lahir_Pengguna' => $tanggalLahirPengguna,
         'Umur_Pengguna' => $umur_pengguna,
-        'Alamat_Pengguna' => $alamatPengguna,
         'No_Telepon_Pengguna' => $noTeleponPenggunaFormatted,
         'Jabatan_Pengguna' => $jabatanPengguna,
         'Jenis_Kelamin_Pengguna' => $jenisKelaminPengguna,

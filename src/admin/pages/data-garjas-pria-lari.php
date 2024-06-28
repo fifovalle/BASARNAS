@@ -81,6 +81,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                 <tr>
                                                     <th>NO</th>
                                                     <th>NIP</th>
+                                                    <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
                                                     <th>Waktu Lari</th>
@@ -99,9 +100,10 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $garjasTesLariPria['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasTesLariPria['Tanggal_Pelaksanaan_Tes_Lari_Pria']; ?></td>
                                                             <td><?php echo $garjasTesLariPria['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasTesLariPria['Umur_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasTesLariPria['Waktu_Lari_Pria']; ?></td>
+                                                            <td><?php echo $garjasTesLariPria['Waktu_Lari_Pria']; ?> Menit</td>
                                                             <td><?php echo $garjasTesLariPria['Nilai_Lari_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">

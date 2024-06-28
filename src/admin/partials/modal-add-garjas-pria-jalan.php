@@ -21,6 +21,10 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="tambahTanggalPelaksanaanJalan" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="tambahTanggalPelaksanaanJalan" name="Tanggal_Pelaksanaan_Tes_Jalan_Pria">
+                    </div>
+                    <div class="mb-3">
                         <label for="tambahWaktuJalan" class="form-label">Waktu Jalan</label>
                         <input type="number" class="form-control" id="tambahWaktuJalan" name="Waktu_Jalan">
                     </div>

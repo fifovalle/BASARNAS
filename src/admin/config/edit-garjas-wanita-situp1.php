@@ -5,72 +5,91 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idGarjasWanitaSitUp1 = $_POST['ID_Wanita_Sit_Up_Kaki_Lurus'] ?? '';
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $jumlahSitUp1Wanita = $_POST['Jumlah_Sit_Up_1_Wanita'] ?? '';
+    $tanggalPelaksanaanSitUp1Wanita = $_POST['Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita'] ?? '';
 
     $garjasWanitaSitUp1Model = new GarjasWanitaSitUp1($koneksi);
     $umurPengguna = $garjasWanitaSitUp1Model->ambilUmurGarjasWanitaSitUp1OlehNIP($nipPengguna);
 
+    if ($jumlahSitUp1Wanita == 0) {
+        echo json_encode(array("success" => false, "message" => "Nilai sit-up kaki lurus tidak boleh 0."));
+        exit;
+    }
+
     $nilaiSitUp1 = [
         'under_25' => [
-            38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,
-            33 => 89, 32 => 87, 31 => 85, 30 => 83, 29 => 81,
-            28 => 79, 27 => 77, 26 => 75, 25 => 73, 24 => 70,
-            23 => 68, 22 => 66, 21 => 64, 20 => 62, 19 => 60,
-            18 => 58, 17 => 56, 16 => 54, 14 => 49, 13 => 47,
-            12 => 45, 11 => 43, 10 => 41, 9 => 37, 8 => 32,
-            7 => 27, 6 => 23, 5 => 19, 4 => 14, 3 => 10, 2 => 5, 1 => 1
+            46 => 100, 45 => 96, 44 => 93, 43 => 89, 42 => 85,
+            41 => 82, 40 => 78, 39 => 74, 38 => 71, 37 => 67,
+            36 => 63, 35 => 59, 34 => 56, 33 => 52, 32 => 48,
+            31 => 45, 30 => 41, 29 => 40, 28 => 38, 27 => 37,
+            26 => 36, 25 => 34, 24 => 33, 23 => 32, 22 => 30,
+            21 => 29, 20 => 28, 19 => 26, 18 => 25, 17 => 24,
+            16 => 22, 15 => 21, 14 => 20, 13 => 18, 12 => 17,
+            11 => 16, 10 => 14, 9 => 13, 8 => 12, 7 => 10,
+            6 => 9, 5 => 8, 4 => 6, 3 => 4, 2 => 3, 1 => 1
         ],
         '25-34' => [
-            36 => 100, 35 => 98, 34 => 96, 33 => 94, 32 => 92,
-            31 => 89, 30 => 87, 29 => 85, 28 => 83, 27 => 81,
-            26 => 79, 25 => 77, 24 => 75, 23 => 73, 22 => 70,
-            21 => 68, 20 => 66, 19 => 64, 18 => 62, 17 => 60,
-            16 => 58, 15 => 56, 14 => 54, 13 => 52, 12 => 49,
-            11 => 47, 10 => 45, 9 => 43, 8 => 41, 7 => 37,
-            6 => 32, 5 => 27, 4 => 23, 3 => 19, 2 => 14, 1 => 10
+            41 => 100, 40 => 96, 39 => 93, 38 => 89, 37 => 85,
+            36 => 82, 35 => 78, 34 => 74, 33 => 71, 32 => 67,
+            31 => 63, 30 => 59, 29 => 56, 28 => 52, 27 => 48,
+            26 => 45, 25 => 41, 24 => 40, 23 => 38, 22 => 37,
+            21 => 36, 20 => 34, 19 => 33, 18 => 32, 17 => 30,
+            16 => 29, 15 => 28, 14 => 26, 13 => 25, 12 => 24,
+            11 => 22, 10 => 21, 9 => 20, 8 => 18, 7 => 17,
+            6 => 16, 5 => 14, 4 => 13, 3 => 12, 2 => 10,
+            1 => 9
         ],
         '35-44' => [
-            34 => 100, 33 => 98, 32 => 96, 31 => 94, 30 => 92,
-            29 => 89, 28 => 87, 27 => 85, 26 => 83, 25 => 81,
-            24 => 79, 23 => 77, 22 => 75, 21 => 73, 20 => 70,
-            19 => 68, 18 => 66, 17 => 64, 16 => 62, 15 => 60,
-            14 => 58, 13 => 56, 12 => 54, 11 => 52, 10 => 49,
-            9 => 47, 8 => 45, 7 => 43, 6 => 41, 5 => 37, 4 => 32,
-            3 => 27, 2 => 23, 1 => 19
+            36 => 100, 35 => 96, 34 => 93, 33 => 89, 32 => 85,
+            31 => 82, 30 => 78, 29 => 74, 28 => 71, 27 => 67,
+            26 => 63, 25 => 59, 24 => 56, 23 => 52, 22 => 48,
+            21 => 45, 20 => 41, 19 => 40, 18 => 38, 17 => 37,
+            16 => 36, 15 => 34, 14 => 33, 13 => 32, 12 => 30,
+            11 => 29, 10 => 28, 9 => 26, 8 => 25, 7 => 24,
+            6 => 22, 5 => 21, 4 => 20, 3 => 18, 2 => 17,
+            1 => 16
         ],
         '45-54' => [
-            32 => 100, 31 => 98, 30 => 96, 29 => 94, 28 => 92,
-            27 => 89, 26 => 87, 25 => 85, 24 => 83, 23 => 81,
-            22 => 79, 21 => 77, 20 => 75, 19 => 73, 18 => 70,
-            17 => 68, 16 => 66, 15 => 64, 14 => 62, 13 => 60,
-            12 => 58, 11 => 56, 10 => 54, 9 => 52, 8 => 49,
-            7 => 47, 6 => 45, 5 => 43, 4 => 41, 3 => 37,
-            2 => 34, 1 => 32
+            31 => 100, 30 => 96, 29 => 93, 28 => 89, 27 => 85,
+            26 => 82, 25 => 78, 24 => 74, 23 => 71, 22 => 67,
+            21 => 63, 20 => 59, 19 => 56, 18 => 52, 17 => 48,
+            16 => 45, 15 => 41, 14 => 40, 13 => 38, 12 => 37,
+            11 => 36, 10 => 34, 9 => 33, 8 => 32, 7 => 30,
+            6 => 29, 5 => 28, 4 => 26, 3 => 25, 2 => 24,
+            1 => 22
         ],
         '55-59' => [
-            31 => 100, 30 => 98, 29 => 96, 28 => 94, 27 => 92,
-            26 => 89, 25 => 88, 24 => 87, 23 => 85, 22 => 83,
-            21 => 81, 20 => 79, 19 => 77, 18 => 75, 17 => 73,
-            16 => 70, 15 => 68, 14 => 66, 13 => 64, 12 => 62,
-            11 => 60, 10 => 58, 9 => 56, 8 => 54, 7 => 52,
-            6 => 49, 5 => 47, 4 => 45, 3 => 43, 2 => 41, 1 => 37
+            26 => 100, 25 => 96, 24 => 93, 23 => 89, 22 => 85,
+            21 => 82, 20 => 78, 19 => 74, 18 => 71, 17 => 67,
+            16 => 63, 15 => 59, 14 => 56, 13 => 52, 12 => 48,
+            11 => 45, 10 => 41, 9 => 40, 8 => 38, 7 => 37,
+            6 => 36, 5 => 34, 4 => 33, 3 => 32, 2 => 30,
+            1 => 29
         ]
     ];
 
     $nilaiAkhir = 0;
+    $maksimalSitUp1 = 0;
+
     if ($umurPengguna < 25) {
-        $nilaiAkhir = isset($nilaiSitUp1['under_25'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['under_25'][$jumlahSitUp1Wanita] : 0;
+        $maksimalSitUp1 = max(array_keys($nilaiSitUp1['under_25']));
+        $nilaiAkhir = $jumlahSitUp1Wanita > $maksimalSitUp1 ? 100 : (isset($nilaiSitUp1['under_25'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['under_25'][$jumlahSitUp1Wanita] : 0);
     } elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
-        $nilaiAkhir = isset($nilaiSitUp1['25-34'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['25-34'][$jumlahSitUp1Wanita] : 0;
+        $maksimalSitUp1 = max(array_keys($nilaiSitUp1['25-34']));
+        $nilaiAkhir = $jumlahSitUp1Wanita > $maksimalSitUp1 ? 100 : (isset($nilaiSitUp1['25-34'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['25-34'][$jumlahSitUp1Wanita] : 0);
     } elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
-        $nilaiAkhir = isset($nilaiSitUp1['35-44'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['35-44'][$jumlahSitUp1Wanita] : 0;
+        $maksimalSitUp1 = max(array_keys($nilaiSitUp1['35-44']));
+        $nilaiAkhir = $jumlahSitUp1Wanita > $maksimalSitUp1 ? 100 : (isset($nilaiSitUp1['35-44'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['35-44'][$jumlahSitUp1Wanita] : 0);
     } elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
-        $nilaiAkhir = isset($nilaiSitUp1['45-54'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['45-54'][$jumlahSitUp1Wanita] : 0;
+        $maksimalSitUp1 = max(array_keys($nilaiSitUp1['45-54']));
+        $nilaiAkhir = $jumlahSitUp1Wanita > $maksimalSitUp1 ? 100 : (isset($nilaiSitUp1['45-54'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['45-54'][$jumlahSitUp1Wanita] : 0);
     } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
-        $nilaiAkhir = isset($nilaiSitUp1['55-59'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['55-59'][$jumlahSitUp1Wanita] : 0;
+        $maksimalSitUp1 = max(array_keys($nilaiSitUp1['55-59']));
+        $nilaiAkhir = $jumlahSitUp1Wanita > $maksimalSitUp1 ? 100 : (isset($nilaiSitUp1['55-59'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['55-59'][$jumlahSitUp1Wanita] : 0);
     }
 
     $dataGarjasWanitaSitUp1 = array(
         'NIP_Pengguna' => $nipPengguna,
+        'Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita' => $tanggalPelaksanaanSitUp1Wanita,
         'Jumlah_Sit_Up_1_Wanita' => $jumlahSitUp1Wanita,
         'Nilai_Sit_Up_1_Wanita' => $nilaiAkhir
     );

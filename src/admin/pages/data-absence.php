@@ -98,16 +98,27 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $Absensi['Hari_Absensi']; ?></td>
                                                             <td>
                                                                 <?php
-                                                                echo ($Absensi['Status_Absensi'] == 'Hadir')
-                                                                    ? '<span class="badge badge-success">Hadir</span>'
-                                                                    : '<span class="badge badge-danger">Tidak Hadir</span>';
+                                                                $kelasBadge = [
+                                                                    'Hadir' => 'badge-success',
+                                                                    'Hadir Pagi' => 'badge-info',
+                                                                    'Hadir Sore' => 'badge-info',
+                                                                    'Tidak Hadir' => 'badge-danger'
+                                                                ];
+                                                                $labelBadge = [
+                                                                    'Hadir' => 'Hadir',
+                                                                    'Hadir Pagi' => 'Hadir Pagi',
+                                                                    'Hadir Sore' => 'Hadir Sore',
+                                                                    'Tidak Hadir' => 'Tidak Hadir'
+                                                                ];
+                                                                $status = $Absensi['Status_Absensi'];
+                                                                $kelas = isset($kelasBadge[$status]) ? $kelasBadge[$status] : 'badge-danger';
+                                                                $label = isset($labelBadge[$status]) ? $labelBadge[$status] : 'Tidak Hadir';
+                                                                echo '<span class="badge ' . $kelas . '">' . $label . '</span>';
                                                                 ?>
                                                             </td>
+
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAbsensi" data-bs-toggle="modal" data-id="<?php echo $Absensi['ID_Absensi']; ?>">
-                                                                        <i class="fa fa-edit"></i>
-                                                                    </button>
                                                                     <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusAbsensi(<?php echo $Absensi['ID_Absensi']; ?>)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
@@ -145,6 +156,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <?php include('../partials/modal-add-modul.php'); ?>
     <?php include('../partials/modal-edit-modul.php'); ?>
     <?php include('../partials/modal-see-modul.php'); ?>
+    <?php include('../partials/modal-see-absence.php'); ?>
     <!-- MODALS END -->
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
@@ -161,8 +173,10 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/delete-modul.js"></script>
+    <script src="../assets/js/delete-absence.js"></script>
     <script src="../assets/js/value-modul.js"></script>
     <script src="../assets/js/value-see-modul.js"></script>
+    <script src="../assets/js/value-see-absence.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

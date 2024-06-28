@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $waktuRenangPria = $_POST['Waktu_Renang_Pria'] ?? '';
     $namaRenangPria = $_POST['Nama_Gaya_Renang_Pria'] ?? '';
     $nilaiRenangPria = $_POST['Nilai_Renang_Pria'] ?? '';
+    $tanggalPelaksanaanRenangPria = $_POST['Tanggal_Pelaksanaan_Tes_Renang_Pria'] ?? '';
 
     $garjasRenangPriaModel = new TesRenangPria($koneksi);
 
@@ -98,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($dataLamaGarjasRenangPria) {
         $dataGarjasRenangPria = [
+            'Tanggal_Pelaksanaan_Tes_Renang_Pria' => $tanggalPelaksanaanRenangPria,
             'Waktu_Renang_Pria' => $waktuRenangPriaFormatted,
             'Nama_Gaya_Renang_Pria' => $namaRenangPria,
             'Nilai_Renang_Pria' => $nilaiAkhir

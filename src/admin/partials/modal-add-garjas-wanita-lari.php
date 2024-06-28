@@ -21,8 +21,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="tambahTanggalPelaksanaanLariWanita" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="tambahTanggalPelaksanaanLariWanita" name="Tanggal_Pelaksanaan_Tes_Lari_Wanita">
+                    </div>
+                    <div class="mb-3">
                         <label for="tambahWaktuLariWanita" class="form-label">Waktu Lari</label>
-                        <input type="number" class="form-control" id="tambahWaktuLariWanita" name="Waktu_Lari_Wanita">
+                        <input type="text" class="form-control" id="tambahWaktuLariWanita" name="Waktu_Lari_Wanita">
                     </div>
                     <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>

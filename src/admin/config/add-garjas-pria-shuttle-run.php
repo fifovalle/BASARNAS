@@ -35,11 +35,20 @@ if (isset($_POST['Simpan'])) {
     $obyekGarjasPriaShuttleRun = new GarjasPriaShuttleRun($koneksi);
 
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
+    $tanggalPelaksanaanShuttleRunPria = $_POST['Tanggal_Pelaksanaan_Shuttle_Run_Pria'];
+    $tanggal_pelaksanaan_shuttlerun_pria = DateTime::createFromFormat('Y-m-d', $tanggalPelaksanaanShuttleRunPria);
+
+    if ($tanggal_pelaksanaan_shuttlerun_pria === false) {
+        $pesanKesalahan .= "Format tanggal pelaksanaan tidak valid. ";
+    } else {
+        $tanggal_pelaksanaan_database = $tanggal_pelaksanaan_shuttlerun_pria->format('Y-m-d');
+    }
+
     $waktuShuttleRunPria = mysqli_real_escape_string($koneksi, $_POST['Waktu_Shuttle_Run_Pria']);
     $umurPengguna = $obyekGarjasPriaShuttleRun->ambilUmurGarjasShuttleRunPriaOlehNIP($nipPengguna);
 
     $waktuShuttleRunPria = str_replace(',', '.', $waktuShuttleRunPria);
-    $waktuShuttleRunPria = number_format((float)$waktuShuttleRunPria, 1, '.', '');
+    $waktuShuttleRunPria = (float) $waktuShuttleRunPria;
 
 
     if ($obyekGarjasPriaShuttleRun->cekNipAnggotaShuttleRunPriaSudahAda($nipPengguna)) {
@@ -48,8 +57,15 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
+    if ($waktuShuttleRunPria == 0) {
+        setPesanKesalahan("Waktu Shuttle Run tidak boleh 0.");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-shuttlerun.php");
+        exit;
+    }
+
     $nilaiShuttleRunPria = [
-       'under_25' => [
+        'under_25' => [
+            '<15.9' => 100,
             15.9 => 100, 16 => 99, 16.1 => 98, 16.2 => 97, 16.3 => 96,
             16.4 => 95, 16.5 => 94, 16.6 => 93, 16.7 => 92, 16.8 => 91,
             16.9 => 90, 17 => 89, 17.1 => 88, 17.2 => 87, 17.3 => 86,
@@ -70,9 +86,12 @@ if (isset($_POST['Simpan'])) {
             24.4 => 15, 24.5 => 14, 24.6 => 13, 24.7 => 12, 24.8 => 11,
             24.9 => 10, 25 => 9, 25.1 => 8, 25.2 => 7, 25.3 => 6,
             25.4 => 5, 25.5 => 4, 25.6 => 3, 25.7 => 2, 25.8 => 1,
-       ],
+        ],
 
-       '25-34' => [
+
+
+        '25-34' => [
+            '<16.9' => 100,
             16.9 => 100, 17 => 99, 17.1 => 98, 17.2 => 97, 17.3 => 96,
             17.4 => 95, 17.5 => 94, 17.6 => 93, 17.7 => 92, 17.8 => 91,
             17.9 => 90, 18 => 89, 18.1 => 88, 18.2 => 87, 18.3 => 86,
@@ -93,9 +112,10 @@ if (isset($_POST['Simpan'])) {
             25.4 => 15, 25.5 => 14, 25.6 => 13, 25.7 => 12, 25.8 => 11,
             25.9 => 10, 26 => 9, 26.1 => 8, 26.2 => 7, 26.3 => 6,
             26.4 => 5, 26.5 => 4, 26.6 => 3, 26.7 => 2, 26.8 => 1,
-       ],
+        ],
 
-       '35-44' => [
+        '35-44' => [
+            '<17.4' => 100,
             17.4 => 100, 17.5 => 99, 17.6 => 98, 17.7 => 97, 17.8 => 96,
             17.9 => 95, 18 => 94, 18.1 => 93, 18.2 => 92, 18.3 => 91,
             18.4 => 90, 18.5 => 89, 18.6 => 88, 18.7 => 87, 18.8 => 86,
@@ -116,9 +136,10 @@ if (isset($_POST['Simpan'])) {
             25.9 => 15, 26 => 14, 26.1 => 13, 26.2 => 12, 26.3 => 11,
             26.4 => 10, 26.5 => 9, 26.6 => 8, 26.7 => 7, 26.8 => 6,
             26.9 => 5, 27 => 4, 27.1 => 3, 27.2 => 2, 27.3 => 1,
-       ],
+        ],
 
         '45-54' => [
+            '<18.9' => 100,
             18.9 => 100, 19 => 99, 19.1 => 98, 19.2 => 97, 19.3 => 96,
             19.4 => 95, 19.5 => 94, 19.6 => 93, 19.7 => 92, 19.8 => 91,
             19.9 => 90, 20 => 89, 20.1 => 88, 20.2 => 87, 20.3 => 86,
@@ -142,6 +163,7 @@ if (isset($_POST['Simpan'])) {
         ],
 
         '55-59' => [
+            '<20.4' => 100,
             20.4 => 100, 20.5 => 99, 20.6 => 98, 20.7 => 97, 20.8 => 96,
             20.9 => 95, 21 => 94, 21.1 => 93, 21.2 => 92, 21.3 => 91,
             21.4 => 90, 21.5 => 89, 21.6 => 88, 21.7 => 87, 21.8 => 86,
@@ -164,22 +186,44 @@ if (isset($_POST['Simpan'])) {
             29.9 => 5, 30 => 4, 30.1 => 3, 30.2 => 2, 30.3 => 1,
         ]
     ];
-    
+
     $nilaiAkhir = 0;
+
     if ($umurPengguna < 25) {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria] : 0;
+        if ($waktuShuttleRunPria < 15.9 && isset($nilaiShuttleRunPria['under_25']['<15.9'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['under_25']['<15.9'];
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria] : 0;
+        }
     } elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria] : 0;
+        if ($waktuShuttleRunPria < 16.9 && isset($nilaiShuttleRunPria['25-34']['<16.9'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['25-34']['<16.9'];
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria] : 0;
+        }
     } elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria] : 0;
+        if ($waktuShuttleRunPria < 17.4 && isset($nilaiShuttleRunPria['35-44']['<17.4'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['35-44']['<17.4'];
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria] : 0;
+        }
     } elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria] : 0;
+        if ($waktuShuttleRunPria < 18.9 && isset($nilaiShuttleRunPria['45-54']['<18.9'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['45-54']['<18.9'];
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria] : 0;
+        }
     } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria] : 0;
+        if ($waktuShuttleRunPria < 20.4 && isset($nilaiShuttleRunPria['55-59']['<20.4'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['55-59']['<20.4'];
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria] : 0;
+        }
     }
 
     $dataGarjasPriaShuttleRun = array(
         'NIP_Pengguna' => $nipPengguna,
+        'Tanggal_Pelaksanaan_Shuttle_Run_Pria' => $tanggal_pelaksanaan_shuttlerun_pria,
         'Waktu_Shuttle_Run_Pria' => $waktuShuttleRunPria,
         'Nilai_Shuttle_Run_Pria' => $nilaiAkhir,
     );
@@ -195,4 +239,3 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-shuttlerun.php");
     exit;
 }
-?>

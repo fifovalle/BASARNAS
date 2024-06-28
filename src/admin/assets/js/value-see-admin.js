@@ -19,10 +19,13 @@ $(document).ready(function () {
         } else {
           $("#lihatNamaAdmin").text(adminData.Nama_Lengkap_Admin);
           $("#lihatNIPAdmin").text(adminData.NIP_Admin);
-          $("#lihatPotoAdmin").attr("src", "../uploads/" + adminData.Foto_Admin);
+          $("#lihatPotoAdmin").attr(
+            "src",
+            "../uploads/" + adminData.Foto_Admin
+          );
           $("#lihatNamaAdminTd").text(adminData.Nama_Lengkap_Admin);
           $("#lihatTglLahirAdminTd").text(adminData.Tanggal_Lahir_Admin);
-          $("#lihatAlamatAdminTd").text(adminData.Alamat_Admin);
+          $("#lihatPeranAdminTd").text(adminData.Peran_Admin);
           $("#lihatJabatanAdminTd").text(adminData.Jabatan_Admin);
           $("#lihatJenisKelaminAdminTd").text(adminData.Jenis_Kelamin_Admin);
           $("#lihatNoTelpAdminTd").text(adminData.No_Telepon_Admin);

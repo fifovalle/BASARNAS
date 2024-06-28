@@ -80,7 +80,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                             <thead>
                                                 <tr>
                                                     <th>Nomor</th>
-                                                    <th>Nama Pengguna</th>
                                                     <th>File</th>
                                                     <th>Judul</th>
                                                     <th>Tanggal Terbit</th>
@@ -98,7 +97,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php foreach ($modulInfo as $Modul) : ?>
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
-                                                            <td><?php echo $Modul['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td>
                                                                 <a href="../uploads/<?php echo $Modul['File_Modul']; ?>" target="_blank" class="btn btn-link btn-primary">
                                                                     <?php echo $Modul['Nama_Modul']; ?>
@@ -176,6 +174,8 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/delete-modul.js"></script>
     <script src="../assets/js/value-modul.js"></script>
     <script src="../assets/js/value-see-modul.js"></script>
+    <script src="../assets/js/date-valid.js"></script>
+    <script src="../assets/js/date-valid2.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -219,6 +219,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <?php
     include('../partials/alert.php');
     ?>
+
 </body>
 
 </html>

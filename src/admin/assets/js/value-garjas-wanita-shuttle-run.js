@@ -17,10 +17,20 @@ $(document).ready(function () {
         if (garjasWanitaShuttleRunData.success === false) {
           alert(garjasWanitaShuttleRunData.message);
         } else {
-          let nipNama = garjasWanitaShuttleRunData.NIP_Pengguna + " - " + garjasWanitaShuttleRunData.Nama_Lengkap_Pengguna;
+          let nipNama =
+            garjasWanitaShuttleRunData.NIP_Pengguna +
+            " - " +
+            garjasWanitaShuttleRunData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#SuntingGarjasWanitaShuttleRunID").val(garjasWanitaShuttleRunData.ID_Wanita_Shuttle_Run);
-          $("#suntingJumlahShuttleRunGarjasWanita").val(garjasWanitaShuttleRunData.Jumlah_Shuttle_Run_Wanita);
+          $("#SuntingGarjasWanitaShuttleRunID").val(
+            garjasWanitaShuttleRunData.ID_Wanita_Shuttle_Run
+          );
+          $("#suntingJumlahShuttleRunGarjasWanita").val(
+            garjasWanitaShuttleRunData.Jumlah_Shuttle_Run_Wanita
+          );
+          $("#suntingTanggalPelaksanaanShuttleRunGarjasWanita").val(
+            garjasWanitaShuttleRunData.Tanggal_Pelaksanaan_Shuttle_Run_Wanita
+          );
           $("#suntingGarjasWanitaShuttleRun").modal("show");
         }
       },
@@ -59,7 +69,8 @@ $(document).ready(function () {
             timerProgressBar: true,
           }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-              window.location.href = "../pages/data-garjas-wanita-shuttlerun.php";
+              window.location.href =
+                "../pages/data-garjas-wanita-shuttlerun.php";
             }
           });
         } else {

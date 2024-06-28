@@ -5,10 +5,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idGarjasWanitaPushUp = $_POST['ID_Wanita_Push_Up'] ?? '';
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $jumlahPushUpWanita = $_POST['Jumlah_Push_Up_Wanita'] ?? '';
+    $tanggalPelaksanaanPushUpWanita = $_POST['Tanggal_Pelaksanaan_Push_Up_Wanita'] ?? '';
 
     $garjasWanitaPushUpModel = new GarjasWanitaPushUp($koneksi);
     $umurPengguna = $garjasWanitaPushUpModel->ambilUmurGarjasWanitaPushUpOlehNIP($nipPengguna);
 
+
+    if ($jumlahPushUpWanita == 0) {
+        echo json_encode(array("success" => false, "message" => "Nilai push-up tidak boleh 0."));
+        exit;
+    }
     $nilaiPushUp = [
         'under_25' => [
             38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,
@@ -57,20 +63,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
     $nilaiAkhir = 0;
+    $maksimalPushUp = 0;
+
     if ($umurPengguna < 25) {
-        $nilaiAkhir = isset($nilaiPushUp['under_25'][$jumlahPushUpWanita]) ? $nilaiPushUp['under_25'][$jumlahPushUpWanita] : 0;
+        $maksimalPushUp = max(array_keys($nilaiPushUp['under_25']));
+        $nilaiAkhir = $jumlahPushUpWanita > $maksimalPushUp ? 100 : (isset($nilaiPushUp['under_25'][$jumlahPushUpWanita]) ? $nilaiPushUp['under_25'][$jumlahPushUpWanita] : 0);
     } elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
-        $nilaiAkhir = isset($nilaiPushUp['25-34'][$jumlahPushUpWanita]) ? $nilaiPushUp['25-34'][$jumlahPushUpWanita] : 0;
+        $maksimalPushUp = max(array_keys($nilaiPushUp['25-34']));
+        $nilaiAkhir = $jumlahPushUpWanita > $maksimalPushUp ? 100 : (isset($nilaiPushUp['25-34'][$jumlahPushUpWanita]) ? $nilaiPushUp['25-34'][$jumlahPushUpWanita] : 0);
     } elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
-        $nilaiAkhir = isset($nilaiPushUp['35-44'][$jumlahPushUpWanita]) ? $nilaiPushUp['35-44'][$jumlahPushUpWanita] : 0;
+        $maksimalPushUp = max(array_keys($nilaiPushUp['35-44']));
+        $nilaiAkhir = $jumlahPushUpWanita > $maksimalPushUp ? 100 : (isset($nilaiPushUp['35-44'][$jumlahPushUpWanita]) ? $nilaiPushUp['35-44'][$jumlahPushUpWanita] : 0);
     } elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
-        $nilaiAkhir = isset($nilaiPushUp['45-54'][$jumlahPushUpWanita]) ? $nilaiPushUp['45-54'][$jumlahPushUpWanita] : 0;
+        $maksimalPushUp = max(array_keys($nilaiPushUp['45-54']));
+        $nilaiAkhir = $jumlahPushUpWanita > $maksimalPushUp ? 100 : (isset($nilaiPushUp['45-54'][$jumlahPushUpWanita]) ? $nilaiPushUp['45-54'][$jumlahPushUpWanita] : 0);
     } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
-        $nilaiAkhir = isset($nilaiPushUp['55-59'][$jumlahPushUpWanita]) ? $nilaiPushUp['55-59'][$jumlahPushUpWanita] : 0;
+        $maksimalPushUp = max(array_keys($nilaiPushUp['55-59']));
+        $nilaiAkhir = $jumlahPushUpWanita > $maksimalPushUp ? 100 : (isset($nilaiPushUp['55-59'][$jumlahPushUpWanita]) ? $nilaiPushUp['55-59'][$jumlahPushUpWanita] : 0);
     }
+
 
     $dataGarjasWanitaPushUp = array(
         'NIP_Pengguna' => $nipPengguna,
+        'Tanggal_Pelaksanaan_Push_Up_Wanita' => $tanggalPelaksanaanPushUpWanita,
         'Jumlah_Push_Up_Wanita' => $jumlahPushUpWanita,
         'Nilai_Push_Up_Wanita' => $nilaiAkhir
     );

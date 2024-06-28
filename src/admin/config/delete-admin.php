@@ -26,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     }
 
     $hapusData = $adminModel->hapusAdmin($id);
-
     $successMessage = htmlspecialchars("Data admin berhasil dihapus.");
     $failureMessage = htmlspecialchars("Gagal menghapus data admin.");
 
@@ -44,4 +43,3 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     header("Location: " . $akarUrl . "src/admin/pages/data-admin.php");
     exit();
 }
-?>

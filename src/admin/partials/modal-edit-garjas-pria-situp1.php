@@ -13,6 +13,10 @@
                         <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" disabled>
                     </div>
                     <div class="mb-3">
+                        <label for="suntingTanggalPelaksanaanSitUp1GarjasPria" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="suntingTanggalPelaksanaanSitUp1GarjasPria" name="Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria">
+                    </div>
+                    <div class="mb-3">
                         <label for="suntingJumlahSitUp1GarjasPria" class="form-label">Jumlah Sit Up</label>
                         <input type="number" class="form-control" id="suntingJumlahSitUp1GarjasPria" name="Jumlah_Sit_Up_Kaki_Lurus_Pria">
                     </div>

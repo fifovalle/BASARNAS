@@ -1,5 +1,12 @@
 <?php
 include '../config/databases.php';
+
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +55,7 @@ include '../config/databases.php';
 						<th>Tanggal Penerbitan Sertifikat</th>
 						<th>Tanggal Berakhir Sertifikat</th>
 						<th>Masa Berlaku</th>
-						<th>Kategori Kompetensi</th>
+						<th>Jabatan Kompetensi</th>
 						<th>Status</th>
 						<th>Aksi</th>
 					</tr>
@@ -92,7 +99,7 @@ include '../config/databases.php';
 					<?php
 						}
 					} else {
-						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Kompetensi.</td></tr>';
+						echo '<tr><td colspan="10" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Kompetensi.</td></tr>';
 					}
 					?>
 					<tr>
@@ -118,15 +125,6 @@ include '../config/databases.php';
 												<div class="mb-3">
 													<label for="inputTanggalBerakhirSertifikat" class="form-label">Tanggal Berakhir Sertifikat</label>
 													<input type="date" class="form-control" id="inputTanggalBerakhirSertifikat" name="Tanggal_Berakhir_Sertifikat">
-												</div>
-												<div class="mb-3">
-													<label for="inputKategoriKompetensi" class="form-label">Kategori Kompetensi</label>
-													<select name="Kategori_Kompetensi" class="form-select" aria-label="Default select example">
-														<option selected>Pilih Kategori Kompetensi</option>
-														<option value="Pemula">Pemula</option>
-														<option value="Terampil">Terampil</option>
-														<option value="Mahir">Mahir</option>
-													</select>
 												</div>
 												<div class="mb-3">
 													<label for="inputFileSertifikat" class="form-label text-start">File Sertifikat</label>
@@ -194,6 +192,8 @@ include '../config/databases.php';
 	include('../partials/alert.php');
 	?>
 	<script src="../assets/js/value-see-competence.js"></script>
+	<script src="../assets/js/notif-monday.js"></script>
+	<script src="../assets/js/notif-wednesday.js"></script>
 </body>
 
 </html>

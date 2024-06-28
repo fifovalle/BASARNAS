@@ -19,30 +19,6 @@ $(document).ready(function () {
         if (terampilData.success === false) {
           alert(terampilData.message);
         } else {
-          $("#lihatNamaLengkapTerampil").text(
-            terampilData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatFotoTerampil").attr(
-            "src",
-            "../uploads/" + terampilData.Foto_Pengguna
-          );
-          $("#lihatNIPTerampil").text(terampilData.NIP_Pengguna);
-          $("#lihatNamaPenggunaTerampilTd").text(
-            terampilData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatTglLahirPenggunaTerampilTd").text(
-            terampilData.Tanggal_Lahir_Pengguna
-          );
-          $("#lihatJabatanPenggunaTerampilTd").text(
-            terampilData.Jabatan_Pengguna
-          );
-          $("#lihatJenisKelaminPenggunaTerampilTd").text(
-            terampilData.Jenis_Kelamin_Pengguna
-          );
-          $("#lihatNoTelpPenggunaTerampilTd").text(
-            terampilData.No_Telepon_Pengguna
-          );
-          $("#lihatUmurPenggunaTerampilTd").text(terampilData.Umur_Pengguna);
           $("#lihatNamaModulTd").text(terampilData.Nama_Modul);
           let lokasiPenyimpanan = "../uploads/" + terampilData.File_Modul;
           let ekstensiFile = terampilData.File_Modul.split(".")

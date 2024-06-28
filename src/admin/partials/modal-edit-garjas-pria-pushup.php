@@ -12,7 +12,11 @@
                         <label for="suntingNIPPengguna" class="form-label">NIP dan Nama Anggota</label>
                         <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" disabled>
                     </div>
-                     <div class="mb-3">
+                    <div class="mb-3">
+                        <label for="suntingTanggalPelaksanaanPushUpGarjasPria" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="suntingTanggalPelaksanaanPushUpGarjasPria" name="Tanggal_Pelaksanaan_Push_Up_Pria">
+                    </div>
+                    <div class="mb-3">
                         <label for="suntingJumlahPushUpGarjasPria" class="form-label">Jumlah Push Up</label>
                         <input type="number" class="form-control" id="suntingJumlahPushUpGarjasPria" name="Jumlah_Push_Up_Pria">
                     </div>

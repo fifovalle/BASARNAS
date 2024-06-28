@@ -23,16 +23,20 @@
                         <input type="date" class="form-control" id="suntingTanggalLahirAdmin" name="Tanggal_Lahir_Admin">
                     </div>
                     <div class="mb-3">
-                        <label for="suntingAlamatAdmin" class="form-label">Alamat</label>
-                        <textarea id="suntingAlamatAdmin" class="form-control" name="Alamat_Admin"></textarea>
+                        <label for="suntingPeranAdmin" class="form-label">Peran Admin</label>
+                        <select name="Peran_Admin" id="suntingPeranAdmin" class="form-select">
+                            <option selected disabled>Pilih Peran</option>
+                            <option value="Super Admin">Super Admin</option>
+                            <option value="Admin">Admin</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="suntingJabatanAdmin" class="form-label">Jabatan</label>
                         <select id="suntingJabatanAdmin" name="Jabatan_Admin" class="form-select">
                             <option selected>Pilih Jabatan</option>
-                            <option value="Satu">Satu</option>
-                            <option value="Dua">Dua</option>
-                            <option value="Tiga">Tiga</option>
+                            <option value="Pemula">Pemula</option>
+                            <option value="Terampil">Terampil</option>
+                            <option value="Mahir">Mahir</option>
                         </select>
                     </div>
                     <div class="mb-3">

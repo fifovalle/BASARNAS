@@ -3,6 +3,11 @@ session_start();
 include('../config/databases.php');
 
 $idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+  setPesanKesalahan("Silahkan login terlebih dahulu!");
+  header("Location: " . $akarUrl . "src/user/pages/login.php");
+  exit();
+}
 ?>
 
 
@@ -65,10 +70,6 @@ $idSessionPengguna = $_SESSION['NIP_Pengguna'];
             <div class="col-lg-6 col-sm-12">
               <label for="validationCustom02" class="form-label">No.Telepon Pengguna</label>
               <input type="text" class="form-control" value="<?php echo htmlspecialchars($pengguna['No_Telepon_Pengguna']); ?>">
-            </div>
-            <div class="col-lg-12 col-sm-12">
-              <label for="validationCustom02" class="form-label">Alamat Pengguna</label>
-              <textarea class="form-control" rows="4"><?php echo htmlspecialchars($pengguna['Alamat_Pengguna']); ?></textarea>
             </div>
             <div class="col-lg-12 col-sm-12">
               <button type="button" class="btn btn-primary px-4"><i class='bx bx-check-double pe-1'></i name="Simpan">Simpan</button>

@@ -33,10 +33,10 @@ if (isset($_POST['tambah_modul'])) {
     $pemurni = new HTMLPurifier($konfigurasi);
     $objekModul = new Modul($koneksi);
 
-    $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
     $namaModul = mysqli_real_escape_string($koneksi, $_POST['Nama_Modul']);
     $judulModul = mysqli_real_escape_string($koneksi, $_POST['Judul_Modul']);
     $deskripsiModul = mysqli_real_escape_string($koneksi, $_POST['Deskripsi_Modul']);
+    $tanggalTerbitModul = mysqli_real_escape_string($koneksi, $_POST['Tanggal_Terbit_Modul']);
     $fileModul = $_FILES['File_Modul'];
     $tmpModul = $fileModul['tmp_name'];
     $namaFileModul = $fileModul['name'];
@@ -45,11 +45,11 @@ if (isset($_POST['tambah_modul'])) {
     $formatModul = ['pdf', 'doc', 'docx'];
     $pesanKesalahan = '';
 
-    if (empty($nipPengguna) || empty($namaModul) || empty($judulModul) || empty($deskripsiModul)) {
+    if (empty($namaModul) || empty($judulModul) || empty($deskripsiModul)) {
         $pesanKesalahan .= "Semua field harus diisi. ";
     }
 
-    if (mengandungXSS($nipPengguna) || mengandungXSS($namaModul) || mengandungXSS($judulModul) || mengandungXSS($deskripsiModul)) {
+    if (mengandungXSS($namaModul) || mengandungXSS($judulModul) || mengandungXSS($deskripsiModul)) {
         $pesanKesalahan .= "Anda menginputkan karakter yang tidak diizinkan. ";
     }
 
@@ -74,10 +74,10 @@ if (isset($_POST['tambah_modul'])) {
 
     if (empty($pesanKesalahan)) {
         $dataModul = array(
-            'NIP_Pengguna' => $nipPengguna,
             'File_Modul' => $namaFileModulBaru,
             'Nama_Modul' => $namaModul,
             'Judul_Modul' => $judulModul,
+            "Tanggal_Terbit_Modul" => $tanggalTerbitModul,
             'Deskripsi_Modul' => $deskripsiModul
         );
 

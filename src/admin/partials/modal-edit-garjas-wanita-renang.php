@@ -13,6 +13,10 @@
                         <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" readonly>
                     </div>
                     <div class="mb-3">
+                        <label for="suntingTanggalPelaksanaanTestRenangWanita" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="suntingTanggalPelaksanaanTestRenangWanita" name="Tanggal_Pelaksanaan_Tes_Renang_Wanita">
+                    </div>
+                    <div class="mb-3">
                         <label for="suntingGayaRenang" class="form-label">Gaya Renang</label>
                         <select name="Nama_Gaya_Renang_Wanita" id="suntingGayaRenang" class="form-select">
                             <option selected>Pilih Gaya Renang</option>

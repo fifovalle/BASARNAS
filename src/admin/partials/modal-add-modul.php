@@ -7,25 +7,6 @@
             </div>
             <div class="modal-body">
                 <form action="../config/add-modul.php" method="post" enctype="multipart/form-data">
-                    <?php
-                    $penggunaModel = new Pengguna($koneksi);
-                    $penggunaInfo = $penggunaModel->tampilkanDataPengguna();
-                    ?>
-                    <div class="mb-3">
-                        <label for="tambahNIPPengguna" class="form-label">NIP</label>
-                        <select name="NIP_Pengguna" id="tambahNIPPengguna" class="form-select">
-                            <?php if (empty($penggunaInfo)) : ?>
-                                <option selected>Tidak ada NIP Pengguna tersedia</option>
-                            <?php else : ?>
-                                <option selected>Pilih NIP Pengguna</option>
-                                <?php foreach ($penggunaInfo as $pengguna) : ?>
-                                    <option value="<?php echo htmlspecialchars($pengguna['NIP_Pengguna']); ?>">
-                                        <?php echo htmlspecialchars($pengguna['NIP_Pengguna']) . ' - ' . htmlspecialchars($pengguna['Nama_Lengkap_Pengguna']); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </select>
-                    </div>
                     <div class="mb-3">
                         <label for="tambahFileModul" class="form-label">File Modul</label>
                         <input type="file" class="form-control" id="tambahFileModul" name="File_Modul">
@@ -37,6 +18,10 @@
                     <div class="mb-3">
                         <label for="tambahJudulModul" class="form-label">Judul Modul</label>
                         <input type="text" class="form-control" id="tambahJudulModul" name="Judul_Modul">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tambahTanggalTerbitModul" class="form-label">Tanggal Terbit Modul</label>
+                        <input type="date" class="form-control" id="tambahTanggalTerbitModul" name="Tanggal_Terbit_Modul">
                     </div>
                     <div class="mb-3">
                         <label for="tambahDeskripsiModul" class="form-label">Deskripsi Modul</label>

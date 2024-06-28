@@ -81,6 +81,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                 <tr>
                                                     <th>NO</th>
                                                     <th>NIP</th>
+                                                    <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
                                                     <th>Waktu Flexed Arm Hang</th>
@@ -99,6 +100,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $garjasPriaFlexedArmHang['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaFlexedArmHang['Tanggal_Pelaksanaan_Pria_Menggantung']; ?></td>
                                                             <td><?php echo $garjasPriaFlexedArmHang['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaFlexedArmHang['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaFlexedArmHang['Waktu_Menggantung_Pria']; ?></td>

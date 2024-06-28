@@ -42,7 +42,11 @@ if (isset($_POST['tambah_sertifikat'])) {
 
     $pesanKesalahan = '';
 
-    if (empty($nipPengguna) || empty($namaSertifikat) || empty($tanggalPenerbitan) || empty($tanggalBerakhir) || empty($kategoriKompetensi) || empty($status)) {
+    if ($nipPengguna == '') {
+        $pesanKesalahan = "NIP Pengguna harus diisi.";
+    }
+
+    if (empty($namaSertifikat) || empty($tanggalPenerbitan) || empty($tanggalBerakhir) || empty($kategoriKompetensi) || empty($status)) {
         $pesanKesalahan = "Semua field harus diisi.";
     }
 

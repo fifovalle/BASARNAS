@@ -28,6 +28,9 @@ $(document).ready(function () {
           $("#suntingJumlahSitUp2Anggota").val(
             garjasPriaSitUp2Data.Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria
           );
+          $("#suntingTanggalPelaksanaanSitUp2Anggota").val(
+            garjasPriaSitUp2Data.Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk
+          );
           $("#suntingGarjasPriaSitUp2").modal("show");
         }
       },

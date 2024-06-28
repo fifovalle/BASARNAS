@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form action="../config/add-garjas-pria-flexed-arm-hang.php" method="post" enctype="multipart/form-data">
-                <?php
+                    <?php
                     $penggunaPriaModel = new Pengguna($koneksi);
                     $penggunaPriaInfo = $penggunaPriaModel->tampilkanDataPenggunaPria();
                     ?>
@@ -19,6 +19,10 @@
                                 <option value="<?php echo $penggunaPria['NIP_Pengguna']; ?>"><?php echo $penggunaPria['NIP_Pengguna'] . ' - ' . $penggunaPria['Nama_Lengkap_Pengguna']; ?></option>
                             <?php endforeach; ?>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tambahtanggalPelaksanaanFlexedArmHangPengguna" class="form-label">Waktu Flexed Arm Hang</label>
+                        <input type="date" class="form-control" id="tambahtanggalPelaksanaanFlexedArmHangPengguna" name="Tanggal_Pelaksanaan_Pria_Menggantung">
                     </div>
                     <div class="mb-3">
                         <label for="tambahWaktuFlexedArmHangAdmin" class="form-label">Waktu Flexed Arm Hang</label>

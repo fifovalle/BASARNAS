@@ -19,10 +19,13 @@ $(document).ready(function () {
         } else {
           $("#suntingNIPPengguna").val(penggunaData.NIP_Pengguna);
           $("#suntingNamaPengguna").val(penggunaData.Nama_Lengkap_Pengguna);
-          $("#suntingTanggalLahirPengguna").val(penggunaData.Tanggal_Lahir_Pengguna);
-          $("#suntingAlamatPengguna").val(penggunaData.Alamat_Pengguna);
+          $("#suntingTanggalLahirPengguna").val(
+            penggunaData.Tanggal_Lahir_Pengguna
+          );
           $("#suntingJabatanPengguna").val(penggunaData.Jabatan_Pengguna);
-          $("#suntingJenisKelaminPengguna").val(penggunaData.Jenis_Kelamin_Pengguna);
+          $("#suntingJenisKelaminPengguna").val(
+            penggunaData.Jenis_Kelamin_Pengguna
+          );
           $("#suntingNomorTelpPengguna").val(penggunaData.No_Telepon_Pengguna);
           $("#suntingPengguna").modal("show");
         }

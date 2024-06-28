@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idModul = $_POST['ID_Modul'] ?? '';
     $namaModul = $_POST['Nama_Modul'] ?? '';
     $judulModul = $_POST['Judul_Modul'] ?? '';
+    $tanggalModul = $_POST['Tanggal_Terbit_Modul'] ?? '';
     $deskripsiModul = $_POST['Deskripsi_Modul'] ?? '';
 
     $pesanKesalahan = '';
@@ -48,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'File_Modul' => mysqli_real_escape_string($koneksi, htmlspecialchars($namaFotoBaru)),
         'Nama_Modul' => mysqli_real_escape_string($koneksi, htmlspecialchars($namaModul)),
         'Judul_Modul' => mysqli_real_escape_string($koneksi, htmlspecialchars($judulModul)),
+        'Tanggal_Terbit_Modul' => mysqli_real_escape_string($koneksi, htmlspecialchars($tanggalModul)),
         'Deskripsi_Modul' => mysqli_real_escape_string($koneksi, htmlspecialchars($deskripsiModul)),
     );
 

@@ -54,7 +54,7 @@
 							<li>
 								<hr class="dropdown-divider">
 							</li>
-							<li><a class="dropdown-item" href="../pages/login.php" id="keluar">Keluar</a></li>
+							<li><a class="dropdown-item" href="../config/logout.php" id="keluar">Keluar</a></li>
 						</ul>
 					</li>
 				</ul>

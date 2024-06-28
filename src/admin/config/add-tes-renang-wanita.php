@@ -3,6 +3,14 @@ include 'databases.php';
 
 if (isset($_POST['tambah_nilai'])) {
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
+    $tanggalPelaksanaanRenangWanita = $_POST['Tanggal_Pelaksanaan_Tes_Renang_Wanita'];
+    $tanggal_pelaksanaan_renang_wanita = DateTime::createFromFormat('Y-m-d', $tanggalPelaksanaanRenangWanita);
+
+    if ($tanggal_pelaksanaan_renang_wanita === false) {
+        $pesanKesalahan .= "Format tanggal pelaksanaan tidak valid. ";
+    } else {
+        $tanggal_pelaksanaan_database = $tanggal_pelaksanaan_renang_wanita->format('Y-m-d');
+    }
     $gayaRenang = mysqli_real_escape_string($koneksi, $_POST['Gaya_Renang']);
     $waktuRenang = mysqli_real_escape_string($koneksi, $_POST['Waktu_Renang']);
 
@@ -105,6 +113,7 @@ if (isset($_POST['tambah_nilai'])) {
 
     $dataPengguna = [
         'NIP_Pengguna' => $nipPengguna,
+        'Tanggal_Pelaksanaan_Tes_Renang_Wanita' => $tanggalPelaksanaanRenangWanita,
         'Waktu_Renang_Wanita' => $waktuRenangFormatted,
         'Nama_Gaya_Renang_Wanita' => $gayaRenang,
         'Nilai_Renang_Wanita' => $nilaiAkhir

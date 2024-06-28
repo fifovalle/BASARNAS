@@ -3,6 +3,15 @@ include 'databases.php';
 
 if (isset($_POST['tambah_nilai'])) {
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
+    $tanggalPelaksanaanTesRenangPria = $_POST['Tanggal_Pelaksanaan_Tes_Renang_Pria'];
+    $tanggal_pelaksanaan_renang_pria = DateTime::createFromFormat('Y-m-d', $tanggalPelaksanaanTesRenangPria);
+
+    if ($tanggal_pelaksanaan_renang_pria === false) {
+        $pesanKesalahan .= "Format tanggal pelaksanaan tidak valid. ";
+    } else {
+        $tanggal_pelaksanaan_database = $tanggal_pelaksanaan_renang_pria->format('Y-m-d');
+    }
+
     $gayaRenang = mysqli_real_escape_string($koneksi, $_POST['Gaya_Renang']);
     $waktuRenang = mysqli_real_escape_string($koneksi, $_POST['Waktu_Renang']);
 
@@ -23,43 +32,42 @@ if (isset($_POST['tambah_nilai'])) {
         exit;
     }
 
-
     $nilaiRenang = [
         'Dada' => [
-            '18-25' => [43, 143],
-            '26-30' => [46, 146],
-            '31-35' => [49, 149],
-            '36-40' => [52, 152],
-            '41-43' => [55, 155],
-            '44-46' => [58, 158],
-            '47-49' => [61, 161],
-            '50-52' => [64, 164],
-            '53-55' => [67, 167],
-            '56-58' => [70, 170]
+            '18-25' => ['0:43', '2:23'],
+            '26-30' => ['0:46', '2:26'],
+            '31-35' => ['0:49', '2:29'],
+            '36-40' => ['0:52', '2:32'],
+            '41-43' => ['0:55', '2:35'],
+            '44-46' => ['0:58', '2:38'],
+            '47-49' => ['1:01', '2:41'],
+            '50-52' => ['1:04', '2:44'],
+            '53-55' => ['1:07', '2:47'],
+            '56-58' => ['1:10', '2:50']
         ],
         'Bebas' => [
-            '18-25' => [39, 223],
-            '26-30' => [42, 226],
-            '31-35' => [45, 229],
-            '36-40' => [48, 232],
-            '41-43' => [51, 235],
-            '44-46' => [54, 238],
-            '47-49' => [57, 241],
-            '50-52' => [101, 244],
-            '53-55' => [104, 247],
-            '56-58' => [107, 250]
+            '18-25' => ['0:39', '2:23'],
+            '26-30' => ['0:42', '2:26'],
+            '31-35' => ['0:45', '2:29'],
+            '36-40' => ['0:48', '2:32'],
+            '41-43' => ['0:51', '2:35'],
+            '44-46' => ['0:54', '2:38'],
+            '47-49' => ['0:57', '2:41'],
+            '50-52' => ['1:01', '2:44'],
+            '53-55' => ['1:04', '2:47'],
+            '56-58' => ['1:07', '2:50']
         ],
         'Lainnya' => [
-            '18-25' => [38, 223],
-            '26-30' => [41, 226],
-            '31-35' => [44, 229],
-            '36-40' => [47, 232],
-            '41-43' => [50, 235],
-            '44-46' => [53, 238],
-            '47-49' => [56, 241],
-            '50-52' => [59, 244],
-            '53-55' => [103, 247],
-            '56-58' => [106, 250]
+            '18-25' => ['0:38', '2:23'],
+            '26-30' => ['0:41', '2:26'],
+            '31-35' => ['0:44', '2:29'],
+            '36-40' => ['0:47', '2:32'],
+            '41-43' => ['0:50', '2:35'],
+            '44-46' => ['0:53', '2:38'],
+            '47-49' => ['0:56', '2:41'],
+            '50-52' => ['0:59', '2:44'],
+            '53-55' => ['1:03', '2:47'],
+            '56-58' => ['1:06', '2:50']
         ]
     ];
 
@@ -87,30 +95,32 @@ if (isset($_POST['tambah_nilai'])) {
     }
 
     if ($umurKategori && isset($nilaiRenang[$gayaRenang][$umurKategori])) {
-        $waktuMax100 = $nilaiRenang[$gayaRenang][$umurKategori][0];
-        $waktuMin1 = $nilaiRenang[$gayaRenang][$umurKategori][1];
+        list($maxMenit, $maxDetik) = explode(':', $nilaiRenang[$gayaRenang][$umurKategori][0]);
+        $waktuMax100 = ($maxMenit * 60) + $maxDetik;
+        list($minMenit, $minDetik) = explode(':', $nilaiRenang[$gayaRenang][$umurKategori][1]);
+        $waktuMin1 = ($minMenit * 60) + $minDetik;
 
         if ($waktuRenang <= $waktuMax100) {
             $nilaiAkhir = 100;
         } elseif ($waktuRenang > $waktuMin1) {
-            $nilaiAkhir = 0;
+            $nilaiAkhir = 1;
         } else {
-            $nilaiAkhir = 100 - (($waktuRenang - $waktuMax100) / ($waktuMin1 - $waktuMax100)) * 100;
+            $nilaiAkhir = 100 - (($waktuRenang - $waktuMax100) / ($waktuMin1 - $waktuMax100)) * 99;
         }
     } else {
-        $nilaiAkhir = 0;
+        $nilaiAkhir = 1;
     }
 
     $waktuRenangFormatted = gmdate('i:s', $waktuRenang);
 
     $dataPengguna = [
         'NIP_Pengguna' => $nipPengguna,
+        'Tanggal_Pelaksanaan_Tes_Renang_Pria' => $tanggalPelaksanaanTesRenangPria,
         'Waktu_Renang_Pria' => $waktuRenangFormatted,
         'Nama_Gaya_Renang_Pria' => $gayaRenang,
         'Nilai_Renang_Pria' => $nilaiAkhir
     ];
 
-    $tesRenangPriaModel = new TesRenangPria($koneksi);
     $simpanDataPengguna = $tesRenangPriaModel->tambahTesRenangPria($dataPengguna);
 
     if ($simpanDataPengguna) {

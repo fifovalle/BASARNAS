@@ -1,7 +1,13 @@
 <?php
 include '../config/databases.php';
-?>
 
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +62,6 @@ include '../config/databases.php';
 					<tr>
 						<th>Nomor</th>
 						<th>Tanggal Pelaksanaan</th>
-						<th>Kegiatan</th>
 						<th>Waktu Shuttle Run</th>
 						<th>Nilai</th>
 					</tr>
@@ -77,10 +82,12 @@ include '../config/databases.php';
 						$shuttleRunInfo = $shuttleRunModel->tampilkanShuttleRunDenganSessionNipPria($nipSessionPengguna);
 						$waktuField = 'Waktu_Shuttle_Run_Pria';
 						$nilaiField = 'Nilai_Shuttle_Run_Pria';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Shuttle_Run_Pria';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$shuttleRunInfo = $shuttleRunModel->tampilkanShuttleRunDenganSessionNipWanita($nipSessionPengguna);
 						$waktuField = 'Jumlah_Shuttle_Run_Wanita';
 						$nilaiField = 'Nilai_Shuttle_Run_Wanita';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Shuttle_Run_Wanita';
 					} else {
 						$shuttleRunInfo = null;
 					}
@@ -91,8 +98,7 @@ include '../config/databases.php';
 					?>
 							<tr>
 								<td><?php echo $nomorUrut; ?></td>
-								<td>2024-06-08</td>
-								<td>Shuttle Run</td>
+								<td><?php echo htmlspecialchars($shuttleRun[$tanggalPelaksanaanField]); ?></td>
 								<td><?php echo htmlspecialchars($shuttleRun[$waktuField]); ?></td>
 								<td><?php echo htmlspecialchars($shuttleRun[$nilaiField]); ?></td>
 							</tr>

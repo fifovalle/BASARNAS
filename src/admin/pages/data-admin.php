@@ -68,7 +68,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Data Admin</h4>
+                                        <h4 class="card-title">Tambah Admin</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahAdmin">
                                             <i class="fa fa-plus"></i>
                                             Tambah Admin
@@ -84,7 +84,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Foto</th>
                                                     <th>Nama</th>
-                                                    <th>Alamat</th>
+                                                    <th>Peran Admin</th>
                                                     <th>Jabatan</th>
                                                     <th>Umur</th>
                                                     <th style="width: 10%">Aksi</th>
@@ -107,17 +107,19 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                                 </div>
                                                             </td>
                                                             <td><?php echo $admin['Nama_Lengkap_Admin']; ?></td>
-                                                            <td><?php echo $admin['Alamat_Admin']; ?></td>
+                                                            <td><?php echo $admin['Peran_Admin']; ?></td>
                                                             <td><?php echo $admin['Jabatan_Admin']; ?></td>
                                                             <td><?php echo $admin['Umur_Admin']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
-                                                                        <i class="fa fa-edit"></i>
-                                                                    </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusAdmin(<?php echo $admin['NIP_Admin']; ?>)">
-                                                                        <i class="fa fa-trash"></i>
-                                                                    </button>
+                                                                    <?php if ($_SESSION['Peran_Admin'] === 'Super Admin' && $admin['Peran_Admin'] !== 'Super Admin') : ?>
+                                                                        <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
+                                                                            <i class="fa fa-edit"></i>
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusAdmin(<?php echo $admin['NIP_Admin']; ?>)">
+                                                                            <i class="fa fa-trash"></i>
+                                                                        </button>
+                                                                    <?php endif; ?>
                                                                     <button type="button" class="btn btn-link btn-info buttonLihatAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>

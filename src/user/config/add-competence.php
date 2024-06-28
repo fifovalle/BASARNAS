@@ -37,11 +37,11 @@ if (isset($_POST['tambah_sertifikat'])) {
     $namaSertifikat = $pemurni->purify($_POST['Nama_Sertifikat']);
     $tanggalPenerbitan = mysqli_real_escape_string($koneksi, $_POST['Tanggal_Penerbitan_Sertifikat']);
     $tanggalBerakhir = mysqli_real_escape_string($koneksi, $_POST['Tanggal_Berakhir_Sertifikat']);
-    $kategoriKompetensi = mysqli_real_escape_string($koneksi, $_POST['Kategori_Kompetensi']);
+    $kategoriKompetensi = $_SESSION['Jabatan_Pengguna'];
 
     $pesanKesalahan = '';
 
-    if (empty($namaSertifikat) || empty($tanggalPenerbitan) || empty($tanggalBerakhir) || empty($kategoriKompetensi)) {
+    if (empty($namaSertifikat) || empty($tanggalPenerbitan) || empty($tanggalBerakhir)) {
         $pesanKesalahan = "Semua field harus diisi.";
     }
 

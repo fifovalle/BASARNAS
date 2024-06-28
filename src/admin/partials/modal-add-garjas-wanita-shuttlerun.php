@@ -21,8 +21,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="tambahTanggalPelaksanaanShuttleRunWanita" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" step="any" class="form-control" id="tambahTanggalPelaksanaanShuttleRunWanita" name="Tanggal_Pelaksanaan_Shuttle_Run_Wanita">
+                    </div>
+                    <div class="mb-3">
                         <label for="tambahWaktuShuttleRunWanita" class="form-label">Waktu Shuttle Run</label>
-                        <input type="number" class="form-control" id="tambahWaktuShuttleRunWanita" name="Jumlah_Shuttle_Run_Wanita">
+                        <input type="text" step="any" class="form-control" id="tambahWaktuShuttleRunWanita" name="Jumlah_Shuttle_Run_Wanita">
                     </div>
                     <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>

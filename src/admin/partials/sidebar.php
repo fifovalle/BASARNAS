@@ -188,16 +188,11 @@
                         <p>Tes Jalan</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-garjas-pria-jalan.php') || apakahAktif('src/admin/pages/data-garjas-wanita-jalan.php') ? 'show' : ''; ?>" id="tesJalan">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-garjas-pria-jalan.php') ? 'show' : ''; ?>" id="tesJalan">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-garjas-pria-jalan.php">
                                     <span class="sub-item">Pria</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-garjas-wanita-jalan.php">
-                                    <span class="sub-item">Wanita</span>
                                 </a>
                             </li>
                         </ul>

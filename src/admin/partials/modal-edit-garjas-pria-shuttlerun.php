@@ -7,14 +7,18 @@
             </div>
             <div class="modal-body">
                 <form>
-                <input type="hidden" id="editGarjasPriaShuttleRunPriaID" name="ID_Shuttle_Run_Pria" autocomplete="off">
+                    <input type="hidden" id="editGarjasPriaShuttleRunPriaID" name="ID_Shuttle_Run_Pria" autocomplete="off">
                     <div class="mb-3">
                         <label for="suntingNIPPengguna" class="form-label">NIP dan Nama Anggota</label>
                         <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" disabled>
                     </div>
                     <div class="mb-3">
+                        <label for="suntingTanggalPelaksanaanShuttleRunPengguna" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="suntingTanggalPelaksanaanShuttleRunPengguna" name="Tanggal_Pelaksanaan_Shuttle_Run_Pria">
+                    </div>
+                    <div class="mb-3">
                         <label for="suntingWaktuShuttleRunAdmin" class="form-label">Waktu Shuttle Run</label>
-                        <input type="number" class="form-control" id="suntingWaktuShuttleRunAdmin" name="Waktu_Shuttle_Run_Pria">
+                        <input type="text" class="form-control" id="suntingWaktuShuttleRunAdmin" name="Waktu_Shuttle_Run_Pria">
                     </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaShuttleRun">Simpan</button>
                 </form>

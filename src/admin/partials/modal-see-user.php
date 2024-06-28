@@ -28,11 +28,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Alamat:</th>
-                                <td id="lihatAlamatPenggunaTd">
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>Jabatan:</th>
                                 <td id="lihatJabatanPenggunaTd">
                                 </td>

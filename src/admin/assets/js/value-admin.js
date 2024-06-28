@@ -20,7 +20,7 @@ $(document).ready(function () {
           $("#suntingNIPAdmin").val(adminData.NIP_Admin);
           $("#suntingNamaAdmin").val(adminData.Nama_Lengkap_Admin);
           $("#suntingTanggalLahirAdmin").val(adminData.Tanggal_Lahir_Admin);
-          $("#suntingAlamatAdmin").val(adminData.Alamat_Admin);
+          $("#suntingPeranAdmin").val(adminData.Peran_Admin);
           $("#suntingJabatanAdmin").val(adminData.Jabatan_Admin);
           $("#suntingJenisKelaminAdmin").val(adminData.Jenis_Kelamin_Admin);
           $("#suntingNomorTelpAdmin").val(adminData.No_Telepon_Admin);

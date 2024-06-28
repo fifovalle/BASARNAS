@@ -1,5 +1,12 @@
 <?php
 include '../config/databases.php';
+
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +63,6 @@ include '../config/databases.php';
 					<tr>
 						<th>Nomor</th>
 						<th>Tanggal Pelaksanaan</th>
-						<th>Kegiatan</th>
 						<th>Jumlah Sit Up</th>
 						<th>Nilai</th>
 					</tr>
@@ -77,10 +83,12 @@ include '../config/databases.php';
 						$sitUp2Info = $sitUp2Model->tampilkanSitUp2DenganSessionNipPria($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria';
 						$nilaiField = 'Nilai_Sit_Up_Kaki_Di_Tekuk_Pria';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Pria';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$sitUp2Info = $sitUp2Model->tampilkanSitUp2DenganSessionNipWanita($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita';
 						$nilaiField = 'Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita';
 					} else {
 						$sitUp2Info = null;
 					}
@@ -91,8 +99,7 @@ include '../config/databases.php';
 					?>
 							<tr>
 								<td><?php echo $nomorUrut; ?></td>
-								<td>2024-06-08</td>
-								<td>Sit Up Kaki Ditekuk</td>
+								<td><?php echo htmlspecialchars($sitUp2[$tanggalPelaksanaanField]); ?></td>
 								<td><?php echo htmlspecialchars($sitUp2[$jumlahField]); ?></td>
 								<td><?php echo htmlspecialchars($sitUp2[$nilaiField]); ?></td>
 							</tr>

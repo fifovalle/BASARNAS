@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-6 text-center">
-                        <img id ="lihatPotoAdmin" alt="Admin Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
+                        <img id="lihatPotoAdmin" alt="Admin Photo" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
                         <!-- DOM -->
                         <h3 id="lihatNamaAdmin">
                             <!-- DOM -->
@@ -33,8 +33,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Alamat:</th>
-                                <td id="lihatAlamatAdminTd">
+                                <th>Peran Admin:</th>
+                                <td id="lihatPeranAdminTd">
                                     <!-- DOM -->
                                 </td>
                             </tr>

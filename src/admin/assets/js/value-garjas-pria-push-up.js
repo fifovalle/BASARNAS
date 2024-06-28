@@ -28,6 +28,9 @@ $(document).ready(function () {
           $("#suntingJumlahPushUpGarjasPria").val(
             garjasPriaPushUpData.Jumlah_Push_Up_Pria
           );
+          $("#suntingTanggalPelaksanaanPushUpGarjasPria").val(
+            garjasPriaPushUpData.Tanggal_Pelaksanaan_Push_Up_Pria
+          );
           $("#suntingGarjasPriaPushUp").modal("show");
         }
       },

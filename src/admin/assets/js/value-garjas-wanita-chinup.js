@@ -17,10 +17,20 @@ $(document).ready(function () {
         if (garjasWanitaChinUpData.success === false) {
           alert(garjasWanitaChinUpData.message);
         } else {
-          let nipNama = garjasWanitaChinUpData.NIP_Pengguna + " - " + garjasWanitaChinUpData.Nama_Lengkap_Pengguna;
+          let nipNama =
+            garjasWanitaChinUpData.NIP_Pengguna +
+            " - " +
+            garjasWanitaChinUpData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#SuntingGarjasWanitaChinUpID").val(garjasWanitaChinUpData.ID_Wanita_Chin_Up);
-          $("#suntingJumlahChinUpGarjasWanita").val(garjasWanitaChinUpData.Jumlah_Chin_Up_Wanita);
+          $("#SuntingGarjasWanitaChinUpID").val(
+            garjasWanitaChinUpData.ID_Wanita_Chin_Up
+          );
+          $("#suntingJumlahChinUpGarjasWanita").val(
+            garjasWanitaChinUpData.Jumlah_Chin_Up_Wanita
+          );
+          $("#suntingTanggalPelaksanaanChinUpGarjasWanita").val(
+            garjasWanitaChinUpData.Tanggal_Pelaksanaan_Chin_Up_Wanita
+          );
           $("#suntingGarjasWanitaChinUp").modal("show");
         }
       },

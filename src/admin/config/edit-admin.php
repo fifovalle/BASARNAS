@@ -4,7 +4,7 @@ include 'databases.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nipAdmin = $_POST['NIP_Admin'] ?? '';
     $namaLengkapAdmin = $_POST['Nama_Lengkap_Admin'] ?? '';
-    $alamatAdmin = $_POST['Alamat_Admin'] ?? '';
+    $perantAdmin = $_POST['Peran_Admin'] ?? '';
     $jabatanAdmin = $_POST['Jabatan_Admin'] ?? '';
     $jenisKelaminAdmin = $_POST['Jenis_Kelamin_Admin'] ?? '';
     $nomorTeleponAdmin = $_POST['No_Telepon_Admin'] ?? '';
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'NIP_Admin' => $nipAdmin,
         'Nama_Lengkap_Admin' => $namaLengkapAdmin,
         'Tanggal_Lahir_Admin' => $tanggalLahirAdmin,
-        'Alamat_Admin' => $alamatAdmin,
+        'Peran_Admin' => $perantAdmin,
         'Jabatan_Admin' => $jabatanAdmin,
         'Jenis_Kelamin_Admin' => $jenisKelaminAdmin,
         'No_Telepon_Admin' => $nomorTeleponFormatted,

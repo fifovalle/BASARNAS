@@ -1,3 +1,14 @@
+<?php
+include '../config/databases.php';
+
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +17,8 @@
 	include('../partials/header.php');
 	?>
 	<link rel="stylesheet" href="../assets/css/samapta.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -84,6 +97,12 @@
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<script src="../assets/js/notif-monday.js"></script>
+	<script src="../assets/js/notif-wednesday.js"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 </body>
 
 </html>

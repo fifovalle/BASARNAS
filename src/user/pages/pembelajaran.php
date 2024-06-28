@@ -1,5 +1,12 @@
 <?php
 include('../config/databases.php');
+
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +17,8 @@ include('../config/databases.php');
 	include('../partials/header.php');
 	?>
 	<link rel="stylesheet" href="../assets/css/pembelajaran.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -90,21 +99,22 @@ include('../config/databases.php');
 					</div>
 					<div class="description-module" style="text-align: justify;">
 						<div class="module">
-							<h3 onclick="toggleContent(this)">Tanggal 22/6/2024</h3>
+							<h3 onclick="toggleContent(this)" id="moduleSenin"></h3>
 							<div class="module-content">
 								<div class="row w-100 mx-4">
 									<div class="col-lg-12 col-sm-12">
-										Deskripsi Modul Tanggal ini
+										<div id="moduleContainer"></div>
 									</div>
-									<div class="row justify-content-end p-0">
-										<div class=" modul col-lg-3 col-sm-12">
-											<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modulSenin">Lihat Modul</button>
-										</div>
+									<div class="row justify-content-end p-0 mt-2">
 										<div class=" hadir col-lg-3 col-sm-12">
-											<button type="button" class="btn btn-success">Presensi Hadir</button>
+											<form action="../config/in-out-attendence-on-monday.php" method="post" id="formHadir">
+												<button type="submit" name="presensi_hadir" class="btn btn-success" id="btnHadir">Presensi Pagi</button>
+											</form>
 										</div>
-										<div class=" selesai col-lg-3 col-sm-12 ">
-											<button type="button" class="btn btn-success">Presensi Selesai</button>
+										<div class="selesai col-lg-3 col-sm-12">
+											<form action="../config/in-out-attendence-on-monday.php" method="post" id="formSelesai">
+												<button type="submit" name="presensi_selesai" class="btn btn-success" id="btnSelesai">Presensi Sore</button>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -119,21 +129,22 @@ include('../config/databases.php');
 					</div>
 					<div class="description-module" style="text-align: justify;">
 						<div class="module">
-							<h3 onclick="toggleContent(this)">Tanggal 22/6/2024</h3>
+							<h3 onclick="toggleContent(this)" id="moduleRabu"></h3>
 							<div class="module-content">
 								<div class="row w-100 mx-4">
 									<div class="col-lg-12 col-sm-12">
-										Deskripsi Modul Tanggal ini
+										<div id="moduleContainer2"></div>
 									</div>
-									<div class="row justify-content-end p-0">
-										<div class=" modul col-lg-3 col-sm-12">
-											<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modulRabu">Lihat Modul</button>
-										</div>
+									<div class="row justify-content-end p-0 mt-2">
 										<div class=" hadir col-lg-3 col-sm-12">
-											<button type="button" class="btn btn-success">Presensi Hadir</button>
+											<form action="../config/in-out-attendence-on-wednesday.php" method="post" id="formHadir">
+												<button type="submit" name="presensi_hadir" class="btn btn-success" id="btnHadirRabu">Presensi Pagi</button>
+											</form>
 										</div>
-										<div class=" selesai col-lg-3 col-sm-12 ">
-											<button type="button" class="btn btn-success">Presensi Selesai</button>
+										<div class="selesai col-lg-3 col-sm-12">
+											<form action="../config/in-out-attendence-on-wednesday.php" method="post" id="formSelesai">
+												<button type="submit" name="presensi_selesai" class="btn btn-success" id="btnSelesaiRabu">Presensi Sore</button>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -174,49 +185,18 @@ include('../config/databases.php');
 			</div>
 		</div>
 	</section>
-	<!-- Modal -->
-	<div class="modal fade" id="modulSenin" tabindex="-1" aria-labelledby="modulSeninLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<section class="module-senin">
-					<h1>Nama Modul_Senin_Tanggal Modul.pdf</h1>
-				</section>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Download</button>
-			</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="modulRabu" tabindex="-1" aria-labelledby="modulRabuLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<section class="module-rabu">
-					<h1>Nama Modul_Rabu_Tanggal Modul.pdf</h1>
-				</section>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Download</button>
-			</div>
-			</div>
-		</div>
-	</div>
 	<?php
 	include('../partials/footer.php');
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="../assets/js/pembelajaran.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<script src="../assets/js/notif-monday.js"></script>
+	<script src="../assets/js/notif-wednesday.js"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 </body>
 
 </html>

@@ -24,14 +24,11 @@
                         <input type="date" class="form-control" id="tambahTanggalLahirPengguna" name="Tanggal_Lahir_Pengguna">
                     </div>
                     <div class="mb-3">
-                        <label for="tambahAlamatPengguna" class="form-label">Alamat</label>
-                        <textarea id="tambahAlamatPengguna" placeholder="Masukan Alamat" class="form-control" name="Alamat_Pengguna"></textarea>
-                    </div>
-                    <div class="mb-3">
                         <label for="tambahJabatanPengguna" class="form-label">Jabatan</label>
                         <select name="Jabatan_Pengguna" id="tambahJabatanPengguna" class="form-select">
-                            <option selected>Pilih Jabatan</option>
-                            <option value="Satu">Satu</option>
+                            <option value="Pemula">Pemula</option>
+                            <option value="Terampil">Terampil</option>
+                            <option value="Mahir">Mahir</option>
                         </select>
                     </div>
                     <div class="mb-3">

@@ -7,56 +7,9 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-4 text-center">
-                        <!-- DOM -->
-                        <img id="lihatFotoTerampil" alt="Foto Pengguna" class="img-fluid rounded mb-3" style="width: 150px; height: 150px;">
-                        <!-- DOM -->
-                        <h3 id="lihatNamaLengkapTerampil">
-                            <!-- DOM -->
-                        </h3>
-                        <p class="text-muted" id="lihatNIPTerampil">
-                            <!-- DOM -->
-                        </p>
-                    </div>
-                    <div class="col-8">
+                    <div class="col-12">
                         <h4>Info Modul Selengkapnya</h4>
                         <table class="table table-borderless">
-                            <tr>
-                                <th>Nama Lengkap:</th>
-                                <td id="lihatNamaPenggunaTerampilTd">
-                                    <!-- DOM -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Lahir:</th>
-                                <td id="lihatTglLahirPenggunaTerampilTd">
-                                    <!-- DOM -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Jabatan:</th>
-                                <td id="lihatJabatanPenggunaTerampilTd">
-                                    <!-- DOM -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Jenis Kelamin:</th>
-                                <td id="lihatJenisKelaminPenggunaTerampilTd">
-                                    <!-- DOM -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Nomor Telepon:</th>
-                                <td id="lihatNoTelpPenggunaTerampilTd">
-                                    <!-- DOM -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Umur:</th>
-                                <td id="lihatUmurPenggunaTerampilTd">
-                                    <!-- DOM -->
-                                </td>
-                            </tr>
                             <tr>
                                 <th>File Modul:</th>
                                 <td id="lihatFileModulTd">

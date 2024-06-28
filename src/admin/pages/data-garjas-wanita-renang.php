@@ -82,6 +82,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                 <tr>
                                                     <th>No</th>
                                                     <th>NIP</th>
+                                                    <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
                                                     <th>Waktu Renang</th>
@@ -101,6 +102,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $tesRenangWanita['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $tesRenangWanita['Tanggal_Pelaksanaan_Tes_Renang_Wanita']; ?></td>
                                                             <td><?php echo $tesRenangWanita['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $tesRenangWanita['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $tesRenangWanita['Waktu_Renang_Wanita']; ?></td>

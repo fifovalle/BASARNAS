@@ -85,7 +85,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Foto</th>
                                                     <th>Nama</th>
-                                                    <th>Alamat</th>
                                                     <th>Jabatan</th>
                                                     <th>Umur</th>
                                                     <th style="width: 10%">Aksi</th>
@@ -108,7 +107,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                                 </div>
                                                             </td>
                                                             <td><?php echo $pengguna['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $pengguna['Alamat_Pengguna']; ?></td>
                                                             <td><?php echo $pengguna['Jabatan_Pengguna']; ?></td>
                                                             <td><?php echo $pengguna['Umur_Pengguna']; ?></td>
                                                             <td>

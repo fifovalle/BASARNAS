@@ -22,6 +22,7 @@ if (isset($_POST['Masuk'])) {
     }
 
     $_SESSION['NIP_Admin'] = htmlspecialchars($admin['NIP_Admin']);
+    $_SESSION['Peran_Admin'] = htmlspecialchars($admin['Peran_Admin']);
     $_SESSION['Foto_Admin'] = htmlspecialchars($admin['Foto_Admin']);
     $_SESSION['Nama_Lengkap_Admin'] = htmlspecialchars($admin['Nama_Lengkap_Admin']);
     $_SESSION['No_Telepon_Admin'] = htmlspecialchars($admin['No_Telepon_Admin']);

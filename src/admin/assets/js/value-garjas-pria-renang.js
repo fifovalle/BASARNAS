@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingWaktuTestRenangPria").val(
             garjasTestRenangPriaData.Waktu_Renang_Pria
           );
+          $("#suntingTanggalPelaksanaanTestRenangPria").val(
+            garjasTestRenangPriaData.Tanggal_Pelaksanaan_Tes_Renang_Pria
+          );
           $("#suntingGarjasPriaRenang").modal("show");
         }
       },

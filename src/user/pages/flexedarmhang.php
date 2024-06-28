@@ -1,5 +1,12 @@
 <?php
 include '../config/databases.php';
+
+$idSessionPengguna = $_SESSION['NIP_Pengguna'];
+if (!isset($_SESSION['NIP_Pengguna'])) {
+	setPesanKesalahan("Silahkan login terlebih dahulu!");
+	header("Location: " . $akarUrl . "src/user/pages/login.php");
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +63,6 @@ include '../config/databases.php';
 					<tr>
 						<th>Nomor</th>
 						<th>Tanggal Pelaksanaan</th>
-						<th>Kegiatan</th>
 						<th>Waktu Flexed Arm Hang</th>
 						<th>Nilai</th>
 					</tr>
@@ -72,9 +78,7 @@ include '../config/databases.php';
 					?>
 							<tr>
 								<td><?php echo ++$nomorUrut; ?></td>
-								<td><?php echo $flexedArmHang['Tgl_Menggantung_Pria']; ?></td>
-								<td><?php echo $flexedArmHang['Kegiatan_Menggantung_Pria']; ?></td>
-								<td><?php echo $flexedArmHang['Waktu_Menggantung_Pria']; ?></td>
+								<td><?php echo $flexedArmHang['Tanggal_Pelaksanaan_Pria_Menggantung']; ?></td>
 								<td><?php echo $flexedArmHang['Waktu_Menggantung_Pria']; ?></td>
 								<td><?php echo $flexedArmHang['Nilai_Menggantung_Pria']; ?></td>
 							</tr>

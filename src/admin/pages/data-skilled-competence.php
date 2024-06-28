@@ -82,7 +82,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>Nomor</th>
                                                     <th>Nama Pengguna</th>
                                                     <th>Nama Sertifikat</th>
-                                                    <th>Kategori Kompetensi</th>
+                                                    <th>Jabatan Kompetensi</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>

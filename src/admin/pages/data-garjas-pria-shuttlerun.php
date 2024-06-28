@@ -81,6 +81,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                 <tr>
                                                     <th>NO</th>
                                                     <th>NIP</th>
+                                                    <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
                                                     <th>Waktu Shuttle Run</th>
@@ -99,9 +100,10 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $garjasPriaShuttleRun['NIP_Pengguna']; ?></td>
+                                                            <td><?php echo $garjasPriaShuttleRun['Tanggal_Pelaksanaan_Shuttle_Run_Pria']; ?></td>
                                                             <td><?php echo $garjasPriaShuttleRun['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaShuttleRun['Umur_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasPriaShuttleRun['Waktu_Shuttle_Run_Pria']; ?></td>
+                                                            <td><?php echo $garjasPriaShuttleRun['Waktu_Shuttle_Run_Pria']; ?> Detik</td>
                                                             <td><?php echo $garjasPriaShuttleRun['Nilai_Shuttle_Run_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">

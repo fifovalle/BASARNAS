@@ -5,9 +5,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idGarjasWanitaTesLari = $_POST['ID_Lari_Wanita'] ?? '';
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $waktuTestLariWanita = $_POST['Waktu_Lari_Wanita'] ?? '';
+    $tanggalPelaksanaanTestLariWanita = $_POST['Tanggal_Pelaksanaan_Tes_Lari_Wanita'] ?? '';
 
     $garjasWanitaTesLariModel = new TesLariWanita($koneksi);
     $umurPengguna = $garjasWanitaTesLariModel->ambilUmurTesLariWanitaOlehNIP($nipPengguna);
+
+    $waktuTestLariWanita = str_replace(',', '.', $waktuTestLariWanita);
+    $waktuTestLariWanita = (float) $waktuTestLariWanita;
+
+    if ($waktuTestLariWanita == 0) {
+        echo json_encode(array("success" => false, "message" => "Nilai Tes Lari Wanita tidak boleh 0."));
+        exit;
+    }
 
     $nilaiTesLari = [
         'under_25' => [
@@ -71,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $dataGarjasWanitaShuttleRun = array(
         'NIP_Pengguna' => $nipPengguna,
+        'Tanggal_Pelaksanaan_Tes_Lari_Wanita' => $tanggalPelaksanaanTestLariWanita,
         'Waktu_Lari_Wanita' => $waktuTestLariWanita,
         'Nilai_Lari_Wanita' => $nilaiAkhir
     );

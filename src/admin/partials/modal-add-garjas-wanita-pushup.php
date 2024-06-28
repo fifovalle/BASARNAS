@@ -21,6 +21,10 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="tambahTanggalPelaksanaanPushUpPenggunaWanita" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="tambahTanggalPelaksanaanPushUpPenggunaWanita" name="Tanggal_Pelaksanaan_Push_Up_Wanita">
+                    </div>
+                    <div class="mb-3">
                         <label for="tambahJumlahPushUpPenggunaWanita" class="form-label">Jumlah Push Up</label>
                         <input type="number" class="form-control" id="tambahJumlahPushUpPenggunaWanita" name="Jumlah_Push_Up_Wanita">
                     </div>

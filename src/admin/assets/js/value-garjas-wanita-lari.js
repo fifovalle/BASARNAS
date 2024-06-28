@@ -17,10 +17,20 @@ $(document).ready(function () {
         if (garjasWanitaTestLariData.success === false) {
           alert(garjasWanitaTestLariData.message);
         } else {
-          let nipNama = garjasWanitaTestLariData.NIP_Pengguna + " - " + garjasWanitaTestLariData.Nama_Lengkap_Pengguna;
+          let nipNama =
+            garjasWanitaTestLariData.NIP_Pengguna +
+            " - " +
+            garjasWanitaTestLariData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#SuntingGarjasWanitaLariID").val(garjasWanitaTestLariData.ID_Lari_Wanita);
-          $("#suntingWaktuGarjasWanitaLari").val(garjasWanitaTestLariData.Waktu_Lari_Wanita);
+          $("#SuntingGarjasWanitaLariID").val(
+            garjasWanitaTestLariData.ID_Lari_Wanita
+          );
+          $("#suntingWaktuGarjasWanitaLari").val(
+            garjasWanitaTestLariData.Waktu_Lari_Wanita
+          );
+          $("#suntingTanggalPelaksanaanGarjasWanitaLari").val(
+            garjasWanitaTestLariData.Tanggal_Pelaksanaan_Tes_Lari_Wanita
+          );
           $("#suntingGarjasWanitaLari").modal("show");
         }
       },

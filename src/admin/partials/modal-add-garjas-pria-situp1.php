@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form action="../config/add-garjas-pria-situp1.php" method="post" enctype="multipart/form-data">
-                <?php
+                    <?php
                     $penggunaPriaModel = new Pengguna($koneksi);
                     $penggunaPriaInfo = $penggunaPriaModel->tampilkanDataPenggunaPria();
                     ?>
@@ -19,6 +19,10 @@
                                 <option value="<?php echo $penggunaPria['NIP_Pengguna']; ?>"><?php echo $penggunaPria['NIP_Pengguna'] . ' - ' . $penggunaPria['Nama_Lengkap_Pengguna']; ?></option>
                             <?php endforeach; ?>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tambahTanggalPelaksanaanSitUp1Pengguna" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="tambahTanggalPelaksanaanSitUp1Pengguna" name="Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria">
                     </div>
                     <div class="mb-3">
                         <label for="tambahJumlahSitUp1Admin" class="form-label">Jumlah Sit Up</label>

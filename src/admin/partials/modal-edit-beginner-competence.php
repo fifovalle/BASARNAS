@@ -29,9 +29,9 @@
                         <input type="date" class="form-control" id="suntingTanggalBerakhir" name="Tanggal_Berakhir_Sertifikat">
                     </div>
                     <div class="mb-3">
-                        <label for="suntingKategoriKompetensi" class="form-label">Kategori Kompetensi</label>
+                        <label for="suntingKategoriKompetensi" class="form-label">Jabatan Kompetensi</label>
                         <select class="form-select" name="Kategori_Kompetensi" id="suntingKategoriKompetensi">
-                            <option selected>Pilih Kategori Kompetensi</option>
+                            <option selected>Pilih Jabatan Kompetensi</option>
                             <option value="Pemula">Pemula</option>
                         </select>
                     </div>

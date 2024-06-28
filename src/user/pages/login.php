@@ -1,6 +1,11 @@
 <?php
 $page = basename($_SERVER['PHP_SELF']);
 include('../config/databases.php');
+
+$penggunaDatabase = new Pengguna($koneksi);
+
+$captcha = $penggunaDatabase->generateRandomCaptchaPengguna();
+$_SESSION['captcha'] = $captcha;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,10 +55,10 @@ include('../config/databases.php');
                         <svg width="350" height="120" xmlns="http://www.w3.org/2000/svg">
                             <rect width="250" height="100" x="40" y="10" rx="20" ry="20" fill="lightgray" opacity="0.6" />
                             <text id="captcha-text" x="165" y="60" font-family="Arial" font-size="20" fill="black" text-anchor="middle" alignment-baseline="middle">
-                                <!-- DOM -->
+                                <?php echo $_SESSION['captcha']; ?>
                             </text>
                         </svg>
-                        <input type="text" class="form-control" placeholder="Masukkan Captcha Code" aria-label="Captcha" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" placeholder="Masukkan Captcha Code" aria-label="Captcha" aria-describedby="basic-addon2" name="Kode_Captcha">
                     </div>
                     <div class="input-group mb-3 justify-content-center">
                         <button type="submit" class="btn btn-outline-primary text-center" name="Masuk">MASUK</button>
@@ -73,23 +78,6 @@ include('../config/databases.php');
     include('../partials/footer.php');
     ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        function generateCaptcha() {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            let captcha = '';
-            for (let i = 0; i < 7; i++) {
-                captcha += characters.charAt(Math.floor(Math.random() * characters.length));
-            }
-            return captcha;
-        }
-
-        function setCaptcha() {
-            const captchaText = document.getElementById('captcha-text');
-            captchaText.textContent = generateCaptcha();
-        }
-
-        window.onload = setCaptcha;
-    </script>
     <!-- ALERT -->
     <?php
     include('../partials/alert.php');

@@ -28,6 +28,9 @@ $(document).ready(function () {
           $("#suntingWaktuGarjasPriaLari").val(
             garjasPriaTestLariData.Waktu_Lari_Pria
           );
+          $("#suntingTanggalPelaksanaanGarjasPriaLari").val(
+            garjasPriaTestLariData.Tanggal_Pelaksanaan_Tes_Lari_Pria
+          );
           $("#suntingGarjasPriaLari").modal("show");
         }
       },

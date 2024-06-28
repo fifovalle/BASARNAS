@@ -21,6 +21,10 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="tambahTanggalPelaksanaanRenangAdmin" class="form-label">Tanggal Pelaksanaan</label>
+                        <input type="date" class="form-control" id="tambahTanggalPelaksanaanRenangAdmin" name="Tanggal_Pelaksanaan_Tes_Renang_Pria">
+                    </div>
+                    <div class="mb-3">
                         <label for="tambahGayaRenang" class="form-label">Gaya Renang</label>
                         <select name="Gaya_Renang" id="tambahGayaRenang" class="form-select">
                             <option selected>Pilih Gaya Renang</option>

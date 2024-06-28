@@ -75,6 +75,27 @@ class Pengguna
         }
     }
 
+    public function tampilkanModulSesuaiNIPHariSenin($tanggalSenin)
+    {
+        $query = "SELECT * FROM modul
+                 WHERE modul.Tanggal_Terbit_Modul = ?";
+
+        $stmt = $this->koneksi->prepare($query);
+        $stmt->bind_param("s", $tanggalSenin);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
     public function tampilkanBMIDenganSessionNip($nipSessionPengguna)
     {
         $query = "SELECT bmi.*, pengguna.* 
@@ -540,6 +561,142 @@ class Pengguna
             return null;
         }
     }
+
+    public function generateRandomCaptchaPengguna($length = 7)
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $captcha = '';
+        $max = strlen($characters) - 1;
+        for ($i = 0; $i < $length; $i++) {
+            $captcha .= $characters[mt_rand(0, $max)];
+        }
+
+        return $captcha;
+    }
 }
 
 // ===================================PENGGUNA===================================
+
+// ===================================ABSENSI===================================
+class Absensi
+{
+
+    private $koneksi;
+
+    public function __construct($database)
+    {
+        $this->koneksi = $database;
+    }
+
+    private function mengamankanString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataAbsensi()
+    {
+        $query = "SELECT * FROM absensi LEFT JOIN pengguna ON absensi.NIP_Pengguna = pengguna.NIP_Pengguna";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tambahAbsensi($data)
+    {
+        $query = "INSERT INTO absensi (
+            NIP_Pengguna, Tanggal_Absensi, Hari_Absensi, Jam_Absen, Status_Absensi
+            ) VALUES (?, ?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "issss",
+            $this->mengamankanString($data['NIP_Pengguna']),
+            $this->mengamankanString($data['Tanggal_Absensi']),
+            $this->mengamankanString($data['Hari_Absensi']),
+            $this->mengamankanString($data['Jam_Absen']),
+            $this->mengamankanString($data['Status_Absensi'])
+        );
+
+        return $statement->execute();
+    }
+
+    public function hapusAbsensi($idAbsensi)
+    {
+        $query = "DELETE FROM absensi WHERE ID_Absensi=?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $idAbsensi);
+        return $statement->execute();
+    }
+
+    public function perbaruiAbsensi($id, $data)
+    {
+        $sql = "UPDATE absensi SET
+                NIP_Pengguna = ?,
+                Tanggal_Absensi = ?,
+                Hari_Absensi = ?,
+                Jam_Absen = ?,
+                Status_Absensi = ?
+                WHERE ID_Absensi = ?";
+        $stmt = $this->koneksi->prepare($sql);
+
+        if ($stmt === false) {
+            return false;
+        }
+
+        $stmt->bind_param(
+            "issssi",
+            $this->mengamankanString($data['NIP_Pengguna']),
+            $this->mengamankanString($data['Tanggal_Absensi']),
+            $this->mengamankanString($data['Hari_Absensi']),
+            $this->mengamankanString($data['Jam_Absen']),
+            $this->mengamankanString($data['Status_Absensi']),
+            $id
+        );
+
+        return $stmt->execute();
+    }
+
+    public function getAbsensiByNIPAndDate($nip, $tanggal)
+    {
+        $query = "SELECT * FROM absensi WHERE NIP_Pengguna = ? AND Tanggal_Absensi = ?";
+        $stmt = $this->koneksi->prepare($query);
+        $stmt->bind_param("is", $nip, $tanggal);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function updateAbsensi($data, $nip, $tanggal)
+    {
+        $query = "UPDATE absensi SET 
+              Jam_Absen = IFNULL(?, Jam_Absen), 
+              Status_Absensi = ?,
+              Hari_Absensi = ? 
+              WHERE NIP_Pengguna = ? AND Tanggal_Absensi = ?";
+        $stmt = $this->koneksi->prepare($query);
+        $jamAbsen = isset($data['Jam_Absen']) ? $this->mengamankanString($data['Jam_Absen']) : null;
+        $statusAbsensi = $this->mengamankanString($data['Status_Absensi']);
+        $hariAbsensi = $this->mengamankanString($data['Hari_Absensi']);
+        $nip = (int)$nip;
+
+        $stmt->bind_param(
+            "sssis",
+            $jamAbsen,
+            $statusAbsensi,
+            $hariAbsensi,
+            $nip,
+            $tanggal
+        );
+        return $stmt->execute();
+    }
+}
+
+// ===================================ABSENSI===================================

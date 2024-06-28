@@ -9,13 +9,13 @@
                 <form action="../config/add-advanced-competence.php" method="post" enctype="multipart/form-data">
                     <?php
                     $penggunaModel = new Pengguna($koneksi);
-                    $penggunaInfo = $penggunaModel->tampilkanDataPengguna();
+                    $penggunaInfo = $penggunaModel->tampilkanDataPenggunaMahir();
                     ?>
                     <div class="mb-3">
                         <label for="tambahNIPPengguna" class="form-label">NIP</label>
                         <select name="NIP_Pengguna" id="tambahNIPPengguna" class="form-select">
                             <?php if (empty($penggunaInfo)) : ?>
-                                <option selected>Tidak ada NIP Pengguna tersedia</option>
+                                <option selected value="">Tidak ada NIP Pengguna tersedia</option>
                             <?php else : ?>
                                 <option selected>Pilih NIP Pengguna</option>
                                 <?php foreach ($penggunaInfo as $pengguna) : ?>
@@ -43,9 +43,9 @@
                         <input type="date" class="form-control" id="tambahTanggalBerakhir" name="Tanggal_Berakhir_Sertifikat">
                     </div>
                     <div class="mb-3">
-                        <label for="tambahKategoriKompetensi" class="form-label">Kategori Kompetensi</label>
+                        <label for="tambahKategoriKompetensi" class="form-label">Jabatan Kompetensi</label>
                         <select class="form-select" name="Kategori_Kompetensi" id="tambahKategoriKompetensi">
-                            <option selected>Pilih Kategori Kompetensi</option>
+                            <option selected>Pilih Jabatan Kompetensi</option>
                             <option value="Mahir">Mahir</option>
                         </select>
                     </div>

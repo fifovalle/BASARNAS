@@ -5,7 +5,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $namaLengkapPengguna = $_POST['Nama_Lengkap_Pengguna'] ?? '';
     $tanggalLahirPengguna = $_POST['Tanggal_Lahir_Pengguna'] ?? '';
-    $alamatPengguna = $_POST['Alamat_Pengguna'] ?? '';
     $jabatanPengguna = $_POST['Jabatan_Pengguna'] ?? '';
     $jenisKelaminPengguna = $_POST['Jenis_Kelamin_Pengguna'] ?? '';
     $noTeleponPengguna = $_POST['No_Telepon_Pengguna'] ?? '';
@@ -81,12 +80,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'NIP_Pengguna' => $nipPengguna,
         'Nama_Lengkap_Pengguna' => $namaLengkapPengguna,
         'Tanggal_Lahir_Pengguna' => $tanggalLahirPengguna,
-        'Alamat_Pengguna' => $alamatPengguna,
         'Jabatan_Pengguna' => $jabatanPengguna,
         'Jenis_Kelamin_Pengguna' => $jenisKelaminPengguna,
-        'No_Telepon_Pengguna' => $nomorTeleponFormatted, 
+        'No_Telepon_Pengguna' => $nomorTeleponFormatted,
         'Umur_Pengguna' => $umurPengguna,
-        'Foto_Pengguna' => $namaFotoBaru  
+        'Foto_Pengguna' => $namaFotoBaru
     );
 
     $updateDataPengguna = $penggunaModel->perbaruiPengguna($nipPengguna, $dataPengguna);
@@ -99,4 +97,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo json_encode(array("success" => false, "message" => "Metode request tidak valid."));
 }
-?>
