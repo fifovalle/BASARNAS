@@ -48,6 +48,10 @@
                                 <th>Nilai Lari:</th>
                                 <td id="lihatNilaiTesLariWanitaGW"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanTesLariWanitaGW"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

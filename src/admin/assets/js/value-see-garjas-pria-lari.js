@@ -30,6 +30,7 @@ $(document).ready(function () {
           $("#lihatUmurPenggunaTd").text(penggunaData.Umur_Pengguna);
           $("#lihatWaktuTesLariPriaTd").text(penggunaData.Waktu_Lari_Pria);
           $("#lihatNilaiTesLariPriaTd").text(penggunaData.Nilai_Lari_Pria);
+          $("#tanggalPelaksanaanTesLariPriaTd").text(penggunaData.Tanggal_Pelaksanaan_Tes_Lari_Pria);
           $("#lihatGarjasPriaLari").modal("show");
         }
       },

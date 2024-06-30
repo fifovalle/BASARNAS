@@ -124,7 +124,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Tes Renang Pria!</td>
+                                                        <td colspan="9" class="text-center text-danger fw-bolder">Tidak ada data Tes Renang Pria!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

@@ -47,6 +47,10 @@
                                 <th>Nilai Renang:</th>
                                 <td id="lihatNilaiRenangPriaTd"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanRenangPriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

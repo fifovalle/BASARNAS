@@ -57,7 +57,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
             </div>
             <div class="col-lg-6 col-sm-12">
               <label for="validationCustom02" class="form-label">Tanggal Lahir Pengguna</label>
-              <input type="text" class="form-control" value="<?php echo htmlspecialchars($pengguna['Tanggal_Lahir_Pengguna']); ?>">
+              <input type="date" class="form-control" value="<?php echo htmlspecialchars($pengguna['Tanggal_Lahir_Pengguna']); ?>">
             </div>
             <div class="col-lg-6 col-sm-12">
               <label for="validationCustom02" class="form-label">Umur Pengguna</label>
@@ -65,11 +65,15 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
             </div>
             <div class="col-lg-6 col-sm-12">
               <label for="validationCustom02" class="form-label">Jenis Kelamin Pengguna</label>
-              <input type="text" class="form-control" value="<?php echo htmlspecialchars($pengguna['Jenis_Kelamin_Pengguna']); ?>">
+              <select name="Jenis_Kelamin_Pengguna" id="validationCustom02" class="form-select">
+                <option value="">Pilih Jenis Kelamin</option>
+                <option value="Pria" <?php echo ($pengguna['Jenis_Kelamin_Pengguna'] == 'Pria') ? 'selected' : ''; ?>>Pria</option>
+                <option value="Wanita" <?php echo ($pengguna['Jenis_Kelamin_Pengguna'] == 'Wanita') ? 'selected' : ''; ?>>Wanita</option>
+              </select>
             </div>
             <div class="col-lg-6 col-sm-12">
               <label for="validationCustom02" class="form-label">No.Telepon Pengguna</label>
-              <input type="text" class="form-control" value="<?php echo htmlspecialchars($pengguna['No_Telepon_Pengguna']); ?>">
+              <input type="tel" class="form-control" value="<?php echo htmlspecialchars($pengguna['No_Telepon_Pengguna']); ?>">
             </div>
             <div class="col-lg-12 col-sm-12">
               <button type="button" class="btn btn-primary px-4"><i class='bx bx-check-double pe-1'></i name="Simpan">Simpan</button>

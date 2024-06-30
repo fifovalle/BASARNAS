@@ -18,7 +18,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingJumlahShuttleRunGarjasWanita" class="form-label">Waktu Shuttle Run</label>
-                        <input type="number" class="form-control" id="suntingJumlahShuttleRunGarjasWanita" name="Jumlah_Shuttle_Run_Wanita">
+                        <input type="number" min="0" step="any" class="form-control" id="suntingJumlahShuttleRunGarjasWanita" name="Jumlah_Shuttle_Run_Wanita">
                     </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasWanitaShuttleRun" name="Simpan">Simpan</button>
                 </form>

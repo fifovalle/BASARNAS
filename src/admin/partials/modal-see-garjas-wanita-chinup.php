@@ -48,6 +48,10 @@
                                 <th>Nilai Push Up:</th>
                                 <td id="lihatNilaiChinUpWanitaGW"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanChinUpWanitaGW"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

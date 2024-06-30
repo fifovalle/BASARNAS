@@ -102,7 +102,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $tesJalanPria['Tanggal_Pelaksanaan_Tes_Jalan_Pria']; ?></td>
                                                             <td><?php echo $tesJalanPria['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $tesJalanPria['Umur_Pengguna']; ?></td>
-                                                            <td><?php echo $tesJalanPria['Waktu_Jalan_Pria']; ?></td>
+                                                            <td><?php echo $tesJalanPria['Waktu_Jalan_Pria']; ?> (Menit/Detik)</td>
                                                             <td><?php echo $tesJalanPria['Nilai_Jalan_Pria']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
@@ -121,7 +121,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data tes jalan kaki 5 km pria!</td>
+                                                        <td colspan="8" class="text-center text-danger fw-bolder">Tidak ada data tes jalan kaki 5 km pria!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

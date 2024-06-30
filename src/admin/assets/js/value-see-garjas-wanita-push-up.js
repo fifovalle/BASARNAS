@@ -29,6 +29,7 @@ $(document).ready(function () {
           $("#lihatUmurPenggunaGW").text(garjasWanitaPushUpData.Umur_Pengguna);
           $("#lihatJumlahPushUpWanitaGW").text(garjasWanitaPushUpData.Jumlah_Push_Up_Wanita);
           $("#lihatNilaiPushUpWanitaGW").text(garjasWanitaPushUpData.Nilai_Push_Up_Wanita);
+          $("#tanggalPelaksanaanPushUpWanitaGW").text(garjasWanitaPushUpData.Tanggal_Pelaksanaan_Push_Up_Wanita);
           $("#lihatGarjasWanitaPushUp").modal("show");
         }
       },

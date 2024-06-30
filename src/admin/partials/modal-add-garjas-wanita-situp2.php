@@ -14,7 +14,7 @@
                     <div class="mb-3">
                         <label for="tambahNIPPenggunaWanita" class="form-label">NIP</label>
                         <select name="NIP_Pengguna" id="tambahNIPPenggunaWanita" class="form-select">
-                            <option selected>Pilih NIP Pengguna</option>
+                            <option selected disabled>Pilih NIP Pengguna</option>
                             <?php foreach ($penggunaWanitaInfo as $penggunaWanita) : ?>
                                 <option value="<?php echo $penggunaWanita['NIP_Pengguna']; ?>"><?php echo $penggunaWanita['NIP_Pengguna'] . ' - ' . $penggunaWanita['Nama_Lengkap_Pengguna']; ?></option>
                             <?php endforeach; ?>

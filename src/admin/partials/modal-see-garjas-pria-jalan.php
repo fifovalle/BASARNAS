@@ -48,6 +48,10 @@
                                 <th>Nilai Jalan:</th>
                                 <td id="lihatNilaiTesJalanPriaTd"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanTesJalanPriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

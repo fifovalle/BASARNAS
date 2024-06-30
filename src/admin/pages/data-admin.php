@@ -112,14 +112,16 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $admin['Umur_Admin']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
+                                                                <?php if ($_SESSION['Peran_Admin'] === 'Super Admin' || $_SESSION['NIP_Admin'] === $admin['NIP_Admin']) : ?>
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
                                                                     <?php if ($_SESSION['Peran_Admin'] === 'Super Admin' && $admin['Peran_Admin'] !== 'Super Admin') : ?>
-                                                                        <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
-                                                                            <i class="fa fa-edit"></i>
-                                                                        </button>
                                                                         <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusAdmin(<?php echo $admin['NIP_Admin']; ?>)">
                                                                             <i class="fa fa-trash"></i>
                                                                         </button>
                                                                     <?php endif; ?>
+                                                                <?php endif; ?>
                                                                     <button type="button" class="btn btn-link btn-info buttonLihatAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>

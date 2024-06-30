@@ -47,6 +47,10 @@
                                 <th>Nilai Shuttle Run:</th>
                                 <td id="lihatNilaiShuttleRunPriaTd"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanShuttleRunPriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

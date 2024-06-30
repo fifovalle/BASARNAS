@@ -18,43 +18,19 @@ $(document).ready(function () {
         if (garjasPriaShuttleRunData.success === false) {
           alert(garjasPriaShuttleRunData.message);
         } else {
-          $("#lihatNamaPengguna").text(
-            garjasPriaShuttleRunData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatNIPPenggunaShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.NIP_Pengguna
-          );
-          $("#lihatPotoPenggunaShuttleRunPriaTd").attr(
-            "src",
-            "../uploads/" + garjasPriaShuttleRunData.Foto_Pengguna
-          );
-          $("#lihatNamaPenggunaShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatTglLahirPenggunaShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.Tanggal_Lahir_Pengguna
-          );
-          $("#lihatAlamatPenggunaTd").text(
-            garjasPriaShuttleRunData.Alamat_Pengguna
-          );
-          $("#lihatJabatanPenggunaShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.Jabatan_Pengguna
-          );
-          $("#lihatJenisKelaminPenggunaShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.Jenis_Kelamin_Pengguna
-          );
-          $("#lihatNoTelpPenggunaShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.No_Telepon_Pengguna
-          );
-          $("#lihatUmurPenggunaShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.Umur_Pengguna
-          );
-          $("#lihatWaktuShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.Waktu_Shuttle_Run_Pria
-          );
-          $("#lihatNilaiShuttleRunPriaTd").text(
-            garjasPriaShuttleRunData.Nilai_Shuttle_Run_Pria
-          );
+          $("#lihatNamaPengguna").text(garjasPriaShuttleRunData.Nama_Lengkap_Pengguna);
+          $("#lihatNIPPenggunaShuttleRunPriaTd").text(garjasPriaShuttleRunData.NIP_Pengguna);
+          $("#lihatPotoPenggunaShuttleRunPriaTd").attr("src", "../uploads/" + garjasPriaShuttleRunData.Foto_Pengguna);
+          $("#lihatNamaPenggunaShuttleRunPriaTd").text(garjasPriaShuttleRunData.Nama_Lengkap_Pengguna);
+          $("#lihatTglLahirPenggunaShuttleRunPriaTd").text(garjasPriaShuttleRunData.Tanggal_Lahir_Pengguna);
+          $("#lihatAlamatPenggunaTd").text(garjasPriaShuttleRunData.Alamat_Pengguna);
+          $("#lihatJabatanPenggunaShuttleRunPriaTd").text(garjasPriaShuttleRunData.Jabatan_Pengguna);
+          $("#lihatJenisKelaminPenggunaShuttleRunPriaTd").text(garjasPriaShuttleRunData.Jenis_Kelamin_Pengguna);
+          $("#lihatNoTelpPenggunaShuttleRunPriaTd").text(garjasPriaShuttleRunData.No_Telepon_Pengguna);
+          $("#lihatUmurPenggunaShuttleRunPriaTd").text(garjasPriaShuttleRunData.Umur_Pengguna);
+          $("#lihatWaktuShuttleRunPriaTd").text(garjasPriaShuttleRunData.Waktu_Shuttle_Run_Pria);
+          $("#lihatNilaiShuttleRunPriaTd").text(garjasPriaShuttleRunData.Nilai_Shuttle_Run_Pria);
+          $("#tanggalPelaksanaanShuttleRunPriaTd").text(garjasPriaShuttleRunData.Tanggal_Pelaksanaan_Shuttle_Run_Pria);
           $("#lihatGarjasPriaShuttleRun").modal("show");
         }
       },

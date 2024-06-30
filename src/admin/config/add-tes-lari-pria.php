@@ -47,19 +47,30 @@ if (isset($_POST['tambah_nilai'])) {
     }
 
     $umurPengguna = $obyekPenggunaPria->ambilUmurTesLariPriaOlehNIP($nipPengguna);
-
     if ($obyekPenggunaPria->cekNipAnggotaTesLariPriaSudahAda($nipPengguna)) {
         setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-lari.php");
         exit;
     }
 
-    $waktuTestLariPria = str_replace(',', '.', $waktuTestLariPria);
-    $waktuTestLariPria = (float) $waktuTestLariPria;
-
     if ($waktuTestLariPria == 0) {
         setPesanKesalahan("Nilai lari pria tidak boleh 0.");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-lari.php");
+        exit;
+    }
+
+    if (empty($nipPengguna) && empty($tanggalPelaksanaanLariPria) && empty($waktuTestLariPria)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($tanggalPelaksanaanLariPria)) {
+        $pesanKesalahan = "Tanggal pelaksanaan Tes Lari Pria harus diisi. ";
+    } elseif (empty($waktuTestLariPria)) {
+        $pesanKesalahan = "Jumlah Tes Lari Pria harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-pria-lari.php");
         exit;
     }
 
@@ -195,7 +206,7 @@ if (isset($_POST['tambah_nilai'])) {
     } elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
         if ($waktuTestLariPria < 12.0) {
             $nilaiAkhir = 100;
-        } elseif ($waktuTestLariPria > 27.5) {
+        } elseif ($waktuTestLariPria > 26.5) {
             $nilaiAkhir = 1;
         } else {
             $nilaiAkhir = isset($nilaiLari['45-54'][(string)$waktuTestLariPria]) ? $nilaiLari['45-54'][(string)$waktuTestLariPria] : 0;
@@ -203,7 +214,7 @@ if (isset($_POST['tambah_nilai'])) {
     } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
         if ($waktuTestLariPria < 13.0) {
             $nilaiAkhir = 100;
-        } elseif ($waktuTestLariPria > 26.5) {
+        } elseif ($waktuTestLariPria > 27.5) {
             $nilaiAkhir = 1;
         } else {
             $nilaiAkhir = isset($nilaiLari['55-59'][(string)$waktuTestLariPria]) ? $nilaiLari['55-59'][(string)$waktuTestLariPria] : 0;

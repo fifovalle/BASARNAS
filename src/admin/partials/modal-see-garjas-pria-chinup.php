@@ -47,6 +47,10 @@
                                 <th>Nilai Chin Up:</th>
                                 <td id="lihatNilaiPushUpPriaChinUpTd"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanChinUpPriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

@@ -47,6 +47,10 @@
                                 <th>Nilai Flexed Arm Hang:</th>
                                 <td id="lihatNilaiPriaFlexedArmHangTd"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanFlexedArmHangPriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

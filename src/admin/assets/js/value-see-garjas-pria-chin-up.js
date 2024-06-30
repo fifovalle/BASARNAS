@@ -18,43 +18,19 @@ $(document).ready(function () {
         if (garjasPriaPushUpData.success === false) {
           alert(garjasPriaPushUpData.message);
         } else {
-          $("#lihatNamaPengguna").text(
-            garjasPriaPushUpData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatNIPPenggunaChinUpTd").text(
-            garjasPriaPushUpData.NIP_Pengguna
-          );
-          $("#lihatPotoPenggunaChinUpTd").attr(
-            "src",
-            "../uploads/" + garjasPriaPushUpData.Foto_Pengguna
-          );
-          $("#lihatNamaPenggunaChinUpTd").text(
-            garjasPriaPushUpData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatTglLahirPenggunaChinUpTd").text(
-            garjasPriaPushUpData.Tanggal_Lahir_Pengguna
-          );
-          $("#lihatAlamatPenggunaChinUpTd").text(
-            garjasPriaPushUpData.Alamat_Pengguna
-          );
-          $("#lihatJabatanPenggunaChinUpTd").text(
-            garjasPriaPushUpData.Jabatan_Pengguna
-          );
-          $("#lihatJenisKelaminPenggunaChinUpTd").text(
-            garjasPriaPushUpData.Jenis_Kelamin_Pengguna
-          );
-          $("#lihatNoTelpPenggunaChinUpTd").text(
-            garjasPriaPushUpData.No_Telepon_Pengguna
-          );
-          $("#lihatUmurPenggunaChinUpTd").text(
-            garjasPriaPushUpData.Umur_Pengguna
-          );
-          $("#lihatJumlahPushUpPriaChinUpTd").text(
-            garjasPriaPushUpData.Jumlah_Chin_Up_Pria
-          );
-          $("#lihatNilaiPushUpPriaChinUpTd").text(
-            garjasPriaPushUpData.Nilai_Chin_Up_Pria
-          );
+          $("#lihatNamaPengguna").text(garjasPriaPushUpData.Nama_Lengkap_Pengguna);
+          $("#lihatNIPPenggunaChinUpTd").text(garjasPriaPushUpData.NIP_Pengguna);
+          $("#lihatPotoPenggunaChinUpTd").attr("src", "../uploads/" + garjasPriaPushUpData.Foto_Pengguna);
+          $("#lihatNamaPenggunaChinUpTd").text(garjasPriaPushUpData.Nama_Lengkap_Pengguna);
+          $("#lihatTglLahirPenggunaChinUpTd").text(garjasPriaPushUpData.Tanggal_Lahir_Pengguna);
+          $("#lihatAlamatPenggunaChinUpTd").text(garjasPriaPushUpData.Alamat_Pengguna);
+          $("#lihatJabatanPenggunaChinUpTd").text(garjasPriaPushUpData.Jabatan_Pengguna);
+          $("#lihatJenisKelaminPenggunaChinUpTd").text(garjasPriaPushUpData.Jenis_Kelamin_Pengguna);
+          $("#lihatNoTelpPenggunaChinUpTd").text(garjasPriaPushUpData.No_Telepon_Pengguna);
+          $("#lihatUmurPenggunaChinUpTd").text(garjasPriaPushUpData.Umur_Pengguna);
+          $("#lihatJumlahPushUpPriaChinUpTd").text(garjasPriaPushUpData.Jumlah_Chin_Up_Pria);
+          $("#lihatNilaiPushUpPriaChinUpTd").text(garjasPriaPushUpData.Nilai_Chin_Up_Pria);
+          $("#tanggalPelaksanaanChinUpPriaTd").text(garjasPriaPushUpData.Tanggal_Pelaksanaan_Chin_Up_Pria);
           $("#lihatGarjasPriaChinUp").modal("show");
         }
       },

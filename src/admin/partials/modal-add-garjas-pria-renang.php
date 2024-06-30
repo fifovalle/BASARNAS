@@ -27,7 +27,7 @@
                     <div class="mb-3">
                         <label for="tambahGayaRenang" class="form-label">Gaya Renang</label>
                         <select name="Gaya_Renang" id="tambahGayaRenang" class="form-select">
-                            <option selected>Pilih Gaya Renang</option>
+                            <option selected disabled>Pilih Gaya Renang</option>
                             <option value="Dada">Dada</option>
                             <option value="Bebas">Bebas</option>
                             <option value="Lainnya">Lainnya</option>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tambahWaktuRenangAdmin" class="form-label">Waktu Renang</label>
-                        <input type="text" class="form-control" id="tambahWaktuRenangAdmin" name="Waktu_Renang">
+                        <input type="time" step="any" class="form-control" id="tambahWaktuRenangAdmin" name="Waktu_Renang">
                     </div>
                     <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>

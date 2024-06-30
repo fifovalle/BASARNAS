@@ -48,6 +48,10 @@
                                 <th>Nilai Sit Up:</th>
                                 <td id="lihatNilaiSitUp1Td"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanSitUp1PriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

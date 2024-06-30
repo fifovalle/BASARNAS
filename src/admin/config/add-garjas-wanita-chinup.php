@@ -58,6 +58,21 @@ if (isset($_POST['tambah_nilai'])) {
         exit;
     }
 
+    if (empty($nipPengguna) && empty($tanggalPelaksanaanChinUpWanita) && empty($jumlahChinUpWanita)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($tanggalPelaksanaanChinUpWanita)) {
+        $pesanKesalahan = "Tanggal pelaksanaan Chin Up harus diisi. ";
+    } elseif (empty($jumlahChinUpWanita)) {
+        $pesanKesalahan = "Jumlah Chin Up harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-wanita-chinup.php");
+        exit;
+    }
+
     $nilaiChinUp = [
         'under_25' => [
             63 => 100, 62 => 98, 61 => 95, 60 => 93, 59 => 90,

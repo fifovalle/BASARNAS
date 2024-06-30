@@ -1706,7 +1706,7 @@ class GarjasWanitaShuttleRun
         $nilaiShuttleRunWanita = $this->mengamankanString($data['Nilai_Shuttle_Run_Wanita']);
         $idWanitaShuttleRun = $id;
 
-        $statement->bind_param("siii", $tanggalPelaksanaanShuttleRunWanita, $jumlahShuttleRunWanita, $nilaiShuttleRunWanita, $idWanitaShuttleRun);
+        $statement->bind_param("ssii", $tanggalPelaksanaanShuttleRunWanita, $jumlahShuttleRunWanita, $nilaiShuttleRunWanita, $idWanitaShuttleRun);
 
         if ($statement->execute()) {
             return true;
@@ -2060,7 +2060,7 @@ class TesRenangPria
         $nilaiRenangPria = $this->mengamankanString($data['Nilai_Renang_Pria']);
         $idRenangPria = $id;
 
-        $statement->bind_param("ssiii", $tanggalPelaksanaanRenangPria, $namaRenangPria, $waktuRenangPria, $nilaiRenangPria, $idRenangPria);
+        $statement->bind_param("sssii", $tanggalPelaksanaanRenangPria, $namaRenangPria, $waktuRenangPria, $nilaiRenangPria, $idRenangPria);
 
         if ($statement->execute()) {
             return true;
@@ -2178,7 +2178,7 @@ class TesRenangWanita
         $nilaiRenangWanita = $this->mengamankanString($data['Nilai_Renang_Wanita']);
         $idRenangWanita = $id;
 
-        $statement->bind_param("ssiii", $tanggalPelaksanaanRenangWanita, $namaRenangWanita, $waktuRenangWanita, $nilaiRenangWanita, $idRenangWanita);
+        $statement->bind_param("sssii", $tanggalPelaksanaanRenangWanita, $namaRenangWanita, $waktuRenangWanita, $nilaiRenangWanita, $idRenangWanita);
 
         if ($statement->execute()) {
             return true;
@@ -2553,7 +2553,7 @@ class TesJalanKaki5KMPria
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "issi",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Jalan_Pria']),
             $this->mengamankanString($data['Waktu_Jalan_Pria']),

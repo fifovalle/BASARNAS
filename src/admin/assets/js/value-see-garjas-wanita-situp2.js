@@ -30,6 +30,7 @@ $(document).ready(function () {
           $("#lihatUmurPenggunaGW").text(penggunaData.Umur_Pengguna);
           $("#lihatJumlahSitUp2WanitaGW").text(penggunaData.Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita);
           $("#lihatNilaiSitUp2WanitaGW").text(penggunaData.Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita);
+          $("#tanggalPelaksanaanSitUp2WanitaGW").text(penggunaData.Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita);
           $("#lihatGarjasWanitaSitUp2").modal("show");
         }
       },

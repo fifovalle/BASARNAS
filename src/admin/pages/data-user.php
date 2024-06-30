@@ -114,9 +114,11 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonPengguna" data-bs-toggle="modal" data-id="<?php echo $pengguna['NIP_Pengguna']; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusPengguna(<?php echo $pengguna['NIP_Pengguna']; ?>)">
-                                                                        <i class="fa fa-trash"></i>
-                                                                    </button>
+                                                                    <?php if ($_SESSION['Peran_Admin'] === 'Super Admin') : ?>
+                                                                        <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusPengguna(<?php echo $pengguna['NIP_Pengguna']; ?>)">
+                                                                            <i class="fa fa-trash"></i>
+                                                                        </button>
+                                                                    <?php endif; ?>
                                                                     <button type="button" class="btn btn-link btn-info buttonLihatPengguna" data-bs-toggle="modal" data-id="<?php echo $pengguna['NIP_Pengguna']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>

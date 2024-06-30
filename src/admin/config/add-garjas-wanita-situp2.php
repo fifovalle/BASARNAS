@@ -58,6 +58,21 @@ if (isset($_POST['tambah_nilai'])) {
         exit;
     }
 
+    if (empty($nipPengguna) && empty($tanggalPelaksanaanSitUp2Wanita) && empty($jumlahSitUp2Wanita)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($tanggalPelaksanaanSitUp2Wanita)) {
+        $pesanKesalahan = "Tanggal pelaksanaan Sit Up kaki di tekuk harus diisi. ";
+    } elseif (empty($jumlahSitUp2Wanita)) {
+        $pesanKesalahan = "Jumlah Sit Up kaki di tekuk harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-wanita-situp2.php");
+        exit;
+    }
+
     $nilaiSitUp2 = [
         'under_25' => [
             84 => 100, 83 => 98, 82 => 94, 81 => 91, 80 => 88,

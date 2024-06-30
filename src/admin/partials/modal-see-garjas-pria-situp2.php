@@ -47,6 +47,10 @@
                                 <th>Nilai Sit Up:</th>
                                 <td id="lihatNilaiPriaSitUp2Td"></td>
                             </tr>
+                            <tr>
+                                <th>Tanggal Pelaksanaan:</th>
+                                <td id="tanggalPelaksanaanSitUp2PriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

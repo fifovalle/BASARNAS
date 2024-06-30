@@ -166,18 +166,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!$nilaiAkhir) {
-        setPesanKesalahan("Input waktu tidak valid untuk usia pengguna ini.");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-lari.php");
+        echo json_encode(array("success" => false, "message" => "Input waktu tidak valid untuk usia pengguna ini."));
         exit;
     }
 
-    $dataGarjasWanitaShuttleRun = array(
+    $dataGarjasTesLariPria = array(
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Tes_Lari_Pria' => $tanggalPelaksanaanTestLariPria,
         'Waktu_Lari_Pria' => $waktuTestLariPria,
         'Nilai_Lari_Pria' => $nilaiAkhir
     );
-    $updateGarjasPriaTesLari = $garjasPriaTesLariModel->perbaruiTesLariPria($idGarjasPriaTesLari, $dataGarjasWanitaShuttleRun);
+    $updateGarjasPriaTesLari = $garjasPriaTesLariModel->perbaruiTesLariPria($idGarjasPriaTesLari, $dataGarjasTesLariPria);
 
     if ($updateGarjasPriaTesLari) {
         echo json_encode(array("success" => true, "message" => "Data Garjas Pria Tes Lari berhasil diperbarui."));

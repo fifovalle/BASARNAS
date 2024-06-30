@@ -27,7 +27,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingWaktuTestRenangWanita" class="form-label">Waktu Renang</label>
-                        <input type="number" class="form-control" id="suntingWaktuTestRenangWanita" name="Waktu_Renang_Wanita">
+                        <input type="time" class="form-control" id="suntingWaktuTestRenangWanita" name="Waktu_Renang_Wanita">
                     </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanWaktuTestRenangWanita">Simpan</button>
                 </form>

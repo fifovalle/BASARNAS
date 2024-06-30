@@ -14,7 +14,7 @@
                     <div class="mb-3">
                         <label for="tambahNIPPenggunaWanita" class="form-label">NIP</label>
                         <select name="NIP_Pengguna" id="tambahNIPPenggunaWanita" class="form-select">
-                            <option selected>Pilih NIP Pengguna</option>
+                            <option selected disabled>Pilih NIP Pengguna</option>
                             <?php foreach ($penggunaWanitaInfo as $penggunaWanita) : ?>
                                 <option value="<?php echo $penggunaWanita['NIP_Pengguna']; ?>"><?php echo $penggunaWanita['NIP_Pengguna'] . ' - ' . $penggunaWanita['Nama_Lengkap_Pengguna']; ?></option>
                             <?php endforeach; ?>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tambahWaktuLariWanita" class="form-label">Waktu Lari</label>
-                        <input type="text" class="form-control" id="tambahWaktuLariWanita" name="Waktu_Lari_Wanita">
+                        <input type="number" min="0" step="any" class="form-control" id="tambahWaktuLariWanita" name="Waktu_Lari_Wanita">
                     </div>
                     <button type="submit" class="btn btn-primary" name="tambah_nilai">Simpan</button>
                 </form>

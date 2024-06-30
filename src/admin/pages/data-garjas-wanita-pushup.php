@@ -123,7 +123,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6" class="text-center text-danger fw-bolder">Tidak ada data Push Up yang ditemukan.</td>
+                                                        <td colspan="8" class="text-center text-danger fw-bolder">Tidak ada data Push Up yang ditemukan.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

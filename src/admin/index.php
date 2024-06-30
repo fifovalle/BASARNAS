@@ -19,6 +19,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <link rel="stylesheet" href="assets/css/plugins.min.css" />
     <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="assets/css/demo.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -134,6 +137,10 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="assets/js/kaiadmin.min.js"></script>
     <script src="assets/js/setting-demo.js"></script>
     <script src="assets/js/demo.js"></script>
+    <!-- ALERT -->
+    <?php
+    include('../admin/partials/alert.php');
+    ?>
 </body>
 
 </html>

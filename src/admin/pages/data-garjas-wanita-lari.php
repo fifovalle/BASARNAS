@@ -104,7 +104,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasTesLariWanita['Tanggal_Pelaksanaan_Tes_Lari_Wanita']; ?></td>
                                                             <td><?php echo $garjasTesLariWanita['Nama_Lengkap_Pengguna']; ?></td>
                                                             <td><?php echo $garjasTesLariWanita['Umur_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasTesLariWanita['Waktu_Lari_Wanita']; ?></td>
+                                                            <td><?php echo $garjasTesLariWanita['Waktu_Lari_Wanita']; ?> (Menit/Detik)</td>
                                                             <td><?php echo $garjasTesLariWanita['Nilai_Lari_Wanita']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
@@ -123,7 +123,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="6" class="text-center text-danger fw-bolder">Tidak ada data Tes Lari Wanita yang ditemukan.</td>
+                                                        <td colspan="8" class="text-center text-danger fw-bolder">Tidak ada data Tes Lari Wanita yang ditemukan.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

@@ -18,43 +18,19 @@ $(document).ready(function () {
         if (garjasPriaFlexedArmHangData.success === false) {
           alert(garjasPriaFlexedArmHangData.message);
         } else {
-          $("#lihatNamaPengguna").text(
-            garjasPriaFlexedArmHangData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatNIPPenggunaPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.NIP_Pengguna
-          );
-          $("#lihatPotoPenggunaPriaFlexedArmHangTd").attr(
-            "src",
-            "../uploads/" + garjasPriaFlexedArmHangData.Foto_Pengguna
-          );
-          $("#lihatNamaPenggunaPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.Nama_Lengkap_Pengguna
-          );
-          $("#lihatTglLahirPenggunaPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.Tanggal_Lahir_Pengguna
-          );
-          $("#lihatAlamatPenggunaTd").text(
-            garjasPriaFlexedArmHangData.Alamat_Pengguna
-          );
-          $("#lihatJabatanPenggunaPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.Jabatan_Pengguna
-          );
-          $("#lihatJenisKelaminPenggunaPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.Jenis_Kelamin_Pengguna
-          );
-          $("#lihatNoTelpPenggunaPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.No_Telepon_Pengguna
-          );
-          $("#lihatUmurPenggunaPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.Umur_Pengguna
-          );
-          $("#lihatWaktuPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.Waktu_Menggantung_Pria
-          );
-          $("#lihatNilaiPriaFlexedArmHangTd").text(
-            garjasPriaFlexedArmHangData.Nilai_Menggantung_Pria
-          );
+          $("#lihatNamaPengguna").text(garjasPriaFlexedArmHangData.Nama_Lengkap_Pengguna);
+          $("#lihatNIPPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.NIP_Pengguna);
+          $("#lihatPotoPenggunaPriaFlexedArmHangTd").attr("src", "../uploads/" + garjasPriaFlexedArmHangData.Foto_Pengguna);
+          $("#lihatNamaPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Nama_Lengkap_Pengguna);
+          $("#lihatTglLahirPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Tanggal_Lahir_Pengguna);
+          $("#lihatAlamatPenggunaTd").text(garjasPriaFlexedArmHangData.Alamat_Pengguna);
+          $("#lihatJabatanPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Jabatan_Pengguna);
+          $("#lihatJenisKelaminPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Jenis_Kelamin_Pengguna);
+          $("#lihatNoTelpPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.No_Telepon_Pengguna);
+          $("#lihatUmurPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Umur_Pengguna);
+          $("#lihatWaktuPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Waktu_Menggantung_Pria);
+          $("#lihatNilaiPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Nilai_Menggantung_Pria);
+          $("#tanggalPelaksanaanFlexedArmHangPriaTd").text(garjasPriaFlexedArmHangData.Tanggal_Pelaksanaan_Pria_Menggantung);
           $("#lihatGarjasPriaFlexedArmHang").modal("show");
         }
       },

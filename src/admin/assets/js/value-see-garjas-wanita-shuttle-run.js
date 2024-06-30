@@ -30,6 +30,7 @@ $(document).ready(function () {
           $("#lihatUmurPenggunaGW").text(penggunaData.Umur_Pengguna);
           $("#lihatJumlahShuttleRunWanitaGW").text(penggunaData.Jumlah_Shuttle_Run_Wanita);
           $("#lihatNilaiShuttleRunWanitaGW").text(penggunaData.Nilai_Shuttle_Run_Wanita);
+          $("#tanggalPelaksanaanShuttleRunWanitaGW").text(penggunaData.Tanggal_Pelaksanaan_Shuttle_Run_Wanita);
           $("#lihatGarjasWanitaShuttleRun").modal("show");
         }
       },
