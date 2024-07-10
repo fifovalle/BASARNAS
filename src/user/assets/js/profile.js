@@ -10,8 +10,9 @@ function uploadProfilePicture(event) {
   if (file) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      document.querySelector(".profile-picture").src = e.target.result;
+      document.querySelector(".change-profile").src = e.target.result;
     };
     reader.readAsDataURL(file);
+    document.getElementById("form-edit-profile").submit();
   }
 }

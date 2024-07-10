@@ -20,10 +20,16 @@ if (isset($_POST['Masuk'])) {
         exit();
     }
 
-    $pengguna = $penggunaDatabase->autentikasiPengguna($nipPengguna, $kataSandiPengguna);
+    $pengguna = $penggunaDatabase->cariPengguna($nipPengguna);
 
     if ($pengguna === null) {
-        setPesanKesalahan("Maaf, NIP Pengguna atau kata sandi yang Anda masukkan tidak ditemukan.");
+        setPesanKesalahan("NIP Admin tidak ditemukan.");
+        header("Location: " . $akarUrl . "src/user/pages/login.php");
+        exit();
+    }
+
+    if (!$penggunaDatabase->autentikasiPengguna($nipPengguna, $kataSandiPengguna)) {
+        setPesanKesalahan("Kata sandi salah.");
         header("Location: " . $akarUrl . "src/user/pages/login.php");
         exit();
     }
@@ -36,6 +42,6 @@ if (isset($_POST['Masuk'])) {
     $_SESSION['Jabatan_Pengguna'] = htmlspecialchars($pengguna['Jabatan_Pengguna']);
 
     setPesanKeberhasilan("Selamat datang, " . $_SESSION['Nama_Lengkap_Pengguna'] . "!");
-    header("Location: " . $akarUrl . "src/user/pages/index.php");
+    header("Location: " . $akarUrl . "");
     exit();
 }

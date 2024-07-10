@@ -15,6 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(array("success" => false, "message" => "Nilai push-up tidak boleh 0."));
         exit;
     }
+    if ($jumlahPushUpWanita < 0) {
+        echo json_encode(array("success" => false, "message" => "Jumlah push-up tidak boleh negatif."));
+        exit;
+    }
     $nilaiPushUp = [
         'under_25' => [
             38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,

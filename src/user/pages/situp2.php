@@ -29,31 +29,21 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 		<div class="btn-group">
 			<div class="dropdown pe-2">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Sort By Month
+					Pilih Bulan
 				</button>
 				<ul class="dropdown-menu text-center">
-					<li><a class="dropdown-item" href="#">Januari</a></li>
-					<li><a class="dropdown-item" href="#">Februari</a></li>
-					<li><a class="dropdown-item" href="#">Maret</a></li>
-					<li><a class="dropdown-item" href="#">April</a></li>
-					<li><a class="dropdown-item" href="#">Mei</a></li>
-					<li><a class="dropdown-item" href="#">Juni</a></li>
-					<li><a class="dropdown-item" href="#">Juli</a></li>
-					<li><a class="dropdown-item" href="#">Agustus</a></li>
-					<li><a class="dropdown-item" href="#">September</a></li>
-					<li><a class="dropdown-item" href="#">Oktober</a></li>
-					<li><a class="dropdown-item" href="#">November</a></li>
-					<li><a class="dropdown-item" href="#">Desember</a></li>
-				</ul>
-			</div>
-			<div class="dropdown ps-2">
-				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Sort By Year
-				</button>
-				<ul class="dropdown-menu text-center">
-					<li><a class="dropdown-item" href="#">2024</a></li>
-					<li><a class="dropdown-item" href="#">2025</a></li>
-					<li><a class="dropdown-item" href="#">2026</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="01">Januari</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="02">Februari</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="03">Maret</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="04">April</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="05">Mei</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="06">Juni</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="07">Juli</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="08">Agustus</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="09">September</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="10">Oktober</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="11">November</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 				</ul>
 			</div>
 		</div>
@@ -67,7 +57,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						<th>Nilai</th>
 					</tr>
 				</thead>
-				<tbody class="table-group-divider text-center">
+				<tbody class="table-group-divider text-center" id="situp2TabelBody">
 					<?php
 					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
 					$sitUp2Model = new Pengguna($koneksi);
@@ -83,7 +73,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						$sitUp2Info = $sitUp2Model->tampilkanSitUp2DenganSessionNipPria($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria';
 						$nilaiField = 'Nilai_Sit_Up_Kaki_Di_Tekuk_Pria';
-						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Pria';
+						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$sitUp2Info = $sitUp2Model->tampilkanSitUp2DenganSessionNipWanita($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita';
@@ -98,6 +88,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 							$nomorUrut++;
 					?>
 							<tr>
+							<tr class="situp2-baris" data-bulan="<?php echo date('m', strtotime($sitUp2[$tanggalPelaksanaanField])); ?>">
 								<td><?php echo $nomorUrut; ?></td>
 								<td><?php echo htmlspecialchars($sitUp2[$tanggalPelaksanaanField]); ?></td>
 								<td><?php echo htmlspecialchars($sitUp2[$jumlahField]); ?></td>
@@ -106,7 +97,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<?php
 						}
 					} else {
-						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Sit Up Kaki Ditekuk.</td></tr>';
+						echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Sit Up Kaki Ditekuk.</td></tr>';
 					}
 					?>
 				</tbody>
@@ -118,6 +109,31 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.dropdown-item').on('click', function() {
+				let bulan = $(this).data('bulan');
+				let jumlahBaris = 0;
+
+				$('.situp2-baris').each(function() {
+					let bulanBaris = $(this).data('bulan');
+					if (bulanBaris == bulan) {
+						$(this).show();
+						jumlahBaris++;
+					} else {
+						$(this).hide();
+					}
+				});
+
+				$('#barisTidakAdaData').remove();
+
+				if (jumlahBaris == 0) {
+					$('#situp2TabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data Sit Up Kaki Lurus yang ditemukan!</td></tr>");
+				}
+			});
+
+		});
+	</script>
 </body>
 
 </html>

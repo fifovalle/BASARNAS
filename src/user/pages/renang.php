@@ -24,36 +24,25 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	include('../partials/navbar.php');
 	?>
 	<section class="table-samapta">
-		<h1 class="samapta-title text-center">SAMAPTA (Renang 50 M)
-		</h1>
+		<h1 class="samapta-title text-center">SAMAPTA (Renang 50 M)</h1>
 		<div class="btn-group">
-			<div class="dropdown pe-2">
+			<div class="dropdown pe-2" id="dropdownBulan">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Sort By Month
+					Pilih Bulan
 				</button>
 				<ul class="dropdown-menu text-center">
-					<li><a class="dropdown-item" href="#">Januari</a></li>
-					<li><a class="dropdown-item" href="#">Februari</a></li>
-					<li><a class="dropdown-item" href="#">Maret</a></li>
-					<li><a class="dropdown-item" href="#">April</a></li>
-					<li><a class="dropdown-item" href="#">Mei</a></li>
-					<li><a class="dropdown-item" href="#">Juni</a></li>
-					<li><a class="dropdown-item" href="#">Juli</a></li>
-					<li><a class="dropdown-item" href="#">Agustus</a></li>
-					<li><a class="dropdown-item" href="#">September</a></li>
-					<li><a class="dropdown-item" href="#">Oktober</a></li>
-					<li><a class="dropdown-item" href="#">November</a></li>
-					<li><a class="dropdown-item" href="#">Desember</a></li>
-				</ul>
-			</div>
-			<div class="dropdown ps-2">
-				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Sort By Year
-				</button>
-				<ul class="dropdown-menu text-center">
-					<li><a class="dropdown-item" href="#">2024</a></li>
-					<li><a class="dropdown-item" href="#">2025</a></li>
-					<li><a class="dropdown-item" href="#">2026</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="01">Januari</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="02">Februari</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="03">Maret</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="04">April</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="05">Mei</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="06">Juni</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="07">Juli</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="08">Agustus</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="09">September</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="10">Oktober</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="11">November</a></li>
+					<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 				</ul>
 			</div>
 		</div>
@@ -68,7 +57,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						<th>Nilai</th>
 					</tr>
 				</thead>
-				<tbody class="table-group-divider text-center">
+				<tbody class="table-group-divider text-center" id="renangTabelBody">
 					<?php
 					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
 					$renangModel = new Pengguna($koneksi);
@@ -80,6 +69,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					$pengguna = $resultJenisKelamin->fetch_assoc();
 					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
 					$nomorUrut = 0;
+
 					if ($jenisKelamin == 'Pria') {
 						$renangInfo = $renangModel->tampilkanRenangDenganSessionNipPria($nipSessionPengguna);
 						$gayaField = 'Nama_Gaya_Renang_Pria';
@@ -98,10 +88,11 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 
 					if (!empty($renangInfo)) {
 						foreach ($renangInfo as $renang) {
+							$bulan = date('m', strtotime($renang[$tanggalPelaksanaanField]));
 							$nomorUrut++;
 					?>
-							<tr>
-								<td>1</td>
+							<tr class="renang-baris" data-bulan="<?php echo $bulan; ?>">
+								<td><?php echo $nomorUrut; ?></td>
 								<td><?php echo htmlspecialchars($renang[$tanggalPelaksanaanField]); ?></td>
 								<td><?php echo htmlspecialchars($renang[$gayaField]); ?></td>
 								<td><?php echo htmlspecialchars($renang[$waktuField]); ?></td>
@@ -110,7 +101,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<?php
 						}
 					} else {
-						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data renang.</td></tr>';
+						echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data renang.</td></tr>';
 					}
 					?>
 				</tbody>
@@ -122,6 +113,31 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#dropdownBulan .dropdown-item').on('click', function() {
+				let bulan = $(this).data('bulan');
+				let jumlahBaris = 0;
+
+				$('.renang-baris').each(function() {
+					let bulanBaris = $(this).data('bulan');
+					if (bulanBaris == bulan) {
+						$(this).show();
+						jumlahBaris++;
+					} else {
+						$(this).hide();
+					}
+				});
+
+				$('#barisTidakAdaData').remove();
+
+				if (jumlahBaris == 0) {
+					$('#renangTabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data renang yang ditemukan!</td></tr>");
+				}
+			});
+
+		});
+	</script>
 </body>
 
 </html>

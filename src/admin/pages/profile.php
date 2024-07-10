@@ -1,9 +1,14 @@
-<?php include('../config/databases.php');
+<?php
+include('../config/databases.php');
+
+$idSessionAdmin = $_SESSION['NIP_Admin'];
 if (!isset($_SESSION['NIP_Admin'])) {
     setPesanKesalahan("Silahkan login terlebih dahulu!");
     header("Location: " . $akarUrl . "src/admin/pages/login.php");
     exit();
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +16,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Data Admin Basarnas</title>
+    <title>Profil Saya</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="../assets/js/wenfontpages.js"></script>
@@ -54,68 +59,99 @@ if (!isset($_SESSION['NIP_Admin'])) {
                 <?php include('../partials/navbar.php'); ?>
                 <!-- NAVBAR END -->
             </div>
-            <div class="container">
-                <div class="page-inner">
-                    <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
-                        <div>
-                            <h3 class="fw-bold mb-3">Profil Anda</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Profil Basarnas</h6>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-body text-center">
-                                    <img src="<?php echo $akarUrl ?>src/admin/uploads/<?php echo $_SESSION['Foto_Admin']; ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 100px; height: 100px;">
-                                    <h5 class="my-3"><?php echo $_SESSION['Nama_Lengkap_Admin']; ?></h5>
-                                    <p class="text-muted mb-1"><?php echo $_SESSION['NIP_Admin']; ?></p>
-                                </div>
+
+            <?php
+            $idSessionAdmin = $_SESSION['NIP_Admin'];
+            $adminModel = new Admin($koneksi);
+            $dataAdmin = $adminModel->tampilkanAdminDenganSessionNip($idSessionAdmin);
+            if (!empty($dataAdmin)) {
+                $Admin = $dataAdmin[0];
+            ?>
+                <div class="container">
+                    <div class="page-inner">
+                        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+                            <div>
+                                <h3 class="fw-bold mb-3">Profil Anda</h3>
+                                <h6 class="op-7 mb-2">Selamat Datang Di Halaman Profil Anda!</h6>
                             </div>
                         </div>
-                        <div class="col-lg-8">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <p class="mb-0">Nama Lengkap</p>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $_SESSION['Nama_Lengkap_Admin']; ?></p>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <p class="mb-0">Nomor Telepon</p>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $_SESSION['No_Telepon_Admin']; ?></p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <form action="../config/edit-foto-profil-admin.php" method="post" enctype="multipart/form-data">
+                                    <div class="card mb-4">
+                                        <div class="card-body text-center">
+                                            <img src="<?php echo $akarUrl ?>src/admin/uploads/<?php echo $_SESSION['Foto_Admin']; ?>" alt="avatar" class="rounded img-fluid" style="width: 160px; height: 160px;" id="profile-picture">
+                                            <h5 class="my-3 mb-1 mt-4 fw-bold"><?php echo $Admin['Nama_Lengkap_Admin']; ?></h5>
+                                            <p class="text-muted mb-3"><?php echo $Admin['NIP_Admin']; ?></p>
+                                            <button type="button" class="btn btn-outline-dark mb-3" id="editImageButton" style="border-radius: 19px;">Sunting Gambar</button>
+                                            <input type="file" class="d-none" id="profileImageInput" name="Foto_Admin" accept="image/*">
                                         </div>
                                     </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <p class="mb-0">Jenis Kelamin</p>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $_SESSION['Jenis_Kelamin_Admin']; ?></p>
+                                </form>
+                            </div>
+                            <div class="col-lg-8">
+                                <form action="../config/edit-profil-admin.php" method="post" enctype="multipart/form-data">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3">
+                                                    <label class="mb-0 p-3" for="nama_lengkap">Nama Lengkap :</label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="Nama_Lengkap_Admin" id="nama_lengkap" value="<?php echo htmlspecialchars($Admin['Nama_Lengkap_Admin']); ?>" required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3">
+                                                    <label class="mb-0 p-3" for="no_telepon">Nomor Telepon :</label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="no_telepon" name="No_Telepon_Admin" value="<?php echo htmlspecialchars($Admin['No_Telepon_Admin']); ?>" required />
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3">
+                                                    <label class="mb-0 p-3" for="jenis_kelamin">Jenis Kelamin :</label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="jenis_kelamin" name="Jenis_Kelamin_Admin" required>
+                                                        <option value="Pria" <?php echo ($Admin['Jenis_Kelamin_Admin'] == 'Pria') ? 'selected' : ''; ?>>Pria</option>
+                                                        <option value="Wanita" <?php echo ($Admin['Jenis_Kelamin_Admin'] == 'Wanita') ? 'selected' : ''; ?>>Wanita</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3">
+                                                    <label class="mb-0 p-3" for="peran_admin">Peran Admin :</label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="peran_admin" name="Peran_Admin" required>
+                                                        <?php if ($_SESSION['Peran_Admin'] === 'Super Admin') : ?>
+                                                            <option value="Super Admin" <?php echo ($Admin['Peran_Admin'] == 'Super Admin') ? 'selected' : ''; ?>>Super Admin</option>
+                                                            <option value="Admin" <?php echo ($Admin['Peran_Admin'] == 'Admin') ? 'selected' : ''; ?>>Admin</option>
+                                                        <?php elseif ($_SESSION['Peran_Admin'] === 'Admin') : ?>
+                                                            <option value="Admin" selected>Admin</option>
+                                                        <?php endif; ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col-sm-12 text-end">
+                                                    <button type="submit" class="btn btn-dark" style="border-radius: 4px;" name="Simpan">Simpan Perubahan</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <p class="mb-0">Peran Admin</p>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $_SESSION['Peran_Admin']; ?></p>
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php
+            } else {
+                echo "<p>Data Admin tidak ditemukan.</p>";
+            }
+            ?>
             <!-- FOOTER START -->
             <?php include('../partials/footer.php'); ?>
             <!-- FOOTER END -->
@@ -126,9 +162,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <!-- CUSTOM END -->
 
     <!-- MODALS START -->
-    <?php include('../partials/modal-add-admin.php'); ?>
-    <?php include('../partials/modal-edit-admin.php'); ?>
-    <?php include('../partials/modal-see-admin.php'); ?>
     <!-- MODALS END -->
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
@@ -148,6 +181,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/value-admin.js"></script>
     <script src="../assets/js/value-see-admin.js"></script>
     <script src="../assets/js/toogle-admin.js"></script>
+    <script src="../assets/js/edit-foto-profil-admin.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

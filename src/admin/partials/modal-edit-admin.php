@@ -24,10 +24,17 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingPeranAdmin" class="form-label">Peran Admin</label>
-                        <select name="Peran_Admin" id="suntingPeranAdmin" class="form-select">
-                            <option selected disabled>Pilih Peran</option>
-                            <option value="Super Admin">Super Admin</option>
-                            <option value="Admin">Admin</option>
+                        <select name="Peran_Admin" id="tambahPeranAdmin" class="form-select">
+                            <?php if ($_SESSION['Peran_Admin'] === 'Super Admin') : ?>
+                                <option value="Super Admin" selected>Super Admin</option>
+                                <option value="Admin">Admin</option>
+                            <?php elseif ($_SESSION['Peran_Admin'] === 'Admin') : ?>
+                                <option value="Admin" selected>Admin</option>
+                            <?php else : ?>
+                                <option selected disabled>Pilih Peran</option>
+                                <option value="Super Admin">Super Admin</option>
+                                <option value="Admin">Admin</option>
+                            <?php endif; ?>
                         </select>
                     </div>
                     <div class="mb-3">

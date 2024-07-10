@@ -9,15 +9,21 @@ if (isset($_POST['Masuk'])) {
 
     if (empty($nipAdmin) || empty($kataSandiAdmin)) {
         setPesanKesalahan("Semua field harus diisi.");
-        header("Location: $akarUrl" . "src/admin/pages/login.php");
+        header("Location: " . $akarUrl . "src/admin/pages/login.php");
         exit();
     }
 
-    $admin = $adminDatabase->autentikasiAdmin($nipAdmin, $kataSandiAdmin);
+    $admin = $adminDatabase->cariAdmin($nipAdmin);
 
     if ($admin === null) {
-        setPesanKesalahan("Maaf, NIP Admin atau kata sandi yang Anda masukkan tidak ditemukan.");
-        header("Location: $akarUrl" . "src/admin/pages/login.php");
+        setPesanKesalahan("NIP Admin tidak ditemukan.");
+        header("Location: " . $akarUrl . "src/admin/pages/login.php");
+        exit();
+    }
+
+    if (!$adminDatabase->autentikasiAdmin($nipAdmin, $kataSandiAdmin)) {
+        setPesanKesalahan("Kata sandi salah.");
+        header("Location: " . $akarUrl . "src/admin/pages/login.php");
         exit();
     }
 
@@ -30,6 +36,6 @@ if (isset($_POST['Masuk'])) {
     $_SESSION['Alamat_Admin'] = htmlspecialchars($admin['Alamat_Admin']);
 
     setPesanKeberhasilan("Selamat datang, " . $_SESSION['Nama_Lengkap_Admin'] . "!");
-    header("Location: $akarUrl" . "src/admin/index.php");
+    header("Location: " . $akarUrl . "src/admin/index.php");
     exit();
 }

@@ -31,7 +31,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 		<div class="btn-group">
 			<div class="dropdown pe-2">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Sort By Month
+					Pilih Bulan
 				</button>
 				<ul class="dropdown-menu text-center">
 					<li><a class="dropdown-item" href="#">Januari</a></li>
@@ -50,7 +50,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 			</div>
 			<div class="dropdown ps-2">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Sort By Year
+					Pilih Tahun
 				</button>
 				<ul class="dropdown-menu text-center">
 					<li><a class="dropdown-item" href="#">2024</a></li>

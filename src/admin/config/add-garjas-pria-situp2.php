@@ -47,6 +47,21 @@ if (isset($_POST['Simpan'])) {
 
     $umurPengguna = $obyekGarjasPriaSitUpKakiDitekuk->ambilUmurGarjasSitUp2PriaOlehNIP($nipPengguna);
 
+    if (empty($nipPengguna) && empty($jumlahSitUpKakiDitekukPria) && empty($tanggalPelaksanaanSitUp2Pria)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($jumlahSitUpKakiDitekukPria)) {
+        $pesanKesalahan = "Waktu Sit Up Kaki Ditekuk harus diisi ";
+    } elseif (empty($tanggalPelaksanaanSitUp2Pria)) {
+        $pesanKesalahan = "Tanggal Pelaksanaan Sit Up Kaki Ditekuk harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-situp2.php");
+        exit;
+    }
+
     if ($obyekGarjasPriaSitUpKakiDitekuk->cekNipAnggotaSitUp2PriaSudahAda($nipPengguna)) {
         setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-situp2.php");
@@ -55,6 +70,12 @@ if (isset($_POST['Simpan'])) {
 
     if ($jumlahSitUpKakiDitekukPria == 0) {
         setPesanKesalahan("Jumlah Sit Up Kaki Ditekuk tidak boleh 0.");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-situp2.php");
+        exit;
+    }
+
+    if ($jumlahSitUpKakiDitekukPria < 0) {
+        setPesanKesalahan("Jumlah Sit Up Kaki Ditekuk tidak boleh negatif.");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-situp2.php");
         exit;
     }

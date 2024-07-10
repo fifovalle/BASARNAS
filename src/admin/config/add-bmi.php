@@ -68,6 +68,10 @@ if (isset($_POST['tambah_BMI'])) {
         $pesanKesalahan .= "Semua field harus diisi. ";
     }
 
+    if (!is_numeric($tinggiPengguna) || $tinggiPengguna <= 0 || !is_numeric($beratPengguna) || $beratPengguna <= 0) {
+        $pesanKesalahan .= "Tinggi dan Berat harus berupa angka positif. ";
+    }
+
     if (mengandungXSS($nipPengguna) || mengandungXSS($tinggiPengguna) || mengandungXSS($beratPengguna)) {
         $pesanKesalahan .= "Anda menginputkan karakter yang tidak diizinkan. ";
     }

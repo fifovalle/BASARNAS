@@ -27,23 +27,23 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<section class="table-kompetensi">
 		<h1 class="kompetensi-title text-center">Kompetensi</h1>
-		<div class="dropdown">
+		<div class="dropdown" id="dropdownBulan">
 			<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-				Sort By Month
+				Pilih Bulan
 			</button>
 			<ul class="dropdown-menu text-center">
-				<li><a class="dropdown-item" href="#">Januari</a></li>
-				<li><a class="dropdown-item" href="#">Februari</a></li>
-				<li><a class="dropdown-item" href="#">Maret</a></li>
-				<li><a class="dropdown-item" href="#">April</a></li>
-				<li><a class="dropdown-item" href="#">Mei</a></li>
-				<li><a class="dropdown-item" href="#">Juni</a></li>
-				<li><a class="dropdown-item" href="#">Juli</a></li>
-				<li><a class="dropdown-item" href="#">Agustus</a></li>
-				<li><a class="dropdown-item" href="#">September</a></li>
-				<li><a class="dropdown-item" href="#">Oktober</a></li>
-				<li><a class="dropdown-item" href="#">November</a></li>
-				<li><a class="dropdown-item" href="#">Desember</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="01">Januari</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="02">Februari</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="03">Maret</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="04">April</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="05">Mei</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="06">Juni</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="07">Juli</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="08">Agustus</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="09">September</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="10">Oktober</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="11">November</a></li>
+				<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 			</ul>
 		</div>
 		<div class="table-responsive-sm">
@@ -60,7 +60,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						<th>Aksi</th>
 					</tr>
 				</thead>
-				<tbody class="table-group-divider text-center">
+				<tbody class="table-group-divider text-center" id="kompetensiTabelBody">
 					<?php
 					$nipSessionPengguna = $_SESSION['NIP_Pengguna'];
 					$kompetensiModel = new Pengguna($koneksi);
@@ -68,8 +68,9 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					$nomorUrut = 0;
 					if (!empty($kompetensiInfo)) {
 						foreach ($kompetensiInfo as $kompetensi) {
+							$bulanPenerbitan = date('m', strtotime($kompetensi['Tanggal_Penerbitan_Sertifikat']));
 					?>
-							<tr>
+							<tr class="kompetensi-baris" data-bulan="<?= $bulanPenerbitan ?>">
 								<td><?php echo ++$nomorUrut; ?></td>
 								<td><?php echo $kompetensi['Nama_Sertifikat']; ?></td>
 								<td><?php echo $kompetensi['Tanggal_Penerbitan_Sertifikat']; ?></td>
@@ -99,7 +100,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<?php
 						}
 					} else {
-						echo '<tr><td colspan="10" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Kompetensi.</td></tr>';
+						echo '<tr id="barisTidakAdaData"><td colspan="8" class="text-center text-danger fw-bold">Tidak ada data kompetensi yang ditemukan!</td></tr>';
 					}
 					?>
 					<tr>
@@ -191,9 +192,36 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	<?php
 	include('../partials/alert.php');
 	?>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 	<script src="../assets/js/value-see-competence.js"></script>
 	<script src="../assets/js/notif-monday.js"></script>
 	<script src="../assets/js/notif-wednesday.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#dropdownBulan .dropdown-item').on('click', function() {
+				let bulan = $(this).data('bulan');
+				let jumlahBaris = 0;
+
+				$('.kompetensi-baris').each(function() {
+					let bulanBaris = $(this).data('bulan');
+					if (bulanBaris == bulan) {
+						$(this).show();
+						jumlahBaris++;
+					} else {
+						$(this).hide();
+					}
+				});
+
+				if (jumlahBaris == 0) {
+					if ($('#barisTidakAdaData').length === 0) {
+						$('#kompetensiTabelBody').append("<tr id='barisTidakAdaData'><td colspan='8' class='text-center text-danger fw-bold'>Tidak ada data kompetensi yang ditemukan!</td></tr>");
+					}
+				} else {
+					$('#barisTidakAdaData').remove();
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>

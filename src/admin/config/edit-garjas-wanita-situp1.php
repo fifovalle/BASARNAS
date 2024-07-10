@@ -15,6 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    if ($jumlahSitUp1Wanita < 0) {
+        echo json_encode(array("success" => false, "message" => "Jumlah sit-up tidak boleh negatif."));
+        exit;
+    }
+
     $nilaiSitUp1 = [
         'under_25' => [
             46 => 100, 45 => 96, 44 => 93, 43 => 89, 42 => 85,

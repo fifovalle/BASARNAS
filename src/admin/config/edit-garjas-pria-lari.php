@@ -18,6 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    if ($waktuTestLariPria < 0) {
+        echo json_encode(array("success" => false, "message" => "Nilai Tes Lari Pria tidak boleh Negatif."));
+        exit;
+    }
+
     $nilaiLari = [
         'under_25' => [
             '9' => 100, '9.1' => 98, '9.2' => 96, '9.3' => 93, '9.4' => 91,

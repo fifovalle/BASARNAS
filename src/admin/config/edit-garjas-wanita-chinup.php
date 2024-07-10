@@ -14,6 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(array("success" => false, "message" => "Nilai Chin Up tidak boleh 0."));
         exit;
     }
+
+    if ($jumlahChinUpWanita < 0) {
+        echo json_encode(array("success" => false, "message" => "Nilai Chin Up tidak boleh Negatif."));
+        exit;
+    }
+
     $nilaiChinUp = [
         'under_25' => [
             63 => 100, 62 => 98, 61 => 95, 60 => 93, 59 => 90,

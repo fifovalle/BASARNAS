@@ -61,9 +61,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <h3 class="fw-bold mb-3">Beranda</h3>
                             <h6 class="op-7 mb-2">Selamat Datang Di Halaman Admin Basarnas</h6>
                         </div>
-                        <div class="ms-md-auto py-2 py-md-0">
-                            <a href="#" class="btn btn-primary btn-round">Tambah Anggota Basarnas</a>
-                        </div>
                     </div>
                     <div class="row">
                         <?php
@@ -105,7 +102,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                         <div class="col col-stats ms-3 ms-sm-0">
                                             <div class="numbers">
                                                 <p class="card-category">Admin Basarnas</p>
-                                                <h4 class="card-title"><?= $totalPengguna; ?></h4>
+                                                <h4 class="card-title"><?= $totalAdmin; ?></h4>
                                             </div>
                                         </div>
                                     </div>

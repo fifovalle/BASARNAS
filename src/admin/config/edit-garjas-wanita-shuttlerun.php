@@ -18,6 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    if ($jumlahShuttleRunWanita < 0) {
+        echo json_encode(array("success" => false, "message" => "Nilai shuttle run tidak boleh negatif."));
+        exit;
+    }
+
+
+
     $nilaiShuttleRun = [
         'under_25' => [
             '17.2' => 100, '17.3' => 99, '17.4' => 98, '17.5' => 97, '17.6' => 96,

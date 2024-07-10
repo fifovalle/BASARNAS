@@ -46,6 +46,21 @@ if (isset($_POST['Simpan'])) {
     }
     $umurPengguna = $obyekGarjasPriaFlexedArmHang->ambilUmurGarjasFlexedArmHangPriaOlehNIP($nipPengguna);
 
+    if (empty($nipPengguna) && empty($waktuFlexedArmHang) && empty($tanggalPelaksanaanPriaMenggantung)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($waktuFlexedArmHang)) {
+        $pesanKesalahan = "Waktu Flexed Arm Hang harus diisi ";
+    } elseif (empty($tanggalPelaksanaanPriaMenggantung)) {
+        $pesanKesalahan = "Tanggal Pelaksanaan Flexed Arm harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
+        exit;
+    }
+
     if ($obyekGarjasPriaFlexedArmHang->cekNipAnggotaFlexedArmHangPriaSudahAda($nipPengguna)) {
         setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
@@ -53,7 +68,14 @@ if (isset($_POST['Simpan'])) {
     }
 
     if ($waktuFlexedArmHang == 0) {
-        echo json_encode(["success" => false, "message" => "Waktu Flexed Arm Hang tidak boleh 0."]);
+        setPesanKesalahan("Waktu Flexed Arm Hang tidak boleh 0.");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
+        exit;
+    }
+
+    if ($waktuFlexedArmHang < 0) {
+        setPesanKesalahan("Waktu Flexed Arm Hang tidak boleh negatif.");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
         exit;
     }
 
@@ -66,7 +88,7 @@ if (isset($_POST['Simpan'])) {
             35 => 71, 34 => 69, 33 => 67, 32 => 65, 31 => 63,
             30 => 61, 29 => 59, 28 => 57, 27 => 55, 26 => 53,
             25 => 51, 24 => 49, 23 => 47, 22 => 45, 21 => 43,
-            20 => 41, 39 => 22, 18 => 37, 17 => 35, 16 => 33,
+            20 => 41, 19 => 39, 18 => 37, 17 => 35, 16 => 33,
             15 => 31, 14 => 29, 13 => 26, 12 => 24, 11 => 22,
             10 => 20, 9 => 18, 8 => 16, 7 => 14, 6 => 12,
             5 => 10, 4 => 8, 3 => 6, 2 => 4, 1 => 2

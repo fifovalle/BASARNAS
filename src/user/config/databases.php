@@ -17,6 +17,22 @@ class Pengguna
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
 
+    public function cariPengguna($nipPengguna)
+    {
+        $query = "SELECT * FROM pengguna WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $nipPengguna);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row;
+        }
+        return null;
+    }
+
+
     public function autentikasiPengguna($nipPengguna, $kataSandiPengguna)
     {
         $query = "SELECT * FROM pengguna WHERE NIP_Pengguna = ?";
@@ -573,6 +589,65 @@ class Pengguna
 
         return $captcha;
     }
+
+    public function perbaruiPengguna($nipPengguna, $dataPengguna)
+    {
+        $sql = "UPDATE pengguna SET 
+                    Nama_Lengkap_Pengguna = ?, 
+                    Tanggal_Lahir_Pengguna = ?, 
+                    Jenis_Kelamin_Pengguna = ?, 
+                    No_Telepon_Pengguna = ?, 
+                    Umur_Pengguna = ? 
+                WHERE NIP_Pengguna = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param(
+            "ssssii",
+            $dataPengguna['Nama_Lengkap_Pengguna'],
+            $dataPengguna['Tanggal_Lahir_Pengguna'],
+            $dataPengguna['Jenis_Kelamin_Pengguna'],
+            $dataPengguna['No_Telepon_Pengguna'],
+            $dataPengguna['Umur_Pengguna'],
+            $nipPengguna
+        );
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiFotoPengguna($nipPengguna, $namaFotoBaru)
+    {
+        $sql = "UPDATE pengguna SET 
+                    Foto_Pengguna = ? 
+                WHERE NIP_Pengguna = ?";
+        $stmt = $this->koneksi->prepare($sql);
+
+        $stmt->bind_param("si", $namaFotoBaru, $nipPengguna);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getFotoPenggunaById($idPengguna)
+    {
+        $query = "SELECT Foto_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $idPengguna);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            return $data['Foto_Pengguna'];
+        } else {
+            return null;
+        }
+    }
 }
 
 // ===================================PENGGUNA===================================
@@ -700,3 +775,191 @@ class Absensi
 }
 
 // ===================================ABSENSI===================================
+
+
+// ===================================HITUNG NILAI AKHIR===================================
+class NilaiAkhir
+{
+
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    public function hitungDataSesuaiNIP($nipPengguna, $jenisKelamin)
+    {
+        if ($jenisKelamin === 'Pria') {
+            $query = "
+        SELECT g.NIP_Pengguna,
+               COALESCE(g.Nilai_Chin_Up_Pria, 0) AS Nilai_Chin_Up_Pria,
+               COALESCE(g.Nilai_Menggantung_Pria, 0) AS Nilai_Menggantung_Pria,
+               COALESCE(g.Nilai_Push_Up_Pria, 0) AS Nilai_Push_Up_Pria,
+               COALESCE(g.Nilai_Shuttle_Run_Pria, 0) AS Nilai_Shuttle_Run_Pria,
+               COALESCE(g.Nilai_Sit_Up_Kaki_Di_Tekuk_Pria, 0) AS Nilai_Sit_Up_Kaki_Di_Tekuk_Pria,
+               COALESCE(g.Nilai_Sit_Up_Kaki_Lurus_Pria, 0) AS Nilai_Sit_Up_Kaki_Lurus_Pria,
+               COALESCE(t.Nilai_Lari_Pria, 0) AS tes_lari,
+               p.Nama_Lengkap_Pengguna
+        FROM (
+            SELECT NIP_Pengguna,
+                   SUM(Nilai_Chin_Up_Pria) AS Nilai_Chin_Up_Pria,
+                   SUM(Nilai_Menggantung_Pria) AS Nilai_Menggantung_Pria,
+                   SUM(Nilai_Push_Up_Pria) AS Nilai_Push_Up_Pria,
+                   SUM(Nilai_Shuttle_Run_Pria) AS Nilai_Shuttle_Run_Pria,
+                   SUM(Nilai_Sit_Up_Kaki_Di_Tekuk_Pria) AS Nilai_Sit_Up_Kaki_Di_Tekuk_Pria,
+                   SUM(Nilai_Sit_Up_Kaki_Lurus_Pria) AS Nilai_Sit_Up_Kaki_Lurus_Pria
+            FROM (
+                SELECT NIP_Pengguna, Nilai_Chin_Up_Pria, 0 AS Nilai_Menggantung_Pria, 0 AS Nilai_Push_Up_Pria, 0 AS Nilai_Shuttle_Run_Pria, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Pria, 0 AS Nilai_Sit_Up_Kaki_Lurus_Pria FROM garjas_pria_chin_up
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Pria, Nilai_Menggantung_Pria, 0 AS Nilai_Push_Up_Pria, 0 AS Nilai_Shuttle_Run_Pria, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Pria, 0 AS Nilai_Sit_Up_Kaki_Lurus_Pria FROM garjas_pria_menggantung
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Pria, 0 AS Nilai_Menggantung_Pria, Nilai_Push_Up_Pria, 0 AS Nilai_Shuttle_Run_Pria, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Pria, 0 AS Nilai_Sit_Up_Kaki_Lurus_Pria FROM garjas_pria_push_up
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Pria, 0 AS Nilai_Menggantung_Pria, 0 AS Nilai_Push_Up_Pria, Nilai_Shuttle_Run_Pria, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Pria, 0 AS Nilai_Sit_Up_Kaki_Lurus_Pria FROM garjas_pria_shuttle_run
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Pria, 0 AS Nilai_Menggantung_Pria, 0 AS Nilai_Push_Up_Pria, 0 AS Nilai_Shuttle_Run_Pria, Nilai_Sit_Up_Kaki_Di_Tekuk_Pria, 0 AS Nilai_Sit_Up_Kaki_Lurus_Pria FROM garjas_pria_sit_up_kaki_di_tekuk
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Pria, 0 AS Nilai_Menggantung_Pria, 0 AS Nilai_Push_Up_Pria, 0 AS Nilai_Shuttle_Run_Pria, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Pria, Nilai_Sit_Up_Kaki_Lurus_Pria FROM garjas_pria_sit_up_kaki_lurus
+            ) AS g
+            GROUP BY NIP_Pengguna
+        ) AS g
+        LEFT JOIN pengguna AS p ON g.NIP_Pengguna = p.NIP_Pengguna
+        LEFT JOIN tes_lari_pria AS t ON g.NIP_Pengguna = t.NIP_Pengguna
+        WHERE g.NIP_Pengguna = ?
+        ";
+        } else {
+            $query = "
+        SELECT g.NIP_Pengguna,
+               COALESCE(g.Nilai_Chin_Up_Wanita, 0) AS Nilai_Chin_Up_Wanita,
+               COALESCE(g.Nilai_Push_Up_Wanita, 0) AS Nilai_Push_Up_Wanita,
+               COALESCE(g.Nilai_Shuttle_Run_Wanita, 0) AS Nilai_Shuttle_Run_Wanita,
+               COALESCE(g.Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita, 0) AS Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita,
+               COALESCE(g.Nilai_Sit_Up_Kaki_Lurus_Wanita, 0) AS Nilai_Sit_Up_Kaki_Lurus_Wanita,
+               COALESCE(t.Nilai_Lari_Wanita, 0) AS tes_lari,
+               p.Nama_Lengkap_Pengguna
+        FROM (
+            SELECT NIP_Pengguna,
+                   SUM(Nilai_Chin_Up_Wanita) AS Nilai_Chin_Up_Wanita,
+                   SUM(Nilai_Push_Up_Wanita) AS Nilai_Push_Up_Wanita,
+                   SUM(Nilai_Shuttle_Run_Wanita) AS Nilai_Shuttle_Run_Wanita,
+                   SUM(Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita) AS Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita,
+                   SUM(Nilai_Sit_Up_Kaki_Lurus_Wanita) AS Nilai_Sit_Up_Kaki_Lurus_Wanita
+            FROM (
+                SELECT NIP_Pengguna, Nilai_Chin_Up_Wanita, 0 AS Nilai_Push_Up_Wanita, 0 AS Nilai_Shuttle_Run_Wanita, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita, 0 AS Nilai_Sit_Up_Kaki_Lurus_Wanita FROM garjas_wanita_chin_up
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Wanita, Nilai_Push_Up_Wanita, 0 AS Nilai_Shuttle_Run_Wanita, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita, 0 AS Nilai_Sit_Up_Kaki_Lurus_Wanita FROM garjas_wanita_push_up
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Wanita, 0 AS Nilai_Push_Up_Wanita, Nilai_Shuttle_Run_Wanita, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita, 0 AS Nilai_Sit_Up_Kaki_Lurus_Wanita FROM garjas_wanita_shuttle_run
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Wanita, 0 AS Nilai_Push_Up_Wanita, 0 AS Nilai_Shuttle_Run_Wanita, Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita, 0 AS Nilai_Sit_Up_Kaki_Lurus_Wanita FROM garjas_wanita_sit_up_kaki_di_tekuk
+                UNION ALL
+                SELECT NIP_Pengguna, 0 AS Nilai_Chin_Up_Wanita, 0 AS Nilai_Push_Up_Wanita, 0 AS Nilai_Shuttle_Run_Wanita, 0 AS Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita, Nilai_Sit_Up_Kaki_Lurus_Wanita FROM garjas_wanita_sit_up_kaki_lurus
+            ) AS g
+            GROUP BY NIP_Pengguna
+        ) AS g
+        LEFT JOIN pengguna AS p ON g.NIP_Pengguna = p.NIP_Pengguna
+        LEFT JOIN tes_lari_wanita AS t ON g.NIP_Pengguna = t.NIP_Pengguna
+        WHERE g.NIP_Pengguna = ?
+        ";
+        }
+
+        try {
+            $stmt = $this->koneksi->prepare($query);
+            $stmt->bind_param("s", $nipPengguna);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $data = [];
+                $totalNilai = 0;
+                $totalTesLari = 0;
+                $jumlahBaris = 0;
+                $nipAlreadyAdded = [];
+
+                while ($baris = $result->fetch_assoc()) {
+                    if (!in_array($baris['NIP_Pengguna'], $nipAlreadyAdded)) {
+                        if ($jenisKelamin === 'Pria') {
+                            $totalNilai += $baris['Nilai_Chin_Up_Pria']
+                                + $baris['Nilai_Menggantung_Pria']
+                                + $baris['Nilai_Push_Up_Pria']
+                                + $baris['Nilai_Shuttle_Run_Pria']
+                                + $baris['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria']
+                                + $baris['Nilai_Sit_Up_Kaki_Lurus_Pria'];
+
+                            $data[] = [
+                                'NIP_Pengguna' => $baris['NIP_Pengguna'],
+                                'Nilai_Chin_Up_Pria' => $baris['Nilai_Chin_Up_Pria'],
+                                'Nilai_Push_Up_Pria' => $baris['Nilai_Push_Up_Pria'],
+                                'Nilai_Shuttle_Run_Pria' => $baris['Nilai_Shuttle_Run_Pria'],
+                                'Nilai_Sit_Up_Kaki_Di_Tekuk_Pria' => $baris['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria'],
+                                'Nilai_Sit_Up_Kaki_Lurus_Pria' => $baris['Nilai_Sit_Up_Kaki_Lurus_Pria'],
+                                'Nilai_Menggantung_Pria' => $baris['Nilai_Menggantung_Pria'],
+                                'tes_lari' => $baris['tes_lari'],
+                                'Nama_Lengkap_Pengguna' => $baris['Nama_Lengkap_Pengguna']
+                            ];
+
+                            $jumlahBaris = 6;
+                        } else {
+                            $totalNilai += $baris['Nilai_Chin_Up_Wanita']
+                                + $baris['Nilai_Push_Up_Wanita']
+                                + $baris['Nilai_Shuttle_Run_Wanita']
+                                + $baris['Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita']
+                                + $baris['Nilai_Sit_Up_Kaki_Lurus_Wanita'];
+
+                            $data[] = [
+                                'NIP_Pengguna' => $baris['NIP_Pengguna'],
+                                'Nilai_Chin_Up_Wanita' => $baris['Nilai_Chin_Up_Wanita'],
+                                'Nilai_Push_Up_Wanita' => $baris['Nilai_Push_Up_Wanita'],
+                                'Nilai_Shuttle_Run_Wanita' => $baris['Nilai_Shuttle_Run_Wanita'],
+                                'Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita' => $baris['Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita'],
+                                'Nilai_Sit_Up_Kaki_Lurus_Wanita' => $baris['Nilai_Sit_Up_Kaki_Lurus_Wanita'],
+                                'tes_lari' => $baris['tes_lari'],
+                                'Nama_Lengkap_Pengguna' => $baris['Nama_Lengkap_Pengguna']
+                            ];
+                            $jumlahBaris = 5;
+                        }
+
+                        if ($baris['tes_lari'] !== NULL) {
+                            $totalTesLari += $baris['tes_lari'];
+                        }
+                        $nipAlreadyAdded[] = $baris['NIP_Pengguna'];
+                    }
+                }
+
+                $rataRataNilai = $jumlahBaris > 0 ? $totalNilai / $jumlahBaris : 0;
+                $rataRataNilai = round($rataRataNilai, 1);
+
+                $nilaiTotal = ($totalTesLari + $rataRataNilai) / 2;
+                $nilaiTotal = round($nilaiTotal, 1);
+
+
+                return [
+                    'data' => $data,
+                    'totalNilai' => $totalNilai,
+                    'rataRataNilai' => $rataRataNilai,
+                    'totalTesLari' => $totalTesLari,
+                    'nilaiTotal' => $nilaiTotal
+                ];
+            } else {
+                return [
+                    'data' => [],
+                    'totalNilai' => 0,
+                    'rataRataNilai' => 0,
+                    'totalTesLari' => 0,
+                    'nilaiTotal' => 0
+                ];
+            }
+        } catch (Exception $e) {
+            error_log('Error executing query: ' . $e->getMessage());
+            return [
+                'data' => [],
+                'totalNilai' => 0,
+                'rataRataNilai' => 0,
+                'totalTesLari' => 0,
+                'nilaiTotal' => 0
+            ];
+        }
+    }
+}
+// ===================================HITUNG NILAI AKHIR===================================

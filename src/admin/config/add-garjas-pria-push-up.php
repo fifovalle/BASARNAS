@@ -47,6 +47,21 @@ if (isset($_POST['Simpan'])) {
 
     $umurPengguna = $obyekPengguna->ambilUmurGarjasPushUpPriaOlehNIP($nipPengguna);
 
+    if (empty($nipPengguna) && empty($jumlahPushUpPria) && empty($tanggalPelaksanaanPushUpPria)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($jumlahPushUpPria)) {
+        $pesanKesalahan = "Jumlah Push Up harus diisi ";
+    } elseif (empty($tanggalPelaksanaanPushUpPria)) {
+        $pesanKesalahan = "Tanggal Pelaksanaan Push Up harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-pushup.php");
+        exit;
+    }
+
     if ($obyekPengguna->cekNipAnggotaPushUpPriaSudahAda($nipPengguna)) {
         setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-pushup.php");
@@ -58,6 +73,13 @@ if (isset($_POST['Simpan'])) {
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-pushup.php");
         exit;
     }
+
+    if ($jumlahPushUpPria < 0) {
+        setPesanKesalahan("Nilai push-up tidak boleh negatif.");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-pushup.php");
+        exit;
+    }
+    
 
     $nilaiPushUp = [
         'under_25' => [

@@ -68,6 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("profil").classList.add("activated");
         document.getElementById("pengaturan").classList.add("activated");
         break;
+      case "nilai-akhir.php":
+        document.getElementById("profil").classList.add("activated");
+        document.getElementById("nilai-saya").classList.add("activated");
+        break;
       default:
         break;
     }

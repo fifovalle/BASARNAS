@@ -63,13 +63,13 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-garjas-pria-pushup.php') || apakahAktif('src/admin/pages/data-garjas-pria-situp1.php') || apakahAktif('src/admin/pages/data-garjas-pria-shuttlerun.php') || apakahAktif('src/admin/pages/data-garjas-pria-flexedarmhang.php') || apakahAktif('src/admin/pages/data-garjas-pria-chinup.php') || apakahAktif('src/admin/pages/data-garjas-pria-situp2.php') ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-garjas-pria-pushup.php') || apakahAktif('src/admin/pages/data-garjas-pria-situp1.php') || apakahAktif('src/admin/pages/data-garjas-pria-shuttlerun.php') || apakahAktif('src/admin/pages/data-garjas-pria-flexedarmhang.php') || apakahAktif('src/admin/pages/data-garjas-pria-chinup.php') || apakahAktif('src/admin/pages/data-garjas-pria-situp2.php') || apakahAktif('src/admin/pages/total-garjas-pria.php') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#garjasPria">
                         <i class="fas fa-layer-group"></i>
                         <p>Garjas Pria</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-garjas-pria-pushup.php') || apakahAktif('src/admin/pages/data-garjas-pria-situp1.php') || apakahAktif('src/admin/pages/data-garjas-pria-shuttlerun.php') || apakahAktif('src/admin/pages/data-garjas-pria-flexedarmhang.php') || apakahAktif('src/admin/pages/data-garjas-pria-chinup.php') || apakahAktif('src/admin/pages/data-garjas-pria-situp2.php') ? 'show' : ''; ?>" id="garjasPria">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-garjas-pria-pushup.php') || apakahAktif('src/admin/pages/data-garjas-pria-situp1.php') || apakahAktif('src/admin/pages/data-garjas-pria-shuttlerun.php') || apakahAktif('src/admin/pages/data-garjas-pria-flexedarmhang.php') || apakahAktif('src/admin/pages/data-garjas-pria-chinup.php') || apakahAktif('src/admin/pages/data-garjas-pria-situp2.php')  || apakahAktif('src/admin/pages/total-garjas-pria.php') ? 'show' : ''; ?>" id="garjasPria">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-garjas-pria-pushup.php">
@@ -101,16 +101,21 @@
                                     <span class="sub-item">Sit Up Kaki Ditekuk</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/total-garjas-pria.php">
+                                    <span class="sub-item">Total Garjas</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-garjas-wanita-pushup.php') || apakahAktif('src/admin/pages/data-garjas-wanita-situp1.php') || apakahAktif('src/admin/pages/data-garjas-wanita-shuttlerun.php') || apakahAktif('src/admin/pages/data-garjas-wanita-chinup.php') || apakahAktif('src/admin/pages/data-garjas-wanita-situp2.php') ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-garjas-wanita-pushup.php') || apakahAktif('src/admin/pages/data-garjas-wanita-situp1.php') || apakahAktif('src/admin/pages/data-garjas-wanita-shuttlerun.php') || apakahAktif('src/admin/pages/data-garjas-wanita-chinup.php') || apakahAktif('src/admin/pages/data-garjas-wanita-situp2.php') || apakahAktif('src/admin/pages/total-garjas-wanita.php') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#garjasWanita">
                         <i class="fas fa-layer-group"></i>
                         <p>Garjas Wanita</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-garjas-wanita-pushup.php') || apakahAktif('src/admin/pages/data-garjas-wanita-situp1.php') || apakahAktif('src/admin/pages/data-garjas-wanita-shuttlerun.php') || apakahAktif('src/admin/pages/data-garjas-wanita-chinup.php') || apakahAktif('src/admin/pages/data-garjas-wanita-situp2.php') ? 'show' : ''; ?>" id="garjasWanita">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-garjas-wanita-pushup.php') || apakahAktif('src/admin/pages/data-garjas-wanita-situp1.php') || apakahAktif('src/admin/pages/data-garjas-wanita-shuttlerun.php') || apakahAktif('src/admin/pages/data-garjas-wanita-chinup.php') || apakahAktif('src/admin/pages/data-garjas-wanita-situp2.php') || apakahAktif('src/admin/pages/total-garjas-wanita.php') ? 'show' : ''; ?>" id="garjasWanita">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-garjas-wanita-pushup.php">
@@ -135,6 +140,11 @@
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-garjas-wanita-situp2.php">
                                     <span class="sub-item">Sit Up Kaki Ditekuk</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/total-garjas-wanita.php">
+                                    <span class="sub-item">Total Garjas</span>
                                 </a>
                             </li>
                         </ul>

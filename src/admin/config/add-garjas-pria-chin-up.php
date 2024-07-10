@@ -39,6 +39,21 @@ if (isset($_POST['Simpan'])) {
     $tanggalPelaksanaanChinUpPria = mysqli_real_escape_string($koneksi, $_POST['Tanggal_Pelaksanaan_Chin_Up_Pria']);
     $umurPengguna = $obyekGarjasPriaChinUp->ambilUmurGarjasChinUpPriaOlehNIP($nipPengguna);
 
+    if (empty($nipPengguna) && empty($jumlahChinUpPria) && empty($tanggalPelaksanaanChinUpPria)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($jumlahChinUpPria)) {
+        $pesanKesalahan = "Jumlah Chin Up harus diisi ";
+    } elseif (empty($tanggalPelaksanaanChinUpPria)) {
+        $pesanKesalahan = "Tanggal Pelaksanaan Chin Up harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-chinup.php");
+        exit;
+    }
+
     if ($obyekGarjasPriaChinUp->cekNipAnggotaChinUpPriaSudahAda($nipPengguna)) {
         setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-chinup.php");
@@ -46,7 +61,14 @@ if (isset($_POST['Simpan'])) {
     }
 
     if ($jumlahChinUpPria == 0) {
-        echo json_encode(["success" => false, "message" => "Jumlah Chin Up tidak boleh 0."]);
+        setPesanKesalahan("Jumlah Chin Up tidak boleh 0.");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-chinup.php");
+        exit;
+    }
+
+    if ($jumlahChinUpPria < 0) {
+        setPesanKesalahan("Jumlah Chin Up tidak boleh negatif.");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-chinup.php");
         exit;
     }
 

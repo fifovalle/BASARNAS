@@ -26,6 +26,22 @@ if (isset($_POST['tambah_nilai'])) {
     $umurPengguna = $obyekPenggunaPria->ambilUmurPengguna($nipPengguna);
 
     $tesRenangPriaModel = new TesRenangPria($koneksi);
+
+    if (empty($nipPengguna) && empty($waktuRenang) && empty($tanggalPelaksanaanTesRenangPria)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($waktuRenang)) {
+        $pesanKesalahan = "Waktu Renang harus diisi ";
+    } elseif (empty($tanggalPelaksanaanTesRenangPria)) {
+        $pesanKesalahan = "Tanggal Pelaksanaan Renang harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-pria-renang.php");
+        exit;
+    }
+
     if ($tesRenangPriaModel->sudahAdaNilaiRenangPria($nipPengguna)) {
         setPesanKesalahan("Nilai renang untuk pengguna ini sudah ada.");
         header("Location: " . $akarUrl . "src/admin/pages/data-garjas-pria-renang.php");

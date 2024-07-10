@@ -22,7 +22,7 @@ if (isset($_POST['presensi_hadir']) || isset($_POST['presensi_selesai'])) {
     $absensiHariIni = $absensiModel->getAbsensiByNIPAndDate($nipPengguna, $tanggalAbsensi);
 
     if (isset($_POST['presensi_hadir'])) {
-        if ($jamSekarang >= '12:00' && $jamSekarang <= '18:00') {
+        if ($jamSekarang >= '19:00' && $jamSekarang <= '20:00') {
             $statusAbsensi = 'Hadir Pagi';
             $pesanBerhasil = "Anda berhasil melakukan absen pagi.";
             $validAbsensi = true;
@@ -47,7 +47,7 @@ if (isset($_POST['presensi_hadir']) || isset($_POST['presensi_selesai'])) {
             $pesanGagal = "Absensi pagi tidak berhasil karena melewati waktu absen.";
         }
     } elseif (isset($_POST['presensi_selesai'])) {
-        if ($jamSekarang >= '12:00' && $jamSekarang <= '18:00') {
+        if ($jamSekarang >= '19:00' && $jamSekarang <= '20:00') {
             $statusAbsensi = 'Hadir Sore';
             $pesanBerhasil = "Anda berhasil melakukan absen sore.";
             $validAbsensi = true;

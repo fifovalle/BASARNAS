@@ -50,6 +50,20 @@ if (isset($_POST['Simpan'])) {
     $waktuShuttleRunPria = str_replace(',', '.', $waktuShuttleRunPria);
     $waktuShuttleRunPria = (float) $waktuShuttleRunPria;
 
+    if (empty($nipPengguna) && empty($waktuShuttleRunPria) && empty($tanggalPelaksanaanShuttleRunPria)) {
+        $pesanKesalahan = "Semua bidang harus diisi. ";
+    } elseif (empty($nipPengguna)) {
+        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+    } elseif (empty($waktuShuttleRunPria)) {
+        $pesanKesalahan = "Waktu Shuttle Run harus diisi ";
+    } elseif (empty($tanggalPelaksanaanShuttleRunPria)) {
+        $pesanKesalahan = "Tanggal Pelaksanaan Shuttle Run harus diisi. ";
+    }
+    if (!empty($pesanKesalahan)) {
+        setPesanKesalahan($pesanKesalahan);
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-shuttlerun.php");
+        exit;
+    }
 
     if ($obyekGarjasPriaShuttleRun->cekNipAnggotaShuttleRunPriaSudahAda($nipPengguna)) {
         setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
@@ -62,10 +76,16 @@ if (isset($_POST['Simpan'])) {
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-shuttlerun.php");
         exit;
     }
+    if ($waktuShuttleRunPria <0) {
+        setPesanKesalahan("Waktu Shuttle Run tidak boleh negatif.");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-shuttlerun.php");
+        exit;
+    }
 
     $nilaiShuttleRunPria = [
         'under_25' => [
             '<15.9' => 100,
+            '>25.8' => 1,
             15.9 => 100, 16 => 99, 16.1 => 98, 16.2 => 97, 16.3 => 96,
             16.4 => 95, 16.5 => 94, 16.6 => 93, 16.7 => 92, 16.8 => 91,
             16.9 => 90, 17 => 89, 17.1 => 88, 17.2 => 87, 17.3 => 86,
@@ -92,6 +112,7 @@ if (isset($_POST['Simpan'])) {
 
         '25-34' => [
             '<16.9' => 100,
+            '>26.8' => 1,
             16.9 => 100, 17 => 99, 17.1 => 98, 17.2 => 97, 17.3 => 96,
             17.4 => 95, 17.5 => 94, 17.6 => 93, 17.7 => 92, 17.8 => 91,
             17.9 => 90, 18 => 89, 18.1 => 88, 18.2 => 87, 18.3 => 86,
@@ -116,6 +137,7 @@ if (isset($_POST['Simpan'])) {
 
         '35-44' => [
             '<17.4' => 100,
+            '>27.3' => 1,
             17.4 => 100, 17.5 => 99, 17.6 => 98, 17.7 => 97, 17.8 => 96,
             17.9 => 95, 18 => 94, 18.1 => 93, 18.2 => 92, 18.3 => 91,
             18.4 => 90, 18.5 => 89, 18.6 => 88, 18.7 => 87, 18.8 => 86,
@@ -140,6 +162,7 @@ if (isset($_POST['Simpan'])) {
 
         '45-54' => [
             '<18.9' => 100,
+            '>28.8' => 1,
             18.9 => 100, 19 => 99, 19.1 => 98, 19.2 => 97, 19.3 => 96,
             19.4 => 95, 19.5 => 94, 19.6 => 93, 19.7 => 92, 19.8 => 91,
             19.9 => 90, 20 => 89, 20.1 => 88, 20.2 => 87, 20.3 => 86,
@@ -164,6 +187,7 @@ if (isset($_POST['Simpan'])) {
 
         '55-59' => [
             '<20.4' => 100,
+            '>30.3' => 1,
             20.4 => 100, 20.5 => 99, 20.6 => 98, 20.7 => 97, 20.8 => 96,
             20.9 => 95, 21 => 94, 21.1 => 93, 21.2 => 92, 21.3 => 91,
             21.4 => 90, 21.5 => 89, 21.6 => 88, 21.7 => 87, 21.8 => 86,
@@ -189,37 +213,48 @@ if (isset($_POST['Simpan'])) {
 
     $nilaiAkhir = 0;
 
-    if ($umurPengguna < 25) {
-        if ($waktuShuttleRunPria < 15.9 && isset($nilaiShuttleRunPria['under_25']['<15.9'])) {
-            $nilaiAkhir = $nilaiShuttleRunPria['under_25']['<15.9'];
-        } else {
-            $nilaiAkhir = isset($nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria] : 0;
-        }
-    } elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
-        if ($waktuShuttleRunPria < 16.9 && isset($nilaiShuttleRunPria['25-34']['<16.9'])) {
-            $nilaiAkhir = $nilaiShuttleRunPria['25-34']['<16.9'];
-        } else {
-            $nilaiAkhir = isset($nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria] : 0;
-        }
-    } elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
-        if ($waktuShuttleRunPria < 17.4 && isset($nilaiShuttleRunPria['35-44']['<17.4'])) {
-            $nilaiAkhir = $nilaiShuttleRunPria['35-44']['<17.4'];
-        } else {
-            $nilaiAkhir = isset($nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria] : 0;
-        }
-    } elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
-        if ($waktuShuttleRunPria < 18.9 && isset($nilaiShuttleRunPria['45-54']['<18.9'])) {
-            $nilaiAkhir = $nilaiShuttleRunPria['45-54']['<18.9'];
-        } else {
-            $nilaiAkhir = isset($nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria] : 0;
-        }
-    } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
-        if ($waktuShuttleRunPria < 20.4 && isset($nilaiShuttleRunPria['55-59']['<20.4'])) {
-            $nilaiAkhir = $nilaiShuttleRunPria['55-59']['<20.4'];
-        } else {
-            $nilaiAkhir = isset($nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria] : 0;
-        }
+if ($umurPengguna < 25) {
+    if ($waktuShuttleRunPria < 15.9 && isset($nilaiShuttleRunPria['under_25']['<15.9'])) {
+        $nilaiAkhir = $nilaiShuttleRunPria['under_25']['<15.9'];
+    } elseif ($waktuShuttleRunPria > 25.8) {
+        $nilaiAkhir = 1;
+    } else {
+        $nilaiAkhir = isset($nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria] : 0;
     }
+} elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
+    if ($waktuShuttleRunPria < 16.9 && isset($nilaiShuttleRunPria['25-34']['<16.9'])) {
+        $nilaiAkhir = $nilaiShuttleRunPria['25-34']['<16.9'];
+    } elseif ($waktuShuttleRunPria > 26.8) {
+        $nilaiAkhir = 1;
+    } else {
+        $nilaiAkhir = isset($nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria] : 0;
+    }
+} elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
+    if ($waktuShuttleRunPria < 17.4 && isset($nilaiShuttleRunPria['35-44']['<17.4'])) {
+        $nilaiAkhir = $nilaiShuttleRunPria['35-44']['<17.4'];
+    } elseif ($waktuShuttleRunPria > 27.3) {
+        $nilaiAkhir = 1;
+    } else {
+        $nilaiAkhir = isset($nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria] : 0;
+    }
+} elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
+    if ($waktuShuttleRunPria < 18.9 && isset($nilaiShuttleRunPria['45-54']['<18.9'])) {
+        $nilaiAkhir = $nilaiShuttleRunPria['45-54']['<18.9'];
+    } elseif ($waktuShuttleRunPria > 28.8) {
+        $nilaiAkhir = 1;
+    } else {
+        $nilaiAkhir = isset($nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria] : 0;
+    }
+} elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
+    if ($waktuShuttleRunPria < 20.4 && isset($nilaiShuttleRunPria['55-59']['<20.4'])) {
+        $nilaiAkhir = $nilaiShuttleRunPria['55-59']['<20.4'];
+    } elseif ($waktuShuttleRunPria > 30.3) {
+        $nilaiAkhir = 1;
+    } else {
+        $nilaiAkhir = isset($nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria] : 0;
+    }
+}
+
 
     $dataGarjasPriaShuttleRun = array(
         'NIP_Pengguna' => $nipPengguna,
