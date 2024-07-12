@@ -82,7 +82,7 @@ if (isset($_POST['Simpan'])) {
 
     $nilaiSitUpKakiDitekuk = [
         'under_25' => [
-            '>48' => 100,
+            '>84' => 100,
             84 => 100, 83 => 98, 82 => 96, 81 => 94, 80 => 92,
             79 => 90, 78 => 88, 77 => 86, 76 => 84, 75 => 82,
             74 => 79, 73 => 77, 72 => 75, 71 => 73, 70 => 71,
@@ -166,8 +166,8 @@ if (isset($_POST['Simpan'])) {
 
     $nilaiAkhirSitUpKakiDitekuk = 0;
     if ($umurPengguna < 25) {
-        if ($jumlahSitUpKakiDitekukPria > 48 && isset($nilaiSitUpKakiDitekuk['under_25']['>48'])) {
-            $nilaiAkhirSitUpKakiDitekuk = $nilaiSitUpKakiDitekuk['under_25']['>48'];
+        if ($jumlahSitUpKakiDitekukPria > 84 && isset($nilaiSitUpKakiDitekuk['under_25']['>84'])) {
+            $nilaiAkhirSitUpKakiDitekuk = $nilaiSitUpKakiDitekuk['under_25']['>84'];
         } else {
             $nilaiAkhirSitUpKakiDitekuk = isset($nilaiSitUpKakiDitekuk['under_25'][$jumlahSitUpKakiDitekukPria]) ? $nilaiSitUpKakiDitekuk['under_25'][$jumlahSitUpKakiDitekukPria] : 0;
         }

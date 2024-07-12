@@ -25,7 +25,7 @@
                         <input type="date" class="form-control" id="tambahTanggalPelaksanaanShuttleRunPengguna" name="Tanggal_Pelaksanaan_Shuttle_Run_Pria">
                     </div>
                     <div class="mb-3">
-                        <label for="inputBilanganDesimal">Masukkan Bilangan Desimal</label>
+                        <label for="inputBilanganDesimal">Waktu Shuttle Run</label>
                         <input type="text" class="form-control" id="inputBilanganDesimal" name="Waktu_Shuttle_Run_Pria">
                     </div>
                     <button type="submit" class="btn btn-primary" name="Simpan">Simpan</button>

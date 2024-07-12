@@ -21,7 +21,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tambahtanggalPelaksanaanFlexedArmHangPengguna" class="form-label">Waktu Flexed Arm Hang</label>
+                        <label for="tambahtanggalPelaksanaanFlexedArmHangPengguna" class="form-label">Tanggal Pelakssanaan</label>
                         <input type="date" class="form-control" id="tambahtanggalPelaksanaanFlexedArmHangPengguna" name="Tanggal_Pelaksanaan_Pria_Menggantung">
                     </div>
                     <div class="mb-3">

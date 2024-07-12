@@ -13,7 +13,7 @@
                         <input type="text" class="form-control" id="suntingNIPPengguna" name="NIP_Pengguna" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="suntingtanggalPelaksanaanFlexedArmHangPengguna" class="form-label">Waktu Flexed Arm Hang</label>
+                        <label for="suntingtanggalPelaksanaanFlexedArmHangPengguna" class="form-label">Tanggal Pelaksanaan</label>
                         <input type="date" class="form-control" id="suntingtanggalPelaksanaanFlexedArmHangPengguna" name="Tanggal_Pelaksanaan_Pria_Menggantung">
                     </div>
                     <label for="suntingWaktuFlexedArmHangAdmin" class="form-label">Waktu Flexed Arm Hang</label>

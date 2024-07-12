@@ -1,7 +1,38 @@
 <?php
 include 'databases.php';
 
+function containsXSS($input)
+{
+    $xssPatterns = [
+        "/<script\b[^>]*>(.*?)<\/script>/is",
+        "/<img\b[^>]*src[\s]*=[\s]*[\"]*javascript:/i",
+        "/<iframe\b[^>]*>(.*?)<\/iframe>/is",
+        "/<link\b[^>]*href[\s]*=[\s]*[\"]*javascript:/i",
+        "/<object\b[^>]*>(.*?)<\/object>/is",
+        "/on[a-zA-Z]+\s*=\s*\"[^\"]*\"/i",
+        "/on[a-zA-Z]+\s*=\s*\"[^\"]*\"/i",
+        "/<script\b[^>]*>[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i",
+        "/<a\b[^>]*href\s*=\s*(?:\"|')(?:javascript:|.*?\"javascript:).*?(?:\"|')/i",
+        "/<embed\b[^>]*>(.*?)<\/embed>/is",
+        "/<applet\b[^>]*>(.*?)<\/applet>/is",
+        "/<!--.*?-->/",
+        "/(<script\b[^>]*>(.*?)<\/script>|<img\b[^>]*src[\s]*=[\s]*[\"]*javascript:|<iframe\b[^>]*>(.*?)<\/iframe>|<link\b[^>]*href[\s]*=[\s]*[\"]*javascript:|<object\b[^>]*>(.*?)<\/object>|on[a-zA-Z]+\s*=\s*\"[^\"]*\"|<[^>]*(>|$)(?:<|>)+|<[^>]*script\s*.*?(?:>|$)|<![^>]*-->|eval\s*\((.*?)\)|setTimeout\s*\((.*?)\)|<[^>]*\bstyle\s*=\s*[\"'][^\"']*[;{][^\"']*['\"]|<meta[^>]*http-equiv=[\"']?refresh[\"']?[^>]*url=|<[^>]*src\s*=\s*\"[^>]*\"[^>]*>|expression\s*\((.*?)\))/i"
+    ];
+
+    foreach ($xssPatterns as $pattern) {
+        if (preg_match($pattern, $input)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $idGarjasPriaSitUp2 = $_POST['ID_Sit_Up_Kaki_Di_Tekuk_Pria'] ?? '';
     $jumlahSitUpKakiDitekukPria = $_POST['Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria'] ?? '';
@@ -14,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nilaiSitUpKakiDitekuk = [
         'under_25' => [
-            '>48' => 100,
+            '>84' => 100,
             84 => 100, 83 => 98, 82 => 96, 81 => 94, 80 => 92,
             79 => 90, 78 => 88, 77 => 86, 76 => 84, 75 => 82,
             74 => 79, 73 => 77, 72 => 75, 71 => 73, 70 => 71,
@@ -98,8 +129,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nilaiAkhirSitUpKakiDitekuk = 0;
     if ($umurPengguna < 25) {
-        if ($jumlahSitUpKakiDitekukPria > 48 && isset($nilaiSitUpKakiDitekuk['under_25']['>48'])) {
-            $nilaiAkhirSitUpKakiDitekuk = $nilaiSitUpKakiDitekuk['under_25']['>48'];
+        if ($jumlahSitUpKakiDitekukPria > 84 && isset($nilaiSitUpKakiDitekuk['under_25']['>84'])) {
+            $nilaiAkhirSitUpKakiDitekuk = $nilaiSitUpKakiDitekuk['under_25']['>84'];
         } else {
             $nilaiAkhirSitUpKakiDitekuk = isset($nilaiSitUpKakiDitekuk['under_25'][$jumlahSitUpKakiDitekukPria]) ? $nilaiSitUpKakiDitekuk['under_25'][$jumlahSitUpKakiDitekukPria] : 0;
         }

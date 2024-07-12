@@ -23,7 +23,7 @@ if (isset($_POST['Masuk'])) {
     $pengguna = $penggunaDatabase->cariPengguna($nipPengguna);
 
     if ($pengguna === null) {
-        setPesanKesalahan("NIP Admin tidak ditemukan.");
+        setPesanKesalahan("NIP Anggota tidak ditemukan.");
         header("Location: " . $akarUrl . "src/user/pages/login.php");
         exit();
     }
