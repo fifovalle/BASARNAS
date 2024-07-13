@@ -138,7 +138,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
 
     <!-- MODALS START -->
     <?php include('../partials/modal-add-investigation-competence.php'); ?>
-    <?php include('../partials/modal-edit-Investigation-competence.php'); ?>
+    <?php include('../partials/modal-edit-investigation-competence.php'); ?>
     <?php include('../partials/modal-see-investigation-competence.php'); ?>
     <!-- MODALS END -->
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
@@ -156,7 +156,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/value-see-investigation-competence.js"></script>
-    <script src="../assets/js/value-Investigation-competence.js"></script>
+    <script src="../assets/js/value-investigation-competence.js"></script>
     <script src="../assets/js/delete-investigation-competence.js"></script>
     <script>
         $(document).ready(function() {

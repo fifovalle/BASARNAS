@@ -4,7 +4,7 @@ $(document).ready(function () {
     let kompetensiPenyelia = $(this).data("id");
     console.log(kompetensiPenyelia);
     $.ajax({
-      url: "../config/get-data-Investigation-competence.php",
+      url: "../config/get-data-investigation-competence.php",
       method: "GET",
       data: {
         kompetensi_penyelia_id: kompetensiPenyelia,
