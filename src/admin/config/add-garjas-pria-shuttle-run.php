@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function containsXSS($input)
 {
@@ -76,7 +77,7 @@ if (isset($_POST['Simpan'])) {
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-shuttlerun.php");
         exit;
     }
-    if ($waktuShuttleRunPria <0) {
+    if ($waktuShuttleRunPria < 0) {
         setPesanKesalahan("Waktu Shuttle Run tidak boleh negatif.");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-shuttlerun.php");
         exit;
@@ -213,47 +214,47 @@ if (isset($_POST['Simpan'])) {
 
     $nilaiAkhir = 0;
 
-if ($umurPengguna < 25) {
-    if ($waktuShuttleRunPria < 15.9 && isset($nilaiShuttleRunPria['under_25']['<15.9'])) {
-        $nilaiAkhir = $nilaiShuttleRunPria['under_25']['<15.9'];
-    } elseif ($waktuShuttleRunPria > 25.8) {
-        $nilaiAkhir = 1;
-    } else {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria] : 0;
+    if ($umurPengguna < 25) {
+        if ($waktuShuttleRunPria < 15.9 && isset($nilaiShuttleRunPria['under_25']['<15.9'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['under_25']['<15.9'];
+        } elseif ($waktuShuttleRunPria > 25.8) {
+            $nilaiAkhir = 1;
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['under_25'][$waktuShuttleRunPria] : 0;
+        }
+    } elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
+        if ($waktuShuttleRunPria < 16.9 && isset($nilaiShuttleRunPria['25-34']['<16.9'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['25-34']['<16.9'];
+        } elseif ($waktuShuttleRunPria > 26.8) {
+            $nilaiAkhir = 1;
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria] : 0;
+        }
+    } elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
+        if ($waktuShuttleRunPria < 17.4 && isset($nilaiShuttleRunPria['35-44']['<17.4'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['35-44']['<17.4'];
+        } elseif ($waktuShuttleRunPria > 27.3) {
+            $nilaiAkhir = 1;
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria] : 0;
+        }
+    } elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
+        if ($waktuShuttleRunPria < 18.9 && isset($nilaiShuttleRunPria['45-54']['<18.9'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['45-54']['<18.9'];
+        } elseif ($waktuShuttleRunPria > 28.8) {
+            $nilaiAkhir = 1;
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria] : 0;
+        }
+    } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
+        if ($waktuShuttleRunPria < 20.4 && isset($nilaiShuttleRunPria['55-59']['<20.4'])) {
+            $nilaiAkhir = $nilaiShuttleRunPria['55-59']['<20.4'];
+        } elseif ($waktuShuttleRunPria > 30.3) {
+            $nilaiAkhir = 1;
+        } else {
+            $nilaiAkhir = isset($nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria] : 0;
+        }
     }
-} elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
-    if ($waktuShuttleRunPria < 16.9 && isset($nilaiShuttleRunPria['25-34']['<16.9'])) {
-        $nilaiAkhir = $nilaiShuttleRunPria['25-34']['<16.9'];
-    } elseif ($waktuShuttleRunPria > 26.8) {
-        $nilaiAkhir = 1;
-    } else {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['25-34'][$waktuShuttleRunPria] : 0;
-    }
-} elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
-    if ($waktuShuttleRunPria < 17.4 && isset($nilaiShuttleRunPria['35-44']['<17.4'])) {
-        $nilaiAkhir = $nilaiShuttleRunPria['35-44']['<17.4'];
-    } elseif ($waktuShuttleRunPria > 27.3) {
-        $nilaiAkhir = 1;
-    } else {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['35-44'][$waktuShuttleRunPria] : 0;
-    }
-} elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
-    if ($waktuShuttleRunPria < 18.9 && isset($nilaiShuttleRunPria['45-54']['<18.9'])) {
-        $nilaiAkhir = $nilaiShuttleRunPria['45-54']['<18.9'];
-    } elseif ($waktuShuttleRunPria > 28.8) {
-        $nilaiAkhir = 1;
-    } else {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['45-54'][$waktuShuttleRunPria] : 0;
-    }
-} elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
-    if ($waktuShuttleRunPria < 20.4 && isset($nilaiShuttleRunPria['55-59']['<20.4'])) {
-        $nilaiAkhir = $nilaiShuttleRunPria['55-59']['<20.4'];
-    } elseif ($waktuShuttleRunPria > 30.3) {
-        $nilaiAkhir = 1;
-    } else {
-        $nilaiAkhir = isset($nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria]) ? $nilaiShuttleRunPria['55-59'][$waktuShuttleRunPria] : 0;
-    }
-}
 
 
     $dataGarjasPriaShuttleRun = array(
@@ -274,3 +275,4 @@ if ($umurPengguna < 25) {
     header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-shuttlerun.php");
     exit;
 }
+ob_end_flush();

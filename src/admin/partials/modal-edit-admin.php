@@ -27,7 +27,6 @@
                         <select name="Peran_Admin" id="tambahPeranAdmin" class="form-select">
                             <?php if ($_SESSION['Peran_Admin'] === 'Super Admin') : ?>
                                 <option value="Super Admin" selected>Super Admin</option>
-                                <option value="Admin">Admin</option>
                             <?php elseif ($_SESSION['Peran_Admin'] === 'Admin') : ?>
                                 <option value="Admin" selected>Admin</option>
                             <?php else : ?>
@@ -44,6 +43,7 @@
                             <option value="Pemula">Pemula</option>
                             <option value="Terampil">Terampil</option>
                             <option value="Mahir">Mahir</option>
+                            <option value="Penyelia">Penyelia</option>
                         </select>
                     </div>
                     <div class="mb-3">

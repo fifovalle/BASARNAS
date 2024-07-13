@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function containsXSS($input)
 {
@@ -33,6 +34,8 @@ if (isset($_POST['tambah_nilai'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
+
+    $pesanKesalahan = '';
 
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
     $tanggalPelaksanaanRenangWanita = $_POST['Tanggal_Pelaksanaan_Tes_Renang_Wanita'];
@@ -70,15 +73,10 @@ if (isset($_POST['tambah_nilai'])) {
     }
     if (!empty($pesanKesalahan)) {
         setPesanKesalahan($pesanKesalahan);
-        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-pria-renang.php");
+        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-wanita-renang.php");
         exit;
     }
 
-    if ($tesRenangPriaModel->sudahAdaNilaiRenangPria($nipPengguna)) {
-        setPesanKesalahan("Nilai renang untuk pengguna ini sudah ada.");
-        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-pria-renang.php");
-        exit;
-    }
     if ($tesRenangWanitaModel->sudahAdaNilaiRenangWanita($nipPengguna)) {
         setPesanKesalahan("Nilai renang untuk pengguna ini sudah ada.");
         header("Location: " . $akarUrl . "src/admin/pages/data-garjas-wanita-renang.php");
@@ -185,3 +183,4 @@ if (isset($_POST['tambah_nilai'])) {
     header("Location: " . $akarUrl . "src/admin/pages/data-garjas-wanita-renang.php");
     exit;
 }
+ob_end_flush();

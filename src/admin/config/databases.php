@@ -135,15 +135,21 @@ class Admin
                     Nama_Lengkap_Admin = ?, 
                     No_Telepon_Admin = ?, 
                     Jenis_Kelamin_Admin = ?, 
-                    Peran_Admin = ? 
+                    Peran_Admin = ? ,
+                    Jabatan_Admin = ?,
+                    Tanggal_Lahir_Admin = ?,
+                    Umur_Admin = ?
                 WHERE NIP_Admin = ?";
         $stmt = $this->koneksi->prepare($sql);
         $stmt->bind_param(
-            "ssssi",
+            "ssssssii",
             $dataAdmin['Nama_Lengkap_Admin'],
             $dataAdmin['No_Telepon_Admin'],
             $dataAdmin['Jenis_Kelamin_Admin'],
             $dataAdmin['Peran_Admin'],
+            $dataAdmin['Jabatan_Admin'],
+            $dataAdmin['Tanggal_Lahir_Admin'],
+            $dataAdmin['Umur_Admin'],
             $nipAdmin
         );
 
@@ -365,6 +371,22 @@ class Pengguna
     public function tampilkanDataPenggunaMahir()
     {
         $query = "SELECT * FROM pengguna WHERE Jabatan_Pengguna = 'Mahir'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataPenggunaPenyelia()
+    {
+        $query = "SELECT * FROM pengguna WHERE Jabatan_Pengguna = 'Penyelia'";
         $result = $this->koneksi->query($query);
 
         if ($result->num_rows > 0) {
@@ -2157,7 +2179,7 @@ class TesRenangPria
 
     public function sudahAdaNilaiRenangPria($nipPengguna)
     {
-        $query = "SELECT COUNT(*) as count FROM Tes_Renang_Pria WHERE NIP_Pengguna = ?";
+        $query = "SELECT COUNT(*) as count FROM tes_renang_pria WHERE NIP_Pengguna = ?";
         $stmt = $this->koneksi->prepare($query);
         $stmt->bind_param("s", $nipPengguna);
         $stmt->execute();
@@ -2274,7 +2296,7 @@ class TesRenangWanita
     }
     public function sudahAdaNilaiRenangWanita($nipPengguna)
     {
-        $query = "SELECT COUNT(*) as count FROM Tes_Renang_Wanita WHERE NIP_Pengguna = ?";
+        $query = "SELECT COUNT(*) as count FROM tes_renang_wanita WHERE NIP_Pengguna = ?";
         $stmt = $this->koneksi->prepare($query);
         $stmt->bind_param("s", $nipPengguna);
         $stmt->execute();
@@ -2778,6 +2800,22 @@ class Kompetensi
     public function tampilkanKompetensiMahir()
     {
         $query = "SELECT kompetensi.*, pengguna.* FROM kompetensi LEFT JOIN pengguna ON kompetensi.NIP_Pengguna = pengguna.NIP_Pengguna WHERE kompetensi.Kategori_Kompetensi = 'Mahir'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanKompetensiPenyelia()
+    {
+        $query = "SELECT kompetensi.*, pengguna.* FROM kompetensi LEFT JOIN pengguna ON kompetensi.NIP_Pengguna = pengguna.NIP_Pengguna WHERE kompetensi.Kategori_Kompetensi = 'Penyelia'";
         $result = $this->koneksi->query($query);
 
         if ($result->num_rows > 0) {

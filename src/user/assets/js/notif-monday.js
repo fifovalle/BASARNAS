@@ -12,8 +12,8 @@ $(document).ready(function () {
   let presensiHadir = localStorage.getItem("presensi_hadir");
   let presensiSelesai = localStorage.getItem("presensi_selesai");
 
-  if (dayOfWeek === 2) {
-    if (hours >= 7 && hours < 8 && !presensiHadir) {
+  if (dayOfWeek === 1) {
+    if (hours >= 6 && hours < 9 && !presensiHadir) {
       btnSelesai.hide();
       Swal.fire({
         icon: "info",
@@ -29,7 +29,7 @@ $(document).ready(function () {
           content: "alert-content",
         },
       });
-    } else if (hours >= 17 && hours < 18 && !presensiSelesai) {
+    } else if (hours >= 18 && hours < 20 && !presensiSelesai) {
       btnHadir.hide();
       btnSelesai.hide();
       Swal.fire({
@@ -47,8 +47,8 @@ $(document).ready(function () {
         },
       });
     } else if (
-      (hours === 6 && !presensiHadir) ||
-      (hours === 16 && !presensiSelesai)
+      (hours === 5 && !presensiHadir) ||
+      (hours === 17 && !presensiSelesai)
     ) {
       btnHadir.hide();
       btnSelesai.hide();
@@ -83,7 +83,7 @@ $(document).ready(function () {
     localStorage.setItem("presensi_selesai", true);
   });
 
-  let daysUntilNextMonday = dayOfWeek === 2 ? 7 : (2 + 7 - dayOfWeek) % 7;
+  let daysUntilNextMonday = dayOfWeek === 1 ? 7 : (1 + 7 - dayOfWeek) % 7;
   let nextMonday = new Date(
     now.getTime() + daysUntilNextMonday * 24 * 60 * 60 * 1000
   );
@@ -98,7 +98,7 @@ $(document).ready(function () {
   $("#moduleSenin").text(formattedNextMonday);
 
   $.ajax({
-    url: "http://localhost/BASARNAS/src/user/config/get-monday-modul.php",
+    url: "https://basarnas.my.id/src/user/config/get-monday-modul.php",
     method: "POST",
     data: { Tanggal: nextMonday.toISOString().split("T")[0] },
     success: function (response) {

@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function containsXSS($input)
 {
@@ -59,7 +60,7 @@ if (isset($_POST['tambah_nilai'])) {
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-pushup.php");
         exit;
     }
-    
+
     if (empty($nipPengguna) && empty($tanggalPelaksanaanPushUpWanita) && empty($jumlahPushUpWanita)) {
         $pesanKesalahan = "Semua bidang harus diisi. ";
     } elseif (empty($nipPengguna)) {
@@ -74,7 +75,7 @@ if (isset($_POST['tambah_nilai'])) {
         header("Location: " . $akarUrl . "src/admin/pages/data-garjas-wanita-pushup.php");
         exit;
     }
-    
+
     $nilaiPushUp = [
         'under_25' => [
             38 => 100, 37 => 98, 36 => 96, 35 => 94, 34 => 92,
@@ -142,7 +143,7 @@ if (isset($_POST['tambah_nilai'])) {
         $nilaiAkhir = $jumlahPushUpWanita > $maksimalPushUp ? 100 : (isset($nilaiPushUp['55-59'][$jumlahPushUpWanita]) ? $nilaiPushUp['55-59'][$jumlahPushUpWanita] : 0);
     }
 
-    
+
 
     $dataPenggunaWanita = array(
         'NIP_Pengguna' => $nipPengguna,
@@ -162,3 +163,4 @@ if (isset($_POST['tambah_nilai'])) {
     header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-pushup.php");
     exit;
 }
+ob_end_flush();

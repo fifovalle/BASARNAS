@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function containsXSS($input)
 {
@@ -30,8 +31,8 @@ if (isset($_POST['Simpan'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
-    $nipAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'NIP_Admin', FILTER_SANITIZE_STRING));
-    $namaLengkapAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nama_Lengkap_Admin', FILTER_SANITIZE_STRING));
+    $nipAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'NIP_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $namaLengkapAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nama_Lengkap_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
 
     $tanggalLahirAdmin = $_POST['Tanggal_Lahir_Admin'];
     $tanggal_lahir_format = DateTime::createFromFormat('Y-m-d', $tanggalLahirAdmin);
@@ -45,12 +46,12 @@ if (isset($_POST['Simpan'])) {
     $tgl_today = new DateTime('now');
     $umur_admin = $tgl_today->diff($tgl_lahir)->y;
 
-    $peranAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Peran_Admin', FILTER_SANITIZE_STRING));
-    $noTeleponAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'No_Telepon_Admin', FILTER_SANITIZE_STRING));
-    $jabatanAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Admin', FILTER_SANITIZE_STRING));
-    $jenisKelaminAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Admin', FILTER_SANITIZE_STRING));
-    $kataSandiAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Kata_Sandi_Admin', FILTER_SANITIZE_STRING));
-    $konfirmasiKataSandiAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Konfirmasi_Kata_Sandi_Admin', FILTER_SANITIZE_STRING));
+    $peranAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Peran_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $noTeleponAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'No_Telepon_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $jabatanAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $jenisKelaminAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $kataSandiAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Kata_Sandi_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $konfirmasiKataSandiAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Konfirmasi_Kata_Sandi_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $pesanKesalahan = '';
     $obyekAdmin = new Admin($koneksi);
 
@@ -167,3 +168,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: " . $akarUrl . "src/admin/pages/data-admin.php");
     exit;
 }
+ob_end_flush();

@@ -13,7 +13,7 @@ $(document).ready(function () {
   let presensiSelesai = localStorage.getItem("presensi_selesai_rabu");
 
   if (dayOfWeek === 3) {
-    if (hours >= 7 && hours < 8 && !presensiHadir) {
+    if (hours >= 6 && hours < 9 && !presensiHadir) {
       btnSelesai.hide();
       Swal.fire({
         icon: "info",
@@ -29,7 +29,7 @@ $(document).ready(function () {
           content: "alert-content",
         },
       });
-    } else if (hours >= 17 && hours < 18 && !presensiSelesai) {
+    } else if (hours >= 18 && hours < 20 && !presensiSelesai) {
       btnHadir.hide();
       btnSelesai.hide();
       Swal.fire({
@@ -47,8 +47,8 @@ $(document).ready(function () {
         },
       });
     } else if (
-      (hours === 6 && !presensiHadir) ||
-      (hours === 16 && !presensiSelesai)
+      (hours === 5 && !presensiHadir) ||
+      (hours === 17 && !presensiSelesai)
     ) {
       btnHadir.hide();
       btnSelesai.hide();
@@ -98,7 +98,7 @@ $(document).ready(function () {
   $("#moduleRabu").text(formattedNextWednesday);
 
   $.ajax({
-    url: "http://localhost/BASARNAS/src/user/config/get-monday-modul.php",
+    url: "https://basarnas.my.id/src/user/config/get-monday-modul.php",
     method: "POST",
     data: { Tanggal: nextWednesday.toISOString().split("T")[0] },
     success: function (response) {

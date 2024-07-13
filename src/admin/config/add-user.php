@@ -1,5 +1,7 @@
 <?php
+ob_start();
 include 'databases.php';
+
 
 function containsXSS($input)
 {
@@ -43,13 +45,13 @@ if (isset($_POST['Simpan'])) {
         $tanggal_lahir_database = $tanggal_lahir_format->format('Y-m-d');
     }
 
-    $nipPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'NIP_Pengguna', FILTER_SANITIZE_STRING));
-    $namaLengkapPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nama_Lengkap_Pengguna', FILTER_SANITIZE_STRING));
-    $noTeleponPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'No_Telepon_Pengguna', FILTER_SANITIZE_STRING));
-    $jabatanPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Pengguna', FILTER_SANITIZE_STRING));
-    $jenisKelaminPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Pengguna', FILTER_SANITIZE_STRING));
-    $kataSandiPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Kata_Sandi_Pengguna', FILTER_SANITIZE_STRING));
-    $konfirmasiKataSandiPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Konfirmasi_Kata_Sandi_Pengguna', FILTER_SANITIZE_STRING));
+    $nipPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'NIP_Pengguna', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $namaLengkapPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nama_Lengkap_Pengguna', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $noTeleponPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'No_Telepon_Pengguna', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $jabatanPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Pengguna', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $jenisKelaminPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Pengguna', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $kataSandiPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Kata_Sandi_Pengguna', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $konfirmasiKataSandiPengguna = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Konfirmasi_Kata_Sandi_Pengguna', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $obyekPengguna = new Pengguna($koneksi);
 
     $cekNipSudahAda = $obyekPengguna->cekNIP($nipPengguna);
@@ -156,4 +158,6 @@ if (isset($_POST['Simpan'])) {
 
     header("Location: " . $akarUrl . "src/admin/pages/data-user.php");
     exit;
+
+    ob_end_flush();
 }

@@ -1,12 +1,15 @@
 <?php
 session_start();
-$urlSekarang = $_SERVER['REQUEST_URI'];
-$akarUrl = "/BASARNAS/";
+
+$urlSekarang = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https://" : "http://";
+$urlSekarang .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+$akarUrl = "http://localhost/BASARNAS/";
 
 $namaserver = "localhost";
 $namapengguna = "root";
 $katasandi = "";
-$database = "basarnas";
+$database = "basarnas_simore";
 $koneksi = new mysqli($namaserver, $namapengguna, $katasandi, $database);
 
 function apakahAktif($lokasi)

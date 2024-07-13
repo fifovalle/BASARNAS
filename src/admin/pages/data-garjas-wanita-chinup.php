@@ -12,7 +12,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Data Garjas Wanita (Push Up) Basarnas</title>
+    <title>Data Garjas Wanita (Chinning) Basarnas</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="../assets/js/wenfontpages.js"></script>
@@ -58,8 +58,8 @@ if (!isset($_SESSION['NIP_Admin'])) {
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Data Hasil Garjas Wanita (Chin Up)</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Wanita (Chin Up) Basarnas</h6>
+                            <h3 class="fw-bold mb-3">Data Hasil Garjas Wanita (Chinning)</h3>
+                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Garjas Wanita (Chinning) Basarnas</h6>
                         </div>
                     </div>
                     <div class="row">
@@ -68,7 +68,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Data Nilai Garjas Wanita (Chin Up)</h4>
+                                        <h4 class="card-title">Data Nilai Garjas Wanita (Chinning)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasWanitaChinUp">
                                             <i class="fa fa-plus"></i>
                                             Tambah Nilai
@@ -85,7 +85,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
                                                     <th>Umur</th>
-                                                    <th>Jumlah Chin Up</th>
+                                                    <th>Jumlah Chinning</th>
                                                     <th>Nilai</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
@@ -123,7 +123,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="8" class="text-center text-danger fw-bolder">Tidak ada data Chin Up yang ditemukan.</td>
+                                                        <td colspan="8" class="text-center text-danger fw-bolder">Tidak ada data Chinning yang ditemukan.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

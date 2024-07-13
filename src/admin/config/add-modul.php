@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function mengandungXSS($input)
 {
@@ -96,3 +97,4 @@ if (isset($_POST['tambah_modul'])) {
         exit;
     }
 }
+ob_end_flush();

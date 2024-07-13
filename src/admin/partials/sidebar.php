@@ -134,7 +134,7 @@
                             </li>
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-garjas-wanita-chinup.php">
-                                    <span class="sub-item">Chin Up</span>
+                                    <span class="sub-item">Chinning</span>
                                 </a>
                             </li>
                             <li>
@@ -214,7 +214,7 @@
                         <p>Kompetensi</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-beginner-competence.php') || apakahAktif('src/admin/pages/data-skilled-competence.php') || apakahAktif('src/admin/pages/data-advanced-competence.php') ? 'show' : ''; ?>" id="kompetensi">
+                    <div class="collapse <?php echo apakahAktif('src/admin/pages/data-beginner-competence.php') || apakahAktif('src/admin/pages/data-skilled-competence.php') || apakahAktif('src/admin/pages/data-advanced-competence.php') || apakahAktif('src/admin/pages/data-investigation-competence.php') ? 'show' : ''; ?>" id="kompetensi">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-beginner-competence.php">
@@ -229,6 +229,11 @@
                             <li>
                                 <a href="<?php echo $akarUrl ?>src/admin/pages/data-advanced-competence.php">
                                     <span class="sub-item">Mahir</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $akarUrl ?>src/admin/pages/data-investigation-competence.php">
+                                    <span class="sub-item">Penyelia</span>
                                 </a>
                             </li>
                         </ul>

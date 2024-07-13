@@ -8,7 +8,19 @@
                     </div>
                     <span class="profile-username">
                         <span class="op-7">Halo,</span>
-                        <span class="fw-bold"><?php echo $_SESSION['Nama_Lengkap_Admin']; ?></span>
+                        <?php
+                        $idSessionAdmin = $_SESSION['NIP_Admin'];
+                        $adminModel = new Admin($koneksi);
+                        $dataAdmin = $adminModel->tampilkanAdminDenganSessionNip($idSessionAdmin);
+                        if (!empty($dataAdmin)) {
+                            $Admin = $dataAdmin[0];
+                        ?>
+                            <span class="fw-bold"><?php echo $Admin['Nama_Lengkap_Admin']; ?></span>
+                        <?php
+                        } else {
+                            echo "<p>Data Admin tidak ditemukan.</p>";
+                        }
+                        ?>
                     </span>
                 </a>
                 <ul class="dropdown-menu dropdown-user animated fadeIn">

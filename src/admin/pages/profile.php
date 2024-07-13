@@ -7,8 +7,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
     header("Location: " . $akarUrl . "src/admin/pages/login.php");
     exit();
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +57,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                 <?php include('../partials/navbar.php'); ?>
                 <!-- NAVBAR END -->
             </div>
-
             <?php
             $idSessionAdmin = $_SESSION['NIP_Admin'];
             $adminModel = new Admin($koneksi);
@@ -77,17 +74,15 @@ if (!isset($_SESSION['NIP_Admin'])) {
                         </div>
                         <div class="row">
                             <div class="col-lg-4">
-                                <form action="../config/edit-foto-profil-admin.php" method="post" enctype="multipart/form-data">
-                                    <div class="card mb-4">
-                                        <div class="card-body text-center">
-                                            <img src="<?php echo $akarUrl ?>src/admin/uploads/<?php echo $_SESSION['Foto_Admin']; ?>" alt="avatar" class="rounded img-fluid" style="width: 160px; height: 160px;" id="profile-picture">
-                                            <h5 class="my-3 mb-1 mt-4 fw-bold"><?php echo $Admin['Nama_Lengkap_Admin']; ?></h5>
-                                            <p class="text-muted mb-3"><?php echo $Admin['NIP_Admin']; ?></p>
-                                            <button type="button" class="btn btn-outline-dark mb-3" id="editImageButton" style="border-radius: 19px;">Sunting Gambar</button>
-                                            <input type="file" class="d-none" id="profileImageInput" name="Foto_Admin" accept="image/*">
-                                        </div>
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <img src="<?php echo $akarUrl ?>src/admin/uploads/<?php echo $Admin['Foto_Admin']; ?>" alt="avatar" class="rounded img-fluid" style="width: 160px; height: 160px;" id="profile-picture">
+                                        <h5 class="my-3 mb-1 mt-4 fw-bold"><?php echo $Admin['Nama_Lengkap_Admin']; ?></h5>
+                                        <p class="text-muted mb-3"><?php echo $Admin['NIP_Admin']; ?></p>
+                                        <button type="button" class="btn btn-outline-dark mb-3" id="editImageButton" style="border-radius: 19px;">Sunting Gambar</button>
+                                        <input type="file" class="d-none" id="profileImageInput" name="Foto_Admin" accept="image/*" onchange="uploadProfilePicture(event)">
                                     </div>
-                                </form>
+                                </div>
                             </div>
                             <div class="col-lg-8">
                                 <form action="../config/edit-profil-admin.php" method="post" enctype="multipart/form-data">
@@ -111,6 +106,14 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-sm-3">
+                                                    <label class="mb-0 p-3" for="tanggal_lahir">Tanggal Lahir :</label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control" id="tanggal_lahir" name="Tanggal_Lahir_Admin" value="<?php echo htmlspecialchars(date('Y-m-d', strtotime($Admin['Tanggal_Lahir_Admin']))); ?>" required />
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3">
                                                     <label class="mb-0 p-3" for="jenis_kelamin">Jenis Kelamin :</label>
                                                 </div>
                                                 <div class="col-sm-9">
@@ -122,15 +125,27 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-sm-3">
+                                                    <label class="mb-0 p-3" for="jabatan_admin">Jabatan Admin :</label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="jabatan_admin" name="Jabatan_Admin" required>
+                                                        <option value="Pemula" <?php echo ($Admin['Jabatan_Admin'] == 'Pemula') ? 'selected' : ''; ?>>Pemula</option>
+                                                        <option value="Terampil" <?php echo ($Admin['Jabatan_Admin'] == 'Terampil') ? 'selected' : ''; ?>>Terampil</option>
+                                                        <option value="Mahir" <?php echo ($Admin['Jabatan_Admin'] == 'Mahir') ? 'selected' : ''; ?>>Mahir</option>
+                                                        <option value="Penyelia" <?php echo ($Admin['Jabatan_Admin'] == 'Penyelia') ? 'selected' : ''; ?>>Penyelia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3">
                                                     <label class="mb-0 p-3" for="peran_admin">Peran Admin :</label>
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" id="peran_admin" name="Peran_Admin" required>
                                                         <?php if ($_SESSION['Peran_Admin'] === 'Super Admin') : ?>
                                                             <option value="Super Admin" <?php echo ($Admin['Peran_Admin'] == 'Super Admin') ? 'selected' : ''; ?>>Super Admin</option>
-                                                            <option value="Admin" <?php echo ($Admin['Peran_Admin'] == 'Admin') ? 'selected' : ''; ?>>Admin</option>
                                                         <?php elseif ($_SESSION['Peran_Admin'] === 'Admin') : ?>
-                                                            <option value="Admin" selected>Admin</option>
+                                                            <option value="Admin" <?php echo ($Admin['Peran_Admin'] == 'Admin') ? 'selected' : ''; ?>>Admin</option>
                                                         <?php endif; ?>
                                                     </select>
                                                 </div>

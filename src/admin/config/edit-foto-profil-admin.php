@@ -48,12 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $updateDataAdmin = $adminModel->perbaruiFotoAdmin($nipAdmin, $namaFotoBaru);
 
     if ($updateDataAdmin) {
-        setPesanKeberhasilan("Berhasil, foto admin berhasil diperbarui. Silahkan Keluar dan Masuk lagi !");
+        $_SESSION['Foto_Admin'] = $namaFotoBaru;
+        echo json_encode(array("success" => true, "message" => "Berhasil memperbarui foto admin.", "newImage" => $namaFotoBaru));
     } else {
-        setPesanKesalahan("Gagal memperbarui foto admin.");
+        echo json_encode(array("success" => false, "message" => "Gagal memperbarui foto admin."));
     }
-
-    header("Location: " . $akarUrl . "src/admin/pages/profile.php");
     exit;
 } else {
     header("Location: " . $akarUrl . "src/admin/pages/profile.php");

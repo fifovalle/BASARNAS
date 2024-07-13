@@ -11,7 +11,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Data Admin Basarnas</title>
+    <title>Data Kompetensi Penyelia</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="../assets/js/wenfontpages.js"></script>
@@ -22,7 +22,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <link rel="stylesheet" href="../assets/css/custom.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -58,20 +57,19 @@ if (!isset($_SESSION['NIP_Admin'])) {
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Data Admin</h3>
-                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Admin Basarnas</h6>
+                            <h3 class="fw-bold mb-3">Data Hasil Kompetensi Penyelia</h3>
+                            <h6 class="op-7 mb-2">Selamat Datang Di Halaman Data Hasil Kompetensi Penyelia Basarnas</h6>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Tambah Admin</h4>
-                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahAdmin">
+                                        <h4 class="card-title">Data Sertifikat Penyelia</h4>
+                                        <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahKompetensiPenyelia">
                                             <i class="fa fa-plus"></i>
-                                            Tambah Admin
+                                            Tambah Sertifikat
                                         </button>
                                     </div>
                                 </div>
@@ -80,51 +78,35 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                         <table id="add-row" class="display table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>NO</th>
-                                                    <th>NIP</th>
-                                                    <th>Foto</th>
-                                                    <th>Nama</th>
-                                                    <th>Peran Admin</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Umur</th>
+                                                    <th>Nomor</th>
+                                                    <th>Nama Pengguna</th>
+                                                    <th>Nama Sertifikat</th>
+                                                    <th>Jabatan Kompetensi</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <?php
-                                            $adminModel = new Admin($koneksi);
-                                            $adminInfo = $adminModel->tampilkanDataAdmin();
+                                            $kompetensiInvestigasiModel = new Kompetensi($koneksi);
+                                            $kompetensiInvestigasiInfo = $kompetensiInvestigasiModel->tampilkanKompetensiPenyelia();
                                             ?>
                                             <tbody>
-                                                <?php if (!empty($adminInfo)) : ?>
+                                                <?php if (!empty($kompetensiInvestigasiInfo)) : ?>
                                                     <?php $nomor = 1; ?>
-                                                    <?php foreach ($adminInfo as $admin) : ?>
+                                                    <?php foreach ($kompetensiInvestigasiInfo as $Investigasi) : ?>
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
-                                                            <td><?php echo $admin['NIP_Admin']; ?></td>
-                                                            <td>
-                                                                <div class="d-flex justify-content-center">
-                                                                    <img class="avatar-img rounded-circle" src="../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="Foto Admin" style="width: 75px; height: 75px;">
-                                                                </div>
-                                                            </td>
-                                                            <td><?php echo $admin['Nama_Lengkap_Admin']; ?></td>
-                                                            <td><?php echo $admin['Peran_Admin']; ?></td>
-                                                            <td><?php echo $admin['Jabatan_Admin']; ?></td>
-                                                            <td><?php echo $admin['Umur_Admin']; ?></td>
+                                                            <td><?php echo $Investigasi['Nama_Lengkap_Pengguna']; ?></td>
+                                                            <td><?php echo $Investigasi['Nama_Sertifikat']; ?></td>
+                                                            <td><?php echo $Investigasi['Kategori_Kompetensi']; ?></td>
                                                             <td>
                                                                 <div class="form-button-action">
-                                                                    <?php if ($_SESSION['Peran_Admin'] === 'Super Admin' || $_SESSION['NIP_Admin'] === $admin['NIP_Admin']) : ?>
-                                                                        <?php if ($_SESSION['NIP_Admin'] !== $admin['NIP_Admin']) : ?>
-                                                                            <button type="button" class="btn btn-link btn-primary btn-lg buttonAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
-                                                                                <i class="fa fa-edit"></i>
-                                                                            </button>
-                                                                        <?php endif; ?>
-                                                                        <?php if ($_SESSION['Peran_Admin'] === 'Super Admin' && $admin['Peran_Admin'] !== 'Super Admin') : ?>
-                                                                            <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusAdmin(<?php echo $admin['NIP_Admin']; ?>)">
-                                                                                <i class="fa fa-trash"></i>
-                                                                            </button>
-                                                                        <?php endif; ?>
-                                                                    <?php endif; ?>
-                                                                    <button type="button" class="btn btn-link btn-info buttonLihatAdmin" data-bs-toggle="modal" data-id="<?php echo $admin['NIP_Admin']; ?>">
+                                                                    <button type="button" class="btn btn-link btn-primary btn-lg buttonKompetensiPenyelia" data-bs-toggle="modal" data-id="<?php echo $Investigasi['ID_Kompetensi']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-danger" data-original-title="Remove" onclick="konfirmasiHapusKompetensiPenyelia(<?php echo $Investigasi['ID_Kompetensi']; ?>)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-link btn-info buttonLihatKompetensiPenyelia" data-bs-toggle="modal" data-id="<?php echo $Investigasi['ID_Kompetensi']; ?>">
                                                                         <i class="fa fa-eye"></i>
                                                                     </button>
                                                                 </div>
@@ -133,7 +115,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="8" class="text-center text-danger fw-bolder">Tidak Ada Data Admin!</td>
+                                                        <td colspan="6" class="text-center text-danger fw-bold">Tidak Ada Data Kompetensi Penyelia!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
@@ -155,9 +137,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <!-- CUSTOM END -->
 
     <!-- MODALS START -->
-    <?php include('../partials/modal-add-admin.php'); ?>
-    <?php include('../partials/modal-edit-admin.php'); ?>
-    <?php include('../partials/modal-see-admin.php'); ?>
+    <?php include('../partials/modal-add-investigation-competence.php'); ?>
+    <?php include('../partials/modal-edit-Investigation-competence.php'); ?>
+    <?php include('../partials/modal-see-investigation-competence.php'); ?>
     <!-- MODALS END -->
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
@@ -173,10 +155,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/kaiadmin.min.js"></script>
     <script src="../assets/js/setting-demo.js"></script>
     <script src="../assets/js/demo.js"></script>
-    <script src="../assets/js/delete-admin.js"></script>
-    <script src="../assets/js/value-admin.js"></script>
-    <script src="../assets/js/value-see-admin.js"></script>
-    <script src="../assets/js/toogle-admin.js"></script>
+    <script src="../assets/js/value-see-investigation-competence.js"></script>
+    <script src="../assets/js/value-Investigation-competence.js"></script>
+    <script src="../assets/js/delete-investigation-competence.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

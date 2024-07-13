@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function containsXSS($input)
 {
@@ -255,3 +256,4 @@ if (isset($_POST['tambah_nilai'])) {
     header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-shuttlerun.php");
     exit;
 }
+ob_end_flush();

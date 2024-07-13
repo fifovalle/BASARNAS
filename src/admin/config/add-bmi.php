@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function mengandungXSS($input)
 {
@@ -100,3 +101,4 @@ if (isset($_POST['tambah_BMI'])) {
         exit;
     }
 }
+ob_end_flush();

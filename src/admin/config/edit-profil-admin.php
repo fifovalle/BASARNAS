@@ -28,29 +28,37 @@ function containsXSS($input)
     return false;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
     $nipAdmin = $_SESSION['NIP_Admin'];
     $namaLengkapAdmin = $_POST['Nama_Lengkap_Admin'] ?? '';
-    $noTeleponAdmin = $_POST['No_Telepon_Admin'] ?? '';
-    $jenisKelaminAdmin = $_POST['Jenis_Kelamin_Admin'] ?? '';
-    $peranAdmin = $_POST['Peran_Admin'] ?? '';
+    $peranAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Peran_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $jabatanAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $jenisKelaminAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $nomorTeleponAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'No_Telepon_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $tanggalLahirAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Tanggal_Lahir_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $pesanKesalahan = '';
 
-    $nomorTeleponFormatted = preg_replace('/\D/', '', $noTeleponAdmin);
+    $tanggal_lahir_format = DateTime::createFromFormat('Y-m-d', $tanggalLahirAdmin);
+    if ($tanggal_lahir_format === false) {
+        $pesanKesalahan .= "Format tanggal lahir tidak valid. ";
+    } else {
+        $tanggalLahirAdmin = $tanggal_lahir_format->format('Y-m-d');
+
+        $tgl_lahir = new DateTime($tanggalLahirAdmin);
+        $tgl_today = new DateTime('now');
+        $umurAdmin = $tgl_today->diff($tgl_lahir)->y;
+    }
+
+    $nomorTeleponFormatted = preg_replace('/\D/', '', $nomorTeleponAdmin);
     if (strpos($nomorTeleponFormatted, '62') === 0) {
         $nomorTeleponFormatted = '+' . $nomorTeleponFormatted;
     } elseif (strpos($nomorTeleponFormatted, '0') === 0) {
         $nomorTeleponFormatted = '+62' . substr($nomorTeleponFormatted, 1);
     }
     $nomorTeleponFormatted = '' . substr($nomorTeleponFormatted, 0, 3) . ' ' . substr($nomorTeleponFormatted, 3, 3) . '-' . substr($nomorTeleponFormatted, 6, 4) . '-' . substr($nomorTeleponFormatted, 10);
-
-    $tanggalLahirAdmin = $_SESSION['Tanggal_Lahir_Admin'] ?? '';
-    $jabatanAdmin = $_SESSION['Jabatan_Admin'] ?? '';
-    $umurAdmin = $_SESSION['Umur_Admin'] ?? '';
 
     $dataAdmin = array(
         'NIP_Admin' => $nipAdmin,

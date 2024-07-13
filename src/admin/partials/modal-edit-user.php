@@ -28,6 +28,7 @@
                             <option value="Pemula">Pemula</option>
                             <option value="Terampil">Terampil</option>
                             <option value="Mahir">Mahir</option>
+                            <option value="Penyelia">Penyelia</option>
                         </select>
                     </div>
                     <div class="mb-3">

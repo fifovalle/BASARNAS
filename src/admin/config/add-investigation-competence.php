@@ -100,15 +100,15 @@ if (isset($_POST['tambah_sertifikat'])) {
         $simpanDataKompetensi = $objekKompetensi->tambahKompetensi($dataKompetensi);
 
         if ($simpanDataKompetensi) {
-            setPesanKeberhasilan("Berhasil, data kompetensi terampil telah ditambahkan.");
+            setPesanKeberhasilan("Berhasil, data kompetensi penyelia telah ditambahkan.");
         } else {
             setPesanKesalahan("Gagal menyimpan data kompetensi.");
         }
-        header("Location: $akarUrl" . "src/admin/pages/data-skilled-competence.php");
+        header("Location: $akarUrl" . "src/admin/pages/data-investigation-competence.php");
         exit;
     } else {
         setPesanKesalahan($pesanKesalahan);
-        header("Location: $akarUrl" . "src/admin/pages/data-skilled-competence.php");
+        header("Location: $akarUrl" . "src/admin/pages/data-investigation-competence.php");
         exit;
     }
 }
