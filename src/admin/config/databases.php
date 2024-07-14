@@ -98,7 +98,7 @@ class Admin
 
     public function perbaruiAdmin($nipAdmin, $dataAdmin)
     {
-        $sql = "UPDATE Admin SET 
+        $sql = "UPDATE admin SET 
                     Foto_Admin = ?, 
                     Nama_Lengkap_Admin = ?, 
                     Tanggal_Lahir_Admin = ?, 

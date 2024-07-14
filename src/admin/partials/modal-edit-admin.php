@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingPeranAdmin" class="form-label">Peran Admin</label>
-                        <select name="Peran_Admin" id="tambahPeranAdmin" class="form-select">
+                        <select name="Peran_Admin" id="suntingPeranAdmin" class="form-select">
                             <?php if ($_SESSION['Peran_Admin'] === 'Super Admin') : ?>
                                 <option value="Super Admin" selected>Super Admin</option>
                             <?php elseif ($_SESSION['Peran_Admin'] === 'Admin') : ?>
