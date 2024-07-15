@@ -4,11 +4,11 @@ session_start();
 $urlSekarang = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https://" : "http://";
 $urlSekarang .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-$akarUrl = "https://basarnas.my.id/";
+$akarUrl = "http://localhost/BASARNAS/";
 
 $namaserver = "localhost";
-$namapengguna = "basarnas_root";
-$katasandi = "F4fmUeyPYYo;";
+$namapengguna = "root";
+$katasandi = "";
 $database = "basarnas_simore";
 $koneksi = new mysqli($namaserver, $namapengguna, $katasandi, $database);
 
