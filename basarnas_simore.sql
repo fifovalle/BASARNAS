@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 13, 2024 at 11:41 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Jul 15, 2024 at 01:12 PM
+-- Server version: 10.6.18-MariaDB-cll-lve
+-- PHP Version: 8.1.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,8 +61,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`NIP_Admin`, `Foto_Admin`, `Nama_Lengkap_Admin`, `Peran_Admin`, `Tanggal_Lahir_Admin`, `Umur_Admin`, `No_Telepon_Admin`, `Jabatan_Admin`, `Jenis_Kelamin_Admin`, `Kata_Sandi_Admin`, `Konfirmasi_Kata_Sandi_Admin`) VALUES
-(12345, 0x363639323337343664316132352e6a7067, 'Syntax Squad brow', 'Super Admin', '1555-05-22', 469, '+62 812-3827-3823', 'Mahir', 'Pria', '$2y$10$vv0BCII34Hm3pDffNvtduONcVQ9kHWL59R.I7.kjUFw/hzpIvdVWm', '$2y$10$vv0BCII34Hm3pDffNvtduONcVQ9kHWL59R.I7.kjUFw/hzpIvdVWm'),
-(123456, 0x363639323335396430353266322e6a7067, 'Naufal FIFA ffff', 'Super Admin', '2003-02-07', 21, '812 365-2490-', 'Pemula', 'Pria', '$2y$10$eIMVUbwWwZLEYxX/F.LtPeEF3KM5TuseVwtmC9bT/vmGSob3kpF7i', '$2y$10$eIMVUbwWwZLEYxX/F.LtPeEF3KM5TuseVwtmC9bT/vmGSob3kpF7i');
+(12345, 0x363639323337343664316132352e6a7067, 'Syntax Squad ', 'Super Admin', '2000-05-22', 24, '+62 111-1111-1', 'Penyelia', 'Pria', '$2y$10$vv0BCII34Hm3pDffNvtduONcVQ9kHWL59R.I7.kjUFw/hzpIvdVWm', '$2y$10$vv0BCII34Hm3pDffNvtduONcVQ9kHWL59R.I7.kjUFw/hzpIvdVWm');
 
 -- --------------------------------------------------------
 
@@ -252,13 +251,6 @@ CREATE TABLE `kompetensi` (
   `Status` enum('Aktif','Tidak Aktif') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `kompetensi`
---
-
-INSERT INTO `kompetensi` (`ID_Kompetensi`, `NIP_Pengguna`, `File_Sertifikat`, `Nama_Sertifikat`, `Tanggal_Penerbitan_Sertifikat`, `Masa_Berlaku`, `Tanggal_Berakhir_Sertifikat`, `Kategori_Kompetensi`, `Status`) VALUES
-(39, 2250081109, 0x363639323234313037373635612e706466, 'KUY', '2024-07-02', 0, '2024-07-12', 'Penyelia', 'Aktif');
-
 -- --------------------------------------------------------
 
 --
@@ -298,8 +290,7 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`NIP_Pengguna`, `Foto_Pengguna`, `Nama_Lengkap_Pengguna`, `Tanggal_Lahir_Pengguna`, `Umur_Pengguna`, `No_Telepon_Pengguna`, `Jabatan_Pengguna`, `Jenis_Kelamin_Pengguna`, `Kata_Sandi_Pengguna`, `Konfirmasi_Kata_Sandi_Pengguna`) VALUES
-(1546545, 0x363639323235613661316436332e6a7067, 'Sisi Gelap Dunia', '2003-08-22', 20, '+62 812-8411-8344', 'Terampil', 'Wanita', '$2y$10$t8Fx6C1MRpygXSrPgCxlK.PkjODn9elQ5JN1Ew.6n1nTjKUklssr6', '$2y$10$t8Fx6C1MRpygXSrPgCxlK.PkjODn9elQ5JN1Ew.6n1nTjKUklssr6'),
-(2250081109, 0x363639323165666562633662372e6a7067, 'Naufal FIFA', '2003-02-10', 21, '+62 822-7655-4388', 'Penyelia', 'Pria', '$2y$10$5MGGgpe6iGQlgZBHxRXlhOJuWVYbNNVEACzMDLhQB65YUl8MZE81i', '$2y$10$5MGGgpe6iGQlgZBHxRXlhOJuWVYbNNVEACzMDLhQB65YUl8MZE81i');
+(2250081109, 0x363639336333373436306438362e6a7067, 'Naufal FIFA', '2003-02-10', 21, '+62 822-7655-4388', 'Penyelia', 'Pria', '$2y$10$kngHV/AL2m2YwsJrN9JnseAKRcbdZGpGfwD0d/pxUD27iI2ViyeIe', '$2y$10$kngHV/AL2m2YwsJrN9JnseAKRcbdZGpGfwD0d/pxUD27iI2ViyeIe');
 
 -- --------------------------------------------------------
 
@@ -358,13 +349,6 @@ CREATE TABLE `tes_renang_pria` (
   `Nilai_Renang_Pria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tes_renang_pria`
---
-
-INSERT INTO `tes_renang_pria` (`ID_Renang_Pria`, `NIP_Pengguna`, `Tanggal_Pelaksanaan_Tes_Renang_Pria`, `Waktu_Renang_Pria`, `Nama_Gaya_Renang_Pria`, `Nilai_Renang_Pria`) VALUES
-(51, 2250081109, '2024-07-18', '00:43', 'Dada', 100);
-
 -- --------------------------------------------------------
 
 --
@@ -379,13 +363,6 @@ CREATE TABLE `tes_renang_wanita` (
   `Nama_Gaya_Renang_Wanita` enum('Dada','Bebas','Lainnya','') NOT NULL,
   `Nilai_Renang_Wanita` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tes_renang_wanita`
---
-
-INSERT INTO `tes_renang_wanita` (`ID_Renang_Wanita`, `NIP_Pengguna`, `Tanggal_Pelaksanaan_Tes_Renang_Wanita`, `Waktu_Renang_Wanita`, `Nama_Gaya_Renang_Wanita`, `Nilai_Renang_Wanita`) VALUES
-(19, 1546545, '2024-07-08', '00:43', 'Dada', 100);
 
 --
 -- Indexes for dumped tables
@@ -557,115 +534,115 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT for table `bmi`
 --
 ALTER TABLE `bmi`
-  MODIFY `ID_BMI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_BMI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_chin_up`
 --
 ALTER TABLE `garjas_pria_chin_up`
-  MODIFY `ID_Pria_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_Pria_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_menggantung`
 --
 ALTER TABLE `garjas_pria_menggantung`
-  MODIFY `ID_Menggantung_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Menggantung_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_push_up`
 --
 ALTER TABLE `garjas_pria_push_up`
-  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `ID_Push_Up_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_shuttle_run`
 --
 ALTER TABLE `garjas_pria_shuttle_run`
-  MODIFY `ID_Shuttle_Run_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `ID_Shuttle_Run_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_sit_up_kaki_di_tekuk`
 --
 ALTER TABLE `garjas_pria_sit_up_kaki_di_tekuk`
-  MODIFY `ID_Sit_Up_Kaki_Di_Tekuk_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_Sit_Up_Kaki_Di_Tekuk_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_sit_up_kaki_lurus`
 --
 ALTER TABLE `garjas_pria_sit_up_kaki_lurus`
-  MODIFY `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_chin_up`
 --
 ALTER TABLE `garjas_wanita_chin_up`
-  MODIFY `ID_Wanita_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID_Wanita_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_push_up`
 --
 ALTER TABLE `garjas_wanita_push_up`
-  MODIFY `ID_Wanita_Push_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ID_Wanita_Push_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_shuttle_run`
 --
 ALTER TABLE `garjas_wanita_shuttle_run`
-  MODIFY `ID_Wanita_Shuttle_Run` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `ID_Wanita_Shuttle_Run` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_sit_up_kaki_di_tekuk`
 --
 ALTER TABLE `garjas_wanita_sit_up_kaki_di_tekuk`
-  MODIFY `ID_Wanita_Sit_Up_Kaki_Di_Tekuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID_Wanita_Sit_Up_Kaki_Di_Tekuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_sit_up_kaki_lurus`
 --
 ALTER TABLE `garjas_wanita_sit_up_kaki_lurus`
-  MODIFY `ID_Wanita_Sit_Up_Kaki_Lurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_Wanita_Sit_Up_Kaki_Lurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `ID_Kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
-  MODIFY `ID_Modul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_Modul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tes_jalan_pria`
 --
 ALTER TABLE `tes_jalan_pria`
-  MODIFY `ID_Jalan_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `ID_Jalan_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `tes_lari_pria`
 --
 ALTER TABLE `tes_lari_pria`
-  MODIFY `ID_Lari_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `ID_Lari_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT for table `tes_lari_wanita`
 --
 ALTER TABLE `tes_lari_wanita`
-  MODIFY `ID_Lari_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID_Lari_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tes_renang_pria`
 --
 ALTER TABLE `tes_renang_pria`
-  MODIFY `ID_Renang_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `ID_Renang_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `tes_renang_wanita`
 --
 ALTER TABLE `tes_renang_wanita`
-  MODIFY `ID_Renang_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID_Renang_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables

@@ -1,0 +1,591 @@
+[14-Jul-2024 06:34:01 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'basarnas_simore.Admin' doesn't exist in /home/basarnas/public_html/src/admin/config/databases.php:111
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(111): mysqli->prepare('UPDATE Admin SE...')
+#1 /home/basarnas/public_html/src/admin/config/edit-admin.php(104): Admin->perbaruiAdmin('123456', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 111
+[14-Jul-2024 06:38:14 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'basarnas_simore.Admin' doesn't exist in /home/basarnas/public_html/src/admin/config/databases.php:111
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(111): mysqli->prepare('UPDATE Admin SE...')
+#1 /home/basarnas/public_html/src/admin/config/edit-admin.php(104): Admin->perbaruiAdmin('123456', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 111
+[14-Jul-2024 06:41:51 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 06:41:51 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 06:45:11 UTC] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/edit-admin.php on line 37
+[14-Jul-2024 06:45:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data truncated for column 'Peran_Admin' at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:125
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(125): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/edit-admin.php(104): Admin->perbaruiAdmin('555555', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 125
+[14-Jul-2024 06:45:20 UTC] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/edit-admin.php on line 37
+[14-Jul-2024 06:45:20 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data truncated for column 'Peran_Admin' at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:125
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(125): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/edit-admin.php(104): Admin->perbaruiAdmin('555555', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 125
+[14-Jul-2024 06:51:20 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 06:51:20 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 06:52:32 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-investigation-competence.php on line 23
+[14-Jul-2024 06:54:39 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-modul.php on line 23
+[14-Jul-2024 06:54:39 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-modul.php on line 23
+[14-Jul-2024 06:54:39 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-modul.php on line 23
+[14-Jul-2024 06:55:53 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 06:55:53 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 06:55:53 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 07:02:55 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 07:02:55 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 07:31:20 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 07:31:20 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:03:42 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:03:42 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:06:59 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:06:59 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:08:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'Nama_Lengkap_Admin' at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:156
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(156): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/edit-profil-admin.php(75): Admin->perbaruiProfilAdmin('343434', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 156
+[14-Jul-2024 08:09:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'Nama_Lengkap_Admin' at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:156
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(156): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/edit-profil-admin.php(75): Admin->perbaruiProfilAdmin('343434', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 156
+[14-Jul-2024 08:09:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'Nama_Lengkap_Admin' at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:156
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(156): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/edit-profil-admin.php(75): Admin->perbaruiProfilAdmin('343434', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 156
+[14-Jul-2024 08:09:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'Nama_Lengkap_Admin' at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:156
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(156): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/edit-profil-admin.php(75): Admin->perbaruiProfilAdmin('343434', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 156
+[14-Jul-2024 08:09:53 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:09:53 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:11:37 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:11:37 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 08:11:45 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'Nama_Lengkap_Admin' at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:156
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(156): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/edit-profil-admin.php(75): Admin->perbaruiProfilAdmin('12345', Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 156
+[14-Jul-2024 09:07:23 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 09:07:23 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 09:58:00 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-beginner-competence.php on line 23
+[14-Jul-2024 09:58:00 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '20025-07-03' for column `basarnas_simore`.`kompetensi`.`Tanggal_Berakhir_Sertifikat` at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:2760
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(2760): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/add-beginner-competence.php(100): Kompetensi->tambahKompetensi(Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 2760
+[14-Jul-2024 09:58:06 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-beginner-competence.php on line 23
+[14-Jul-2024 09:58:06 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '20025-07-03' for column `basarnas_simore`.`kompetensi`.`Tanggal_Berakhir_Sertifikat` at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:2760
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(2760): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/add-beginner-competence.php(100): Kompetensi->tambahKompetensi(Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 2760
+[14-Jul-2024 09:58:16 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-beginner-competence.php on line 23
+[14-Jul-2024 09:58:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '20025-07-03' for column `basarnas_simore`.`kompetensi`.`Tanggal_Berakhir_Sertifikat` at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:2760
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(2760): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/add-beginner-competence.php(100): Kompetensi->tambahKompetensi(Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 2760
+[14-Jul-2024 09:59:06 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-beginner-competence.php on line 23
+[14-Jul-2024 09:59:06 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '20025-07-03' for column `basarnas_simore`.`kompetensi`.`Tanggal_Berakhir_Sertifikat` at row 1 in /home/basarnas/public_html/src/admin/config/databases.php:2760
+Stack trace:
+#0 /home/basarnas/public_html/src/admin/config/databases.php(2760): mysqli_stmt->execute()
+#1 /home/basarnas/public_html/src/admin/config/add-beginner-competence.php(100): Kompetensi->tambahKompetensi(Array)
+#2 {main}
+  thrown in /home/basarnas/public_html/src/admin/config/databases.php on line 2760
+[14-Jul-2024 10:00:53 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-beginner-competence.php on line 23
+[14-Jul-2024 10:18:22 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-skilled-competence.php on line 23
+[14-Jul-2024 10:26:35 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-advanced-competence.php on line 23
+[14-Jul-2024 10:32:17 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 146 in /home/basarnas/public_html/src/admin/config/add-investigation-competence.php on line 23
+[14-Jul-2024 10:48:10 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 10:48:10 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 10:51:31 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-modul.php on line 23
+[14-Jul-2024 10:51:31 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-modul.php on line 23
+[14-Jul-2024 10:51:31 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-modul.php on line 23
+[14-Jul-2024 11:05:02 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:05:02 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:05:02 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:05:14 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:05:14 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:05:14 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:26:42 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:26:42 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:26:42 UTC] PHP Warning:  preg_match(): Compilation failed: missing closing parenthesis at offset 274 in /home/basarnas/public_html/src/admin/config/add-bmi.php on line 23
+[14-Jul-2024 11:32:04 UTC] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home/basarnas/public_html/src/admin/config/edit-Investigation-competence.php on line 36
+[14-Jul-2024 11:32:04 UTC] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home/basarnas/public_html/src/admin/config/edit-Investigation-competence.php on line 37
+[14-Jul-2024 11:32:04 UTC] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home/basarnas/public_html/src/admin/config/edit-Investigation-competence.php on line 38
+[14-Jul-2024 11:32:04 UTC] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home/basarnas/public_html/src/admin/config/edit-Investigation-competence.php on line 39
+[14-Jul-2024 11:32:04 UTC] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home/basarnas/public_html/src/admin/config/edit-Investigation-competence.php on line 40
+[14-Jul-2024 11:32:04 UTC] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home/basarnas/public_html/src/admin/config/edit-Investigation-competence.php on line 41
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 15.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 90
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 90
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 90
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 90
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 91
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 91
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 91
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 91
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 91
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 92
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 92
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 92
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 92
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 93
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 93
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 93
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 93
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 93
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 94
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 94
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 94
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 94
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 95
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 95
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 95
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 95
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 95
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 96
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 96
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 96
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 96
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 97
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 97
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 97
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 97
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 97
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 98
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 98
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 98
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 98
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 99
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 99
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 99
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 99
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 99
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 100
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 100
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 100
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 100
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 101
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 101
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 101
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 101
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 101
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 102
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 102
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 102
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 102
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 103
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 103
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 103
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 103
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 103
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 104
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 104
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 104
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 104
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 105
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 105
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 105
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 105
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 105
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 106
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 106
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 106
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 106
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 107
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 107
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 107
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 107
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 107
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 108
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 108
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 108
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 108
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 109
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 109
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 109
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 109
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 109
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 16.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 117
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 117
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 117
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 117
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 118
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 118
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 118
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 118
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 118
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 119
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 119
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 119
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 119
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 120
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 120
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 120
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 120
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 120
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 121
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 121
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 121
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 121
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 122
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 122
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 122
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 122
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 122
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 123
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 123
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 123
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 123
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 124
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 124
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 124
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 124
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 124
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 125
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 125
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 125
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 125
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 126
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 126
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 126
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 126
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 126
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 127
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 127
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 127
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 127
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 128
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 128
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 128
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 128
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 128
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 129
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 129
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 129
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 129
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 130
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 130
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 130
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 130
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 130
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 131
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 131
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 131
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 131
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 132
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 132
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 132
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 132
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 132
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 133
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 133
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 133
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 133
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 134
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 134
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 134
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 134
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 134
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 135
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 135
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 135
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 135
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 136
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 136
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 136
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 136
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 136
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 142
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 142
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 142
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 142
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 142
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 17.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 143
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 143
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 143
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 143
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 144
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 144
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 144
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 144
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 144
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 145
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 145
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 145
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 145
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 146
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 146
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 146
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 146
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 146
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 147
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 147
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 147
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 147
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 148
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 148
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 148
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 148
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 148
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 149
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 149
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 149
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 149
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 150
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 150
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 150
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 150
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 150
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 151
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 151
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 151
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 151
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 152
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 152
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 152
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 152
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 152
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 153
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 153
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 153
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 153
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 154
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 154
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 154
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 154
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 154
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 155
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 155
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 155
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 155
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 156
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 156
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 156
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 156
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 156
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 157
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 157
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 157
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 157
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 158
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 158
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 158
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 158
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 158
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 159
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 159
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 159
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 159
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 160
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 160
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 160
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 160
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 160
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 161
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 161
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 161
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 161
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 18.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 167
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 167
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 167
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 167
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 168
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 168
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 168
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 168
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 168
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 19.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 169
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 169
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 169
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 169
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 170
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 170
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 170
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 170
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 170
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 171
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 171
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 171
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 171
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 172
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 172
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 172
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 172
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 172
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 173
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 173
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 173
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 173
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 174
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 174
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 174
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 174
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 174
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 175
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 175
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 175
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 175
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 176
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 176
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 176
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 176
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 176
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 177
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 177
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 177
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 177
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 178
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 178
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 178
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 178
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 178
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 179
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 179
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 179
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 179
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 180
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 180
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 180
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 180
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 180
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 181
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 181
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 181
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 181
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 182
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 182
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 182
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 182
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 182
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 183
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 183
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 183
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 183
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 184
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 184
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 184
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 184
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 184
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 185
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 185
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 185
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 185
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 186
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 186
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 186
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 186
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 186
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 192
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 192
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 192
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 192
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 192
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 20.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 193
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 193
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 193
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 193
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 194
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 194
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 194
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 194
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 194
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 21.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 195
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 195
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 195
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 195
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 196
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 196
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 196
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 196
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 196
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 22.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 197
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 197
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 197
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 197
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 198
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 198
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 198
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 198
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 198
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 23.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 199
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 199
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 199
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 199
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 200
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 200
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 200
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 200
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 200
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 24.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 201
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 201
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 201
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 201
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 202
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 202
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 202
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 202
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 202
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 25.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 203
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 203
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 203
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 203
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 204
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 204
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 204
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 204
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 204
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 26.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 205
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 205
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 205
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 205
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 206
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 206
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 206
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 206
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 206
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 27.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 207
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 207
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 207
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 207
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 208
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 208
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 208
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 208
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 208
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 28.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 209
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 209
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 209
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 209
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.4 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 210
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.5 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 210
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.6 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 210
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.7 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 210
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.8 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 210
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 29.9 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 211
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 30.1 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 211
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 30.2 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 211
+[14-Jul-2024 11:34:32 UTC] PHP Deprecated:  Implicit conversion from float 30.3 to int loses precision in /home/basarnas/public_html/src/admin/config/add-garjas-pria-shuttle-run.php on line 211
+[14-Jul-2024 12:11:01 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 12:11:01 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 12:13:28 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 12:13:28 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 12:23:40 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[14-Jul-2024 12:23:40 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[15-Jul-2024 01:20:50 UTC] PHP Warning:  Undefined array key "Alamat_Admin" in /home/basarnas/public_html/src/admin/config/login.php on line 36
+[15-Jul-2024 01:20:50 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/basarnas/public_html/src/admin/config/login.php on line 36

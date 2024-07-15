@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
     $nipAdmin = $_SESSION['NIP_Admin'];
-    $namaLengkapAdmin = $_POST['Nama_Lengkap_Admin'] ?? '';
+    $namaLengkapAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Nama_Lengkap_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $peranAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Peran_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $jabatanAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jabatan_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $jenisKelaminAdmin = mysqli_real_escape_string($koneksi, filter_input(INPUT_POST, 'Jenis_Kelamin_Admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS));

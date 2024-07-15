@@ -160,7 +160,6 @@ class Admin
         }
     }
 
-
     public function getFotoAdminById($idAdmin)
     {
         $query = "SELECT Foto_Admin FROM admin WHERE NIP_Admin = ?";
