@@ -20,6 +20,15 @@
                         <label for="suntingWaktuGarjasWanitaLari" class="form-label">Waktu Lari</label>
                         <input type="number" class="form-control" id="suntingWaktuGarjasWanitaLari" name="Waktu_Lari_Wanita">
                     </div>
+                    <div class="mb-3">
+                        <label for="suntingStatusGarjasWanitaLari" class="form-label">Status</label>
+                        <select name="Status_Tes_Lari_Wanita" class="form-control" id="suntingStatusGarjasWanitaLari">
+                            <option value="">Pilih Status</option>
+                            <option value="Ditinjau">Ditinjau</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasWanitaLari" name="Simpan">Simpan</button>
                 </form>
             </div>

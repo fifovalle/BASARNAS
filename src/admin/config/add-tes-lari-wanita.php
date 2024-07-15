@@ -668,6 +668,7 @@ if (isset($_POST['tambah_nilai'])) {
         'Tanggal_Pelaksanaan_Tes_Lari_Wanita' => $tanggalPelaksanaanLariWanita,
         'Waktu_Lari_Wanita' => $waktuTestLariWanita,
         'Nilai_Lari_Wanita' => $nilaiAkhir,
+        "Status_Lari_Wanita" => "Diterima",
     );
 
     $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahTesLariWanita($dataPenggunaWanita);

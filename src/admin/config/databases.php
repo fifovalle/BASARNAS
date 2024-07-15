@@ -516,6 +516,17 @@ class Pengguna
         }
     }
 
+    public function cekKelaminPenggunaSesuaiNIP($NIP)
+    {
+        $query = "SELECT Jenis_Kelamin_Pengguna FROM pengguna WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("s", $NIP);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        return $row['Jenis_Kelamin_Pengguna'];
+    }
+
     public function hitungSemuaPengguna()
     {
         $query = "SELECT COUNT(*) as total FROM pengguna";
@@ -566,6 +577,16 @@ class GarjasPushUpPria
     private function mengamankanString($string)
     {
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataGarjasPriaPushUpBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_pria_push_up LEFT JOIN pengguna ON garjas_pria_push_up.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Push_Up_Pria) = ? AND YEAR(Tanggal_Pelaksanaan_Push_Up_Pria) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function tambahGarjasPushUpPria($data)
@@ -700,6 +721,16 @@ class GarjasPriaSitUpKakiLurus
     private function mengamankanString($string)
     {
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataGarjasPriaSitUpKakiLurusBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_pria_sit_up_kaki_lurus LEFT JOIN pengguna ON garjas_pria_sit_up_kaki_lurus.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria) = ? AND YEAR(Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function tambahGarjasPriaSitUp1($data)
@@ -849,6 +880,17 @@ class GarjasPriaShuttleRun
     {
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
+
+    public function tampilkanDataGarjasPriaShuttleRunBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_pria_shuttle_run LEFT JOIN pengguna ON garjas_pria_shuttle_run.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Shuttle_Run_Pria) = ? AND YEAR(Tanggal_Pelaksanaan_Shuttle_Run_Pria) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 
     public function tambahGarjasPriaShuttleRun($data)
     {
@@ -1005,6 +1047,16 @@ class GarjasPriaFlexedArmHang
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
 
+    public function tampilkanDataGarjasPriaFlexedArmHangBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_pria_menggantung LEFT JOIN pengguna ON garjas_pria_menggantung.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Pria_Menggantung) = ? AND YEAR(Tanggal_Pelaksanaan_Pria_Menggantung) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function tambahGarjasPriaFlexedArmHang($data)
     {
         $query = "INSERT INTO garjas_pria_menggantung (NIP_Pengguna, Tanggal_Pelaksanaan_Pria_Menggantung, Waktu_Menggantung_Pria, Nilai_Menggantung_Pria) VALUES (?, ?, ?, ?)";
@@ -1158,6 +1210,16 @@ class GarjasChinUpPria
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
 
+    public function tampilkanDataGarjasPriaChinUpHangBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_pria_chin_up LEFT JOIN pengguna ON garjas_pria_chin_up.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Chin_Up_Pria) = ? AND YEAR(Tanggal_Pelaksanaan_Chin_Up_Pria) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function tambahGarjasPriaChinUp($data)
     {
         $query = "INSERT INTO garjas_pria_chin_up (NIP_Pengguna, Tanggal_Pelaksanaan_Chin_Up_Pria, Jumlah_Chin_Up_Pria, Nilai_Chin_Up_Pria) VALUES (?, ?, ?, ?)";
@@ -1308,6 +1370,16 @@ class GarjasPriaSitUpKakiDitekuk
     private function mengamankanString($string)
     {
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataGarjasPriaSitUp2Bulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_pria_sit_up_kaki_di_tekuk LEFT JOIN pengguna ON garjas_pria_sit_up_kaki_di_tekuk.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk) = ? AND YEAR(Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function tambahGarjasPriaSitUp2($data)
@@ -1564,6 +1636,16 @@ class GarjasWanitaPushUp
             return false;
         }
     }
+
+    public function tampilkanDataGarjasWanitaPushUpBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_wanita_push_up LEFT JOIN pengguna ON garjas_wanita_push_up.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Push_Up_Wanita) = ? AND YEAR(Tanggal_Pelaksanaan_Push_Up_Wanita) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 // ===================================GARJAS WANITA PUSH UP===================================
 
@@ -1687,6 +1769,16 @@ class GarjasWanitaSitUp1
             return false;
         }
     }
+
+    public function tampilkanDataGarjasWanitaSitUpKakiLurusBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_wanita_sit_up_kaki_lurus LEFT JOIN pengguna ON garjas_wanita_sit_up_kaki_lurus.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita) = ? AND YEAR(Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 // ===================================GARJAS WANITA SIT UP===================================
 
@@ -1723,6 +1815,16 @@ class GarjasWanitaShuttleRun
         } else {
             return false;
         }
+    }
+
+    public function tampilkanDataGarjasWanitaShuttleRunBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_wanita_shuttle_run LEFT JOIN pengguna ON garjas_wanita_shuttle_run.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Shuttle_Run_Wanita) = ? AND YEAR(Tanggal_Pelaksanaan_Shuttle_Run_Wanita) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function ambilUmurGarjasWanitaShuttleRunOlehNIP($NIP)
@@ -1847,6 +1949,16 @@ class GarjasWanitaChinUp
         }
     }
 
+    public function tampilkanDataGarjasWanitaChinningBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_wanita_chin_up LEFT JOIN pengguna ON garjas_wanita_chin_up.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Chin_Up_Wanita) = ? AND YEAR(Tanggal_Pelaksanaan_Chin_Up_Wanita) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function ambilUmurGarjasWanitaChinUpOlehNIP($NIP)
     {
         $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
@@ -1968,6 +2080,16 @@ class GarjasWanitaSitUp2
         }
     }
 
+    public function tampilkanDataGarjasWanitaSitUp2Bulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM garjas_wanita_sit_up_kaki_di_tekuk LEFT JOIN pengguna ON garjas_wanita_sit_up_kaki_di_tekuk.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita) = ? AND YEAR(Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function ambilUmurGarjasWanitaSitUp2OlehNIP($NIP)
     {
         $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
@@ -2069,6 +2191,16 @@ class TesRenangPria
     private function mengamankanString($string)
     {
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataTesRenangPriaBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM tes_renang_pria LEFT JOIN pengguna ON tes_renang_pria.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Tes_Renang_Pria) = ? AND YEAR(Tanggal_Pelaksanaan_Tes_Renang_Pria) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function tambahTesRenangPria($data)
@@ -2203,6 +2335,16 @@ class TesRenangWanita
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
 
+    public function tampilkanDataTesRenangWanitaBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM tes_renang_wanita LEFT JOIN pengguna ON tes_renang_wanita.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Tes_Renang_Wanita) = ? AND YEAR(Tanggal_Pelaksanaan_Tes_Renang_Wanita) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function tambahTesRenangWanita($data)
     {
         $query = "INSERT INTO tes_renang_wanita (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Renang_Wanita, Waktu_Renang_Wanita, Nama_Gaya_Renang_Wanita, Nilai_Renang_Wanita) VALUES (?, ?, ?, ?, ?)";
@@ -2334,17 +2476,28 @@ class TesLariPria
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
 
+    public function tampilkanDataTesLariPriaPriaBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM tes_lari_pria LEFT JOIN pengguna ON tes_lari_pria.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Tes_Lari_Pria) = ? AND YEAR(Tanggal_Pelaksanaan_Tes_Lari_Pria) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function tambahTesLariPria($data)
     {
-        $query = "INSERT INTO tes_lari_pria (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Lari_Pria, Waktu_Lari_Pria, Nilai_Lari_Pria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO tes_lari_pria (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Lari_Pria, Waktu_Lari_Pria, Nilai_Lari_Pria, Status_Lari_Pria) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "issi",
+            "issis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Lari_Pria']),
             $this->mengamankanString($data['Waktu_Lari_Pria']),
-            $this->mengamankanString($data['Nilai_Lari_Pria'])
+            $this->mengamankanString($data['Nilai_Lari_Pria']),
+            $this->mengamankanString($data['Status_Lari_Pria'])
         );
 
         if ($statement->execute()) {
@@ -2389,16 +2542,43 @@ class TesLariPria
         $query = "UPDATE tes_lari_pria SET 
                     Tanggal_Pelaksanaan_Tes_Lari_Pria=?, 
                     Waktu_Lari_Pria=?, 
-                    Nilai_Lari_Pria=? 
+                    Nilai_Lari_Pria=?,
+                    Status_Lari_Pria=?
                     WHERE ID_Lari_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanLariPria = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Lari_Pria']);
         $waktuLariPria = $this->mengamankanString($data['Waktu_Lari_Pria']);
         $nilaiLariPria = $this->mengamankanString($data['Nilai_Lari_Pria']);
+        $statusLariPria = $this->mengamankanString($data['Status_Lari_Pria']);
         $idLariPria = $id;
 
-        $statement->bind_param("ssii", $tanggalPelaksanaanLariPria, $waktuLariPria, $nilaiLariPria, $idLariPria);
+        $statement->bind_param("ssisi", $tanggalPelaksanaanLariPria, $waktuLariPria, $nilaiLariPria, $statusLariPria, $idLariPria);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiTesLariPriaJikaDiTolak($NIP, $data)
+    {
+        $query = "UPDATE tes_lari_pria SET 
+                    Tanggal_Pelaksanaan_Tes_Lari_Pria=?, 
+                    Waktu_Lari_Pria=?, 
+                    Nilai_Lari_Pria=?,
+                    Status_Lari_Pria=?
+                    WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanLariPria = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Lari_Pria']);
+        $waktuLariPria = $this->mengamankanString($data['Waktu_Lari_Pria']);
+        $nilaiLariPria = $this->mengamankanString($data['Nilai_Lari_Pria']);
+        $statusLariPria = $this->mengamankanString($data['Status_Lari_Pria']);
+        $idLariPria = $NIP;
+
+        $statement->bind_param("ssisi", $tanggalPelaksanaanLariPria, $waktuLariPria, $nilaiLariPria, $statusLariPria, $idLariPria);
 
         if ($statement->execute()) {
             return true;
@@ -2470,17 +2650,28 @@ class TesLariWanita
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
 
+    public function tampilkanDataTesLariWanitaBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM tes_lari_wanita LEFT JOIN pengguna ON tes_lari_wanita.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Tes_Lari_Wanita) = ? AND YEAR(Tanggal_Pelaksanaan_Tes_Lari_Wanita) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function tambahTesLariWanita($data)
     {
-        $query = "INSERT INTO tes_lari_wanita (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Lari_Wanita, Waktu_Lari_Wanita, Nilai_Lari_Wanita) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO tes_lari_wanita (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Lari_Wanita, Waktu_Lari_Wanita, Nilai_Lari_Wanita, Status_Lari_Wanita) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "issi",
+            "issis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Lari_Wanita']),
             $this->mengamankanString($data['Waktu_Lari_Wanita']),
-            $this->mengamankanString($data['Nilai_Lari_Wanita'])
+            $this->mengamankanString($data['Nilai_Lari_Wanita']),
+            $this->mengamankanString($data['Status_Lari_Wanita'])
         );
 
         if ($statement->execute()) {
@@ -2525,16 +2716,41 @@ class TesLariWanita
         $query = "UPDATE tes_lari_wanita SET 
                     Tanggal_Pelaksanaan_Tes_Lari_Wanita=?, 
                     Waktu_Lari_Wanita=?, 
-                    Nilai_Lari_Wanita=? 
+                    Nilai_Lari_Wanita=?,
+                    Status_Lari_Wanita=?
                     WHERE ID_Lari_Wanita=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanLariWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Lari_Wanita']);
         $waktuLariWanita = $this->mengamankanString($data['Waktu_Lari_Wanita']);
         $nilaiLariWanita = $this->mengamankanString($data['Nilai_Lari_Wanita']);
+        $statusLariWanita = $this->mengamankanString($data['Status_Lari_Wanita']);
         $idLariWanita = $id;
+        $statement->bind_param("ssisi", $tanggalPelaksanaanLariWanita, $waktuLariWanita, $nilaiLariWanita, $statusLariWanita, $idLariWanita);
 
-        $statement->bind_param("ssii", $tanggalPelaksanaanLariWanita, $waktuLariWanita, $nilaiLariWanita, $idLariWanita);
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiTesLariWanitaJikaDiTolak($NIP, $data)
+    {
+        $query = "UPDATE tes_lari_wanita SET 
+                    Tanggal_Pelaksanaan_Tes_Lari_Wanita=?, 
+                    Waktu_Lari_Wanita=?, 
+                    Nilai_Lari_Wanita=?,
+                    Status_Lari_Wanita=?
+                    WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanLariWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Lari_Wanita']);
+        $waktuLariWanita = $this->mengamankanString($data['Waktu_Lari_Wanita']);
+        $nilaiLariWanita = $this->mengamankanString($data['Nilai_Lari_Wanita']);
+        $statusLariWanita = $this->mengamankanString($data['Status_Lari_Wanita']);
+        $idLariWanita = $NIP;
+        $statement->bind_param("ssisi", $tanggalPelaksanaanLariWanita, $waktuLariWanita, $nilaiLariWanita, $statusLariWanita, $idLariWanita);
 
         if ($statement->execute()) {
             return true;
@@ -2605,6 +2821,16 @@ class TesJalanKaki5KMPria
     private function mengamankanString($string)
     {
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tampilkanDataTesJalanKaki5KMPriaBulan($bulan, $tahun)
+    {
+        $sql = "SELECT * FROM tes_jalan_pria LEFT JOIN pengguna ON tes_jalan_pria.NIP_Pengguna = pengguna.NIP_Pengguna WHERE MONTH(Tanggal_Pelaksanaan_Tes_Jalan_Pria) = ? AND YEAR(Tanggal_Pelaksanaan_Tes_Jalan_Pria) = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ii", $bulan, $tahun);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function tampilkanDataTesJalanKaki5KMPria()

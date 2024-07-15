@@ -35,12 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $waktuTestLariWanita = $_POST['Waktu_Lari_Wanita'] ?? '';
     $tanggalPelaksanaanTestLariWanita = $_POST['Tanggal_Pelaksanaan_Tes_Lari_Wanita'] ?? '';
+    $statusTestLariWanita = $_POST['Status_Tes_Lari_Wanita'] ?? '';
+
 
     $garjasWanitaTesLariModel = new TesLariWanita($koneksi);
     $umurPengguna = $garjasWanitaTesLariModel->ambilUmurTesLariWanitaOlehNIP($nipPengguna);
 
     $waktuTestLariWanita = str_replace(',', '.', $waktuTestLariWanita);
     $waktuTestLariWanita = (float) $waktuTestLariWanita;
+
+    if ($statusTestLariWanita == '') {
+        echo json_encode(array("success" => false, "message" => "Status Test Lari Wanita harus diisi."));
+        exit;
+    }
 
     if ($waktuTestLariWanita == 0) {
         echo json_encode(array("success" => false, "message" => "Nilai Tes Lari Wanita tidak boleh 0."));
@@ -643,7 +650,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Tes_Lari_Wanita' => $tanggalPelaksanaanTestLariWanita,
         'Waktu_Lari_Wanita' => $waktuTestLariWanita,
-        'Nilai_Lari_Wanita' => $nilaiAkhir
+        'Nilai_Lari_Wanita' => $nilaiAkhir,
+        'Status_Lari_Wanita' => $statusTestLariWanita
+
     );
     $updateGarjasWanitaTesLari = $garjasWanitaTesLariModel->perbaruiTesLariWanita($idGarjasWanitaTesLari, $dataGarjasWanitaShuttleRun);
 

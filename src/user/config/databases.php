@@ -229,6 +229,7 @@ class Pengguna
             return null;
         }
     }
+
     public function tampilkanRenangDenganSessionNipPria($nipSessionPengguna)
     {
         $query = "SELECT tes_renang_pria.*, pengguna.* 

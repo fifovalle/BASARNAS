@@ -15,14 +15,16 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 <head>
 	<?php include('../partials/header.php'); ?>
 	<link rel="stylesheet" href="../assets/css/lari.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
 	<?php include('../partials/navbar.php'); ?>
 	<section class="table-samapta">
 		<h1 class="samapta-title text-center">SAMAPTA (Lari 2400 M)</h1>
-		<div class="btn-group">
-			<div class="dropdown pe-2" id="dropdownBulan">
+		<div class="d-flex align-items-center">
+			<div class="dropdown pe-2">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Pilih Bulan
 				</button>
@@ -41,6 +43,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 				</ul>
 			</div>
+			<button class="btn btn-round ms-auto tombol-tambah" data-bs-toggle="modal" data-bs-target="#tambahGarjasLari">
+				<i class="fa fa-plus"></i>
+				Tambah Data
+			</button>
 		</div>
 		<div class="table-responsive-sm">
 			<table class="table">
@@ -64,32 +70,44 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					$pengguna = $resultJenisKelamin->fetch_assoc();
 					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
 					$nomorUrut = 0;
+					$lariInfo = null;
+					$waktuField = '';
+					$nilaiField = '';
+					$tanggalPelaksanaanField = '';
+					$statusField = '';
 					if ($jenisKelamin == 'Pria') {
 						$lariInfo = $lariModel->tampilkanLariDenganSessionNipPria($nipSessionPengguna);
 						$waktuField = 'Waktu_Lari_Pria';
 						$nilaiField = 'Nilai_Lari_Pria';
 						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Tes_Lari_Pria';
+						$statusField = 'Status_Lari_Pria';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$lariInfo = $lariModel->tampilkanLariDenganSessionNipWanita($nipSessionPengguna);
 						$waktuField = 'Waktu_Lari_Wanita';
 						$nilaiField = 'Nilai_Lari_Wanita';
 						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Tes_Lari_Wanita';
-					} else {
-						$lariInfo = null;
+						$statusField = 'Status_Lari_Wanita';
 					}
-
 					if (!empty($lariInfo)) {
 						foreach ($lariInfo as $lari) {
-							$bulan = date('m', strtotime($lari[$tanggalPelaksanaanField]));
-							$nomorUrut++;
+							if (isset($lari[$statusField])) {
+								if ($lari[$statusField] == 'Ditolak') {
+									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak.</td></tr>';
+								} elseif ($lari[$statusField] == 'Ditinjau') {
+									echo '<tr id="barisDitinjau"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
+								} else {
+									$bulan = date('m', strtotime($lari[$tanggalPelaksanaanField]));
+									$nomorUrut++;
 					?>
-							<tr class="lari-baris" data-bulan="<?php echo $bulan; ?>">
-								<td><?php echo $nomorUrut; ?></td>
-								<td><?php echo htmlspecialchars($lari[$tanggalPelaksanaanField]); ?></td>
-								<td><?php echo htmlspecialchars($lari[$waktuField]); ?></td>
-								<td><?php echo htmlspecialchars($lari[$nilaiField]); ?></td>
-							</tr>
+									<tr class="lari-baris" data-bulan="<?php echo $bulan; ?>">
+										<td><?php echo $nomorUrut; ?></td>
+										<td><?php echo htmlspecialchars($lari[$tanggalPelaksanaanField]); ?></td>
+										<td><?php echo htmlspecialchars($lari[$waktuField]); ?></td>
+										<td><?php echo htmlspecialchars($lari[$nilaiField]); ?></td>
+									</tr>
 					<?php
+								}
+							}
 						}
 					} else {
 						echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Tidak ada data lari.</td></tr>';
@@ -102,6 +120,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	<?php include('../partials/footer.php'); ?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 	<script>
 		$(document).ready(function() {
 			$('#dropdownBulan .dropdown-item').on('click', function() {
@@ -127,6 +149,9 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 
 		});
 	</script>
+	<!-- MODALS START -->
+	<?php include('../partials/modal-add-garjas-lari.php'); ?>
+	<!-- MODALS END -->
 </body>
 
 </html>

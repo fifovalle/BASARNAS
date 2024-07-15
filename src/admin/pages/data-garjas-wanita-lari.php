@@ -63,10 +63,15 @@ if (!isset($_SESSION['NIP_Admin'])) {
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
+                                    <div class="dropdown mt-3 mb-4">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Laporan Bulanan
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="download-options"></ul>
+                                    </div>
                                     <div class="d-flex align-items-center">
                                         <h4 class="card-title">Data Nilai Garjas Wanita (Lari 2400 M)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasWanitaLari">
@@ -84,9 +89,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Waktu Lari</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -103,9 +108,13 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasTesLariWanita['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasTesLariWanita['Tanggal_Pelaksanaan_Tes_Lari_Wanita']; ?></td>
                                                             <td><?php echo $garjasTesLariWanita['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasTesLariWanita['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasTesLariWanita['Waktu_Lari_Wanita']; ?> (Menit/Detik)</td>
                                                             <td><?php echo $garjasTesLariWanita['Nilai_Lari_Wanita']; ?></td>
+                                                            <td>
+                                                                <span class="badge bg-<?= $garjasTesLariWanita['Status_Lari_Wanita'] == "Ditinjau" ? "warning" : ($garjasTesLariWanita['Status_Lari_Wanita'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasTesLariWanita['Status_Lari_Wanita'] == "Ditinjau" ? "Ditinjau" : ($garjasTesLariWanita['Status_Lari_Wanita'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span>
+                                                            </td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasTesLariWanita" data-bs-toggle="modal" data-id="<?php echo $garjasTesLariWanita['ID_Lari_Wanita']; ?>">
@@ -166,6 +175,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/delete-garjas-wanita-lari.js"></script>
     <script src="../assets/js/value-garjas-wanita-lari.js"></script>
     <script src="../assets/js/value-see-garjas-wanita-lari.js"></script>
+    <script src="../assets/js/laporan-bulanan-wanita-lari.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

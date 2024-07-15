@@ -48,6 +48,7 @@ if (isset($_POST['tambah_nilai'])) {
     }
 
     $umurPengguna = $obyekPenggunaPria->ambilUmurTesLariPriaOlehNIP($nipPengguna);
+
     if ($obyekPenggunaPria->cekNipAnggotaTesLariPriaSudahAda($nipPengguna)) {
         setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
         header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-lari.php");
@@ -233,6 +234,7 @@ if (isset($_POST['tambah_nilai'])) {
         'Tanggal_Pelaksanaan_Tes_Lari_Pria' => $tanggalPelaksanaanLariPria,
         'Waktu_Lari_Pria' => $waktuTestLariPria,
         'Nilai_Lari_Pria' => $nilaiAkhir,
+        'Status_Lari_Pria' => "Diterima"
     );
 
     $simpanDataPenggunaPria = $obyekPenggunaPria->tambahTesLariPria($dataPenggunaPria);

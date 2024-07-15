@@ -208,7 +208,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-beginner-competence.php') || apakahAktif('src/admin/pages/data-skilled-competence.php') || apakahAktif('src/admin/pages/data-advanced-competence.php') ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo apakahAktif('src/admin/pages/data-beginner-competence.php') || apakahAktif('src/admin/pages/data-skilled-competence.php') || apakahAktif('src/admin/pages/data-advanced-competence.php') || apakahAktif('src/admin/pages/data-investigation-competence.php') ? 'active' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#kompetensi">
                         <i class="fas fa-layer-group"></i>
                         <p>Kompetensi</p>

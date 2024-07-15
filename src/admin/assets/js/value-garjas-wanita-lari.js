@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingTanggalPelaksanaanGarjasWanitaLari").val(
             garjasWanitaTestLariData.Tanggal_Pelaksanaan_Tes_Lari_Wanita
           );
+          $("#suntingStatusGarjasWanitaLari").val(
+            garjasWanitaTestLariData.Status_Lari_Wanita
+          );
           $("#suntingGarjasWanitaLari").modal("show");
         }
       },

@@ -65,6 +65,12 @@ if (!isset($_SESSION['NIP_Admin'])) {
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
+                                    <div class="dropdown mt-3 mb-4">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Laporan Bulanan
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="download-options"></ul>
+                                    </div>
                                     <div class="d-flex align-items-center">
                                         <h4 class="card-title">Data Nilai Garjas Pria (Sit Up Kaki Lurus)</h4>
                                         <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#tambahGarjasPriaSitUp1">
@@ -164,6 +170,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
     <script src="../assets/js/delete-garjas-pria-situp1.js"></script>
     <script src="../assets/js/value-see-garjas-pria-situp1.js"></script>
     <script src="../assets/js/value-garjas-pria-situp1.js"></script>
+    <script src="../assets/js/laporan-bulanan-pria-situp1.js"></script>
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable({});

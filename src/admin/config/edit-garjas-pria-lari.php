@@ -28,7 +28,6 @@ function containsXSS($input)
     return false;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
@@ -37,12 +36,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $waktuTestLariPria = $_POST['Waktu_Lari_Pria'] ?? '';
     $tanggalPelaksanaanTestLariPria = $_POST['Tanggal_Pelaksanaan_Tes_Lari_Pria'] ?? '';
+    $statusTestLariPria = $_POST['Status_Tes_Lari_Pria'] ?? '';
 
     $garjasPriaTesLariModel = new TesLariPria($koneksi);
     $umurPengguna = $garjasPriaTesLariModel->ambilUmurTesLariPriaOlehNIP($nipPengguna);
 
     $waktuTestLariPria = str_replace(',', '.', $waktuTestLariPria);
     $waktuTestLariPria = (float) $waktuTestLariPria;
+
+    if ($statusTestLariPria == '') {
+        echo json_encode(array("success" => false, "message" => "Status Test Lari Pria harus diisi."));
+        exit;
+    }
 
     if ($waktuTestLariPria == 0) {
         echo json_encode(array("success" => false, "message" => "Nilai Tes Lari Pria tidak boleh 0."));
@@ -210,7 +215,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Tes_Lari_Pria' => $tanggalPelaksanaanTestLariPria,
         'Waktu_Lari_Pria' => $waktuTestLariPria,
-        'Nilai_Lari_Pria' => $nilaiAkhir
+        'Nilai_Lari_Pria' => $nilaiAkhir,
+        'Status_Lari_Pria' => $statusTestLariPria
     );
     $updateGarjasPriaTesLari = $garjasPriaTesLariModel->perbaruiTesLariPria($idGarjasPriaTesLari, $dataGarjasTesLariPria);
 

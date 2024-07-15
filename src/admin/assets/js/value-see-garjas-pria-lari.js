@@ -20,17 +20,37 @@ $(document).ready(function () {
         } else {
           $("#lihatNamaPengguna").text(penggunaData.Nama_Lengkap_Pengguna);
           $("#lihatNIPPenggunaTd").text(penggunaData.NIP_Pengguna);
-          $("#lihatPotoPenggunaTd").attr("src", "../uploads/" + penggunaData.Foto_Pengguna);
+          $("#lihatPotoPenggunaTd").attr(
+            "src",
+            "../uploads/" + penggunaData.Foto_Pengguna
+          );
           $("#lihatNamaPenggunaTd").text(penggunaData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaTd").text(penggunaData.Tanggal_Lahir_Pengguna);
+          $("#lihatTglLahirPenggunaTd").text(
+            penggunaData.Tanggal_Lahir_Pengguna
+          );
           $("#lihatAlamatPenggunaTd").text(penggunaData.Alamat_Pengguna);
           $("#lihatJabatanPenggunaTd").text(penggunaData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaTd").text(penggunaData.Jenis_Kelamin_Pengguna);
+          $("#lihatJenisKelaminPenggunaTd").text(
+            penggunaData.Jenis_Kelamin_Pengguna
+          );
           $("#lihatNoTelpPenggunaTd").text(penggunaData.No_Telepon_Pengguna);
           $("#lihatUmurPenggunaTd").text(penggunaData.Umur_Pengguna);
           $("#lihatWaktuTesLariPriaTd").text(penggunaData.Waktu_Lari_Pria);
           $("#lihatNilaiTesLariPriaTd").text(penggunaData.Nilai_Lari_Pria);
-          $("#tanggalPelaksanaanTesLariPriaTd").text(penggunaData.Tanggal_Pelaksanaan_Tes_Lari_Pria);
+          $("#tanggalPelaksanaanTesLariPriaTd").text(
+            penggunaData.Tanggal_Pelaksanaan_Tes_Lari_Pria
+          );
+          const statusClasses = {
+            Ditinjau: "badge bg-warning text-white",
+            Diterima: "badge bg-success text-white",
+            Ditolak: "badge bg-danger text-white",
+          };
+
+          const statusText = penggunaData.Status_Lari_Pria;
+          const statusClass = statusClasses[statusText] || "";
+
+          $("#statusTesLariPriaTd").text(statusText);
+          $("#statusTesLariPriaTd").attr("class", statusClass);
           $("#lihatGarjasPriaLari").modal("show");
         }
       },
