@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2024 at 11:38 AM
+-- Generation Time: Jul 16, 2024 at 12:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -366,13 +366,6 @@ CREATE TABLE `tes_renang_pria` (
   `Status_Renang_Pria` enum('Diterima','Ditinjau','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tes_renang_pria`
---
-
-INSERT INTO `tes_renang_pria` (`ID_Renang_Pria`, `NIP_Pengguna`, `Tanggal_Pelaksanaan_Tes_Renang_Pria`, `Waktu_Renang_Pria`, `Nama_Gaya_Renang_Pria`, `Nilai_Renang_Pria`, `Status_Renang_Pria`) VALUES
-(64, 2250081109, '2024-07-06', '00:43', 'Dada', 100, 'Diterima');
-
 -- --------------------------------------------------------
 
 --
@@ -661,13 +654,13 @@ ALTER TABLE `tes_lari_wanita`
 -- AUTO_INCREMENT for table `tes_renang_pria`
 --
 ALTER TABLE `tes_renang_pria`
-  MODIFY `ID_Renang_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `ID_Renang_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `tes_renang_wanita`
 --
 ALTER TABLE `tes_renang_wanita`
-  MODIFY `ID_Renang_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_Renang_Wanita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables

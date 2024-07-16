@@ -17,6 +17,8 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	include('../partials/header.php');
 	?>
 	<link rel="stylesheet" href="../assets/css/renang.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -109,7 +111,6 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 										<td><?php echo htmlspecialchars($renang[$gayaField]); ?></td>
 										<td><?php echo htmlspecialchars($renang[$waktuField]); ?></td>
 										<td><?php echo htmlspecialchars($renang[$nilaiField]); ?></td>
-										<td><?php echo htmlspecialchars($renang[$statusField]); ?></td>
 									</tr>
 					<?php
 								}
@@ -128,6 +129,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 	<script>
 		$(document).ready(function() {
 			$('#dropdownBulan .dropdown-item').on('click', function() {

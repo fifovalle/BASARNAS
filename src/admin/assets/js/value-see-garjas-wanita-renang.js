@@ -37,12 +37,20 @@ $(document).ready(function () {
           $("#lihatUmurPenggunaGW").text(penggunaData.Umur_Pengguna);
           $("#lihatWaktuRenangWanitaGW").text(penggunaData.Waktu_Renang_Wanita);
           $("#lihatNilaiRenangWanitaGW").text(penggunaData.Nilai_Renang_Wanita);
-          $("#lihatStatusRenangWanitaGW").text(
-            penggunaData.Status_Renang_Wanita
-          );
           $("#tanggalPelaksanaanRenangWanitaGW").text(
             penggunaData.Tanggal_Pelaksanaan_Tes_Renang_Wanita
           );
+          const statusClasses = {
+            Ditinjau: "badge bg-warning text-white",
+            Diterima: "badge bg-success text-white",
+            Ditolak: "badge bg-danger text-white",
+          };
+
+          const statusText = penggunaData.Status_Renang_Wanita;
+          const statusClass = statusClasses[statusText] || "";
+
+          $("#lihatStatusRenangWanitaGw").text(statusText);
+          $("#lihatStatusRenangWanitaGw").attr("class", statusClass);
           $("#lihatGarjasWanitaRenang").modal("show");
         }
       },

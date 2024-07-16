@@ -118,7 +118,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                                     <?= $tesRenangWanita['Status_Renang_Wanita'] == "Ditinjau" ? "Ditinjau" : ($tesRenangWanita['Status_Renang_Wanita'] == "Diterima" ? "Diterima" : "Ditolak") ?>
                                                                 </span></td>
                                                             <td>
-                                                            <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonTestRenangWanita" data-bs-toggle="modal" data-id="<?php echo $tesRenangWanita['ID_Renang_Wanita']; ?>">
                                                                         <i class="fa fa-edit"></i>

@@ -2684,7 +2684,7 @@ class TesRenangWanita
         Waktu_Renang_Wanita=?, 
         Nilai_Renang_Wanita=?,
         Status_Renang_Wanita=? 
-        WHERE ID_Renang_Wanita=?";
+        WHERE NIP_Pengguna=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanRenangWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Renang_Wanita']);
@@ -2693,7 +2693,7 @@ class TesRenangWanita
         $nilaiRenangWanita = $this->mengamankanString($data['Nilai_Renang_Wanita']);
         $statusRenangWanita = $this->mengamankanString($data['Status_Renang_Wanita']);
         $idRenangWanita = $NIP;
-        $statement->bind_param("ssisi", $tanggalPelaksanaanRenangWanita, $namaRenangWanita, $waktuRenangWanita, $nilaiRenangWanita, $statusRenangWanita, $idRenangWanita);
+        $statement->bind_param("sssisi", $tanggalPelaksanaanRenangWanita, $namaRenangWanita, $waktuRenangWanita, $nilaiRenangWanita, $statusRenangWanita, $idRenangWanita);
 
         if ($statement->execute()) {
             return true;

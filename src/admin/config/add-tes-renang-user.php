@@ -47,6 +47,8 @@ if (isset($_POST['tambah_nilai'])) {
     } else {
         $tanggal_pelaksanaan_database = $tanggal_pelaksanaan_renang->format('Y-m-d');
     }
+    $gayaRenang = mysqli_real_escape_string($koneksi, $_POST['Gaya_Renang']);
+    $waktuRenang = mysqli_real_escape_string($koneksi, $_POST['Waktu_Renang']);
 
     if (strpos($waktuRenang, ':') !== false) {
         list($menit, $detik) = explode(':', $waktuRenang);
@@ -54,23 +56,6 @@ if (isset($_POST['tambah_nilai'])) {
     } else {
         $waktuRenang = (int)$waktuRenang;
     }
-
-    $gayaRenang = mysqli_real_escape_string($koneksi, $_POST['Gaya_Renang']);
-
-    $waktuRenang = '';
-
-    if (isset($_POST['Waktu_Renang'])) {
-        $waktuRenang = $_POST['Waktu_Renang'];
-
-        if (strpos($waktuRenang, ':') !== false) {
-            list($menit, $detik) = explode(':', $waktuRenang);
-            $waktuRenang = ($menit * 60) + $detik;
-        } else {
-            $waktuRenang = (int)$waktuRenang;
-        }
-    }
-
-
     $umurPengguna = $obyekPenggunaPria->ambilUmurTesRenangPriaOlehNIP($nipPengguna);
     $cekKelaminPengguna = $obyekPengguna->cekKelaminPenggunaSesuaiNIP($nipPengguna);
 
@@ -87,12 +72,6 @@ if (isset($_POST['tambah_nilai'])) {
         }
         if (!empty($pesanKesalahan)) {
             setPesanKesalahan($pesanKesalahan);
-            header("Location: " . $akarUrl . "src/user/pages/renang.php");
-            exit;
-        }
-
-        if ($obyekPenggunaPria->sudahAdaNilaiRenangPria($nipPengguna)) {
-            setPesanKesalahan("Nilai renang untuk pengguna ini sudah ada.");
             header("Location: " . $akarUrl . "src/user/pages/renang.php");
             exit;
         }
@@ -204,12 +183,6 @@ if (isset($_POST['tambah_nilai'])) {
         }
         if (!empty($pesanKesalahan)) {
             setPesanKesalahan($pesanKesalahan);
-            header("Location: " . $akarUrl . "src/user/pages/renang.php");
-            exit;
-        }
-
-        if ($tesRenangWanitaModel->sudahAdaNilaiRenangWanita($nipPengguna)) {
-            setPesanKesalahan("Nilai renang untuk pengguna ini sudah ada.");
             header("Location: " . $akarUrl . "src/user/pages/renang.php");
             exit;
         }
