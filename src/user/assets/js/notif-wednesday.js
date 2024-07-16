@@ -98,7 +98,7 @@ $(document).ready(function () {
   $("#moduleRabu").text(formattedNextWednesday);
 
   $.ajax({
-    url: "https://basarnas.my.id/src/user/config/get-monday-modul.php",
+    url: "http://localhost/BASARNAS/src/user/config/get-monday-modul.php",
     method: "POST",
     data: { Tanggal: nextWednesday.toISOString().split("T")[0] },
     success: function (response) {
