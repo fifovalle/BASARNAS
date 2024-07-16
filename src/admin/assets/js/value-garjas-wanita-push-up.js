@@ -17,11 +17,23 @@ $(document).ready(function () {
         if (garjasWanitaPushUpData.success === false) {
           alert(garjasWanitaPushUpData.message);
         } else {
-          let nipNama = garjasWanitaPushUpData.NIP_Pengguna + " - " + garjasWanitaPushUpData.Nama_Lengkap_Pengguna;
+          let nipNama =
+            garjasWanitaPushUpData.NIP_Pengguna +
+            " - " +
+            garjasWanitaPushUpData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#SuntingGarjasWanitaPushUpID").val(garjasWanitaPushUpData.ID_Wanita_Push_Up);
-          $("#suntingJumlahPushUpGarjasWanita").val(garjasWanitaPushUpData.Jumlah_Push_Up_Wanita);
-          $("#suntingTanggalPelaksanaanPushUpGarjasWanita").val(garjasWanitaPushUpData.Tanggal_Pelaksanaan_Push_Up_Wanita);
+          $("#SuntingGarjasWanitaPushUpID").val(
+            garjasWanitaPushUpData.ID_Wanita_Push_Up
+          );
+          $("#suntingJumlahPushUpGarjasWanita").val(
+            garjasWanitaPushUpData.Jumlah_Push_Up_Wanita
+          );
+          $("#suntingTanggalPelaksanaanPushUpGarjasWanita").val(
+            garjasWanitaPushUpData.Tanggal_Pelaksanaan_Push_Up_Wanita
+          );
+          $("#suntingStatusPushUpGarjasWanita").val(
+            garjasWanitaPushUpData.Status_Wanita_Push_Up
+          );
           $("#suntingGarjasWanitaPushUp").modal("show");
         }
       },

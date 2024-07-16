@@ -96,7 +96,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<?php
 						}
 					} else {
-						echo '<tr><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Sit Up Kaki Lurus.</td></tr>';
+						echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Sit Up Kaki Lurus.</td></tr>';
 					}
 					?>
 				</tbody>
@@ -127,7 +127,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 				$('#barisTidakAdaData').remove();
 
 				if (jumlahBaris == 0) {
-					$('#situp1TabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data Sit Up Kaki Lurus yang ditemukan!</td></tr>");
+					$('#situp1TabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data Sit Up Kaki Lurus.</td></tr>");
 				}
 			});
 

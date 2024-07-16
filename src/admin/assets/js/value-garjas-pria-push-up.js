@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingTanggalPelaksanaanPushUpGarjasPria").val(
             garjasPriaPushUpData.Tanggal_Pelaksanaan_Push_Up_Pria
           );
+          $("#suntingStatusPushUpGarjasPria").val(
+            garjasPriaPushUpData.Status_Pria_Push_Up
+          );
           $("#suntingGarjasPriaPushUp").modal("show");
         }
       },

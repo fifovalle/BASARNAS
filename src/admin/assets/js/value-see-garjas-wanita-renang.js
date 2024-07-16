@@ -20,17 +20,29 @@ $(document).ready(function () {
         } else {
           $("#lihatNamaPengguna").text(penggunaData.Nama_Lengkap_Pengguna);
           $("#lihatNIPPenggunaGW").text(penggunaData.NIP_Pengguna);
-          $("#lihatPotoPenggunaGW").attr("src", "../uploads/" + penggunaData.Foto_Pengguna);
+          $("#lihatPotoPenggunaGW").attr(
+            "src",
+            "../uploads/" + penggunaData.Foto_Pengguna
+          );
           $("#lihatNamaPenggunaGW").text(penggunaData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaGW").text(penggunaData.Tanggal_Lahir_Pengguna);
+          $("#lihatTglLahirPenggunaGW").text(
+            penggunaData.Tanggal_Lahir_Pengguna
+          );
           $("#lihatAlamatPenggunaGW").text(penggunaData.Alamat_Pengguna);
           $("#lihatJabatanPenggunaGW").text(penggunaData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaGW").text(penggunaData.Jenis_Kelamin_Pengguna);
+          $("#lihatJenisKelaminPenggunaGW").text(
+            penggunaData.Jenis_Kelamin_Pengguna
+          );
           $("#lihatNoTelpPenggunaGW").text(penggunaData.No_Telepon_Pengguna);
           $("#lihatUmurPenggunaGW").text(penggunaData.Umur_Pengguna);
           $("#lihatWaktuRenangWanitaGW").text(penggunaData.Waktu_Renang_Wanita);
           $("#lihatNilaiRenangWanitaGW").text(penggunaData.Nilai_Renang_Wanita);
-          $("#tanggalPelaksanaanRenangWanitaGW").text(penggunaData.Tanggal_Pelaksanaan_Tes_Renang_Wanita);
+          $("#lihatStatusRenangWanitaGW").text(
+            penggunaData.Status_Renang_Wanita
+          );
+          $("#tanggalPelaksanaanRenangWanitaGW").text(
+            penggunaData.Tanggal_Pelaksanaan_Tes_Renang_Wanita
+          );
           $("#lihatGarjasWanitaRenang").modal("show");
         }
       },

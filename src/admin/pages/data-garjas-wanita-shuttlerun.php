@@ -90,9 +90,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Waktu Shuttle Run</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -109,9 +109,11 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasShuttleRunWanita['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasShuttleRunWanita['Tanggal_Pelaksanaan_Shuttle_Run_Wanita']; ?></td>
                                                             <td><?php echo $garjasShuttleRunWanita['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasShuttleRunWanita['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasShuttleRunWanita['Jumlah_Shuttle_Run_Wanita']; ?> (Detik)</td>
                                                             <td><?php echo $garjasShuttleRunWanita['Nilai_Shuttle_Run_Wanita']; ?></td>
+                                                            <td> <span class="badge bg-<?= $garjasShuttleRunWanita['Status_Wanita_Shuttle_Run'] == "Ditinjau" ? "warning" : ($garjasShuttleRunWanita['Status_Wanita_Shuttle_Run'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasShuttleRunWanita['Status_Wanita_Shuttle_Run'] == "Ditinjau" ? "Ditinjau" : ($garjasShuttleRunWanita['Status_Wanita_Shuttle_Run'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span></td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasShuttleRunWanita['ID_Wanita_Shuttle_Run']; ?>">

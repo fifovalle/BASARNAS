@@ -89,9 +89,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Waktu Shuttle Run</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -108,9 +108,11 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasPriaShuttleRun['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaShuttleRun['Tanggal_Pelaksanaan_Shuttle_Run_Pria']; ?></td>
                                                             <td><?php echo $garjasPriaShuttleRun['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasPriaShuttleRun['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaShuttleRun['Waktu_Shuttle_Run_Pria']; ?> Detik</td>
                                                             <td><?php echo $garjasPriaShuttleRun['Nilai_Shuttle_Run_Pria']; ?></td>
+                                                            <td> <span class="badge bg-<?= $garjasPriaShuttleRun['Status_Pria_Shuttle_Run'] == "Ditinjau" ? "warning" : ($garjasPriaShuttleRun['Status_Pria_Shuttle_Run'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasPriaShuttleRun['Status_Pria_Shuttle_Run'] == "Ditinjau" ? "Ditinjau" : ($garjasPriaShuttleRun['Status_Pria_Shuttle_Run'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span></td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaShuttleRun" data-bs-toggle="modal" data-id="<?php echo $garjasPriaShuttleRun['ID_Shuttle_Run_Pria']; ?>">

@@ -52,6 +52,10 @@
                                 <th>Tanggal Pelaksanaan:</th>
                                 <td id="tanggalPelaksanaanShuttleRunWanitaGW"></td>
                             </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td id="statusShuttleRunWanitaGW"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

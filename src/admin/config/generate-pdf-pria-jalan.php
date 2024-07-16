@@ -116,7 +116,7 @@ if (!empty($GarjasPriaJalan5KMInfo)) {
         <td>' . $garjasJalan5KMPria['Tanggal_Pelaksanaan_Tes_Jalan_Pria'] . '</td>
         <td>' . $garjasJalan5KMPria['Nama_Lengkap_Pengguna'] . '</td>
         <td>' . $garjasJalan5KMPria['Umur_Pengguna'] . '</td>
-        <td>' . $garjasJalan5KMPria['Waktu_Jalan_Pria'] . '</td>
+        <td>' . $garjasJalan5KMPria['Waktu_Jalan_Pria'] . "(Menit/Detik)" . '</td>
         <td>' . $garjasJalan5KMPria['Nilai_Jalan_Pria'] . '</td>
         </tr>';
     }

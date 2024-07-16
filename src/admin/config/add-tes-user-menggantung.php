@@ -29,15 +29,15 @@ function containsXSS($input)
     return false;
 }
 
-if (isset($_POST['Simpan'])) {
+if (isset($_POST['tambah_nilai'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
     $obyekGarjasPriaFlexedArmHang = new GarjasPriaFlexedArmHang($koneksi);
 
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
-    $waktuFlexedArmHang = mysqli_real_escape_string($koneksi, $_POST['Waktu_Menggantung_Pria']);
-    $tanggalPelaksanaanPriaMenggantung = $_POST['Tanggal_Pelaksanaan_Pria_Menggantung'];
+    $waktuFlexedArmHang = mysqli_real_escape_string($koneksi, $_POST['Waktu_Menggantung']);
+    $tanggalPelaksanaanPriaMenggantung = $_POST['Tanggal_Pelaksanaan_Tes_Menggantung'];
     $tanggal_pelaksanaan_pria_menggantung = DateTime::createFromFormat('Y-m-d', $tanggalPelaksanaanPriaMenggantung);
 
     if ($tanggal_pelaksanaan_pria_menggantung === false) {
@@ -50,7 +50,7 @@ if (isset($_POST['Simpan'])) {
     if (empty($nipPengguna) && empty($waktuFlexedArmHang) && empty($tanggalPelaksanaanPriaMenggantung)) {
         $pesanKesalahan = "Semua bidang harus diisi. ";
     } elseif (empty($nipPengguna)) {
-        $pesanKesalahan = "NIP Pengguna harus diisi. ";
+        $pesanKesalahan = "NIP Anda harus diisi. ";
     } elseif (empty($waktuFlexedArmHang)) {
         $pesanKesalahan = "Waktu Flexed Arm Hang harus diisi ";
     } elseif (empty($tanggalPelaksanaanPriaMenggantung)) {
@@ -58,25 +58,19 @@ if (isset($_POST['Simpan'])) {
     }
     if (!empty($pesanKesalahan)) {
         setPesanKesalahan($pesanKesalahan);
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
-        exit;
-    }
-
-    if ($obyekGarjasPriaFlexedArmHang->cekNipAnggotaFlexedArmHangPriaSudahAda($nipPengguna)) {
-        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
+        header("Location: $akarUrl" . "src/user/pages/flexedarmhang.php");
         exit;
     }
 
     if ($waktuFlexedArmHang == 0) {
         setPesanKesalahan("Waktu Flexed Arm Hang tidak boleh 0.");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
+        header("Location: $akarUrl" . "src/user/pages/flexedarmhang.php");
         exit;
     }
 
     if ($waktuFlexedArmHang < 0) {
         setPesanKesalahan("Waktu Flexed Arm Hang tidak boleh negatif.");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
+        header("Location: $akarUrl" . "src/user/pages/flexedarmhang.php");
         exit;
     }
 
@@ -173,18 +167,22 @@ if (isset($_POST['Simpan'])) {
         'Tanggal_Pelaksanaan_Pria_Menggantung' => $tanggalPelaksanaanPriaMenggantung,
         'Waktu_Menggantung_Pria' => $waktuFlexedArmHang,
         'Nilai_Menggantung_Pria' => $nilaiAkhir,
-        "Status_Pria_Menggantung" => "Diterima"
+        "Status_Pria_Menggantung" => "Ditinjau"
     );
 
-    $simpanDataPengguna = $obyekGarjasPriaFlexedArmHang->tambahGarjasPriaFlexedArmHang($dataPengguna);
+    if ($obyekGarjasPriaFlexedArmHang->cekNipAnggotaFlexedArmHangPriaSudahAda($nipPengguna)) {
+        $updateGarjasFlexedArmHang = $obyekGarjasPriaFlexedArmHang->perbaruiGarjasPriaFlexedArmHangJikaDitolak($nipPengguna, $dataPengguna);
+    } else {
+        $simpanDataPengguna = $obyekGarjasPriaFlexedArmHang->tambahGarjasPriaFlexedArmHang($dataPengguna);
+    }
 
-    if ($simpanDataPengguna) {
-        setPesanKeberhasilan("Berhasil, data pengguna baru telah ditambahkan.");
+    if ($simpanDataPengguna || $updateGarjasFlexedArmHang) {
+        setPesanKeberhasilan("Berhasil, data anda berhasil disimpan mohon menunggu verifikasi admin.");
     } else {
         setPesanKesalahan("Gagal menyimpan data pengguna.");
     }
 
-    header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-flexedarmhang.php");
+    header("Location: $akarUrl" . "src/user/pages/flexedarmhang.php");
     exit;
 }
 ob_end_flush();

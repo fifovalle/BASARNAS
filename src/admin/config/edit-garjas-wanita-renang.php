@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idRenangWanita = $_POST['ID_Renang_Wanita'] ?? '';
     $waktuRenangWanita = $_POST['Waktu_Renang_Wanita'] ?? '';
     $namaRenangWanita = $_POST['Nama_Gaya_Renang_Wanita'] ?? '';
+    $statusRenangWanita = $_POST['Status_Renang_Wanita'] ?? '';
     $tanggalPelaksanaanRenangWanita = $_POST['Tanggal_Pelaksanaan_Tes_Renang_Wanita'] ?? '';
 
     $tanggalPelaksanaanRenangWanitaObj = DateTime::createFromFormat('Y-m-d', $tanggalPelaksanaanRenangWanita);
@@ -145,7 +146,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'Tanggal_Pelaksanaan_Tes_Renang_Wanita' => $tanggalPelaksanaanRenangWanitaFormatted,
             'Waktu_Renang_Wanita' => $waktuRenangWanitaFormatted,
             'Nama_Gaya_Renang_Wanita' => $namaRenangWanita,
-            'Nilai_Renang_Wanita' => $nilaiAkhir
+            'Nilai_Renang_Wanita' => $nilaiAkhir,
+            'Status_Renang_Wanita' => $statusRenangWanita
         ];
 
         $updateDataGarjasRenangWanita = $garjasRenangWanitaModel->perbaruiTesRenangWanita($idRenangWanita, $dataGarjasRenangWanita);

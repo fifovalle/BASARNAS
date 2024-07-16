@@ -26,6 +26,15 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="suntingStatusGarjasPriaRenang" class="form-label">Status</label>
+                        <select name="Status_Tes_Renang_Pria" class="form-control" id="suntingStatusGarjasPriaRenang">
+                            <option value="">Pilih Status</option>
+                            <option value="Ditinjau">Ditinjau</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="suntingWaktuTestRenangPria" class="form-label">Waktu Renang</label>
                         <input type="time" class="form-control" id="suntingWaktuTestRenangPria" name="Waktu_Renang_Pria">
                     </div>

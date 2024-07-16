@@ -28,15 +28,22 @@
 							Samapta
 						</a>
 						<ul class="dropdown-menu">
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/lari.php" id="lari">Lari 2400 M</a></li>
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/renang.php" id="renang">Renang 50 M</a></li>
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/jalan-kaki.php" id="jalan-kaki">Jalan Kaki 5 KM</a></li>
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/pushup.php" id="pushup">Push Up</a></li>
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/situp1.php" id="situp1">Sit Up Kaki Lurus</a></li>
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/situp2.php" id="situp2">Sit Up Kaki Ditekuk</a></li>
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/chinup.php" id="chinup">Chin Up</a></li>
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/shuttlerun.php" id="shuttlerun">Shuttle Run</a></li>
-							<li> <a class="dropdown-item" href="<?php echo $akarUrl ?>src/user/pages/flexedarmhang.php" id="flexedarmhang">Flexed Arm Hang</a></li>
+							<?php
+							$menuItems = '
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/lari.php" id="lari">Lari 2400 M</a></li>
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/renang.php" id="renang">Renang 50 M</a></li>
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/pushup.php" id="pushup">Push Up</a></li>
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/situp1.php" id="situp1">Sit Up Kaki Lurus</a></li>
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/situp2.php" id="situp2">Sit Up Kaki Ditekuk</a></li>
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/chinup.php" id="chinup">Chin Up</a></li>
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/shuttlerun.php" id="shuttlerun">Shuttle Run</a></li>
+							';
+							$additionalItem = '
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/flexedarmhang.php" id="flexedarmhang">Flexed Arm Hang</a></li>
+								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/jalan-kaki.php" id="jalan-kaki">Jalan Kaki 5 KM</a></li>
+							';
+							echo isset($_SESSION['Jenis_Kelamin_Pengguna']) && $_SESSION['Jenis_Kelamin_Pengguna'] == 'Pria' ? $menuItems . $additionalItem : $menuItems;
+							?>
 						</ul>
 					</li>
 					<li class="nav-item">

@@ -128,7 +128,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 				$('#barisTidakAdaData').remove();
 
 				if (jumlahBaris == 0) {
-					$('#situp2TabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data Sit Up Kaki Lurus yang ditemukan!</td></tr>");
+					$('#situp2TabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data Sit Up Kaki Ditekuk.</td></tr>");
 				}
 			});
 

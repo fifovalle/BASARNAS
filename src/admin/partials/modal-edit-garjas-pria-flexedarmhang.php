@@ -18,6 +18,15 @@
                     </div>
                     <label for="suntingWaktuFlexedArmHangAdmin" class="form-label">Waktu Flexed Arm Hang</label>
                     <input type="number" class="form-control" id="suntingWaktuFlexedArmHangAdmin" name="Waktu_Menggantung_Pria">
+                    <div class="mb-3">
+                        <label for="suntingStatusFlexedArmHangPria" class="form-label">Status</label>
+                        <select name="Status_Pria_Menggantung" class="form-control" id="suntingStatusFlexedArmHangPria">
+                            <option value="">Pilih Status</option>
+                            <option value="Ditinjau">Ditinjau</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaFlexedArmHang">Simpan</button>
                 </form>
             </div>

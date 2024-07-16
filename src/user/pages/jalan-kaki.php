@@ -17,6 +17,8 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	include('../partials/header.php');
 	?>
 	<link rel="stylesheet" href="../assets/css/jalan-kaki.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -26,7 +28,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	<section class="table-samapta">
 		<h1 class="samapta-title text-center">SAMAPTA (Jalan Kaki 5 KM)
 		</h1>
-		<div class="btn-group">
+		<div class="d-flex align-items-center">
 			<div class="dropdown pe-2" id="dropdownBulan">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Pilih Bulan
@@ -46,6 +48,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 				</ul>
 			</div>
+			<button class="btn btn-round ms-auto tombol-tambah" data-bs-toggle="modal" data-bs-target="#tambahGarjasJalan">
+				<i class="fa fa-plus"></i>
+				Tambah Data
+			</button>
 		</div>
 		<div class="table-responsive-sm">
 			<table class="table">
@@ -63,17 +69,26 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					$jalanKakiPriaModel = new Pengguna($koneksi);
 					$jalanKakiPriaInfo = $jalanKakiPriaModel->tampilkanJalanKakiDenganSessionNipPria($nipSessionPengguna);
 					$nomorUrut = 0;
+					$statusField = 'Status_Jalan_Pria';
 					if (!empty($jalanKakiPriaInfo)) {
 						foreach ($jalanKakiPriaInfo as $jalanKaki) {
-							$bulan = date('m', strtotime($jalanKaki['Tanggal_Pelaksanaan_Tes_Jalan_Pria']));
+							if (isset($jalanKaki[$statusField])) {
+								if ($jalanKaki[$statusField] == 'Ditolak') {
+									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
+								} elseif ($jalanKaki[$statusField] == 'Ditinjau') {
+									echo '<tr id="barisDitinjau"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
+								} else {
+									$bulan = date('m', strtotime($jalanKaki['Tanggal_Pelaksanaan_Tes_Jalan_Pria']));
 					?>
-							<tr class="jalanKaki-baris" data-bulan="<?php echo $bulan; ?>">
-								<td><?php echo ++$nomorUrut; ?></td>
-								<td><?php echo $jalanKaki['Tanggal_Pelaksanaan_Tes_Jalan_Pria']; ?></td>
-								<td><?php echo $jalanKaki['Waktu_Jalan_Pria']; ?></td>
-								<td><?php echo $jalanKaki['Nilai_Jalan_Pria']; ?></td>
-							</tr>
+									<tr class="jalanKaki-baris" data-bulan="<?php echo $bulan; ?>">
+										<td><?php echo ++$nomorUrut; ?></td>
+										<td><?php echo $jalanKaki['Tanggal_Pelaksanaan_Tes_Jalan_Pria']; ?></td>
+										<td><?php echo $jalanKaki['Waktu_Jalan_Pria']; ?> (Menit/Detik)</td>
+										<td><?php echo $jalanKaki['Nilai_Jalan_Pria']; ?></td>
+									</tr>
 					<?php
+								}
+							}
 						}
 					} else {
 						echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Jalan Kaki.</td></tr>';
@@ -88,6 +103,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 	<script>
 		$(document).ready(function() {
 			$('#dropdownBulan .dropdown-item').on('click', function() {
@@ -107,12 +126,15 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 				$('#barisTidakAdaData').remove();
 
 				if (jumlahBaris == 0) {
-					$('#jalanKakiTabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data jalan kaki yang ditemukan!</td></tr>");
+					$('#jalanKakiTabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data Jalan Kaki.</td></tr>");
 				}
 			});
 
 		});
 	</script>
+	<!-- MODALS START -->
+	<?php include('../partials/modal-add-garjas-jalan.php'); ?>
+	<!-- MODALS END -->
 </body>
 
 </html>

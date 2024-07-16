@@ -93,6 +93,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>Waktu Renang</th>
                                                     <th>Gaya Renang</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -113,6 +114,10 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $tesRenangWanita['Waktu_Renang_Wanita']; ?></td>
                                                             <td><?php echo $tesRenangWanita['Nama_Gaya_Renang_Wanita']; ?></td>
                                                             <td><?php echo $tesRenangWanita['Nilai_Renang_Wanita']; ?></td>
+                                                            <td> <span class="badge bg-<?= $tesRenangWanita['Status_Renang_Wanita'] == "Ditinjau" ? "warning" : ($tesRenangWanita['Status_Renang_Wanita'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $tesRenangWanita['Status_Renang_Wanita'] == "Ditinjau" ? "Ditinjau" : ($tesRenangWanita['Status_Renang_Wanita'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span></td>
+                                                            <td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonTestRenangWanita" data-bs-toggle="modal" data-id="<?php echo $tesRenangWanita['ID_Renang_Wanita']; ?>">

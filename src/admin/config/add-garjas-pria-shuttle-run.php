@@ -262,6 +262,7 @@ if (isset($_POST['Simpan'])) {
         'Tanggal_Pelaksanaan_Shuttle_Run_Pria' => $tanggal_pelaksanaan_shuttlerun_pria,
         'Waktu_Shuttle_Run_Pria' => $waktuShuttleRunPria,
         'Nilai_Shuttle_Run_Pria' => $nilaiAkhir,
+        "Status_Pria_Shuttle_Run" => "Diterima"
     );
 
     $simpanDataGarjasPriaShhuttleRun = $obyekGarjasPriaShuttleRun->tambahGarjasPriaShuttleRun($dataGarjasPriaShuttleRun);

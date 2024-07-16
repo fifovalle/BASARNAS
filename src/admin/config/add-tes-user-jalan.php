@@ -36,41 +36,36 @@ if (isset($_POST['tambah_nilai'])) {
     $obyekPriaJalan = new TesJalanKaki5KMPria($koneksi);
 
     $nipPengguna = mysqli_real_escape_string($koneksi, $_POST['NIP_Pengguna']);
-    $waktuJalanPria = mysqli_real_escape_string($koneksi, $_POST['Waktu_Jalan_Pria']);
-    $tanggalPelaksanaanTestJalanPria = $_POST['Tanggal_Pelaksanaan_Tes_Jalan_Pria'];
-    $tanggal_pelaksanaan_test_jalan_pria = DateTime::createFromFormat('Y-m-d', $tanggalPelaksanaanTestJalanPria);
+    $waktuJalan = mysqli_real_escape_string($koneksi, $_POST['Waktu_Jalan']);
+    $tanggalPelaksanaanTestJalan = $_POST['Tanggal_Pelaksanaan_Tes_Jalan'];
+    $tanggal_pelaksanaan_test_jalan = DateTime::createFromFormat('Y-m-d', $tanggalPelaksanaanTestJalan);
 
-    if ($tanggal_pelaksanaan_test_jalan_pria === false) {
+    if ($tanggal_pelaksanaan_test_jalan === false) {
         $pesanKesalahan .= "Format tanggal pelaksanaan tidak valid. ";
     } else {
-        $tanggal_pelaksanaan_database = $tanggal_pelaksanaan_test_jalan_pria->format('Y-m-d');
+        $tanggal_pelaksanaan_database = $tanggal_pelaksanaan_test_jalan->format('Y-m-d');
     }
 
     $umurPengguna = $obyekPriaJalan->ambilUmurTesJalanKaki5KMPriaOlehNIP($nipPengguna);
-    if ($obyekPriaJalan->cekNipAnggotaTesJalanKaki5KMPriaSudahAda($nipPengguna)) {
-        setPesanKesalahan("NIP telah digunakan. Silakan gunakan NIP yang lain");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-jalan.php");
+
+    if ($waktuJalan == 0) {
+        setPesanKesalahan("Nilai anda Jalan tidak boleh 0.");
+        header("Location: $akarUrl" . "src/user/pages/jalan-kaki.php");
         exit;
     }
 
-    if ($waktuJalanPria == 0) {
-        setPesanKesalahan("Nilai Pria Jalan tidak boleh 0.");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-jalan.php");
-        exit;
-    }
-
-    if (empty($nipPengguna) && empty($tanggalPelaksanaanTestJalanPria) && empty($waktuJalanPria)) {
+    if (empty($nipPengguna) && empty($tanggalPelaksanaanTestJalan) && empty($waktuJalan)) {
         $pesanKesalahan = "Semua bidang harus diisi. ";
     } elseif (empty($nipPengguna)) {
         $pesanKesalahan = "NIP Pengguna harus diisi. ";
-    } elseif (empty($tanggalPelaksanaanTestJalanPria)) {
-        $pesanKesalahan = "Tanggal pelaksanaan Jalan Pria harus diisi. ";
-    } elseif (empty($waktuJalanPria)) {
-        $pesanKesalahan = "Jumlah Jalan Pria harus diisi. ";
+    } elseif (empty($tanggalPelaksanaanTestJalan)) {
+        $pesanKesalahan = "Tanggal pelaksanaan Jalan anda harus diisi. ";
+    } elseif (empty($waktuJalan)) {
+        $pesanKesalahan = "Jumlah Jalan anda harus diisi. ";
     }
     if (!empty($pesanKesalahan)) {
         setPesanKesalahan($pesanKesalahan);
-        header("Location: " . $akarUrl . "src/admin/pages/data-garjas-pria-jalan.php");
+        header("Location: " . $akarUrl . "src/user/pages/jalan-kaki.php");
         exit;
     }
 
@@ -116,70 +111,74 @@ if (isset($_POST['tambah_nilai'])) {
     $nilaiAkhir = 0;
 
     if ($umurPengguna < 25) {
-        if ($waktuJalanPria < 17.0) {
+        if ($waktuJalan < 17.0) {
             $nilaiAkhir = 100;
-        } elseif ($waktuJalanPria > 51.5) {
+        } elseif ($waktuJalan > 51.5) {
             $nilaiAkhir = 1;
         } else {
-            $nilaiAkhir = isset($nilaiJalan['under_25'][(string)$waktuJalanPria]) ? $nilaiJalan['under_25'][(string)$waktuJalanPria] : 0;
+            $nilaiAkhir = isset($nilaiJalan['under_25'][(string)$waktuJalan]) ? $nilaiJalan['under_25'][(string)$waktuJalan] : 0;
         }
     } elseif ($umurPengguna >= 25 && $umurPengguna <= 34) {
-        if ($waktuJalanPria < 10.0) {
+        if ($waktuJalan < 10.0) {
             $nilaiAkhir = 100;
-        } elseif ($waktuJalanPria > 24.5) {
+        } elseif ($waktuJalan > 24.5) {
             $nilaiAkhir = 1;
         } else {
-            $nilaiAkhir = isset($nilaiJalan['25-34'][(string)$waktuJalanPria]) ? $nilaiJalan['25-34'][(string)$waktuJalanPria] : 0;
+            $nilaiAkhir = isset($nilaiJalan['25-34'][(string)$waktuJalan]) ? $nilaiJalan['25-34'][(string)$waktuJalan] : 0;
         }
     } elseif ($umurPengguna >= 35 && $umurPengguna <= 44) {
-        if ($waktuJalanPria < 11.0) {
+        if ($waktuJalan < 11.0) {
             $nilaiAkhir = 100;
-        } elseif ($waktuJalanPria > 25.5) {
+        } elseif ($waktuJalan > 25.5) {
             $nilaiAkhir = 1;
         } else {
-            $nilaiAkhir = isset($nilaiJalan['35-44'][(string)$waktuJalanPria]) ? $nilaiJalan['35-44'][(string)$waktuJalanPria] : 0;
+            $nilaiAkhir = isset($nilaiJalan['35-44'][(string)$waktuJalan]) ? $nilaiJalan['35-44'][(string)$waktuJalan] : 0;
         }
     } elseif ($umurPengguna >= 45 && $umurPengguna <= 54) {
-        if ($waktuJalanPria < 12.0) {
+        if ($waktuJalan < 12.0) {
             $nilaiAkhir = 100;
-        } elseif ($waktuJalanPria > 27.5) {
+        } elseif ($waktuJalan > 27.5) {
             $nilaiAkhir = 1;
         } else {
-            $nilaiAkhir = isset($nilaiJalan['45-54'][(string)$waktuJalanPria]) ? $nilaiJalan['45-54'][(string)$waktuJalanPria] : 0;
+            $nilaiAkhir = isset($nilaiJalan['45-54'][(string)$waktuJalan]) ? $nilaiJalan['45-54'][(string)$waktuJalan] : 0;
         }
     } elseif ($umurPengguna >= 55 && $umurPengguna <= 59) {
-        if ($waktuJalanPria < 13.0) {
+        if ($waktuJalan < 13.0) {
             $nilaiAkhir = 100;
-        } elseif ($waktuJalanPria > 26.5) {
+        } elseif ($waktuJalan > 26.5) {
             $nilaiAkhir = 1;
         } else {
-            $nilaiAkhir = isset($nilaiJalan['55-59'][(string)$waktuJalanPria]) ? $nilaiJalan['55-59'][(string)$waktuJalanPria] : 0;
+            $nilaiAkhir = isset($nilaiJalan['55-59'][(string)$waktuJalan]) ? $nilaiJalan['55-59'][(string)$waktuJalan] : 0;
         }
     }
 
     if (!$nilaiJalan) {
         setPesanKesalahan("Input waktu tidak valid untuk usia pengguna ini.");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-jalan.php");
+        header("Location: $akarUrl" . "src/user/pages/jalan-kaki.php");
         exit;
     }
 
     $dataPengguna = array(
         'NIP_Pengguna' => $nipPengguna,
-        'Tanggal_Pelaksanaan_Tes_Jalan_Pria' => $tanggalPelaksanaanTestJalanPria,
-        'Waktu_Jalan_Pria' => $waktuJalanPria,
+        'Tanggal_Pelaksanaan_Tes_Jalan_Pria' => $tanggalPelaksanaanTestJalan,
+        'Waktu_Jalan_Pria' => $waktuJalan,
         'Nilai_Jalan_Pria' => $nilaiAkhir,
-        'Status_Jalan_Pria' => "Diterima"
+        'Status_Jalan_Pria' => "Ditinjau"
     );
 
-    $simpanDataPengguna = $obyekPriaJalan->tambahTesJalanKaki5KMPria($dataPengguna);
-
-    if ($simpanDataPengguna) {
-        setPesanKeberhasilan("Berhasil, data pria jalan baru telah ditambahkan.");
+    if ($obyekPriaJalan->cekNipAnggotaTesJalanKaki5KMPriaSudahAda($nipPengguna)) {
+        $updateGarjasPenggunaTesJalan = $obyekPriaJalan->perbaruiTesJalanPriaJikaDitolak($nipPengguna, $dataPengguna);
     } else {
-        setPesanKesalahan("Gagal menyimpan data pria jalan.");
+        $simpanDataPengguna = $obyekPriaJalan->tambahTesJalanKaki5KMPria($dataPengguna);
     }
 
-    header("Location: $akarUrl" . "src/admin/pages/data-garjas-pria-jalan.php");
+    if ($simpanDataPengguna || $updateGarjasPenggunaTesJalan) {
+        setPesanKeberhasilan("Berhasil, data anda berhasil disimpan mohon menunggu verifikasi admin.");
+    } else {
+        setPesanKesalahan("Gagal menyimpan data anda jalan.");
+    }
+
+    header("Location: $akarUrl" . "src/user/pages/jalan-kaki.php");
     exit;
 }
 ob_end_flush();

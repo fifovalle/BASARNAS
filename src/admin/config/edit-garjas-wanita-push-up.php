@@ -28,7 +28,6 @@ function containsXSS($input)
     return false;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
@@ -37,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $jumlahPushUpWanita = $_POST['Jumlah_Push_Up_Wanita'] ?? '';
     $tanggalPelaksanaanPushUpWanita = $_POST['Tanggal_Pelaksanaan_Push_Up_Wanita'] ?? '';
+    $statusWanitaPushUp = $_POST['Status_Wanita_Push_Up'] ?? '';
 
     $garjasWanitaPushUpModel = new GarjasWanitaPushUp($koneksi);
     $umurPengguna = $garjasWanitaPushUpModel->ambilUmurGarjasWanitaPushUpOlehNIP($nipPengguna);
@@ -122,7 +122,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Push_Up_Wanita' => $tanggalPelaksanaanPushUpWanita,
         'Jumlah_Push_Up_Wanita' => $jumlahPushUpWanita,
-        'Nilai_Push_Up_Wanita' => $nilaiAkhir
+        'Nilai_Push_Up_Wanita' => $nilaiAkhir,
+        'Status_Wanita_Push_Up' => $statusWanitaPushUp
     );
     $updateGarjasWanitaPushUp = $garjasWanitaPushUpModel->perbaruiGarjasWanitaPushUp($idGarjasWanitaPushUp, $dataGarjasWanitaPushUp);
 

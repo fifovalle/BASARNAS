@@ -17,6 +17,8 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	include('../partials/header.php');
 	?>
 	<link rel="stylesheet" href="../assets/css/flexedarmhang.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -26,8 +28,8 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	<section class="table-samapta">
 		<h1 class="samapta-title text-center">SAMAPTA (Flexed Arm Hang)
 		</h1>
-		<div class="btn-group">
-			<div class="dropdown pe-2">
+		<div class="d-flex align-items-center">
+			<div class="dropdown pe-2" id="dropdownBulan">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Pilih Bulan
 				</button>
@@ -46,6 +48,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 				</ul>
 			</div>
+			<button class="btn btn-round ms-auto tombol-tambah" data-bs-toggle="modal" data-bs-target="#tambahGarjasMenggantung">
+				<i class="fa fa-plus"></i>
+				Tambah Data
+			</button>
 		</div>
 		<div class="table-responsive-sm">
 			<table class="table">
@@ -63,19 +69,28 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					$flexedArmHangModel = new Pengguna($koneksi);
 					$flexedArmHangInfo = $flexedArmHangModel->tampilkanFlexedArmHangDenganSessionNip($nipSessionPengguna);
 					$nomorUrut = 0;
+					$statusField = 'Status_Pria_Menggantung';
 					if (!empty($flexedArmHangInfo)) {
 						foreach ($flexedArmHangInfo as $flexedArmHang) {
+							if (isset($flexedArmHang[$statusField])) {
+								if ($flexedArmHang[$statusField] == 'Ditolak') {
+									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
+								} elseif ($flexedArmHang[$statusField] == 'Ditinjau') {
+									echo '<tr id="barisDitinjau"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
+								} else {
 					?>
-							<tr class="flexedarmhang-baris" data-bulan="<?php echo date('m', strtotime($flexedArmHang['Tanggal_Pelaksanaan_Pria_Menggantung'])); ?>">
-								<td><?php echo ++$nomorUrut; ?></td>
-								<td><?php echo $flexedArmHang['Tanggal_Pelaksanaan_Pria_Menggantung']; ?></td>
-								<td><?php echo $flexedArmHang['Waktu_Menggantung_Pria']; ?></td>
-								<td><?php echo $flexedArmHang['Nilai_Menggantung_Pria']; ?></td>
-							</tr>
+									<tr class="flexedarmhang-baris" data-bulan="<?php echo date('m', strtotime($flexedArmHang['Tanggal_Pelaksanaan_Pria_Menggantung'])); ?>">
+										<td><?php echo ++$nomorUrut; ?></td>
+										<td><?php echo $flexedArmHang['Tanggal_Pelaksanaan_Pria_Menggantung']; ?></td>
+										<td><?php echo $flexedArmHang['Waktu_Menggantung_Pria']; ?></td>
+										<td><?php echo $flexedArmHang['Nilai_Menggantung_Pria']; ?></td>
+									</tr>
 					<?php
+								}
+							}
 						}
 					} else {
-						echo '<tr><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Flexed Arm Hang.</td></tr>';
+						echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Flexed Arm Hang.</td></tr>';
 					}
 					?>
 				</tbody>
@@ -87,6 +102,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 	<script>
 		$(document).ready(function() {
 			$('.dropdown-item').on('click', function() {
@@ -106,12 +125,15 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 				$('#barisTidakAdaData').remove();
 
 				if (jumlahBaris == 0) {
-					$('#flexedarmhangTabelBody').append("<tr id='barisTidakAdaData'><td colspan='4' class='text-center text-danger fw-bold'>Tidak ada data Flexed Arm Hang yang ditemukan!</td></tr>");
+					$('#flexedarmhangTabelBody').append("<tr id='barisTidakAdaData'><td colspan='4' class='text-center text-danger fw-bold'>Tidak ada data Flexed Arm Hang.</td></tr>");
 				}
 			});
 
 		});
 	</script>
+	<!-- MODALS START -->
+	<?php include('../partials/modal-add-garjas-menggantung.php'); ?>
+	<!-- MODALS END -->
 </body>
 
 </html>

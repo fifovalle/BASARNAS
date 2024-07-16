@@ -25,7 +25,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<section class="table-samapta">
 		<h1 class="samapta-title text-center">SAMAPTA (Renang 50 M)</h1>
-		<div class="btn-group">
+		<div class="d-flex align-items-center">
 			<div class="dropdown pe-2" id="dropdownBulan">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Pilih Bulan
@@ -45,6 +45,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 				</ul>
 			</div>
+			<button class="btn btn-round ms-auto tombol-tambah" data-bs-toggle="modal" data-bs-target="#tambahGarjasRenang">
+				<i class="fa fa-plus"></i>
+				Tambah Data
+			</button>
 		</div>
 		<div class="table-responsive-sm">
 			<table class="table">
@@ -76,12 +80,14 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						$waktuField = 'Waktu_Renang_Pria';
 						$nilaiField = 'Nilai_Renang_Pria';
 						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Tes_Renang_Pria';
+						$statusField = 'Status_Renang_Pria';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$renangInfo = $renangModel->tampilkanRenangDenganSessionNipWanita($nipSessionPengguna);
 						$gayaField = 'Nama_Gaya_Renang_Wanita';
 						$waktuField = 'Waktu_Renang_Wanita';
 						$nilaiField = 'Nilai_Renang_Wanita';
 						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Tes_Renang_Wanita';
+						$statusField = 'Status_Renang_Wanita';
 					} else {
 						$renangInfo = null;
 					}
@@ -90,18 +96,27 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						foreach ($renangInfo as $renang) {
 							$bulan = date('m', strtotime($renang[$tanggalPelaksanaanField]));
 							$nomorUrut++;
+							if (isset($renang[$statusField])) {
+								if ($renang[$statusField] == 'Ditolak') {
+									echo '<tr id="barisDitolak"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Data Anda telah ditolak, silahkan ajukan ulang.</td></tr>';
+								} elseif ($renang[$statusField] == 'Ditinjau') {
+									echo '<tr id="barisDitinjau"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Data Anda sedang ditinjau oleh admin.</td></tr>';
+								} else {
 					?>
-							<tr class="renang-baris" data-bulan="<?php echo $bulan; ?>">
-								<td><?php echo $nomorUrut; ?></td>
-								<td><?php echo htmlspecialchars($renang[$tanggalPelaksanaanField]); ?></td>
-								<td><?php echo htmlspecialchars($renang[$gayaField]); ?></td>
-								<td><?php echo htmlspecialchars($renang[$waktuField]); ?></td>
-								<td><?php echo htmlspecialchars($renang[$nilaiField]); ?></td>
-							</tr>
+									<tr class="renang-baris" data-bulan="<?php echo $bulan; ?>">
+										<td><?php echo $nomorUrut; ?></td>
+										<td><?php echo htmlspecialchars($renang[$tanggalPelaksanaanField]); ?></td>
+										<td><?php echo htmlspecialchars($renang[$gayaField]); ?></td>
+										<td><?php echo htmlspecialchars($renang[$waktuField]); ?></td>
+										<td><?php echo htmlspecialchars($renang[$nilaiField]); ?></td>
+										<td><?php echo htmlspecialchars($renang[$statusField]); ?></td>
+									</tr>
 					<?php
+								}
+							}
 						}
 					} else {
-						echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data renang.</td></tr>';
+						echo '<tr id="barisTidakAdaData"><td colspan="10" style="text-align: center; color: red; font-weight: bold;">Tidak ada data renang.</td></tr>';
 					}
 					?>
 				</tbody>
@@ -132,12 +147,17 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 				$('#barisTidakAdaData').remove();
 
 				if (jumlahBaris == 0) {
-					$('#renangTabelBody').append("<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data renang yang ditemukan!</td></tr>");
+					$('#renangTabelBody').append(
+						"<tr id='barisTidakAdaData'><td colspan='5' class='text-center text-danger fw-bold'>Tidak ada data renang.</td></tr>"
+					);
 				}
 			});
 
 		});
 	</script>
+	<!-- MODALS START -->
+	<?php include('../partials/modal-add-garjas-renang.php'); ?>
+	<!-- MODALS END -->
 </body>
 
 </html>

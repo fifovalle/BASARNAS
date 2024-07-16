@@ -20,6 +20,15 @@
                         <label for="suntingWaktuShuttleRunAdmin" class="form-label">Waktu Shuttle Run</label>
                         <input type="text" class="form-control" id="suntingWaktuShuttleRunAdmin" name="Waktu_Shuttle_Run_Pria">
                     </div>
+                    <div class="mb-3">
+                        <label for="suntingStatusShuttleRunAdmin" class="form-label">Status</label>
+                        <select name="Status_Pria_Shuttle_Run" class="form-control" id="suntingStatusShuttleRunAdmin">
+                            <option value="">Pilih Status</option>
+                            <option value="Ditinjau">Ditinjau</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaShuttleRun">Simpan</button>
                 </form>
             </div>

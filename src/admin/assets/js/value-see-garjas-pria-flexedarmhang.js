@@ -18,19 +18,58 @@ $(document).ready(function () {
         if (garjasPriaFlexedArmHangData.success === false) {
           alert(garjasPriaFlexedArmHangData.message);
         } else {
-          $("#lihatNamaPengguna").text(garjasPriaFlexedArmHangData.Nama_Lengkap_Pengguna);
-          $("#lihatNIPPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.NIP_Pengguna);
-          $("#lihatPotoPenggunaPriaFlexedArmHangTd").attr("src", "../uploads/" + garjasPriaFlexedArmHangData.Foto_Pengguna);
-          $("#lihatNamaPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Tanggal_Lahir_Pengguna);
-          $("#lihatAlamatPenggunaTd").text(garjasPriaFlexedArmHangData.Alamat_Pengguna);
-          $("#lihatJabatanPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Jenis_Kelamin_Pengguna);
-          $("#lihatNoTelpPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.No_Telepon_Pengguna);
-          $("#lihatUmurPenggunaPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Umur_Pengguna);
-          $("#lihatWaktuPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Waktu_Menggantung_Pria);
-          $("#lihatNilaiPriaFlexedArmHangTd").text(garjasPriaFlexedArmHangData.Nilai_Menggantung_Pria);
-          $("#tanggalPelaksanaanFlexedArmHangPriaTd").text(garjasPriaFlexedArmHangData.Tanggal_Pelaksanaan_Pria_Menggantung);
+          $("#lihatNamaPengguna").text(
+            garjasPriaFlexedArmHangData.Nama_Lengkap_Pengguna
+          );
+          $("#lihatNIPPenggunaPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.NIP_Pengguna
+          );
+          $("#lihatPotoPenggunaPriaFlexedArmHangTd").attr(
+            "src",
+            "../uploads/" + garjasPriaFlexedArmHangData.Foto_Pengguna
+          );
+          $("#lihatNamaPenggunaPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.Nama_Lengkap_Pengguna
+          );
+          $("#lihatTglLahirPenggunaPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.Tanggal_Lahir_Pengguna
+          );
+          $("#lihatAlamatPenggunaTd").text(
+            garjasPriaFlexedArmHangData.Alamat_Pengguna
+          );
+          $("#lihatJabatanPenggunaPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.Jabatan_Pengguna
+          );
+          $("#lihatJenisKelaminPenggunaPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.Jenis_Kelamin_Pengguna
+          );
+          $("#lihatNoTelpPenggunaPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.No_Telepon_Pengguna
+          );
+          $("#lihatUmurPenggunaPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.Umur_Pengguna
+          );
+          $("#lihatWaktuPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.Waktu_Menggantung_Pria
+          );
+          $("#lihatNilaiPriaFlexedArmHangTd").text(
+            garjasPriaFlexedArmHangData.Nilai_Menggantung_Pria
+          );
+          $("#tanggalPelaksanaanFlexedArmHangPriaTd").text(
+            garjasPriaFlexedArmHangData.Tanggal_Pelaksanaan_Pria_Menggantung
+          );
+          const statusClasses = {
+            Ditinjau: "badge bg-warning text-white",
+            Diterima: "badge bg-success text-white",
+            Ditolak: "badge bg-danger text-white",
+          };
+
+          const statusText =
+            garjasPriaFlexedArmHangData.Status_Pria_Menggantung;
+          const statusClass = statusClasses[statusText] || "";
+
+          $("#statusFlexedArmHangPriaTd").text(statusText);
+          $("#statusFlexedArmHangPriaTd").attr("class", statusClass);
           $("#lihatGarjasPriaFlexedArmHang").modal("show");
         }
       },

@@ -15,9 +15,9 @@
                     <div class="col-8">
                         <h4>Info Hasil Selengkapnya</h4>
                         <table class="table table-borderless">
-                        <tr>
-                            <th>Nama Lengkap:</th>
-                            <td id="lihatNamaPenggunaShuttleRunPriaTd"></td>
+                            <tr>
+                                <th>Nama Lengkap:</th>
+                                <td id="lihatNamaPenggunaShuttleRunPriaTd"></td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lahir:</th>
@@ -50,6 +50,10 @@
                             <tr>
                                 <th>Tanggal Pelaksanaan:</th>
                                 <td id="tanggalPelaksanaanShuttleRunPriaTd"></td>
+                            </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td id="statusShuttleRunPriaTd"></td>
                             </tr>
                         </table>
                     </div>

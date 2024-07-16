@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jumlahPushUpPria = $_POST['Jumlah_Push_Up_Pria'] ?? '';
     $nilaiPushUpPria = $_POST['Nilai_Push_Up_Pria'] ?? '';
     $tanggalPelaksanaanPushUpPria = $_POST['Tanggal_Pelaksanaan_Push_Up_Pria'] ?? '';
+    $statusPriaPushUp = $_POST['Status_Pria_Push_Up'] ?? '';
 
     $garjasPushUpPriaModel = new GarjasPushUpPria($koneksi);
 
@@ -144,7 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dataGarjasPria = [
             'Tanggal_Pelaksanaan_Push_Up_Pria' => $tanggalPelaksanaanPushUpPria,
             'Jumlah_Push_Up_Pria' => $jumlahPushUpPria,
-            'Nilai_Push_Up_Pria' => $nilaiAkhir
+            'Nilai_Push_Up_Pria' => $nilaiAkhir,
+            'Status_Pria_Push_Up' => $statusPriaPushUp
         ];
 
         $updateDataGarjasPria = $garjasPushUpPriaModel->perbaruiGarjasPriaPushUp($idGarjasPriaPushUp, $dataGarjasPria);

@@ -171,13 +171,12 @@ if (isset($_POST['Simpan'])) {
         }
     }
 
-
-
     $dataPengguna = array(
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Push_Up_Pria' => $tanggalPelaksanaanPushUpPria,
         'Jumlah_Push_Up_Pria' => $jumlahPushUpPria,
         'Nilai_Push_Up_Pria' => $nilaiAkhir,
+        "Status_Pria_Push_Up" => "Diterima"
     );
 
     $simpanDataPengguna = $obyekPengguna->tambahGarjasPushUpPria($dataPengguna);

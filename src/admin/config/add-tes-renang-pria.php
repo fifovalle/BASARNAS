@@ -169,7 +169,8 @@ if (isset($_POST['tambah_nilai'])) {
         'Tanggal_Pelaksanaan_Tes_Renang_Pria' => $tanggalPelaksanaanTesRenangPria,
         'Waktu_Renang_Pria' => $waktuRenangFormatted,
         'Nama_Gaya_Renang_Pria' => $gayaRenang,
-        'Nilai_Renang_Pria' => $nilaiAkhir
+        'Nilai_Renang_Pria' => $nilaiAkhir,
+        'Status_Renang_Pria' => 'Diterima'
     ];
 
     $simpanDataPengguna = $tesRenangPriaModel->tambahTesRenangPria($dataPengguna);

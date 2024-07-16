@@ -48,6 +48,10 @@
                                 <td id="lihatNilaiRenangWanitaGW"></td>
                             </tr>
                             <tr>
+                                <th>Staus:</th>
+                                <td id="lihatStatusRenangWanitaGw"></td>
+                            </tr>
+                            <tr>
                                 <th>Tanggal Pelaksanaan:</th>
                                 <td id="tanggalPelaksanaanRenangWanitaGW"></td>
                             </tr>

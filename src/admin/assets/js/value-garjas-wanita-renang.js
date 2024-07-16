@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingWaktuTestRenangWanita").val(
             garjasTestRenangWanitaData.Waktu_Renang_Wanita
           );
+          $("#suntingStatusWanitaRenang").val(
+            garjasTestRenangWanitaData.Status_Renang_Wanita
+          );
           $("#suntingTanggalPelaksanaanTestRenangWanita").val(
             garjasTestRenangWanitaData.Tanggal_Pelaksanaan_Tes_Renang_Wanita
           );

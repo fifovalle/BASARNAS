@@ -88,9 +88,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Waktu Jalan</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -107,9 +107,13 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $tesJalanPria['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $tesJalanPria['Tanggal_Pelaksanaan_Tes_Jalan_Pria']; ?></td>
                                                             <td><?php echo $tesJalanPria['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $tesJalanPria['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $tesJalanPria['Waktu_Jalan_Pria']; ?> (Menit/Detik)</td>
                                                             <td><?php echo $tesJalanPria['Nilai_Jalan_Pria']; ?></td>
+                                                            <td>
+                                                                <span class="badge bg-<?= $tesJalanPria['Status_Jalan_Pria'] == "Ditinjau" ? "warning" : ($tesJalanPria['Status_Jalan_Pria'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $tesJalanPria['Status_Jalan_Pria'] == "Ditinjau" ? "Ditinjau" : ($tesJalanPria['Status_Jalan_Pria'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span>
+                                                            </td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonPriaJalan" data-bs-toggle="modal" data-id="<?php echo $tesJalanPria['ID_Jalan_Pria']; ?>">

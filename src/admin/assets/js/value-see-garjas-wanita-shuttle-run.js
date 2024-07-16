@@ -20,17 +20,41 @@ $(document).ready(function () {
         } else {
           $("#lihatNamaPengguna").text(penggunaData.Nama_Lengkap_Pengguna);
           $("#lihatNIPPenggunaGW").text(penggunaData.NIP_Pengguna);
-          $("#lihatPotoPenggunaGW").attr("src", "../uploads/" + penggunaData.Foto_Pengguna);
+          $("#lihatPotoPenggunaGW").attr(
+            "src",
+            "../uploads/" + penggunaData.Foto_Pengguna
+          );
           $("#lihatNamaPenggunaGW").text(penggunaData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaGW").text(penggunaData.Tanggal_Lahir_Pengguna);
+          $("#lihatTglLahirPenggunaGW").text(
+            penggunaData.Tanggal_Lahir_Pengguna
+          );
           $("#lihatAlamatPenggunaGW").text(penggunaData.Alamat_Pengguna);
           $("#lihatJabatanPenggunaGW").text(penggunaData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaGW").text(penggunaData.Jenis_Kelamin_Pengguna);
+          $("#lihatJenisKelaminPenggunaGW").text(
+            penggunaData.Jenis_Kelamin_Pengguna
+          );
           $("#lihatNoTelpPenggunaGW").text(penggunaData.No_Telepon_Pengguna);
           $("#lihatUmurPenggunaGW").text(penggunaData.Umur_Pengguna);
-          $("#lihatJumlahShuttleRunWanitaGW").text(penggunaData.Jumlah_Shuttle_Run_Wanita);
-          $("#lihatNilaiShuttleRunWanitaGW").text(penggunaData.Nilai_Shuttle_Run_Wanita);
-          $("#tanggalPelaksanaanShuttleRunWanitaGW").text(penggunaData.Tanggal_Pelaksanaan_Shuttle_Run_Wanita);
+          $("#lihatJumlahShuttleRunWanitaGW").text(
+            penggunaData.Jumlah_Shuttle_Run_Wanita
+          );
+          $("#lihatNilaiShuttleRunWanitaGW").text(
+            penggunaData.Nilai_Shuttle_Run_Wanita
+          );
+          $("#tanggalPelaksanaanShuttleRunWanitaGW").text(
+            penggunaData.Tanggal_Pelaksanaan_Shuttle_Run_Wanita
+          );
+          const statusClasses = {
+            Ditinjau: "badge bg-warning text-white",
+            Diterima: "badge bg-success text-white",
+            Ditolak: "badge bg-danger text-white",
+          };
+
+          const statusText = penggunaData.Status_Wanita_Shuttle_Run;
+          const statusClass = statusClasses[statusText] || "";
+
+          $("#statusShuttleRunWanitaGW").text(statusText);
+          $("#statusShuttleRunWanitaGW").attr("class", statusClass);
           $("#lihatGarjasWanitaShuttleRun").modal("show");
         }
       },

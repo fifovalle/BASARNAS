@@ -24,7 +24,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	<section class="table-samapta">
 		<h1 class="samapta-title text-center">SAMAPTA (Lari 2400 M)</h1>
 		<div class="d-flex align-items-center">
-			<div class="dropdown pe-2">
+			<div class="dropdown pe-2" id="dropdownBulan">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Pilih Bulan
 				</button>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						foreach ($lariInfo as $lari) {
 							if (isset($lari[$statusField])) {
 								if ($lari[$statusField] == 'Ditolak') {
-									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak.</td></tr>';
+									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
 								} elseif ($lari[$statusField] == 'Ditinjau') {
 									echo '<tr id="barisDitinjau"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
 								} else {
@@ -143,7 +143,9 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 				$('#barisTidakAdaData').remove();
 
 				if (jumlahBaris == 0) {
-					$('#lariTabelBody').append("<tr id='barisTidakAdaData'><td colspan='4' class='text-center text-danger fw-bold'>Tidak ada data lari yang ditemukan!</td></tr>");
+					$('#lariTabelBody').append(
+						"<tr id='barisTidakAdaData'><td colspan='4' class='text-center text-danger fw-bold'>Tidak ada data lari yang ditemukan!</td></tr>"
+					);
 				}
 			});
 

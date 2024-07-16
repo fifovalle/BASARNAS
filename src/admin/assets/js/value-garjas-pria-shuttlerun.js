@@ -17,11 +17,23 @@ $(document).ready(function () {
         if (garjasPriaShuttleRunData.success === false) {
           alert(garjasPriaShuttleRunData.message);
         } else {
-          let nipNama = garjasPriaShuttleRunData.NIP_Pengguna + " - " + garjasPriaShuttleRunData.Nama_Lengkap_Pengguna;
+          let nipNama =
+            garjasPriaShuttleRunData.NIP_Pengguna +
+            " - " +
+            garjasPriaShuttleRunData.Nama_Lengkap_Pengguna;
           $("#suntingNIPPengguna").val(nipNama);
-          $("#editGarjasPriaShuttleRunPriaID").val(garjasPriaShuttleRunData.ID_Shuttle_Run_Pria);
-          $("#suntingWaktuShuttleRunAdmin").val(garjasPriaShuttleRunData.Waktu_Shuttle_Run_Pria);
-          $("#suntingTanggalPelaksanaanShuttleRunPengguna").val(garjasPriaShuttleRunData.Tanggal_Pelaksanaan_Shuttle_Run_Pria);
+          $("#editGarjasPriaShuttleRunPriaID").val(
+            garjasPriaShuttleRunData.ID_Shuttle_Run_Pria
+          );
+          $("#suntingWaktuShuttleRunAdmin").val(
+            garjasPriaShuttleRunData.Waktu_Shuttle_Run_Pria
+          );
+          $("#suntingTanggalPelaksanaanShuttleRunPengguna").val(
+            garjasPriaShuttleRunData.Tanggal_Pelaksanaan_Shuttle_Run_Pria
+          );
+          $("#suntingStatusShuttleRunAdmin").val(
+            garjasPriaShuttleRunData.Status_Pria_Shuttle_Run
+          );
           $("#suntingGarjasPriaShuttleRun").modal("show");
         }
       },

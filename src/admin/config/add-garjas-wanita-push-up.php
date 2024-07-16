@@ -143,13 +143,12 @@ if (isset($_POST['tambah_nilai'])) {
         $nilaiAkhir = $jumlahPushUpWanita > $maksimalPushUp ? 100 : (isset($nilaiPushUp['55-59'][$jumlahPushUpWanita]) ? $nilaiPushUp['55-59'][$jumlahPushUpWanita] : 0);
     }
 
-
-
     $dataPenggunaWanita = array(
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Push_Up_Wanita' => $tanggalPelaksanaanPushUpWanita,
         'Jumlah_Push_Up_Wanita' => $jumlahPushUpWanita,
         'Nilai_Push_Up_Wanita' => $nilaiAkhir,
+        "Status_Wanita_Push_Up" => "Diterima"
     );
 
     $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaPushUp($dataPenggunaWanita);

@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $waktuFlexedArmHang = $_POST['Waktu_Menggantung_Pria'] ?? '';
     $nilaiFlexedArmHang = $_POST['Nilai_Menggantung_Pria'] ?? '';
     $tanggalPelaksanaanPriaMenggantung = $_POST['Tanggal_Pelaksanaan_Pria_Menggantung'] ?? '';
+    $statusPriaMenggantung = $_POST['Status_Pria_Menggantung'] ?? '';
 
     $garjasPriaFlexedArmHangModel = new GarjasPriaFlexedArmHang($koneksi);
 
@@ -141,7 +142,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dataGarjasPriaFlexedArmHang = array(
             'Tanggal_Pelaksanaan_Pria_Menggantung' => $tanggalPelaksanaanPriaMenggantung,
             'Waktu_Menggantung_Pria' => $waktuFlexedArmHang,
-            'Nilai_Menggantung_Pria' => $nilaiAkhir
+            'Nilai_Menggantung_Pria' => $nilaiAkhir,
+            "Status_Pria_Menggantung" => $statusPriaMenggantung
         );
 
         $updatedataGarjasPriaFlexedArmHang = $garjasPriaFlexedArmHangModel->perbaruiGarjasPriaFlexedArmHang($idGarjasPriaFlexedArmHang, $dataGarjasPriaFlexedArmHang);

@@ -51,6 +51,10 @@
                                 <th>Tanggal Pelaksanaan:</th>
                                 <td id="tanggalPelaksanaanFlexedArmHangPriaTd"></td>
                             </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td id="statusFlexedArmHangPriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

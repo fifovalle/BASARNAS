@@ -88,9 +88,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Waktu Flexed Arm Hang</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -107,9 +107,13 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasPriaFlexedArmHang['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaFlexedArmHang['Tanggal_Pelaksanaan_Pria_Menggantung']; ?></td>
                                                             <td><?php echo $garjasPriaFlexedArmHang['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasPriaFlexedArmHang['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaFlexedArmHang['Waktu_Menggantung_Pria']; ?></td>
                                                             <td><?php echo $garjasPriaFlexedArmHang['Nilai_Menggantung_Pria']; ?></td>
+                                                            <td>
+                                                                <span class="badge bg-<?= $garjasPriaFlexedArmHang['Status_Pria_Menggantung'] == "Ditinjau" ? "warning" : ($garjasPriaFlexedArmHang['Status_Pria_Menggantung'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasPriaFlexedArmHang['Status_Pria_Menggantung'] == "Ditinjau" ? "Ditinjau" : ($garjasPriaFlexedArmHang['Status_Pria_Menggantung'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span>
+                                                            </td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaFlexedArmHang" data-bs-toggle="modal" data-id="<?php echo $garjasPriaFlexedArmHang['ID_Menggantung_Pria']; ?>">
@@ -127,7 +131,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Flexed Arm Hang!</td>
+                                                        <td colspan="9" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Flexed Arm Hang!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

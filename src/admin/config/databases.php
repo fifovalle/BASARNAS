@@ -591,15 +591,16 @@ class GarjasPushUpPria
 
     public function tambahGarjasPushUpPria($data)
     {
-        $query = "INSERT INTO garjas_pria_push_up (NIP_Pengguna, Tanggal_Pelaksanaan_Push_Up_Pria, Jumlah_Push_Up_Pria, Nilai_Push_Up_Pria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_pria_push_up (NIP_Pengguna, Tanggal_Pelaksanaan_Push_Up_Pria, Jumlah_Push_Up_Pria, Nilai_Push_Up_Pria, Status_Pria_Push_Up) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "isiis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Push_Up_Pria']),
             $this->mengamankanString($data['Jumlah_Push_Up_Pria']),
-            $this->mengamankanString($data['Nilai_Push_Up_Pria'])
+            $this->mengamankanString($data['Nilai_Push_Up_Pria']),
+            $this->mengamankanString($data['Status_Pria_Push_Up'])
         );
 
         if ($statement->execute()) {
@@ -668,15 +669,37 @@ class GarjasPushUpPria
 
     public function perbaruiGarjasPriaPushUp($id, $data)
     {
-        $query = "UPDATE garjas_pria_push_up SET Tanggal_Pelaksanaan_Push_Up_Pria=?, Jumlah_Push_Up_Pria=?, Nilai_Push_Up_Pria=? WHERE ID_Push_Up_Pria=?";
+        $query = "UPDATE garjas_pria_push_up SET Tanggal_Pelaksanaan_Push_Up_Pria=?, Jumlah_Push_Up_Pria=?, Nilai_Push_Up_Pria=?, Status_Pria_Push_Up=? WHERE ID_Push_Up_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "siii",
+            "siisi",
             $data['Tanggal_Pelaksanaan_Push_Up_Pria'],
             $data['Jumlah_Push_Up_Pria'],
             $data['Nilai_Push_Up_Pria'],
+            $data['Status_Pria_Push_Up'],
             $id
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiGarjasPriaPushUpJikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_pria_push_up SET Tanggal_Pelaksanaan_Push_Up_Pria=?, Jumlah_Push_Up_Pria=?, Nilai_Push_Up_Pria=?, Status_Pria_Push_Up=? WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "siisi",
+            $data['Tanggal_Pelaksanaan_Push_Up_Pria'],
+            $data['Jumlah_Push_Up_Pria'],
+            $data['Nilai_Push_Up_Pria'],
+            $data['Status_Pria_Push_Up'],
+            $NIP
         );
 
         if ($statement->execute()) {
@@ -894,18 +917,19 @@ class GarjasPriaShuttleRun
 
     public function tambahGarjasPriaShuttleRun($data)
     {
-        $query = "INSERT INTO garjas_pria_shuttle_run (NIP_Pengguna, Tanggal_Pelaksanaan_Shuttle_Run_Pria, Waktu_Shuttle_Run_Pria, Nilai_Shuttle_Run_Pria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_pria_shuttle_run (NIP_Pengguna, Tanggal_Pelaksanaan_Shuttle_Run_Pria, Waktu_Shuttle_Run_Pria, Nilai_Shuttle_Run_Pria, Status_Pria_Shuttle_Run) VALUES (?, ?, ?, ?, ?)";
 
         $NIP_Pengguna = $this->mengamankanString($data['NIP_Pengguna']);
         $Tanggal_Pelaksanaan_Shuttle_Run_Pria = $data['Tanggal_Pelaksanaan_Shuttle_Run_Pria'];
         $Waktu_Shuttle_Run_Pria = $data['Waktu_Shuttle_Run_Pria'];
         $Nilai_Shuttle_Run_Pria = $data['Nilai_Shuttle_Run_Pria'];
+        $Status_Pria_Shuttle_Run = $data['Status_Pria_Shuttle_Run'];
         if ($Tanggal_Pelaksanaan_Shuttle_Run_Pria instanceof DateTime) {
             $Tanggal_Pelaksanaan_Shuttle_Run_Pria = $Tanggal_Pelaksanaan_Shuttle_Run_Pria->format('Y-m-d');
         }
 
         $statement = $this->koneksi->prepare($query);
-        $statement->bind_param("isdi", $NIP_Pengguna, $Tanggal_Pelaksanaan_Shuttle_Run_Pria, $Waktu_Shuttle_Run_Pria, $Nilai_Shuttle_Run_Pria);
+        $statement->bind_param("isdis", $NIP_Pengguna, $Tanggal_Pelaksanaan_Shuttle_Run_Pria, $Waktu_Shuttle_Run_Pria, $Nilai_Shuttle_Run_Pria, $Status_Pria_Shuttle_Run);
 
         if ($statement->execute()) {
             return true;
@@ -1011,15 +1035,42 @@ class GarjasPriaShuttleRun
 
     public function perbaruiGarjasPriaShuttleRun($id, $data)
     {
-        $query = "UPDATE garjas_pria_shuttle_run SET Tanggal_Pelaksanaan_Shuttle_Run_Pria=?, Waktu_Shuttle_Run_Pria=?, Nilai_Shuttle_Run_Pria=? WHERE ID_Shuttle_Run_Pria=?";
+        $query = "UPDATE garjas_pria_shuttle_run SET Tanggal_Pelaksanaan_Shuttle_Run_Pria=?, Waktu_Shuttle_Run_Pria=?, Nilai_Shuttle_Run_Pria=?, Status_Pria_Shuttle_Run=? WHERE ID_Shuttle_Run_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "sdii",
+            "sdisi",
             $data['Tanggal_Pelaksanaan_Shuttle_Run_Pria'],
             $data['Waktu_Shuttle_Run_Pria'],
             $data['Nilai_Shuttle_Run_Pria'],
+            $data['Status_Pria_Shuttle_Run'],
             $id
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiGarjasPriaShuttleRunJikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_pria_shuttle_run SET Tanggal_Pelaksanaan_Shuttle_Run_Pria=?, Waktu_Shuttle_Run_Pria=?, Nilai_Shuttle_Run_Pria=?, Status_Pria_Shuttle_Run=? WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+
+        if ($data['Tanggal_Pelaksanaan_Shuttle_Run_Pria'] instanceof DateTime) {
+            $data['Tanggal_Pelaksanaan_Shuttle_Run_Pria'] = $data['Tanggal_Pelaksanaan_Shuttle_Run_Pria']->format('Y-m-d');
+        }
+
+        $statement->bind_param(
+            "sdisi",
+            $data['Tanggal_Pelaksanaan_Shuttle_Run_Pria'],
+            $data['Waktu_Shuttle_Run_Pria'],
+            $data['Nilai_Shuttle_Run_Pria'],
+            $data['Status_Pria_Shuttle_Run'],
+            $NIP
         );
 
         if ($statement->execute()) {
@@ -1059,15 +1110,16 @@ class GarjasPriaFlexedArmHang
 
     public function tambahGarjasPriaFlexedArmHang($data)
     {
-        $query = "INSERT INTO garjas_pria_menggantung (NIP_Pengguna, Tanggal_Pelaksanaan_Pria_Menggantung, Waktu_Menggantung_Pria, Nilai_Menggantung_Pria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_pria_menggantung (NIP_Pengguna, Tanggal_Pelaksanaan_Pria_Menggantung, Waktu_Menggantung_Pria, Nilai_Menggantung_Pria, Status_Pria_Menggantung) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "isiis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Pria_Menggantung']),
             $this->mengamankanString($data['Waktu_Menggantung_Pria']),
-            $this->mengamankanString($data['Nilai_Menggantung_Pria'])
+            $this->mengamankanString($data['Nilai_Menggantung_Pria']),
+            $this->mengamankanString($data['Status_Pria_Menggantung'])
         );
 
         if ($statement->execute()) {
@@ -1170,18 +1222,39 @@ class GarjasPriaFlexedArmHang
         }
     }
 
-
     public function perbaruiGarjasPriaFlexedArmHang($id, $data)
     {
-        $query = "UPDATE garjas_pria_menggantung SET Tanggal_Pelaksanaan_Pria_Menggantung=?, Waktu_Menggantung_Pria=?, Nilai_Menggantung_Pria=? WHERE ID_Menggantung_Pria=?";
+        $query = "UPDATE garjas_pria_menggantung SET Tanggal_Pelaksanaan_Pria_Menggantung=?, Waktu_Menggantung_Pria=?, Nilai_Menggantung_Pria=?, Status_Pria_Menggantung=? WHERE ID_Menggantung_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "siii",
+            "siisi",
             $data['Tanggal_Pelaksanaan_Pria_Menggantung'],
             $data['Waktu_Menggantung_Pria'],
             $data['Nilai_Menggantung_Pria'],
+            $data['Status_Pria_Menggantung'],
             $id
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiGarjasPriaFlexedArmHangJikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_pria_menggantung SET Tanggal_Pelaksanaan_Pria_Menggantung=?, Waktu_Menggantung_Pria=?, Nilai_Menggantung_Pria=?, Status_Pria_Menggantung=? WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "siisi",
+            $data['Tanggal_Pelaksanaan_Pria_Menggantung'],
+            $data['Waktu_Menggantung_Pria'],
+            $data['Nilai_Menggantung_Pria'],
+            $data['Status_Pria_Menggantung'],
+            $NIP
         );
 
         if ($statement->execute()) {
@@ -1534,15 +1607,16 @@ class GarjasWanitaPushUp
 
     public function tambahGarjasWanitaPushUp($data)
     {
-        $query = "INSERT INTO garjas_wanita_push_up (NIP_Pengguna, Tanggal_Pelaksanaan_Push_Up_Wanita, Jumlah_Push_Up_Wanita, Nilai_Push_Up_Wanita) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_wanita_push_up (NIP_Pengguna, Tanggal_Pelaksanaan_Push_Up_Wanita, Jumlah_Push_Up_Wanita, Nilai_Push_Up_Wanita, Status_Wanita_Push_Up) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "isiis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Push_Up_Wanita']),
             $this->mengamankanString($data['Jumlah_Push_Up_Wanita']),
-            $this->mengamankanString($data['Nilai_Push_Up_Wanita'])
+            $this->mengamankanString($data['Nilai_Push_Up_Wanita']),
+            $this->mengamankanString($data['Status_Wanita_Push_Up'])
         );
 
         if ($statement->execute()) {
@@ -1602,16 +1676,18 @@ class GarjasWanitaPushUp
         $query = "UPDATE garjas_wanita_push_up SET 
                         Tanggal_Pelaksanaan_Push_Up_Wanita=?, 
                         Jumlah_Push_Up_Wanita=?, 
-                        Nilai_Push_Up_Wanita=? 
+                        Nilai_Push_Up_Wanita=?,
+                        Status_Wanita_Push_Up=?
                         WHERE ID_Wanita_Push_Up=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanPushUpWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Push_Up_Wanita']);
         $jumlahPushUpWanita = $this->mengamankanString($data['Jumlah_Push_Up_Wanita']);
         $nilaiPushUpWanita = $this->mengamankanString($data['Nilai_Push_Up_Wanita']);
+        $statusPushUpWanita = $this->mengamankanString($data['Status_Wanita_Push_Up']);
         $idWanitaPushUp = $id;
 
-        $statement->bind_param("siii", $tanggalPelaksanaanPushUpWanita, $jumlahPushUpWanita, $nilaiPushUpWanita, $idWanitaPushUp);
+        $statement->bind_param("siisi", $tanggalPelaksanaanPushUpWanita, $jumlahPushUpWanita, $nilaiPushUpWanita, $statusPushUpWanita, $idWanitaPushUp);
 
         if ($statement->execute()) {
             return true;
@@ -1619,6 +1695,32 @@ class GarjasWanitaPushUp
             return false;
         }
     }
+
+    public function perbaruiGarjasWanitaPushUpJikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_wanita_push_up SET 
+                        Tanggal_Pelaksanaan_Push_Up_Wanita=?, 
+                        Jumlah_Push_Up_Wanita=?, 
+                        Nilai_Push_Up_Wanita=?,
+                        Status_Wanita_Push_Up=?
+                        WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanPushUpWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Push_Up_Wanita']);
+        $jumlahPushUpWanita = $this->mengamankanString($data['Jumlah_Push_Up_Wanita']);
+        $nilaiPushUpWanita = $this->mengamankanString($data['Nilai_Push_Up_Wanita']);
+        $statusPushUpWanita = $this->mengamankanString($data['Status_Wanita_Push_Up']);
+        $idWanitaPushUp = $NIP;
+
+        $statement->bind_param("siisi", $tanggalPelaksanaanPushUpWanita, $jumlahPushUpWanita, $nilaiPushUpWanita, $statusPushUpWanita, $idWanitaPushUp);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function cekNipAnggotaPushUpWanitaSudahAda($nipPengguna)
     {
         $query = "SELECT COUNT(*) as total FROM garjas_wanita_push_up WHERE NIP_Pengguna = ?";
@@ -1799,15 +1901,16 @@ class GarjasWanitaShuttleRun
 
     public function tambahGarjasWanitaShuttleRun($data)
     {
-        $query = "INSERT INTO garjas_wanita_shuttle_run (NIP_Pengguna, Tanggal_Pelaksanaan_Shuttle_Run_Wanita, Jumlah_Shuttle_Run_Wanita, Nilai_Shuttle_Run_Wanita) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_wanita_shuttle_run (NIP_Pengguna, Tanggal_Pelaksanaan_Shuttle_Run_Wanita, Jumlah_Shuttle_Run_Wanita, Nilai_Shuttle_Run_Wanita, Status_Wanita_Shuttle_Run) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "issi",
+            "issis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Shuttle_Run_Wanita']),
             $this->mengamankanString(floatval($data['Jumlah_Shuttle_Run_Wanita'])),
-            $this->mengamankanString($data['Nilai_Shuttle_Run_Wanita'])
+            $this->mengamankanString($data['Nilai_Shuttle_Run_Wanita']),
+            $this->mengamankanString($data['Status_Wanita_Shuttle_Run'])
         );
 
         if ($statement->execute()) {
@@ -1877,16 +1980,18 @@ class GarjasWanitaShuttleRun
         $query = "UPDATE garjas_wanita_shuttle_run SET 
                     Tanggal_Pelaksanaan_Shuttle_Run_Wanita=?, 
                     Jumlah_Shuttle_Run_Wanita=?, 
-                    Nilai_Shuttle_Run_Wanita=? 
+                    Nilai_Shuttle_Run_Wanita=? ,
+                    Status_Wanita_Shuttle_Run=?
                     WHERE ID_Wanita_Shuttle_Run=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanShuttleRunWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Shuttle_Run_Wanita']);
         $jumlahShuttleRunWanita = $this->mengamankanString($data['Jumlah_Shuttle_Run_Wanita']);
         $nilaiShuttleRunWanita = $this->mengamankanString($data['Nilai_Shuttle_Run_Wanita']);
+        $shuttleRunWanitaStatus = $this->mengamankanString($data['Status_Wanita_Shuttle_Run']);
         $idWanitaShuttleRun = $id;
 
-        $statement->bind_param("ssii", $tanggalPelaksanaanShuttleRunWanita, $jumlahShuttleRunWanita, $nilaiShuttleRunWanita, $idWanitaShuttleRun);
+        $statement->bind_param("ssisi", $tanggalPelaksanaanShuttleRunWanita, $jumlahShuttleRunWanita, $nilaiShuttleRunWanita, $shuttleRunWanitaStatus, $idWanitaShuttleRun);
 
         if ($statement->execute()) {
             return true;
@@ -1894,6 +1999,32 @@ class GarjasWanitaShuttleRun
             return false;
         }
     }
+
+    public function perbaruiGarjasWanitaShuttleRunJikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_wanita_shuttle_run SET 
+                    Tanggal_Pelaksanaan_Shuttle_Run_Wanita=?, 
+                    Jumlah_Shuttle_Run_Wanita=?, 
+                    Nilai_Shuttle_Run_Wanita=? ,
+                    Status_Wanita_Shuttle_Run=?
+                    WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanShuttleRunWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Shuttle_Run_Wanita']);
+        $jumlahShuttleRunWanita = $this->mengamankanString($data['Jumlah_Shuttle_Run_Wanita']);
+        $nilaiShuttleRunWanita = $this->mengamankanString($data['Nilai_Shuttle_Run_Wanita']);
+        $shuttleRunWanitaStatus = $this->mengamankanString($data['Status_Wanita_Shuttle_Run']);
+        $idWanitaShuttleRun = $NIP;
+
+        $statement->bind_param("ssisi", $tanggalPelaksanaanShuttleRunWanita, $jumlahShuttleRunWanita, $nilaiShuttleRunWanita, $shuttleRunWanitaStatus, $idWanitaShuttleRun);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function cekNipAnggotaShuttleRunWanitaSudahAda($nipPengguna)
     {
         $query = "SELECT COUNT(*) as total FROM garjas_wanita_shuttle_run WHERE NIP_Pengguna = ?";
@@ -2205,16 +2336,18 @@ class TesRenangPria
 
     public function tambahTesRenangPria($data)
     {
-        $query = "INSERT INTO tes_renang_pria (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Renang_Pria, Waktu_Renang_Pria, Nama_Gaya_Renang_Pria, Nilai_Renang_Pria) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO tes_renang_pria (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Renang_Pria, Waktu_Renang_Pria, Nama_Gaya_Renang_Pria, Nilai_Renang_Pria, Status_Renang_Pria) VALUES (?, ?, ?, ?, ?, ?)";
+
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isssi",
+            "isssis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Renang_Pria']),
             $this->mengamankanString($data['Waktu_Renang_Pria']),
             $this->mengamankanString($data['Nama_Gaya_Renang_Pria']),
-            $this->mengamankanString($data['Nilai_Renang_Pria'])
+            $this->mengamankanString($data['Nilai_Renang_Pria']),
+            $this->mengamankanString($data['Status_Renang_Pria']),
         );
 
         if ($statement->execute()) {
@@ -2260,7 +2393,8 @@ class TesRenangPria
                     Tanggal_Pelaksanaan_Tes_Renang_Pria=?,
                     Nama_Gaya_Renang_Pria=?,
                     Waktu_Renang_Pria=?, 
-                    Nilai_Renang_Pria=? 
+                    Nilai_Renang_Pria=?,
+                    Status_Renang_Pria=?
                     WHERE ID_Renang_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
@@ -2268,9 +2402,10 @@ class TesRenangPria
         $namaRenangPria = $this->mengamankanString($data['Nama_Gaya_Renang_Pria']);
         $waktuRenangPria = $this->mengamankanString($data['Waktu_Renang_Pria']);
         $nilaiRenangPria = $this->mengamankanString($data['Nilai_Renang_Pria']);
+        $statusRenangPria = $this->mengamankanString($data['Status_Renang_Pria']);
         $idRenangPria = $id;
 
-        $statement->bind_param("sssii", $tanggalPelaksanaanRenangPria, $namaRenangPria, $waktuRenangPria, $nilaiRenangPria, $idRenangPria);
+        $statement->bind_param("sssisi", $tanggalPelaksanaanRenangPria, $namaRenangPria, $waktuRenangPria, $nilaiRenangPria, $statusRenangPria, $idRenangPria);
 
         if ($statement->execute()) {
             return true;
@@ -2308,6 +2443,20 @@ class TesRenangPria
         }
     }
 
+    public function ambilUmurTesRenangPriaOlehNIP($NIP)
+    {
+        $query = "SELECT Umur_Pengguna FROM pengguna WHERE NIP_Pengguna = '$NIP'";
+
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['Umur_Pengguna'];
+        } else {
+            return null;
+        }
+    }
+
     public function sudahAdaNilaiRenangPria($nipPengguna)
     {
         $query = "SELECT COUNT(*) as count FROM tes_renang_pria WHERE NIP_Pengguna = ?";
@@ -2316,6 +2465,51 @@ class TesRenangPria
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
         return $result['count'] > 0;
+    }
+
+    public function cekNipAnggotaTesRenangPriaSudahAda($nipPengguna)
+    {
+        $query = "SELECT COUNT(*) as total FROM tes_renang_pria WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $nipPengguna);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+
+        $total = $row['total'];
+
+        if ($total > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiTesRenangPriaJikaDiTolak($NIP, $data)
+    {
+        $query = "UPDATE tes_renang_pria SET 
+                    Tanggal_Pelaksanaan_Tes_Renang_Pria=?, 
+                    Nama_Gaya_Renang_Pria=?,
+                    Waktu_Renang_Pria=?, 
+                    Nilai_Renang_Pria=?,
+                    Status_Renang_Pria=?
+                    WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanRenangPria = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Renang_Pria']);
+        $namaRenangPria = $this->mengamankanString($data['Nama_Gaya_Renang_Pria']);
+        $waktuRenangPria = $this->mengamankanString($data['Waktu_Renang_Pria']);
+        $nilaiRenangPria = $this->mengamankanString($data['Nilai_Renang_Pria']);
+        $statusRenangPria = $this->mengamankanString($data['Status_Renang_Pria']);
+        $idRenangPria = $NIP;
+
+        $statement->bind_param("sssisi", $tanggalPelaksanaanRenangPria, $namaRenangPria, $waktuRenangPria, $nilaiRenangPria, $statusRenangPria, $idRenangPria);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 // ===================================TES RENANG PRIA===================================
@@ -2347,16 +2541,18 @@ class TesRenangWanita
 
     public function tambahTesRenangWanita($data)
     {
-        $query = "INSERT INTO tes_renang_wanita (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Renang_Wanita, Waktu_Renang_Wanita, Nama_Gaya_Renang_Wanita, Nilai_Renang_Wanita) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO tes_renang_wanita (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Renang_Wanita, Waktu_Renang_Wanita, Nama_Gaya_Renang_Wanita, Nilai_Renang_Wanita, Status_Renang_Wanita) VALUES (?, ?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isssi",
+            "isssis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Renang_Wanita']),
             $this->mengamankanString($data['Waktu_Renang_Wanita']),
             $this->mengamankanString($data['Nama_Gaya_Renang_Wanita']),
-            $this->mengamankanString($data['Nilai_Renang_Wanita'])
+            $this->mengamankanString($data['Nilai_Renang_Wanita']),
+            $this->mengamankanString($data['Status_Renang_Wanita'])
+
         );
 
         if ($statement->execute()) {
@@ -2388,7 +2584,8 @@ class TesRenangWanita
                     Tanggal_Pelaksanaan_Tes_Renang_Wanita=?,
                     Nama_Gaya_Renang_Wanita=?,
                     Waktu_Renang_Wanita=?, 
-                    Nilai_Renang_Wanita=? 
+                    Nilai_Renang_Wanita=?,
+                    Status_Renang_Wanita=? 
                     WHERE ID_Renang_Wanita=?";
 
         $statement = $this->koneksi->prepare($query);
@@ -2396,9 +2593,10 @@ class TesRenangWanita
         $namaRenangWanita = $this->mengamankanString($data['Nama_Gaya_Renang_Wanita']);
         $waktuRenangWanita = $this->mengamankanString($data['Waktu_Renang_Wanita']);
         $nilaiRenangWanita = $this->mengamankanString($data['Nilai_Renang_Wanita']);
+        $statusRenangWanita = $this->mengamankanString($data['Status_Renang_Wanita']);
         $idRenangWanita = $id;
 
-        $statement->bind_param("sssii", $tanggalPelaksanaanRenangWanita, $namaRenangWanita, $waktuRenangWanita, $nilaiRenangWanita, $idRenangWanita);
+        $statement->bind_param("sssisi", $tanggalPelaksanaanRenangWanita, $namaRenangWanita, $waktuRenangWanita, $nilaiRenangWanita, $statusRenangWanita, $idRenangWanita);
 
         if ($statement->execute()) {
             return true;
@@ -2435,6 +2633,25 @@ class TesRenangWanita
             return false;
         }
     }
+
+    public function cekNipAnggotaTesRenangWanitaSudahAda($nipPengguna)
+    {
+        $query = "SELECT COUNT(*) as total FROM tes_renang_wanita WHERE NIP_Pengguna = ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $nipPengguna);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+
+        $total = $row['total'];
+
+        if ($total > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function sudahAdaNilaiRenangWanita($nipPengguna)
     {
         $query = "SELECT COUNT(*) as count FROM tes_renang_wanita WHERE NIP_Pengguna = ?";
@@ -2456,6 +2673,32 @@ class TesRenangWanita
             return $row['Umur_Pengguna'];
         } else {
             return null;
+        }
+    }
+
+    public function perbaruiTesRenangWanitaJikaDiTolak($NIP, $data)
+    {
+        $query = "UPDATE tes_renang_wanita SET 
+        Tanggal_Pelaksanaan_Tes_Renang_Wanita=?,
+        Nama_Gaya_Renang_Wanita=?,
+        Waktu_Renang_Wanita=?, 
+        Nilai_Renang_Wanita=?,
+        Status_Renang_Wanita=? 
+        WHERE ID_Renang_Wanita=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanRenangWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Renang_Wanita']);
+        $namaRenangWanita = $this->mengamankanString($data['Nama_Gaya_Renang_Wanita']);
+        $waktuRenangWanita = $this->mengamankanString($data['Waktu_Renang_Wanita']);
+        $nilaiRenangWanita = $this->mengamankanString($data['Nilai_Renang_Wanita']);
+        $statusRenangWanita = $this->mengamankanString($data['Status_Renang_Wanita']);
+        $idRenangWanita = $NIP;
+        $statement->bind_param("ssisi", $tanggalPelaksanaanRenangWanita, $namaRenangWanita, $waktuRenangWanita, $nilaiRenangWanita, $statusRenangWanita, $idRenangWanita);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
@@ -2853,15 +3096,16 @@ class TesJalanKaki5KMPria
 
     public function tambahTesJalanKaki5KMPria($data)
     {
-        $query = "INSERT INTO tes_jalan_pria (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Jalan_Pria, Waktu_Jalan_Pria, Nilai_Jalan_Pria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO tes_jalan_pria (NIP_Pengguna, Tanggal_Pelaksanaan_Tes_Jalan_Pria, Waktu_Jalan_Pria, Nilai_Jalan_Pria, Status_Jalan_Pria) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "issi",
+            "issis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Jalan_Pria']),
             $this->mengamankanString($data['Waktu_Jalan_Pria']),
-            $this->mengamankanString($data['Nilai_Jalan_Pria'])
+            $this->mengamankanString($data['Nilai_Jalan_Pria']),
+            $this->mengamankanString($data['Status_Jalan_Pria'])
         );
 
         if ($statement->execute()) {
@@ -2922,16 +3166,43 @@ class TesJalanKaki5KMPria
         $query = "UPDATE tes_jalan_pria SET 
                     Tanggal_Pelaksanaan_Tes_Jalan_Pria=?, 
                     Waktu_Jalan_Pria=?, 
-                    Nilai_Jalan_Pria=? 
+                    Nilai_Jalan_Pria=?,
+                    Status_Jalan_Pria=?
                     WHERE ID_Jalan_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanJalanPria = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Jalan_Pria']);
         $waktuJalanPria = $this->mengamankanString($data['Waktu_Jalan_Pria']);
         $nilaiJalanPria = $this->mengamankanString($data['Nilai_Jalan_Pria']);
+        $statusJalanPria = $this->mengamankanString($data['Status_Jalan_Pria']);
         $idJalanPria = $id;
 
-        $statement->bind_param("ssii", $tanggalPelaksanaanJalanPria, $waktuJalanPria, $nilaiJalanPria, $idJalanPria);
+        $statement->bind_param("ssisi", $tanggalPelaksanaanJalanPria, $waktuJalanPria, $nilaiJalanPria, $statusJalanPria, $idJalanPria);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiTesJalanPriaJikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE tes_jalan_pria SET 
+                    Tanggal_Pelaksanaan_Tes_Jalan_Pria=?, 
+                    Waktu_Jalan_Pria=?, 
+                    Nilai_Jalan_Pria=?,
+                    Status_Jalan_Pria=?
+                    WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanJalanPria = $this->mengamankanString($data['Tanggal_Pelaksanaan_Tes_Jalan_Pria']);
+        $waktuJalanPria = $this->mengamankanString($data['Waktu_Jalan_Pria']);
+        $nilaiJalanPria = $this->mengamankanString($data['Nilai_Jalan_Pria']);
+        $statusJalanPria = $this->mengamankanString($data['Status_Jalan_Pria']);
+        $idJalanPria = $NIP;
+
+        $statement->bind_param("ssisi", $tanggalPelaksanaanJalanPria, $waktuJalanPria, $nilaiJalanPria, $statusJalanPria, $idJalanPria);
 
         if ($statement->execute()) {
             return true;

@@ -52,6 +52,10 @@
                                 <th>Tanggal Pelaksanaan:</th>
                                 <td id="tanggalPelaksanaanTesJalanPriaTd"></td>
                             </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td id="statusTesJalanPriaTd"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

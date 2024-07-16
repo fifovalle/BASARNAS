@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggalPelaksanaanShuttleRunPria = $_POST['Tanggal_Pelaksanaan_Shuttle_Run_Pria'] ?? '';
     $waktuShuttleRunPria = $_POST['Waktu_Shuttle_Run_Pria'] ?? '';
     $nilaiShuttleRunPria = $_POST['Nilai_Shuttle_Run_Pria'] ?? '';
+    $statusShuttleRunPria = $_POST['Status_Pria_Shuttle_Run'] ?? '';
 
     $garjasPriaShuttleRunModel = new GarjasPriaShuttleRun($koneksi);
 
@@ -209,7 +210,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dataGarjasPriaShuttleRun = array(
             'Tanggal_Pelaksanaan_Shuttle_Run_Pria' => $tanggalPelaksanaanShuttleRunPria,
             'Waktu_Shuttle_Run_Pria' => $waktuShuttleRunPria,
-            'Nilai_Shuttle_Run_Pria' => $nilaiAkhir
+            'Nilai_Shuttle_Run_Pria' => $nilaiAkhir,
+            "Status_Pria_Shuttle_Run" => $statusShuttleRunPria
         );
 
         $updatedataGarjasPriaShuttleRun = $garjasPriaShuttleRunModel->perbaruiGarjasPriaShuttleRun($idGarjasPriaShuttleRun, $dataGarjasPriaShuttleRun);

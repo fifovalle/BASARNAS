@@ -28,7 +28,6 @@ function containsXSS($input)
     return false;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
@@ -37,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $jumlahShuttleRunWanita = $_POST['Jumlah_Shuttle_Run_Wanita'] ?? '';
     $tanggalPelaksanaanShuttleRunWanita = $_POST['Tanggal_Pelaksanaan_Shuttle_Run_Wanita'] ?? '';
+    $statusWanitaShuttleRun = $_POST['Status_Wanita_Shuttle_Run'] ?? '';
 
     $garjasWanitaShuttleRunModel = new GarjasWanitaShuttleRun($koneksi);
     $umurPengguna = $garjasWanitaShuttleRunModel->ambilUmurGarjasWanitaShuttleRunOlehNIP($nipPengguna);
@@ -223,7 +223,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Shuttle_Run_Wanita' => $tanggalPelaksanaanShuttleRunWanita,
         'Jumlah_Shuttle_Run_Wanita' => $jumlahShuttleRunWanita,
-        'Nilai_Shuttle_Run_Wanita' => $nilaiAkhir
+        'Nilai_Shuttle_Run_Wanita' => $nilaiAkhir,
+        "Status_Wanita_Shuttle_Run" => $statusWanitaShuttleRun
     );
     $updateGarjasWanitaShuttleRun = $garjasWanitaShuttleRunModel->perbaruiGarjasWanitaShuttleRun($idGarjasWanitaShuttleRun, $dataGarjasWanitaShuttleRun);
 

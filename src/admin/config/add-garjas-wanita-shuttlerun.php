@@ -243,6 +243,7 @@ if (isset($_POST['tambah_nilai'])) {
         'Tanggal_Pelaksanaan_Shuttle_Run_Wanita' => $tanggalPelaksanaanShuttleRunWanita,
         'Jumlah_Shuttle_Run_Wanita' => $jumlahShuttleRunWanita,
         'Nilai_Shuttle_Run_Wanita' => $nilaiAkhir,
+        'Status_Wanita_Shuttle_Run' => "Diterima"
     );
 
     $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaShuttleRun($dataPenggunaWanita);

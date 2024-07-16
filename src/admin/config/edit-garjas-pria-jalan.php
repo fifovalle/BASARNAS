@@ -28,7 +28,6 @@ function containsXSS($input)
     return false;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
@@ -37,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $waktuTestJalanPria = $_POST['Waktu_Jalan_Pria'] ?? '';
     $tanggalPelaksanaanTestJalanPria = $_POST['Tanggal_Pelaksanaan_Tes_Jalan_Pria'] ?? '';
+    $statusJalanPria = $_POST['Status_Tes_Jalan_Pria'] ?? '';
 
     $garjasPriaTesJalanModel = new TesJalanKaki5KMPria($koneksi);
     $umurPengguna = $garjasPriaTesJalanModel->ambilUmurTesJalanKaki5KMPriaOlehNIP($nipPengguna);
@@ -147,7 +147,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Tes_Jalan_Pria' => $tanggalPelaksanaanTestJalanPria,
         'Waktu_Jalan_Pria' => $waktuTestJalanPria,
-        'Nilai_Jalan_Pria' => $nilaiAkhir
+        'Nilai_Jalan_Pria' => $nilaiAkhir,
+        'Status_Jalan_Pria' => $statusJalanPria
     );
     $updateGarjasPriaTesJalan = $garjasPriaTesJalanModel->perbaruiTesJalanPria($idGarjasPriaTesJalan, $dataGarjasWanitaShuttleRun);
 

@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingTanggalPelaksanaanGarjasPriaJalan").val(
             garjasPriaTestJalanData.Tanggal_Pelaksanaan_Tes_Jalan_Pria
           );
+          $("#suntingStatusGarjasPriaJalan").val(
+            garjasPriaTestJalanData.Status_Jalan_Pria
+          );
           $("#suntingGarjasPriaJalan").modal("show");
         }
       },
