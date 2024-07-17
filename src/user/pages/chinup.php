@@ -24,8 +24,12 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	include('../partials/navbar.php');
 	?>
 	<section class="table-samapta">
-		<h1 class="samapta-title text-center">SAMAPTA (Chin Up)
-		</h1>
+		<?php
+		$judul = isset($_SESSION['Jenis_Kelamin_Pengguna'])
+			? ($_SESSION['Jenis_Kelamin_Pengguna'] == 'Pria' ? 'SAMAPTA (Chin Up)' : 'SAMAPTA (Chinning)')
+			: 'SAMAPTA';
+		?>
+		<h1 class="samapta-title text-center"><?php echo $judul; ?></h1>
 		<div class="btn-group">
 			<div class="dropdown pe-2">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
