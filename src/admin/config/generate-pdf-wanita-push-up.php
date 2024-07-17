@@ -4,20 +4,11 @@ include('../config/databases.php');
 
 class MYPDF extends TCPDF
 {
-    public function Header()
-    {
-        $image_file = '../../../user/assets/img/logo.png';
-        $this->Image($image_file, 10, 10, 30, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-        $this->SetFont('helvetica', 'B', 12);
-        $this->Cell(0, 15, 'Laporan Data Garjas Wanita (Push Up) Bulanan', 0, false, 'C', 0, '', 0, false, 'M', 'M');
-        $this->Ln(10);
-    }
-
     public function Footer()
     {
         $this->SetY(-15);
         $this->SetFont('helvetica', 'I', 8);
-        $this->Cell(0, 10, 'Page ' . $this->getAliasNumPage() . '/' . $this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(0, 10, 'Halaman ' . $this->getAliasNumPage() . '/' . $this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
 
@@ -66,10 +57,14 @@ $garjasPushUpWanitaInfo = $garjasPushUpWanitaModel->tampilkanDataGarjasWanitaPus
 
 $html = '
 <style>
+    .header-laporan{
+        width: 5100%;
+    }
     h1 {
         text-align: center;
         color: #4CAF50;
         font-family: Arial, sans-serif;
+        margin-bottom: 20px;
     }
     .style-table {
         border-collapse: collapse;
@@ -92,9 +87,9 @@ $html = '
         border:1px solid white;
     }
 </style>
-<img class="header-invoice" src="" alt="">
-<hr style="color: #999">
-<h1>Laporan Bulan ' . $namaBulan . ' Tahun ' . $year . '</h1>
+<img class="header-laporan" src="../../user/assets/img/kepala-laporan-wanita.png">
+<hr style="color: #000">
+<h1>Laporan Wanita (Push Up) Bulan ' . $namaBulan . ' Tahun ' . $year . '</h1>
 <table class="style-table">
 <tr class="header">
     <th>NO</th>
@@ -126,11 +121,5 @@ if (!empty($garjasPushUpWanitaInfo)) {
 $html .= '</table>';
 
 $pdf->writeHTML($html, true, false, true, false, '');
-
-$capText = 'Dicetak pada: ' . date('d') . ' ' . $namaBulan . ' ' . $year;
-$pdf->SetFont('times', 'B', 10);
-$pdf->SetTextColor(255, 0, 0);
-$pdf->SetXY(10, -30);
-$pdf->Cell(0, 10, $capText, 0, 1, 'L');
 
 $pdf->Output('laporan_wanita_push_up_bulanan_' . $namaBulan . '_' . $year . '.pdf', 'I');
