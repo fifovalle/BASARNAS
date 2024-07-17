@@ -46,8 +46,6 @@
 
 							$fiturWanita = '
 								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/chinup.php" id="chinup">Chinning</a></li>
-								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/flexedarmhang.php" id="flexedarmhang">Flexed Arm Hang</a></li>
-								<li> <a class="dropdown-item" href="' . $akarUrl . 'src/user/pages/jalan-kaki.php" id="jalan-kaki">Jalan Kaki 5 KM</a></li>
 							';
 
 							echo isset($_SESSION['Jenis_Kelamin_Pengguna'])
