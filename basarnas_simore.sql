@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2024 at 07:01 AM
+-- Generation Time: Jul 17, 2024 at 10:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,7 +50,7 @@ CREATE TABLE `admin` (
   `Tanggal_Lahir_Admin` date NOT NULL,
   `Umur_Admin` int(3) NOT NULL,
   `No_Telepon_Admin` varchar(20) NOT NULL,
-  `Jabatan_Admin` enum('Pemula','Terampil','Mahir','Penyelia') NOT NULL,
+  `Jabatan_Admin` enum('Rescuer','PKPP','Kasumda','Analis Kepegawaian','Kaops','Kaur Umum','Kakansar') NOT NULL,
   `Jenis_Kelamin_Admin` enum('Pria','Wanita') NOT NULL,
   `Kata_Sandi_Admin` varchar(100) NOT NULL,
   `Konfirmasi_Kata_Sandi_Admin` varchar(100) NOT NULL
@@ -61,7 +61,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`NIP_Admin`, `Foto_Admin`, `Nama_Lengkap_Admin`, `Peran_Admin`, `Tanggal_Lahir_Admin`, `Umur_Admin`, `No_Telepon_Admin`, `Jabatan_Admin`, `Jenis_Kelamin_Admin`, `Kata_Sandi_Admin`, `Konfirmasi_Kata_Sandi_Admin`) VALUES
-(12345, 0x363639323337343664316132352e6a7067, 'Syntax Squad ', 'Super Admin', '2000-05-22', 24, '+62 812-2354-2490', 'Penyelia', 'Pria', '$2y$10$vv0BCII34Hm3pDffNvtduONcVQ9kHWL59R.I7.kjUFw/hzpIvdVWm', '$2y$10$vv0BCII34Hm3pDffNvtduONcVQ9kHWL59R.I7.kjUFw/hzpIvdVWm');
+(12345, 0x363639323337343664316132352e6a7067, 'Syntax Squad ', 'Super Admin', '2000-05-22', 24, '+62 812-2354-2490', 'Kakansar', 'Pria', '$2y$10$vv0BCII34Hm3pDffNvtduONcVQ9kHWL59R.I7.kjUFw/hzpIvdVWm', '$2y$10$vv0BCII34Hm3pDffNvtduONcVQ9kHWL59R.I7.kjUFw/hzpIvdVWm');
 
 -- --------------------------------------------------------
 

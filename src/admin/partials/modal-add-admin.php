@@ -43,10 +43,14 @@
                         <label for="tambahJabatanAdmin" class="form-label">Jabatan</label>
                         <select name="Jabatan_Admin" id="tambahJabatanAdmin" class="form-select">
                             <option selected disabled>Pilih Jabatan</option>
-                            <option value="Pemula">Pemula</option>
-                            <option value="Terampil">Terampil</option>
-                            <option value="Mahir">Mahir</option>
+                            <option value="Rescuer">Rescuer</option>
+                            <option value="PKPP">PKPP</option>
+                            <option value="Kasumda">Kasumda</option>
                             <option value="Penyelia">Penyelia</option>
+                            <option value="Analis Kepegawaian">Analis Kepegawaian</option>
+                            <option value="Kaops">Kaops</option>
+                            <option value="Kaur Umum">Kaur Umum</option>
+                            <option value="Kakansar">Kakansar</option>
                         </select>
                     </div>
                     <div class="mb-3">
