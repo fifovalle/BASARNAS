@@ -63,7 +63,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -90,9 +89,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Jumlah Sit Up</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -109,9 +108,11 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasSitUp2Wanita['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp2Wanita['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita']; ?></td>
                                                             <td><?php echo $garjasSitUp2Wanita['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasSitUp2Wanita['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasSitUp2Wanita['Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita']; ?></td>
                                                             <td><?php echo $garjasSitUp2Wanita['Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita']; ?></td>
+                                                            <td> <span class="badge bg-<?= $garjasSitUp2Wanita['Status_Wanita_Sit_Up_Kaki_Ditekuk'] == "Ditinjau" ? "warning" : ($garjasSitUp2Wanita['Status_Wanita_Sit_Up_Kaki_Ditekuk'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasSitUp2Wanita['Status_Wanita_Sit_Up_Kaki_Ditekuk'] == "Ditinjau" ? "Ditinjau" : ($garjasSitUp2Wanita['Status_Wanita_Sit_Up_Kaki_Ditekuk'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span></td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaSitUp2" data-bs-toggle="modal" data-id="<?php echo $garjasSitUp2Wanita['ID_Wanita_Sit_Up_Kaki_Di_Tekuk']; ?>">

@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingTanggalPelaksanaanSitUp1GarjasWanita").val(
             garjasSitUp1WanitaData.Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita
           );
+          $("#suntingStatusSitUp1GarjasWanita").val(
+            garjasSitUp1WanitaData.Status_Wanita_Sit_Up_Kaki_Lurus
+          );
           $("#suntingGarjasWanitaSitUp1").modal("show");
         }
       },

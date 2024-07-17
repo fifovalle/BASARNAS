@@ -56,6 +56,17 @@
   margin: 10px 0 30px 0;
 }
 
+.tombol-tambah {
+  background: #fd800c;
+  color: white;
+  font-weight: bold;
+}
+
+.tombol-tambah:hover {
+  background: #e8903e;
+  color: white;
+}
+
 @media screen and (min-width: 360px) and (max-width: 428px) {
   .table-samapta table {
     width: 100%;

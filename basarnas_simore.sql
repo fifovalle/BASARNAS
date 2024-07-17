@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2024 at 12:21 PM
+-- Generation Time: Jul 17, 2024 at 06:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -123,13 +123,6 @@ CREATE TABLE `garjas_pria_push_up` (
   `Status_Pria_Push_Up` enum('Diterima','Ditinjau','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `garjas_pria_push_up`
---
-
-INSERT INTO `garjas_pria_push_up` (`ID_Push_Up_Pria`, `NIP_Pengguna`, `Tanggal_Pelaksanaan_Push_Up_Pria`, `Jumlah_Push_Up_Pria`, `Nilai_Push_Up_Pria`, `Status_Pria_Push_Up`) VALUES
-(78, 2250081109, '2024-07-15', 2, 3, 'Ditinjau');
-
 -- --------------------------------------------------------
 
 --
@@ -156,7 +149,8 @@ CREATE TABLE `garjas_pria_sit_up_kaki_di_tekuk` (
   `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk` date NOT NULL,
   `Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria` int(4) NOT NULL,
-  `Nilai_Sit_Up_Kaki_Di_Tekuk_Pria` int(3) NOT NULL
+  `Nilai_Sit_Up_Kaki_Di_Tekuk_Pria` int(3) NOT NULL,
+  `Status_Pria_Sit_Up_Kaki_Ditekuk` enum('Diterima','Ditinjau','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -170,7 +164,8 @@ CREATE TABLE `garjas_pria_sit_up_kaki_lurus` (
   `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria` date NOT NULL,
   `Jumlah_Sit_Up_Kaki_Lurus_Pria` int(4) NOT NULL,
-  `Nilai_Sit_Up_Kaki_Lurus_Pria` int(3) NOT NULL
+  `Nilai_Sit_Up_Kaki_Lurus_Pria` int(3) NOT NULL,
+  `Status_Pria_Sit_Up_Kaki_Lurus` enum('Diterima','Ditinjau','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -228,7 +223,8 @@ CREATE TABLE `garjas_wanita_sit_up_kaki_di_tekuk` (
   `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita` date NOT NULL,
   `Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita` int(4) NOT NULL,
-  `Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita` int(3) NOT NULL
+  `Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita` int(3) NOT NULL,
+  `Status_Wanita_Sit_Up_Kaki_Ditekuk` enum('Diterima','Ditinjau','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -242,7 +238,8 @@ CREATE TABLE `garjas_wanita_sit_up_kaki_lurus` (
   `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita` date NOT NULL,
   `Jumlah_Sit_Up_Kaki_Lurus_Wanita` int(4) NOT NULL,
-  `Nilai_Sit_Up_Kaki_Lurus_Wanita` int(3) NOT NULL
+  `Nilai_Sit_Up_Kaki_Lurus_Wanita` int(3) NOT NULL,
+  `Status_Wanita_Sit_Up_Kaki_Lurus` enum('Diterima','Ditinjau','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -582,13 +579,13 @@ ALTER TABLE `garjas_pria_shuttle_run`
 -- AUTO_INCREMENT for table `garjas_pria_sit_up_kaki_di_tekuk`
 --
 ALTER TABLE `garjas_pria_sit_up_kaki_di_tekuk`
-  MODIFY `ID_Sit_Up_Kaki_Di_Tekuk_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_Sit_Up_Kaki_Di_Tekuk_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_sit_up_kaki_lurus`
 --
 ALTER TABLE `garjas_pria_sit_up_kaki_lurus`
-  MODIFY `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_Sit_Up_Kaki_Lurus_Pria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_chin_up`
@@ -612,13 +609,13 @@ ALTER TABLE `garjas_wanita_shuttle_run`
 -- AUTO_INCREMENT for table `garjas_wanita_sit_up_kaki_di_tekuk`
 --
 ALTER TABLE `garjas_wanita_sit_up_kaki_di_tekuk`
-  MODIFY `ID_Wanita_Sit_Up_Kaki_Di_Tekuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID_Wanita_Sit_Up_Kaki_Di_Tekuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_sit_up_kaki_lurus`
 --
 ALTER TABLE `garjas_wanita_sit_up_kaki_lurus`
-  MODIFY `ID_Wanita_Sit_Up_Kaki_Lurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID_Wanita_Sit_Up_Kaki_Lurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `kompetensi`

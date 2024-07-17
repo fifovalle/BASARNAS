@@ -55,7 +55,7 @@ if (isset($_POST['tambah_nilai'])) {
 
     if ($jumlahSitUp2Wanita == 0) {
         setPesanKesalahan("Nilai Sit Up Kaki Di Tekuk tidak boleh 0.");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-pushup.php");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-situp2.php");
         exit;
     }
 
@@ -178,6 +178,7 @@ if (isset($_POST['tambah_nilai'])) {
         'Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita' => $tanggalPelaksanaanSitUp2Wanita,
         'Jumlah_Sit_Up_2_Wanita' => $jumlahSitUp2Wanita,
         'Nilai_Sit_Up_2_Wanita' => $nilaiAkhir,
+        "Status_Wanita_Sit_Up_Kaki_Ditekuk" => "Diterima"
     );
 
     $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaSitUp2($dataPenggunaWanita);

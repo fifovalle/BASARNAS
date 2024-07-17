@@ -17,6 +17,8 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	include('../partials/header.php');
 	?>
 	<link rel="stylesheet" href="../assets/css/situp1.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -26,8 +28,8 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	<section class="table-samapta">
 		<h1 class="samapta-title text-center">SAMAPTA (Sit Up Kaki Lurus)
 		</h1>
-		<div class="btn-group">
-			<div class="dropdown pe-2">
+		<div class="d-flex align-items-center">
+			<div class="dropdown pe-2" id="dropdownBulan">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Pilih Bulan
 				</button>
@@ -46,6 +48,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 				</ul>
 			</div>
+			<button class="btn btn-round ms-auto tombol-tambah" data-bs-toggle="modal" data-bs-target="#tambahGarjasSitUp1">
+				<i class="fa fa-plus"></i>
+				Tambah Data
+			</button>
 		</div>
 		<div class="table-responsive-sm">
 			<table class="table">
@@ -69,31 +75,42 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					$pengguna = $resultJenisKelamin->fetch_assoc();
 					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
 					$nomorUrut = 0;
+					$statusField = '';
 					if ($jenisKelamin == 'Pria') {
 						$sitUp1Info = $sitUp1Model->tampilkanSitUp1DenganSessionNipPria($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Sit_Up_Kaki_Lurus_Pria';
 						$nilaiField = 'Nilai_Sit_Up_Kaki_Lurus_Pria';
 						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria';
+						$statusField = 'Status_Pria_Sit_Up_Kaki_Lurus';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$sitUp1Info = $sitUp1Model->tampilkanSitUp1DenganSessionNipWanita($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Sit_Up_Kaki_Lurus_Wanita';
 						$nilaiField = 'Nilai_Sit_Up_Kaki_Lurus_Wanita';
 						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita';
+						$statusField = 'Status_Wanita_Sit_Up_Kaki_Lurus';
 					} else {
 						$sitUp1Info = null;
 					}
 
 					if (!empty($sitUp1Info)) {
 						foreach ($sitUp1Info as $sitUp1) {
-							$nomorUrut++;
+							if (isset($sitUp1[$statusField])) {
+								if ($sitUp1[$statusField] == 'Ditolak') {
+									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
+								} elseif ($sitUp1[$statusField] == 'Ditinjau') {
+									echo '<tr id="barisDitinjau"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
+								} else {
+									$nomorUrut++;
 					?>
-							<tr class="situp1-baris" data-bulan="<?php echo date('m', strtotime($sitUp1[$tanggalPelaksanaanField])); ?>">
-								<td><?php echo $nomorUrut; ?></td>
-								<td><?php echo htmlspecialchars($sitUp1[$tanggalPelaksanaanField]); ?></td>
-								<td><?php echo htmlspecialchars($sitUp1[$jumlahField]); ?></td>
-								<td><?php echo htmlspecialchars($sitUp1[$nilaiField]); ?></td>
-							</tr>
+									<tr class="situp1-baris" data-bulan="<?php echo date('m', strtotime($sitUp1[$tanggalPelaksanaanField])); ?>">
+										<td><?php echo $nomorUrut; ?></td>
+										<td><?php echo htmlspecialchars($sitUp1[$tanggalPelaksanaanField]); ?></td>
+										<td><?php echo htmlspecialchars($sitUp1[$jumlahField]); ?></td>
+										<td><?php echo htmlspecialchars($sitUp1[$nilaiField]); ?></td>
+									</tr>
 					<?php
+								}
+							}
 						}
 					} else {
 						echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Sit Up Kaki Lurus.</td></tr>';
@@ -108,6 +125,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 	<script>
 		$(document).ready(function() {
 			$('.dropdown-item').on('click', function() {
@@ -133,6 +154,9 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 
 		});
 	</script>
+	<!-- MODALS START -->
+	<?php include('../partials/modal-add-garjas-situp1.php'); ?>
+	<!-- MODALS END -->
 </body>
 
 </html>

@@ -29,7 +29,6 @@ function containsXSS($input)
     return false;
 }
 
-
 if (isset($_POST['tambah_nilai'])) {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();

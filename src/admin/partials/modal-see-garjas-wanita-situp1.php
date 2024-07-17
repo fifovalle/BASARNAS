@@ -51,6 +51,10 @@
                                 <th>Tanggal Pelaksanaan:</th>
                                 <td id="tanggalPelaksanaanSitUp1WanitaGW"></td>
                             </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td id="statusSitUp1WanitaGW"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

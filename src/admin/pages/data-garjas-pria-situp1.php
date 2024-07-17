@@ -88,9 +88,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Jumlah Sit Up</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -107,9 +107,11 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasPriaSitUp1['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp1['Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp1['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasPriaSitUp1['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp1['Jumlah_Sit_Up_Kaki_Lurus_Pria']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp1['Nilai_Sit_Up_Kaki_Lurus_Pria']; ?></td>
+                                                            <td> <span class="badge bg-<?= $garjasPriaSitUp1['Status_Pria_Sit_Up_Kaki_Lurus'] == "Ditinjau" ? "warning" : ($garjasPriaSitUp1['Status_Pria_Sit_Up_Kaki_Lurus'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasPriaSitUp1['Status_Pria_Sit_Up_Kaki_Lurus'] == "Ditinjau" ? "Ditinjau" : ($garjasPriaSitUp1['Status_Pria_Sit_Up_Kaki_Lurus'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span></td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaSitup1" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp1['ID_Sit_Up_Kaki_Lurus_Pria']; ?>">

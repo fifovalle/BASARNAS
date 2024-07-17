@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingTanggalPelaksanaanSitUp2Anggota").val(
             garjasPriaSitUp2Data.Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk
           );
+          $("#suntingStatusSitUp2GarjasPria").val(
+            garjasPriaSitUp2Data.Status_Pria_Sit_Up_Kaki_Ditekuk
+          );
           $("#suntingGarjasPriaSitUp2").modal("show");
         }
       },

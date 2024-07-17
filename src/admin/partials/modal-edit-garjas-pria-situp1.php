@@ -20,6 +20,15 @@
                         <label for="suntingJumlahSitUp1GarjasPria" class="form-label">Jumlah Sit Up</label>
                         <input type="number" class="form-control" id="suntingJumlahSitUp1GarjasPria" name="Jumlah_Sit_Up_Kaki_Lurus_Pria">
                     </div>
+                    <div class="mb-3">
+                        <label for="suntingStatusSitUp1GarjasPria" class="form-label">Status</label>
+                        <select name="Status_Pria_Sit_Up_Kaki_Lurus" class="form-control" id="suntingStatusSitUp1GarjasPria">
+                            <option value="">Pilih Status</option>
+                            <option value="Ditinjau">Ditinjau</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaSitUp1">Simpan</button>
                 </form>
             </div>

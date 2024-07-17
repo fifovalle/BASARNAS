@@ -28,7 +28,6 @@ function containsXSS($input)
     return false;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
@@ -38,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jumlahSitUpKakiDitekukPria = $_POST['Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria'] ?? '';
     $nilaiSitUpKakiDitekuk = $_POST['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria'] ?? '';
     $tanggalPelaksanaanSitUp2 = $_POST['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk'] ?? '';
+    $statusSitUpKakiDitekukPria = $_POST['Status_Pria_Sit_Up_Kaki_Ditekuk'] ?? '';
 
     $garjasSitUp2PriaModel = new GarjasPriaSitUpKakiDitekuk($koneksi);
 
@@ -166,7 +166,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dataGarjasPriaSitUp2 = array(
             'Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk' => $tanggalPelaksanaanSitUp2,
             'Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria' => $jumlahSitUpKakiDitekukPria,
-            'Nilai_Sit_Up_Kaki_Di_Tekuk_Pria' => $nilaiAkhirSitUpKakiDitekuk
+            'Nilai_Sit_Up_Kaki_Di_Tekuk_Pria' => $nilaiAkhirSitUpKakiDitekuk,
+            "Status_Pria_Sit_Up_Kaki_Ditekuk" => $statusSitUpKakiDitekukPria
         );
 
         $updateDataGarjasPriaSitUp2 = $garjasSitUp2PriaModel->perbaruiGarjasPriaSitUp2($idGarjasPriaSitUp2, $dataGarjasPriaSitUp2);

@@ -758,15 +758,16 @@ class GarjasPriaSitUpKakiLurus
 
     public function tambahGarjasPriaSitUp1($data)
     {
-        $query = "INSERT INTO garjas_pria_sit_up_kaki_lurus (NIP_Pengguna, Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria, Jumlah_Sit_Up_Kaki_Lurus_Pria, Nilai_Sit_Up_Kaki_Lurus_Pria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_pria_sit_up_kaki_lurus (NIP_Pengguna, Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria, Jumlah_Sit_Up_Kaki_Lurus_Pria, Nilai_Sit_Up_Kaki_Lurus_Pria, Status_Pria_Sit_Up_Kaki_Lurus) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "isiis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria']),
             $this->mengamankanString($data['Jumlah_Sit_Up_Kaki_Lurus_Pria']),
-            $this->mengamankanString($data['Nilai_Sit_Up_Kaki_Lurus_Pria'])
+            $this->mengamankanString($data['Nilai_Sit_Up_Kaki_Lurus_Pria']),
+            $this->mengamankanString($data['Status_Pria_Sit_Up_Kaki_Lurus'])
         );
 
         if ($statement->execute()) {
@@ -869,15 +870,37 @@ class GarjasPriaSitUpKakiLurus
 
     public function perbaruiGarjasPriaSitUp1($id, $data)
     {
-        $query = "UPDATE garjas_pria_sit_up_kaki_lurus SET Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria=?, Jumlah_Sit_Up_Kaki_Lurus_Pria=?, Nilai_Sit_Up_Kaki_Lurus_Pria=? WHERE ID_Sit_Up_Kaki_Lurus_Pria=?";
+        $query = "UPDATE garjas_pria_sit_up_kaki_lurus SET Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria=?, Jumlah_Sit_Up_Kaki_Lurus_Pria=?, Nilai_Sit_Up_Kaki_Lurus_Pria=?, Status_Pria_Sit_Up_Kaki_Lurus=? WHERE ID_Sit_Up_Kaki_Lurus_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "siii",
+            "siisi",
             $data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria'],
             $data['Jumlah_Sit_Up_Kaki_Lurus_Pria'],
             $data['Nilai_Sit_Up_Kaki_Lurus_Pria'],
+            $data['Status_Pria_Sit_Up_Kaki_Lurus'],
             $id
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiGarjasPriaSitUp1JikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_pria_sit_up_kaki_lurus SET Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria=?, Jumlah_Sit_Up_Kaki_Lurus_Pria=?, Nilai_Sit_Up_Kaki_Lurus_Pria=?, Status_Pria_Sit_Up_Kaki_Lurus=? WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "siisi",
+            $data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria'],
+            $data['Jumlah_Sit_Up_Kaki_Lurus_Pria'],
+            $data['Nilai_Sit_Up_Kaki_Lurus_Pria'],
+            $data['Status_Pria_Sit_Up_Kaki_Lurus'],
+            $NIP
         );
 
         if ($statement->execute()) {
@@ -1457,15 +1480,16 @@ class GarjasPriaSitUpKakiDitekuk
 
     public function tambahGarjasPriaSitUp2($data)
     {
-        $query = "INSERT INTO garjas_pria_sit_up_kaki_di_tekuk (NIP_Pengguna, Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk, Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria, Nilai_Sit_Up_Kaki_Di_Tekuk_Pria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_pria_sit_up_kaki_di_tekuk (NIP_Pengguna, Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk, Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria, Nilai_Sit_Up_Kaki_Di_Tekuk_Pria, Status_Pria_Sit_Up_Kaki_Ditekuk) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "isiis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk']),
             $this->mengamankanString($data['Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria']),
-            $this->mengamankanString($data['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria'])
+            $this->mengamankanString($data['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria']),
+            $this->mengamankanString($data['Status_Pria_Sit_Up_Kaki_Ditekuk'])
         );
 
         if ($statement->execute()) {
@@ -1570,15 +1594,37 @@ class GarjasPriaSitUpKakiDitekuk
 
     public function perbaruiGarjasPriaSitUp2($id, $data)
     {
-        $query = "UPDATE garjas_pria_sit_up_kaki_di_tekuk SET Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk=?, Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria=?, Nilai_Sit_Up_Kaki_Di_Tekuk_Pria=? WHERE ID_Sit_Up_Kaki_Di_Tekuk_Pria=?";
+        $query = "UPDATE garjas_pria_sit_up_kaki_di_tekuk SET Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk=?, Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria=?, Nilai_Sit_Up_Kaki_Di_Tekuk_Pria=?, Status_Pria_Sit_Up_Kaki_Ditekuk=? WHERE ID_Sit_Up_Kaki_Di_Tekuk_Pria=?";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "siii",
+            "siisi",
             $data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk'],
             $data['Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria'],
             $data['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria'],
+            $data['Status_Pria_Sit_Up_Kaki_Ditekuk'],
             $id
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiGarjasPriaSitUp2JikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_pria_sit_up_kaki_di_tekuk SET Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk=?, Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria=?, Nilai_Sit_Up_Kaki_Di_Tekuk_Pria=?, Status_Pria_Sit_Up_Kaki_Ditekuk=? WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "siisi",
+            $data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk'],
+            $data['Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria'],
+            $data['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria'],
+            $data['Status_Pria_Sit_Up_Kaki_Ditekuk'],
+            $NIP
         );
 
         if ($statement->execute()) {
@@ -1769,15 +1815,16 @@ class GarjasWanitaSitUp1
 
     public function tambahGarjasWanitaSitUp1($data)
     {
-        $query = "INSERT INTO garjas_wanita_sit_up_kaki_lurus (NIP_Pengguna, Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita, Jumlah_Sit_Up_Kaki_Lurus_Wanita, Nilai_Sit_Up_Kaki_Lurus_Wanita) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_wanita_sit_up_kaki_lurus (NIP_Pengguna, Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita, Jumlah_Sit_Up_Kaki_Lurus_Wanita, Nilai_Sit_Up_Kaki_Lurus_Wanita, Status_Wanita_Sit_Up_Kaki_Lurus) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "isiis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita']),
             $this->mengamankanString($data['Jumlah_Sit_Up_1_Wanita']),
-            $this->mengamankanString($data['Nilai_Sit_Up_1_Wanita'])
+            $this->mengamankanString($data['Nilai_Sit_Up_1_Wanita']),
+            $this->mengamankanString($data['Status_Wanita_Sit_Up_Kaki_Lurus'])
         );
 
         if ($statement->execute()) {
@@ -1837,16 +1884,18 @@ class GarjasWanitaSitUp1
         $query = "UPDATE garjas_wanita_sit_up_kaki_lurus SET 
                     Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita=?, 
                     Jumlah_Sit_Up_Kaki_Lurus_Wanita=?, 
-                    Nilai_Sit_Up_Kaki_Lurus_Wanita=? 
+                    Nilai_Sit_Up_Kaki_Lurus_Wanita=?,
+                    Status_Wanita_Sit_Up_Kaki_Lurus=?
                     WHERE ID_Wanita_Sit_Up_Kaki_Lurus=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanSitUp1Wanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita']);
         $jumlahSitUp1Wanita = $this->mengamankanString($data['Jumlah_Sit_Up_1_Wanita']);
         $nilaiSitUp1Wanita = $this->mengamankanString($data['Nilai_Sit_Up_1_Wanita']);
+        $statusWanitaSitUp1Wanita = $this->mengamankanString($data['Status_Wanita_Sit_Up_Kaki_Lurus']);
         $idWanitaSitUp1 = $id;
 
-        $statement->bind_param("siii", $tanggalPelaksanaanSitUp1Wanita, $jumlahSitUp1Wanita, $nilaiSitUp1Wanita, $idWanitaSitUp1);
+        $statement->bind_param("siisi", $tanggalPelaksanaanSitUp1Wanita, $jumlahSitUp1Wanita, $nilaiSitUp1Wanita, $statusWanitaSitUp1Wanita, $idWanitaSitUp1);
 
         if ($statement->execute()) {
             return true;
@@ -1854,6 +1903,32 @@ class GarjasWanitaSitUp1
             return false;
         }
     }
+
+    public function perbaruiGarjasWanitaSitUp1JikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_wanita_sit_up_kaki_lurus SET 
+                    Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita=?, 
+                    Jumlah_Sit_Up_Kaki_Lurus_Wanita=?, 
+                    Nilai_Sit_Up_Kaki_Lurus_Wanita=?,
+                    Status_Wanita_Sit_Up_Kaki_Lurus=?
+                    WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanSitUp1Wanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita']);
+        $jumlahSitUp1Wanita = $this->mengamankanString($data['Jumlah_Sit_Up_1_Wanita']);
+        $nilaiSitUp1Wanita = $this->mengamankanString($data['Nilai_Sit_Up_1_Wanita']);
+        $statusWanitaSitUp1Wanita = $this->mengamankanString($data['Status_Wanita_Sit_Up_Kaki_Lurus']);
+        $idWanitaSitUp1 = $NIP;
+
+        $statement->bind_param("siisi", $tanggalPelaksanaanSitUp1Wanita, $jumlahSitUp1Wanita, $nilaiSitUp1Wanita, $statusWanitaSitUp1Wanita, $idWanitaSitUp1);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function cekNipAnggotaSitUp1WanitaSudahAda($nipPengguna)
     {
         $query = "SELECT COUNT(*) as total FROM garjas_wanita_sit_up_kaki_lurus WHERE NIP_Pengguna = ?";
@@ -2193,15 +2268,16 @@ class GarjasWanitaSitUp2
 
     public function tambahGarjasWanitaSitUp2($data)
     {
-        $query = "INSERT INTO garjas_wanita_sit_up_kaki_di_tekuk (NIP_Pengguna, Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita, Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita, Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_wanita_sit_up_kaki_di_tekuk (NIP_Pengguna, Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita, Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita, Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita, Status_Wanita_Sit_Up_Kaki_Ditekuk) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "isiis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita']),
             $this->mengamankanString($data['Jumlah_Sit_Up_2_Wanita']),
-            $this->mengamankanString($data['Nilai_Sit_Up_2_Wanita'])
+            $this->mengamankanString($data['Nilai_Sit_Up_2_Wanita']),
+            $this->mengamankanString($data['Status_Wanita_Sit_Up_Kaki_Ditekuk'])
         );
 
         if ($statement->execute()) {
@@ -2270,16 +2346,43 @@ class GarjasWanitaSitUp2
         $query = "UPDATE garjas_wanita_sit_up_kaki_di_tekuk SET 
                     Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita=?, 
                     Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita=?, 
-                    Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita=? 
+                    Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita=?,
+                    Status_Wanita_Sit_Up_Kaki_Ditekuk=?
                     WHERE ID_Wanita_Sit_Up_Kaki_Di_Tekuk=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanSitUp2Wanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita']);
         $jumlahSitUp2Wanita = $this->mengamankanString($data['Jumlah_Sit_Up_2_Wanita']);
         $nilaiSitUp2Wanita = $this->mengamankanString($data['Nilai_Sit_Up_2_Wanita']);
+        $statusSitUp2Wanita = $this->mengamankanString($data['Status_Wanita_Sit_Up_Kaki_Ditekuk']);
         $idWanitaSitUp2 = $id;
 
-        $statement->bind_param("siii", $tanggalPelaksanaanSitUp2Wanita, $jumlahSitUp2Wanita, $nilaiSitUp2Wanita, $idWanitaSitUp2);
+        $statement->bind_param("siisi", $tanggalPelaksanaanSitUp2Wanita, $jumlahSitUp2Wanita, $nilaiSitUp2Wanita, $statusSitUp2Wanita, $idWanitaSitUp2);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiGarjasWanitaSitUp2JikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_wanita_sit_up_kaki_di_tekuk SET 
+                    Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita=?, 
+                    Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita=?, 
+                    Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita=?,
+                    Status_Wanita_Sit_Up_Kaki_Ditekuk=?
+                    WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanSitUp2Wanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita']);
+        $jumlahSitUp2Wanita = $this->mengamankanString($data['Jumlah_Sit_Up_2_Wanita']);
+        $nilaiSitUp2Wanita = $this->mengamankanString($data['Nilai_Sit_Up_2_Wanita']);
+        $statusSitUp2Wanita = $this->mengamankanString($data['Status_Wanita_Sit_Up_Kaki_Ditekuk']);
+        $idWanitaSitUp2 = $NIP;
+
+        $statement->bind_param("siisi", $tanggalPelaksanaanSitUp2Wanita, $jumlahSitUp2Wanita, $nilaiSitUp2Wanita, $statusSitUp2Wanita, $idWanitaSitUp2);
 
         if ($statement->execute()) {
             return true;

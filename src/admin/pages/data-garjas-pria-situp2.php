@@ -88,9 +88,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Jumlah Sit Up</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -107,9 +107,11 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasPriaSitUp2['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp2['Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp2['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasPriaSitUp2['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp2['Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria']; ?></td>
                                                             <td><?php echo $garjasPriaSitUp2['Nilai_Sit_Up_Kaki_Di_Tekuk_Pria']; ?></td>
+                                                            <td> <span class="badge bg-<?= $garjasPriaSitUp2['Status_Pria_Sit_Up_Kaki_Ditekuk'] == "Ditinjau" ? "warning" : ($garjasPriaSitUp2['Status_Pria_Sit_Up_Kaki_Ditekuk'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasPriaSitUp2['Status_Pria_Sit_Up_Kaki_Ditekuk'] == "Ditinjau" ? "Ditinjau" : ($garjasPriaSitUp2['Status_Pria_Sit_Up_Kaki_Ditekuk'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span></td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaSitup2" data-bs-toggle="modal" data-id="<?php echo $garjasPriaSitUp2['ID_Sit_Up_Kaki_Di_Tekuk_Pria']; ?>">
@@ -127,7 +129,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Sit Up Kaki Ditekuk!</td>
+                                                        <td colspan="10" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Sit Up Kaki Ditekuk!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

@@ -18,18 +18,53 @@ $(document).ready(function () {
         if (garjasPriaSitUp2Data.success === false) {
           alert(garjasPriaSitUp2Data.message);
         } else {
-          $("#lihatNamaPenggunaPriaSitUp2").text(garjasPriaSitUp2Data.Nama_Lengkap_Pengguna);
-          $("#lihatNIPPenggunaPriaSitUp2Td").text(garjasPriaSitUp2Data.NIP_Pengguna);
-          $("#lihatFotoPenggunaPriaSitUp2Td").attr("src", "../uploads/" + garjasPriaSitUp2Data.Foto_Pengguna);
-          $("#lihatNamaLengkapPriaSitUp2Td").text(garjasPriaSitUp2Data.Nama_Lengkap_Pengguna);
-          $("#lihatTanggalLahirPriaSitUp2Td").text(garjasPriaSitUp2Data.Tanggal_Lahir_Pengguna);
-          $("#lihatJabatanPriaSitUp2Td").text(garjasPriaSitUp2Data.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPriaSitUp2Td").text(garjasPriaSitUp2Data.Jenis_Kelamin_Pengguna);
-          $("#lihatNoTeleponPriaSitUp2Td").text(garjasPriaSitUp2Data.No_Telepon_Pengguna);
+          $("#lihatNamaPenggunaPriaSitUp2").text(
+            garjasPriaSitUp2Data.Nama_Lengkap_Pengguna
+          );
+          $("#lihatNIPPenggunaPriaSitUp2Td").text(
+            garjasPriaSitUp2Data.NIP_Pengguna
+          );
+          $("#lihatFotoPenggunaPriaSitUp2Td").attr(
+            "src",
+            "../uploads/" + garjasPriaSitUp2Data.Foto_Pengguna
+          );
+          $("#lihatNamaLengkapPriaSitUp2Td").text(
+            garjasPriaSitUp2Data.Nama_Lengkap_Pengguna
+          );
+          $("#lihatTanggalLahirPriaSitUp2Td").text(
+            garjasPriaSitUp2Data.Tanggal_Lahir_Pengguna
+          );
+          $("#lihatJabatanPriaSitUp2Td").text(
+            garjasPriaSitUp2Data.Jabatan_Pengguna
+          );
+          $("#lihatJenisKelaminPriaSitUp2Td").text(
+            garjasPriaSitUp2Data.Jenis_Kelamin_Pengguna
+          );
+          $("#lihatNoTeleponPriaSitUp2Td").text(
+            garjasPriaSitUp2Data.No_Telepon_Pengguna
+          );
           $("#lihatUmurPriaSitUp2Td").text(garjasPriaSitUp2Data.Umur_Pengguna);
-          $("#lihatJumlahPriaSitUp2Td").text(garjasPriaSitUp2Data.Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria);
-          $("#lihatNilaiPriaSitUp2Td").text(garjasPriaSitUp2Data.Nilai_Sit_Up_Kaki_Di_Tekuk_Pria);
-          $("#tanggalPelaksanaanSitUp2PriaTd").text(garjasPriaSitUp2Data.Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk);
+          $("#lihatJumlahPriaSitUp2Td").text(
+            garjasPriaSitUp2Data.Jumlah_Sit_Up_Kaki_Di_Tekuk_Pria
+          );
+          $("#lihatNilaiPriaSitUp2Td").text(
+            garjasPriaSitUp2Data.Nilai_Sit_Up_Kaki_Di_Tekuk_Pria
+          );
+          $("#tanggalPelaksanaanSitUp2PriaTd").text(
+            garjasPriaSitUp2Data.Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk
+          );
+          const statusClasses = {
+            Ditinjau: "badge bg-warning text-white",
+            Diterima: "badge bg-success text-white",
+            Ditolak: "badge bg-danger text-white",
+          };
+
+          const statusText =
+            garjasPriaSitUp2Data.Status_Pria_Sit_Up_Kaki_Ditekuk;
+          const statusClass = statusClasses[statusText] || "";
+
+          $("#statusSitUp2PriaTd").text(statusText);
+          $("#statusSitUp2PriaTd").attr("class", statusClass);
           $("#lihatGarjasPriaSitUp2").modal("show");
         }
       },

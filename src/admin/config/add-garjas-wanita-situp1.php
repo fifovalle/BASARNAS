@@ -55,7 +55,7 @@ if (isset($_POST['tambah_nilai'])) {
 
     if ($jumlahSitUp1Wanita == 0) {
         setPesanKesalahan("Nilai Sit Up Kaki Lurus tidak boleh 0.");
-        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-pushup.php");
+        header("Location: $akarUrl" . "src/admin/pages/data-garjas-wanita-situp1.php");
         exit;
     }
 
@@ -146,13 +146,12 @@ if (isset($_POST['tambah_nilai'])) {
         $nilaiAkhir = $jumlahSitUp1Wanita > $maksimalSitUp1 ? 100 : (isset($nilaiSitUp1['55-59'][$jumlahSitUp1Wanita]) ? $nilaiSitUp1['55-59'][$jumlahSitUp1Wanita] : 0);
     }
 
-
-
     $dataPenggunaWanita = array(
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Wanita' => $tanggalPelaksanaanSitUp1Wanita,
         'Jumlah_Sit_Up_1_Wanita' => $jumlahSitUp1Wanita,
         'Nilai_Sit_Up_1_Wanita' => $nilaiAkhir,
+        "Status_Wanita_Sit_Up_Kaki_Lurus" => "Diterima"
     );
 
     $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaSitUp1($dataPenggunaWanita);

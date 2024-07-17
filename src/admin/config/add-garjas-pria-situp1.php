@@ -174,6 +174,7 @@ if (isset($_POST['Simpan'])) {
         'Tanggal_Pelaksanaan_Sit_Up_Kaki_Lurus_Pria' => $tanggalPelaksanaanSitUp1,
         'Jumlah_Sit_Up_Kaki_Lurus_Pria' => $jumlahSitUpKakiLurusPria,
         'Nilai_Sit_Up_Kaki_Lurus_Pria' => $nilaiAkhirSitUpKakiLurus,
+        "Status_Pria_Sit_Up_Kaki_Lurus" => "Diterima"
     );
 
     $simpanDataGarjasPriaSitUpKakiLurus = $obyekGarjasPriaSitUpKakiLurus->tambahGarjasPriaSitUp1($dataGarjasPriaSitUpKakiLurus);

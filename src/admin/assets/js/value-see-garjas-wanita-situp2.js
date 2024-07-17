@@ -20,17 +20,41 @@ $(document).ready(function () {
         } else {
           $("#lihatNamaPengguna").text(penggunaData.Nama_Lengkap_Pengguna);
           $("#lihatNIPPenggunaGW").text(penggunaData.NIP_Pengguna);
-          $("#lihatPotoPenggunaGW").attr("src", "../uploads/" + penggunaData.Foto_Pengguna);
+          $("#lihatPotoPenggunaGW").attr(
+            "src",
+            "../uploads/" + penggunaData.Foto_Pengguna
+          );
           $("#lihatNamaPenggunaGW").text(penggunaData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaGW").text(penggunaData.Tanggal_Lahir_Pengguna);
+          $("#lihatTglLahirPenggunaGW").text(
+            penggunaData.Tanggal_Lahir_Pengguna
+          );
           $("#lihatAlamatPenggunaGW").text(penggunaData.Alamat_Pengguna);
           $("#lihatJabatanPenggunaGW").text(penggunaData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaGW").text(penggunaData.Jenis_Kelamin_Pengguna);
+          $("#lihatJenisKelaminPenggunaGW").text(
+            penggunaData.Jenis_Kelamin_Pengguna
+          );
           $("#lihatNoTelpPenggunaGW").text(penggunaData.No_Telepon_Pengguna);
           $("#lihatUmurPenggunaGW").text(penggunaData.Umur_Pengguna);
-          $("#lihatJumlahSitUp2WanitaGW").text(penggunaData.Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita);
-          $("#lihatNilaiSitUp2WanitaGW").text(penggunaData.Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita);
-          $("#tanggalPelaksanaanSitUp2WanitaGW").text(penggunaData.Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita);
+          $("#lihatJumlahSitUp2WanitaGW").text(
+            penggunaData.Jumlah_Sit_Up_Kaki_Di_Tekuk_Wanita
+          );
+          $("#lihatNilaiSitUp2WanitaGW").text(
+            penggunaData.Nilai_Sit_Up_Kaki_Di_Tekuk_Wanita
+          );
+          $("#tanggalPelaksanaanSitUp2WanitaGW").text(
+            penggunaData.Tanggal_Pelaksanaan_Sit_Up_Kaki_Di_Tekuk_Wanita
+          );
+          const statusClasses = {
+            Ditinjau: "badge bg-warning text-white",
+            Diterima: "badge bg-success text-white",
+            Ditolak: "badge bg-danger text-white",
+          };
+
+          const statusText = penggunaData.Status_Wanita_Sit_Up_Kaki_Ditekuk;
+          const statusClass = statusClasses[statusText] || "";
+
+          $("#statusSitUp2WanitaGW").text(statusText);
+          $("#statusSitUp2WanitaGW").attr("class", statusClass);
           $("#lihatGarjasWanitaSitUp2").modal("show");
         }
       },
