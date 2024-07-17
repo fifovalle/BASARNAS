@@ -96,9 +96,9 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						foreach ($sitUp1Info as $sitUp1) {
 							if (isset($sitUp1[$statusField])) {
 								if ($sitUp1[$statusField] == 'Ditolak') {
-									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
+									echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
 								} elseif ($sitUp1[$statusField] == 'Ditinjau') {
-									echo '<tr id="barisDitinjau"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
+									echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
 								} else {
 									$nomorUrut++;
 					?>

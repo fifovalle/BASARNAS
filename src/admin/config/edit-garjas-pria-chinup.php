@@ -28,7 +28,6 @@ function containsXSS($input)
     return false;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
@@ -38,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jumlahChinUpPria = $_POST['Jumlah_Chin_Up_Pria'] ?? '';
     $nilaiChinUp = $_POST['Nilai_Chin_Up_Pria'] ?? '';
     $tanggalPelaksanaanChinUpPria = $_POST['Tanggal_Pelaksanaan_Chin_Up_Pria'] ?? '';
+    $statusPriaChinUp = $_POST['Status_Pria_Chin_Up'] ?? '';
 
     $garjasChinUpPriaModel = new GarjasChinUpPria($koneksi);
 
@@ -124,7 +124,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dataGarjasPriaChinUp = array(
             'Tanggal_Pelaksanaan_Chin_Up_Pria' => $tanggalPelaksanaanChinUpPria,
             'Jumlah_Chin_Up_Pria' => $jumlahChinUpPria,
-            'Nilai_Chin_Up_Pria' => $nilaiAkhir
+            'Nilai_Chin_Up_Pria' => $nilaiAkhir,
+            'Status_Pria_Chin_Up' => $statusPriaChinUp
         );
 
         $updateDataGarjasPriaChinUp = $garjasChinUpPriaModel->perbaruiGarjasPriaChinUp($idGarjasPriaChinUp, $dataGarjasPriaChinUp);

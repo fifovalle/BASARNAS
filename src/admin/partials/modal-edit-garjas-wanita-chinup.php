@@ -20,6 +20,15 @@
                         <label for="suntingJumlahChinUpGarjasWanita" class="form-label">Jumlah Chin Up</label>
                         <input type="number" class="form-control" id="suntingJumlahChinUpGarjasWanita" name="Jumlah_Chin_Up_Wanita">
                     </div>
+                    <div class="mb-3">
+                        <label for="suntingStatusChinUpGarjasWanita" class="form-label">Status</label>
+                        <select name="Status_Wanita_Chin_Up" class="form-control" id="suntingStatusChinUpGarjasWanita">
+                            <option value="">Pilih Status</option>
+                            <option value="Ditinjau">Ditinjau</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasWanitaChinUp" name="Simpan">Simpan</button>
                 </form>
             </div>

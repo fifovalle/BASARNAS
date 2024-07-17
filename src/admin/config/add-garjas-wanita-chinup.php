@@ -165,6 +165,7 @@ if (isset($_POST['tambah_nilai'])) {
         'Tanggal_Pelaksanaan_Chin_Up_Wanita' => $tanggalPelaksanaanChinUpWanita,
         'Jumlah_Chin_Up_Wanita' => $jumlahChinUpWanita,
         'Nilai_Chin_Up_Wanita' => $nilaiAkhir,
+        "Status_Wanita_Chin_Up" => "Diterima"
     );
 
     $simpanDataPenggunaWanita = $obyekPenggunaWanita->tambahGarjasWanitaChinUp($dataPenggunaWanita);

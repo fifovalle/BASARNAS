@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2024 at 06:20 AM
+-- Generation Time: Jul 17, 2024 at 07:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -90,7 +90,8 @@ CREATE TABLE `garjas_pria_chin_up` (
   `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal_Pelaksanaan_Chin_Up_Pria` date NOT NULL,
   `Jumlah_Chin_Up_Pria` int(4) NOT NULL,
-  `Nilai_Chin_Up_Pria` int(3) NOT NULL
+  `Nilai_Chin_Up_Pria` int(3) NOT NULL,
+  `Status_Pria_Chin_Up` enum('Diterima','Ditinjau','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -179,7 +180,8 @@ CREATE TABLE `garjas_wanita_chin_up` (
   `NIP_Pengguna` bigint(20) NOT NULL,
   `Tanggal_Pelaksanaan_Chin_Up_Wanita` date NOT NULL,
   `Jumlah_Chin_Up_Wanita` int(4) NOT NULL,
-  `Nilai_Chin_Up_Wanita` int(3) NOT NULL
+  `Nilai_Chin_Up_Wanita` int(3) NOT NULL,
+  `Status_Wanita_Chin_Up` enum('Diterima','Ditinjau','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -555,7 +557,7 @@ ALTER TABLE `bmi`
 -- AUTO_INCREMENT for table `garjas_pria_chin_up`
 --
 ALTER TABLE `garjas_pria_chin_up`
-  MODIFY `ID_Pria_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_Pria_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `garjas_pria_menggantung`
@@ -591,7 +593,7 @@ ALTER TABLE `garjas_pria_sit_up_kaki_lurus`
 -- AUTO_INCREMENT for table `garjas_wanita_chin_up`
 --
 ALTER TABLE `garjas_wanita_chin_up`
-  MODIFY `ID_Wanita_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_Wanita_Chin_Up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `garjas_wanita_push_up`

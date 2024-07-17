@@ -1318,15 +1318,16 @@ class GarjasChinUpPria
 
     public function tambahGarjasPriaChinUp($data)
     {
-        $query = "INSERT INTO garjas_pria_chin_up (NIP_Pengguna, Tanggal_Pelaksanaan_Chin_Up_Pria, Jumlah_Chin_Up_Pria, Nilai_Chin_Up_Pria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_pria_chin_up (NIP_Pengguna, Tanggal_Pelaksanaan_Chin_Up_Pria, Jumlah_Chin_Up_Pria, Nilai_Chin_Up_Pria, Status_Pria_Chin_Up) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isii",
+            "isiis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Chin_Up_Pria']),
             $this->mengamankanString($data['Jumlah_Chin_Up_Pria']),
-            $this->mengamankanString($data['Nilai_Chin_Up_Pria'])
+            $this->mengamankanString($data['Nilai_Chin_Up_Pria']),
+            $this->mengamankanString($data['Status_Pria_Chin_Up'])
         );
 
         if ($statement->execute()) {
@@ -1432,15 +1433,37 @@ class GarjasChinUpPria
 
     public function perbaruiGarjasPriaChinUp($id, $data)
     {
-        $query = "UPDATE garjas_pria_chin_up SET Tanggal_Pelaksanaan_Chin_Up_Pria=?, Jumlah_Chin_Up_Pria=?, Nilai_Chin_Up_Pria=? WHERE ID_Pria_Chin_Up=?";
+        $query = "UPDATE garjas_pria_chin_up SET Tanggal_Pelaksanaan_Chin_Up_Pria=?, Jumlah_Chin_Up_Pria=?, Nilai_Chin_Up_Pria=?, Status_Pria_Chin_Up=? WHERE ID_Pria_Chin_Up=?";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "siii",
+            "siisi",
             $data['Tanggal_Pelaksanaan_Chin_Up_Pria'],
             $data['Jumlah_Chin_Up_Pria'],
             $data['Nilai_Chin_Up_Pria'],
+            $data['Status_Pria_Chin_Up'],
             $id
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function perbaruiGarjasPriaChinUpJikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_pria_chin_up SET Tanggal_Pelaksanaan_Chin_Up_Pria=?, Jumlah_Chin_Up_Pria=?, Nilai_Chin_Up_Pria=?, Status_Pria_Chin_Up=? WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "siisi",
+            $data['Tanggal_Pelaksanaan_Chin_Up_Pria'],
+            $data['Jumlah_Chin_Up_Pria'],
+            $data['Nilai_Chin_Up_Pria'],
+            $data['Status_Pria_Chin_Up'],
+            $NIP
         );
 
         if ($statement->execute()) {
@@ -2137,15 +2160,16 @@ class GarjasWanitaChinUp
 
     public function tambahGarjasWanitaChinUp($data)
     {
-        $query = "INSERT INTO garjas_wanita_chin_up (NIP_Pengguna, Tanggal_Pelaksanaan_Chin_Up_Wanita, Jumlah_Chin_Up_Wanita, Nilai_Chin_Up_Wanita) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO garjas_wanita_chin_up (NIP_Pengguna, Tanggal_Pelaksanaan_Chin_Up_Wanita, Jumlah_Chin_Up_Wanita, Nilai_Chin_Up_Wanita, Status_Wanita_Chin_Up) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isdi",
+            "isdis",
             $this->mengamankanString($data['NIP_Pengguna']),
             $this->mengamankanString($data['Tanggal_Pelaksanaan_Chin_Up_Wanita']),
             $this->mengamankanString($data['Jumlah_Chin_Up_Wanita']),
-            $this->mengamankanString($data['Nilai_Chin_Up_Wanita'])
+            $this->mengamankanString($data['Nilai_Chin_Up_Wanita']),
+            $this->mengamankanString($data['Status_Wanita_Chin_Up'])
         );
 
         if ($statement->execute()) {
@@ -2214,16 +2238,18 @@ class GarjasWanitaChinUp
         $query = "UPDATE garjas_wanita_chin_up SET 
                     Tanggal_Pelaksanaan_Chin_Up_Wanita=?, 
                     Jumlah_Chin_Up_Wanita=?, 
-                    Nilai_Chin_Up_Wanita=? 
+                    Nilai_Chin_Up_Wanita=?,
+                    Status_Wanita_Chin_Up=?
                     WHERE ID_Wanita_Chin_Up=?";
 
         $statement = $this->koneksi->prepare($query);
         $tanggalPelaksanaanChinUpWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Chin_Up_Wanita']);
         $jumlahChinUpWanita = $this->mengamankanString($data['Jumlah_Chin_Up_Wanita']);
         $nilaiChinUpWanita = $this->mengamankanString($data['Nilai_Chin_Up_Wanita']);
+        $statusWanitaChinUp = $this->mengamankanString($data['Status_Wanita_Chin_Up']);
         $idWanitaChinUp = $id;
 
-        $statement->bind_param("siii", $tanggalPelaksanaanChinUpWanita, $jumlahChinUpWanita, $nilaiChinUpWanita, $idWanitaChinUp);
+        $statement->bind_param("siisi", $tanggalPelaksanaanChinUpWanita, $jumlahChinUpWanita, $nilaiChinUpWanita, $statusWanitaChinUp, $idWanitaChinUp);
 
         if ($statement->execute()) {
             return true;
@@ -2231,6 +2257,32 @@ class GarjasWanitaChinUp
             return false;
         }
     }
+
+    public function perbaruiGarjasWanitaChinUpJikaDitolak($NIP, $data)
+    {
+        $query = "UPDATE garjas_wanita_chin_up SET 
+                    Tanggal_Pelaksanaan_Chin_Up_Wanita=?, 
+                    Jumlah_Chin_Up_Wanita=?, 
+                    Nilai_Chin_Up_Wanita=?,
+                    Status_Wanita_Chin_Up=?
+                    WHERE NIP_Pengguna=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $tanggalPelaksanaanChinUpWanita = $this->mengamankanString($data['Tanggal_Pelaksanaan_Chin_Up_Wanita']);
+        $jumlahChinUpWanita = $this->mengamankanString($data['Jumlah_Chin_Up_Wanita']);
+        $nilaiChinUpWanita = $this->mengamankanString($data['Nilai_Chin_Up_Wanita']);
+        $statusWanitaChinUp = $this->mengamankanString($data['Status_Wanita_Chin_Up']);
+        $idWanitaChinUp = $NIP;
+
+        $statement->bind_param("siisi", $tanggalPelaksanaanChinUpWanita, $jumlahChinUpWanita, $nilaiChinUpWanita, $statusWanitaChinUp, $idWanitaChinUp);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function cekNipAnggotaChinUpWanitaSudahAda($nipPengguna)
     {
         $query = "SELECT COUNT(*) as total FROM garjas_wanita_chin_up WHERE NIP_Pengguna = ?";

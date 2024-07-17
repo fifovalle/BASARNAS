@@ -20,17 +20,41 @@ $(document).ready(function () {
         } else {
           $("#lihatNamaPengguna").text(penggunaData.Nama_Lengkap_Pengguna);
           $("#lihatNIPPenggunaGW").text(penggunaData.NIP_Pengguna);
-          $("#lihatPotoPenggunaGW").attr("src", "../uploads/" + penggunaData.Foto_Pengguna);
+          $("#lihatPotoPenggunaGW").attr(
+            "src",
+            "../uploads/" + penggunaData.Foto_Pengguna
+          );
           $("#lihatNamaPenggunaGW").text(penggunaData.Nama_Lengkap_Pengguna);
-          $("#lihatTglLahirPenggunaGW").text(penggunaData.Tanggal_Lahir_Pengguna);
+          $("#lihatTglLahirPenggunaGW").text(
+            penggunaData.Tanggal_Lahir_Pengguna
+          );
           $("#lihatAlamatPenggunaGW").text(penggunaData.Alamat_Pengguna);
           $("#lihatJabatanPenggunaGW").text(penggunaData.Jabatan_Pengguna);
-          $("#lihatJenisKelaminPenggunaGW").text(penggunaData.Jenis_Kelamin_Pengguna);
+          $("#lihatJenisKelaminPenggunaGW").text(
+            penggunaData.Jenis_Kelamin_Pengguna
+          );
           $("#lihatNoTelpPenggunaGW").text(penggunaData.No_Telepon_Pengguna);
           $("#lihatUmurPenggunaGW").text(penggunaData.Umur_Pengguna);
-          $("#lihatJumlahChinUpWanitaGW").text(penggunaData.Jumlah_Chin_Up_Wanita);
-          $("#lihatNilaiChinUpWanitaGW").text(penggunaData.Nilai_Chin_Up_Wanita);
-          $("#tanggalPelaksanaanChinUpWanitaGW").text(penggunaData.Tanggal_Pelaksanaan_Chin_Up_Wanita);
+          $("#lihatJumlahChinUpWanitaGW").text(
+            penggunaData.Jumlah_Chin_Up_Wanita
+          );
+          $("#lihatNilaiChinUpWanitaGW").text(
+            penggunaData.Nilai_Chin_Up_Wanita
+          );
+          $("#tanggalPelaksanaanChinUpWanitaGW").text(
+            penggunaData.Tanggal_Pelaksanaan_Chin_Up_Wanita
+          );
+          const statusClasses = {
+            Ditinjau: "badge bg-warning text-white",
+            Diterima: "badge bg-success text-white",
+            Ditolak: "badge bg-danger text-white",
+          };
+
+          const statusText = penggunaData.Status_Wanita_Chin_Up;
+          const statusClass = statusClasses[statusText] || "";
+
+          $("#statusChinUpWanitaGW").text(statusText);
+          $("#statusChinUpWanitaGW").attr("class", statusClass);
           $("#lihatGarjasWanitaChinUp").modal("show");
         }
       },

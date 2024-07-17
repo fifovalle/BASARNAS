@@ -28,7 +28,6 @@ function containsXSS($input)
     return false;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
     $config = HTMLPurifier_Config::createDefault();
@@ -37,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nipPengguna = $_POST['NIP_Pengguna'] ?? '';
     $jumlahChinUpWanita = $_POST['Jumlah_Chin_Up_Wanita'] ?? '';
     $tanggalPelaksanaanChinUpWanita = $_POST['Tanggal_Pelaksanaan_Chin_Up_Wanita'] ?? '';
+    $statusWanitaChinUp = $_POST['Status_Wanita_Chin_Up'] ?? '';
 
     $garjasWanitaChinUpModel = new GarjasWanitaChinUp($koneksi);
     $umurPengguna = $garjasWanitaChinUpModel->ambilUmurGarjasWanitaChinUpOlehNIP($nipPengguna);
@@ -141,7 +141,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'NIP_Pengguna' => $nipPengguna,
         'Tanggal_Pelaksanaan_Chin_Up_Wanita' => $tanggalPelaksanaanChinUpWanita,
         'Jumlah_Chin_Up_Wanita' => $jumlahChinUpWanita,
-        'Nilai_Chin_Up_Wanita' => $nilaiAkhir
+        'Nilai_Chin_Up_Wanita' => $nilaiAkhir,
+        "Status_Wanita_Chin_Up" => $statusWanitaChinUp
     );
     $updateGarjasWanitaChinUp = $garjasWanitaChinUpModel->perbaruiGarjasWanitaChinUp($idGarjasWanitaChinUp, $dataGarjasWanitaPushUp);
     if ($updateGarjasWanitaChinUp) {

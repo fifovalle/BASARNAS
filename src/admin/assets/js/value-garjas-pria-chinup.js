@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingTanggalPelaksanaanChinUpAnggota").val(
             garjasChinUpPriaData.Tanggal_Pelaksanaan_Chin_Up_Pria
           );
+          $("#suntingStatusChinUpAnggota").val(
+            garjasChinUpPriaData.Status_Pria_Chin_Up
+          );
           $("#suntingGarjasPriaChinUp").modal("show");
         }
       },

@@ -58,6 +58,17 @@ $(document).ready(function () {
           $("#tanggalPelaksanaanChinUpPriaTd").text(
             garjasPriaPushUpData.Tanggal_Pelaksanaan_Chin_Up_Pria
           );
+          const statusClasses = {
+            Ditinjau: "badge bg-warning text-white",
+            Diterima: "badge bg-success text-white",
+            Ditolak: "badge bg-danger text-white",
+          };
+
+          const statusText = garjasPriaPushUpData.Status_Pria_Chin_Up;
+          const statusClass = statusClasses[statusText] || "";
+
+          $("#statusChinUpPriaTd").text(statusText);
+          $("#statusChinUpPriaTd").attr("class", statusClass);
           $("#lihatGarjasPriaChinUp").modal("show");
         }
       },

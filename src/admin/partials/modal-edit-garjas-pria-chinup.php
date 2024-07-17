@@ -20,6 +20,15 @@
                         <label for="suntingJumlahChinUpAnggota" class="form-label">Jumlah Chin Up</label>
                         <input type="number" class="form-control" id="suntingJumlahChinUpAnggota" name="Jumlah_Chin_Up_Pria">
                     </div>
+                    <div class="mb-3">
+                        <label for="suntingStatusChinUpAnggota" class="form-label">Status</label>
+                        <select name="Status_Pria_Chin_Up" class="form-control" id="suntingStatusChinUpAnggota">
+                            <option value="">Pilih Status</option>
+                            <option value="Ditinjau">Ditinjau</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary" id="tombolSimpanGarjasPriaChinUp">Simpan</button>
                 </form>
             </div>

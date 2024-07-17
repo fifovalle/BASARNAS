@@ -16,8 +16,8 @@
                         <h4>Info Hasil Selengkapnya</h4>
                         <table class="table table-borderless">
                             <tr>
-                            <th>Nama Lengkap:</th>
-                            <td id="lihatNamaPenggunaChinUpTd"></td>
+                                <th>Nama Lengkap:</th>
+                                <td id="lihatNamaPenggunaChinUpTd"></td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lahir:</th>
@@ -50,6 +50,10 @@
                             <tr>
                                 <th>Tanggal Pelaksanaan:</th>
                                 <td id="tanggalPelaksanaanChinUpPriaTd"></td>
+                            </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td id="statusChinUpPriaTd"></td>
                             </tr>
                         </table>
                     </div>

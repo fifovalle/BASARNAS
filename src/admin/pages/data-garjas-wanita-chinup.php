@@ -90,9 +90,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Jumlah Chinning</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -109,9 +109,13 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasChinUpWanita['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasChinUpWanita['Tanggal_Pelaksanaan_Chin_Up_Wanita']; ?></td>
                                                             <td><?php echo $garjasChinUpWanita['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasChinUpWanita['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasChinUpWanita['Jumlah_Chin_Up_Wanita']; ?></td>
                                                             <td><?php echo $garjasChinUpWanita['Nilai_Chin_Up_Wanita']; ?></td>
+                                                            <td>
+                                                                <span class="badge bg-<?= $garjasChinUpWanita['Status_Wanita_Chin_Up'] == "Ditinjau" ? "warning" : ($garjasChinUpWanita['Status_Wanita_Chin_Up'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasChinUpWanita['Status_Wanita_Chin_Up'] == "Ditinjau" ? "Ditinjau" : ($garjasChinUpWanita['Status_Wanita_Chin_Up'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span>
+                                                            </td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasWanitaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpWanita['ID_Wanita_Chin_Up']; ?>">
@@ -129,7 +133,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="8" class="text-center text-danger fw-bolder">Tidak ada data Chinning yang ditemukan.</td>
+                                                        <td colspan="10" class="text-center text-danger fw-bolder">Tidak ada data Chinning yang ditemukan.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

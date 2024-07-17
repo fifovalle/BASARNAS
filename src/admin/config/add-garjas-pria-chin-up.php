@@ -149,6 +149,7 @@ if (isset($_POST['Simpan'])) {
         'Tanggal_Pelaksanaan_Chin_Up_Pria' => $tanggalPelaksanaanChinUpPria,
         'Jumlah_Chin_Up_Pria' => $jumlahChinUpPria,
         'Nilai_Chin_Up_Pria' => $nilaiAkhir,
+        "Status_Pria_Chin_Up" => "Diterima"
     );
 
     $simpanDataPengguna = $obyekGarjasPriaChinUp->tambahGarjasPriaChinUp($dataPengguna);

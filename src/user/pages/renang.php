@@ -100,9 +100,9 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 							$nomorUrut++;
 							if (isset($renang[$statusField])) {
 								if ($renang[$statusField] == 'Ditolak') {
-									echo '<tr id="barisDitolak"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Data Anda telah ditolak, silahkan ajukan ulang.</td></tr>';
+									echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Data Anda telah ditolak, silahkan ajukan ulang.</td></tr>';
 								} elseif ($renang[$statusField] == 'Ditinjau') {
-									echo '<tr id="barisDitinjau"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Data Anda sedang ditinjau oleh admin.</td></tr>';
+									echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Data Anda sedang ditinjau oleh admin.</td></tr>';
 								} else {
 					?>
 									<tr class="renang-baris" data-bulan="<?php echo $bulan; ?>">

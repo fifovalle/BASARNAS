@@ -74,9 +74,9 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						foreach ($flexedArmHangInfo as $flexedArmHang) {
 							if (isset($flexedArmHang[$statusField])) {
 								if ($flexedArmHang[$statusField] == 'Ditolak') {
-									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
+									echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
 								} elseif ($flexedArmHang[$statusField] == 'Ditinjau') {
-									echo '<tr id="barisDitinjau"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
+									echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
 								} else {
 					?>
 									<tr class="flexedarmhang-baris" data-bulan="<?php echo date('m', strtotime($flexedArmHang['Tanggal_Pelaksanaan_Pria_Menggantung'])); ?>">

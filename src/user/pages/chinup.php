@@ -17,6 +17,8 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	include('../partials/header.php');
 	?>
 	<link rel="stylesheet" href="../assets/css/chinup.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -30,8 +32,8 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 			: 'SAMAPTA';
 		?>
 		<h1 class="samapta-title text-center"><?php echo $judul; ?></h1>
-		<div class="btn-group">
-			<div class="dropdown pe-2">
+		<div class="d-flex align-items-center">
+			<div class="dropdown pe-2" id="dropdownBulan">
 				<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Pilih Bulan
 				</button>
@@ -50,6 +52,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					<li><a class="dropdown-item" href="#" data-bulan="12">Desember</a></li>
 				</ul>
 			</div>
+			<button class="btn btn-round ms-auto tombol-tambah" data-bs-toggle="modal" data-bs-target="#tambahGarjasChinUp">
+				<i class="fa fa-plus"></i>
+				Tambah Data
+			</button>
 		</div>
 		<div class="table-responsive-sm">
 			<table class="table">
@@ -73,32 +79,43 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 					$pengguna = $resultJenisKelamin->fetch_assoc();
 					$jenisKelamin = $pengguna['Jenis_Kelamin_Pengguna'];
 					$nomorUrut = 0;
+					$statusField = '';
 					if ($jenisKelamin == 'Pria') {
 						$chinUpInfo = $chinUpModel->tampilkanChinUpDenganSessionNipPria($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Chin_Up_Pria';
 						$nilaiField = 'Nilai_Chin_Up_Pria';
 						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Chin_Up_Pria';
+						$statusField = 'Status_Pria_Chin_Up';
 					} elseif ($jenisKelamin == 'Wanita') {
 						$chinUpInfo = $chinUpModel->tampilkanChinUpDenganSessionNipWanita($nipSessionPengguna);
 						$jumlahField = 'Jumlah_Chin_Up_Wanita';
 						$nilaiField = 'Nilai_Chin_Up_Wanita';
 						$tanggalPelaksanaanField = 'Tanggal_Pelaksanaan_Chin_Up_Wanita';
+						$statusField = 'Status_Wanita_Chin_Up';
 					} else {
 						$chinUpInfo = null;
 					}
 
 					if (!empty($chinUpInfo)) {
 						foreach ($chinUpInfo as $chinUp) {
-							$nomorUrut++;
+							if (isset($chinUp[$statusField])) {
+								if ($chinUp[$statusField] == 'Ditolak') {
+									echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
+								} elseif ($chinUp[$statusField] == 'Ditinjau') {
+									echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
+								} else {
+									$nomorUrut++;
 					?>
-							<tr>
-							<tr class="chinUp-baris" data-bulan="<?php echo date('m', strtotime($chinUp[$tanggalPelaksanaanField])); ?>">
-								<td><?php echo $nomorUrut; ?></td>
-								<td><?php echo htmlspecialchars($chinUp[$tanggalPelaksanaanField]); ?></td>
-								<td><?php echo htmlspecialchars($chinUp[$jumlahField]); ?></td>
-								<td><?php echo htmlspecialchars($chinUp[$nilaiField]); ?></td>
-							</tr>
+									<tr>
+									<tr class="chinUp-baris" data-bulan="<?php echo date('m', strtotime($chinUp[$tanggalPelaksanaanField])); ?>">
+										<td><?php echo $nomorUrut; ?></td>
+										<td><?php echo htmlspecialchars($chinUp[$tanggalPelaksanaanField]); ?></td>
+										<td><?php echo htmlspecialchars($chinUp[$jumlahField]); ?></td>
+										<td><?php echo htmlspecialchars($chinUp[$nilaiField]); ?></td>
+									</tr>
 					<?php
+								}
+							}
 						}
 					} else {
 						echo '<tr id="barisTidakAdaData"><td colspan="5" style="text-align: center; color: red; font-weight: bold;">Tidak ada data Chin Up.</td></tr>';
@@ -113,6 +130,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 	?>
 	<script src="../assets/js/navbar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<!-- ALERT -->
+	<?php
+	include('../partials/alert.php');
+	?>
 	<script>
 		$(document).ready(function() {
 			$('.dropdown-item').on('click', function() {
@@ -138,6 +159,10 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 
 		});
 	</script>
+	</script>
+	<!-- MODALS START -->
+	<?php include('../partials/modal-add-garjas-chinup.php'); ?>
+	<!-- MODALS END -->
 </body>
 
 </html>

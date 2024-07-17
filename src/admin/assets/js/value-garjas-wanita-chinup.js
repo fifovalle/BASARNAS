@@ -31,6 +31,9 @@ $(document).ready(function () {
           $("#suntingTanggalPelaksanaanChinUpGarjasWanita").val(
             garjasWanitaChinUpData.Tanggal_Pelaksanaan_Chin_Up_Wanita
           );
+          $("#suntingStatusChinUpGarjasWanita").val(
+            garjasWanitaChinUpData.Status_Wanita_Chin_Up
+          );
           $("#suntingGarjasWanitaChinUp").modal("show");
         }
       },

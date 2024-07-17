@@ -92,9 +92,9 @@ if (!isset($_SESSION['NIP_Pengguna'])) {
 						foreach ($lariInfo as $lari) {
 							if (isset($lari[$statusField])) {
 								if ($lari[$statusField] == 'Ditolak') {
-									echo '<tr id="barisDitolak"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
+									echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda telah ditolak silahkan ajukan ulang.</td></tr>';
 								} elseif ($lari[$statusField] == 'Ditinjau') {
-									echo '<tr id="barisDitinjau"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
+									echo '<tr id="barisTidakAdaData"><td colspan="4" style="text-align: center; color: red; font-weight: bold;">Data anda sedang ditinjau oleh admin.</td></tr>';
 								} else {
 									$bulan = date('m', strtotime($lari[$tanggalPelaksanaanField]));
 									$nomorUrut++;

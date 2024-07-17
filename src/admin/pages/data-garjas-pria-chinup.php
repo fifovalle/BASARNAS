@@ -62,7 +62,6 @@ if (!isset($_SESSION['NIP_Admin'])) {
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -89,9 +88,9 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <th>NIP</th>
                                                     <th>Tanggal Pelaksanaan</th>
                                                     <th>Nama</th>
-                                                    <th>Umur</th>
                                                     <th>Jumlah Chin Up</th>
                                                     <th>Nilai</th>
+                                                    <th>Status</th>
                                                     <th style="width: 10%">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -108,9 +107,13 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                             <td><?php echo $garjasChinUpPria['NIP_Pengguna']; ?></td>
                                                             <td><?php echo $garjasChinUpPria['Tanggal_Pelaksanaan_Chin_Up_Pria']; ?></td>
                                                             <td><?php echo $garjasChinUpPria['Nama_Lengkap_Pengguna']; ?></td>
-                                                            <td><?php echo $garjasChinUpPria['Umur_Pengguna']; ?></td>
                                                             <td><?php echo $garjasChinUpPria['Jumlah_Chin_Up_Pria']; ?></td>
                                                             <td><?php echo $garjasChinUpPria['Nilai_Chin_Up_Pria']; ?></td>
+                                                            <td>
+                                                                <span class="badge bg-<?= $garjasChinUpPria['Status_Pria_Chin_Up'] == "Ditinjau" ? "warning" : ($garjasChinUpPria['Status_Pria_Chin_Up'] == "Diterima" ? "success" : "danger") ?>">
+                                                                    <?= $garjasChinUpPria['Status_Pria_Chin_Up'] == "Ditinjau" ? "Ditinjau" : ($garjasChinUpPria['Status_Pria_Chin_Up'] == "Diterima" ? "Diterima" : "Ditolak") ?>
+                                                                </span>
+                                                            </td>
                                                             <td>
                                                                 <div class="form-button-action">
                                                                     <button type="button" class="btn btn-link btn-primary btn-lg buttonGarjasPriaChinUp" data-bs-toggle="modal" data-id="<?php echo $garjasChinUpPria['ID_Pria_Chin_Up']; ?>">
@@ -128,7 +131,7 @@ if (!isset($_SESSION['NIP_Admin'])) {
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <tr>
-                                                        <td colspan="7" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Chin Up!</td>
+                                                        <td colspan="10" class="text-center text-danger fw-bolder">Tidak ada data Garjas Pria Chin Up!</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
