@@ -54,6 +54,9 @@
                         <input type="password" class="form-control" placeholder="***********" id="tambahKonfirmasiKataSandiPengguna" name="Konfirmasi_Kata_Sandi_Pengguna">
                         <i class="bi bi-eye" id="toggleKonfirmasiKataSandiPengguna" style="position:absolute; top: 70%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
                     </div>
+                    <div class="fw-bold text-danger pt-2 mb-2">
+                        Catatan : Kata sandi harus memiliki setidaknya 8 karakter dan mengandung minimal satu huruf besar, satu huruf kecil, satu angka, dan satu simbol.
+                    </div>
                     <button type="submit" class="btn btn-primary" name="Simpan">Simpan</button>
                 </form>
             </div>
