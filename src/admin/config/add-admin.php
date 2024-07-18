@@ -85,7 +85,7 @@ if (isset($_POST['Simpan'])) {
     $persyaratanKataSandi = preg_match('/[A-Z]/', $kataSandiAdmin) && preg_match('/[a-z]/', $kataSandiAdmin) && preg_match('/[0-9]/', $kataSandiAdmin) && preg_match('/[^A-Za-z0-9]/', $kataSandiAdmin);
     $kataSandiAdminYangValid = $panjangKataSandi && $persyaratanKataSandi;
     if (!$kataSandiAdminYangValid) {
-        $pesanKesalahan .= "Kata sandi harus memiliki setidaknya 8 karakter dan mengandung minimal satu huruf besar, satu huruf kecil, satu angka, dan satu simbol. ";
+        $pesanKesalahan .= "Kata sandi harus memiliki setidaknya 8 karakter dan mengandung minimal satu huruf besar, satu huruf kecil, satu angka, dan satu simbol.";
     }
 
     if ($kataSandiAdmin !== $konfirmasiKataSandiAdmin) {
