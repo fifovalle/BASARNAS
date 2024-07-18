@@ -61,5 +61,5 @@ Kontribusi dan umpan balik dari komunitas sangat dihargai. Jika Anda ingin berko
 Terima kasih atas antusiasme Anda menantikan kehadiran user interface ini! 🙌
 
 <div align="center">
-  &copy; 2024 [ADRIAN MUSA ALFAUZAN]
+  &copy; 2024 [Naufal FIFA]
 </div>
