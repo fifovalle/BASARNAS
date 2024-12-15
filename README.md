@@ -4,7 +4,7 @@ Jelajahi karya terbaru dan keterampilan saya dalam dunia pengembangan perangkat 
 
 ### 🚧 Status Proyek
 
-- **Status:** Dalam Pengembangan
+- **Status:** Selesai
 - **Tanggal Rilis Diharapkan:** Juli 2024
 
 ### 🚀 Fitur Utama
@@ -21,8 +21,7 @@ Jelajahi karya terbaru dan keterampilan saya dalam dunia pengembangan perangkat 
 
 Berikut adalah beberapa tampilan halaman website :
 
-![Screenshot 2024-06-17 073817](https://github.com/fifovalle/BASARNAS/assets/90078068/ac515148-d2ef-4d65-ac51-7547109d0f59)
-![Screenshot 2024-06-17 073801](https://github.com/fifovalle/BASARNAS/assets/90078068/4fb8397f-7757-4bd4-888c-ec30bf52b464)
+![proyek58](https://github.com/user-attachments/assets/bcbf6b1b-330e-4c49-b307-c8cb80bf195a)
 
 ## 📬 Kontak
 
